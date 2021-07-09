@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+/* reset */
+*{
+	margin: 0 auto;
+	padding: 0;
+	box-sizing: border-box;
+	border-collapse:collapse;
+	text-decoration:none;
+	outline:none;
+	list-style:none;
+	font-size:16px;
+	color:black;
+}
+
+
+/* 공통 CSS */
+.container {width:900px;}
+.clear{clear:both;}
+.upDownBorder {border-top:1px solid lightgray; border-bottom:1px solid lightgray;}
+.none {display:none;}
+.link {color:black;}
+.disable {color:#666;}
+.now_page {color:red;}
+
+
+
+
+/* Header */
+header {margin:50px 0;}
+#topNav {width:900px; text-align:center; position:relative; margin-bottom:50px;}
+.logo {font-size:30px; font-weight:700;}
+.sub_nav {text-align:right; position:absolute; right:0; top:12px;}
+.sub_nav span {margin:0 20px; font-size:13px; color:#999;}
+.sub_nav a {font-weigth:500;}
+.sub_nav a:hover {color:red; font-weight:600; text-decoration:underline;}
+#catgNav {}
+.category {width:900px; text-align:center;}
+.category a {display:inline-block; margin:0 45px; padding:30px 0;}
+.category a:hover {color:red; font-weight:600; border-bottom:3px solid red; padding-bottom:27px; }
+
+/* Footer*/
+footer {padding: 30px 20px; background-color:black; font-size:14px;}
+#mainFooter {width:900px; margin: 0 auto;}
+footer div {margin: 20px 0;}
+footer a {color:white;}
+footer p {color:white; padding-bottom:5px;}
+footer .f_span {float:right; font-weight:600;}
+footer .f_span:hover {color:white; cursor:pointer;}
+footer span:nth-child(2) span {padding: 0 10px 0 13px;}
+footer p, footer span {color:#888; font-size:12px;}
+footer div:nth-child(1) {margin-bottom:40px;}
+footer div:nth-child(1) a:nth-child(1) {font-weight:700;}
+footer div:nth-child(1) a:nth-child(2) {font-weight:800;}
+footer div:nth-child(2) p:nth-child(1) {color:white;}
+footer div:nth-child(3) a {font-weight:600;}
+footer div:nth-child(4) span {padding: 0 5px;}
+		
+/* Section 기보 작업 */
+section {margin:50px 0;}

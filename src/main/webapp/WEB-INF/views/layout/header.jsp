@@ -1,33 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@ingyuna 
-pokrogo2
-/
-A
-1
-00
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-A/src/main/webapp/WEB-INF/views/layout/header.jsp
-@kimsuyeon07
-kimsuyeon07 [main_header/footer] CSS_end
-Latest commit 346dcec 13 minutes ago
- History
- 1 contributor
-65 lines (50 sloc)  1.7 KB
-  
 <%@page import="java.sql.Array"%>
 <%@page import="java.util.Optional"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -43,10 +13,11 @@ Latest commit 346dcec 13 minutes ago
 		String JSP_title = opt.orElse("환영합니다");
 		String[] category = {"한식", "양식", "일식", "중식", "술집(19+)"} ;
 		pageContext.setAttribute("JSP_title", JSP_title);
-		pageContext.setAttribute("category", category);
+		request.setAttribute("category", category);
 	%>
 	<title>${JSP_title}</title>
 	<link rel="stylesheet" href="resources/asset/css/common.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 	
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script>
@@ -76,16 +47,12 @@ Latest commit 346dcec 13 minutes ago
 			<div class="clear category">
 				<!-- 링크 작업 시, ?category=${ctg} 넣어서 해당 카테고리 리스트만 만들 예정 -->
 				<c:forEach var="ctg" items="${category}">
-					<a href="#">${ctg}</a>
+					<a href="resInsertPage.do">${ctg}</a>
+					<a href="resListPage.do">${ctg}</a>
+					<a href="resViewPage.do">${ctg}</a>
 				</c:forEach>
 			</div>
 		</div>
 	</header>
 		
 		<section>
-			
-			
-			
-			
-			
-	

@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+#mainSearch {
+	width:900px;
+	height:70px;
+	border: 3px solid black;
+	border-radius:100px; 
+}
+#mainSearch #f {
+	text-align:center;
+}
+#mainSearch #f input, #mainSearch #f button, #mainSearch #f select  {
+	border:none;
+	background-color:white; 
+	height:40px;
+	margin:0 5px;
+	line-height:65px;
+}
+#mainSearch #f select {width:100px;}
+#mainSearch #f select:nth-child(3) {width:150px;}
+#mainSearch #f input {width:350px;}
+#mainSearch #f button i {font-size:30px;}

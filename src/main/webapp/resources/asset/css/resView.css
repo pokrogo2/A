@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+.outer {
+	margin: 0 auto;
+	width: 700px;
+	text-align: center;
+	padding: 30px;
+}
+
+.res_name {
+	margin: 40px;
+}
+
+.res_image {
+	width: 300px;
+	height: 200px;
+	border: 1px solid red;
+	padding: 80px;
+	margin-bottom: 30px;
+}
+
+.res_btns {
+	padding: 30px;
+	border-bottom: 1px solid gray;
+}
+
+ul {
+	overflow: hidden;
+	width: 500px;
+	margin-left: 180px;
+}
+ul > li {
+	float: left;
+	padding: 20px 30px;;
+}
+
+.res_section {
+	width: 100%;
+	border-top: 1px solid gray;
+	padding: 30px;
+}
+
+.exp_box {
+	width: 300px;
+	height: 200px;
+	border: 1px solid blue;
+	
+}
+
+
+

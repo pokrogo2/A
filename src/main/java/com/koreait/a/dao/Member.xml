@@ -5,5 +5,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 <mapper namespace="com.koreait.a.dao.MemberDAO">
-
+	<insert id="join">
+		INSERT INTO MEMBER
+		VALUES (MEMBER_SEQ.NEXTVAL,#{memberId} ,#{memberPw}, #{memberName},#{memberAddr},#{memberTel}, #{memberEmail},#{memberAge})
+	</insert>
+	<select id="idCheck" resultType="int">
+		SELECT COUNT(MEMBERID)
+		  FROM MEMBER
+		 WHERE MEMBERID = #{id}
+	</select>
 </mapper>

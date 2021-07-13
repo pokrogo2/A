@@ -8,7 +8,7 @@ public class MemberDTO {
 	private String memberAddr;
 	private String memberTel;
 	private String memberEmail;
-	private int memberAge;
+	private long memberAge;
 	public long getMemberNo() {
 		return memberNo;
 	}
@@ -51,12 +51,13 @@ public class MemberDTO {
 	public void setMemberEmail(String memberEmail) {
 		this.memberEmail = memberEmail;
 	}
-	public int getMemberAge() {
+	public long getMemberAge() {
 		return memberAge;
 	}
-	public void setMemberAge(int memberAge) {
+	public void setMemberAge(long memberAge) {
 		this.memberAge = memberAge;
 	}
+	
 	
 	
 }

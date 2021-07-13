@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+import com.koreait.a.command.member.EmailAuthCommand;
+import com.koreait.a.command.member.IdCheckCommand;
+import com.koreait.a.command.member.JoinCommand;
 import com.koreait.a.command.review.SelectReviewListCommand;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -48,8 +51,22 @@ public class BeanConfiguration {
 	public SqlSessionTemplate sqlSession() throws Exception {
 		return new SqlSessionTemplate(sqlSessionFactory());
 	}
+	//review
 	@Bean
 	public SelectReviewListCommand selectReviewListCommand() {
 		return new SelectReviewListCommand();
+	}
+	// member
+	@Bean
+	public JoinCommand joinCommand() {
+		return new JoinCommand();
+	}
+	@Bean
+	public EmailAuthCommand emailAuthCommand() {
+		return new EmailAuthCommand();
+	}
+	@Bean
+	public IdCheckCommand idCheckCommand() {
+		return new IdCheckCommand();
 	}
 }

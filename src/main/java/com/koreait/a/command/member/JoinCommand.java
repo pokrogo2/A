@@ -34,8 +34,9 @@ public class JoinCommand implements MemberCommand {
 		member.setMemberEmail(email);
 		member.setMemberTel(tel);
 		member.setMemberAddr(address);
+		member.setMemberAge(age);
 		
 		MemberDAO memberDAO = sqlSession.getMapper(MemberDAO.class);
-		//memberDAO.join(member);
+		memberDAO.join(member);
 	}
 }

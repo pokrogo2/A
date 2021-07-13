@@ -12,7 +12,7 @@ public class ResController {
 
 	private SqlSession sqlSession;
 	
-	@GetMapping(value="/")
+	@GetMapping(value= {"/", "index.do"})
 	public String index() {
 		return "index";
 	}

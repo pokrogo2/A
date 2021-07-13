@@ -31,25 +31,30 @@
 		<div id="topNav">
 			<a class="logo">LOGO</a>
 			<span class="sub_nav">
-				<c:if test="${empty loginUser}">
+			
+			
+			
+				<!-- 나중에 수정할 부분 -->
+				<!-- <c:if test="${empty loginUser}"></c:if> -->
 					<a href="#">로그인</a>
 					<span>|</span>
-					<a href="#">회원가입</a>
-				</c:if>
-				<c:if test="${not empty loginUser}">
+					<a href="#">회원가입</a><br>
+				
+				<!-- <c:if test="${not empty loginUser}"> </c:if> -->
 					<a href="#">마이페이지</a>
 					<span>|</span>
-					<a href="#" id="store_insert_btn">가게 등록</a>
-				</c:if>
+					<a href="resInsertPage.do" id="store_insert_btn">가게 등록</a>
+					<a href="resViewPage.do" id="store_insert_btn">가게 View</a>
+					
+					
+				
 			</span>
 		</div>
 		<div id="catgNav" class="upDownBorder">
 			<div class="clear category">
 				<!-- 링크 작업 시, ?category=${ctg} 넣어서 해당 카테고리 리스트만 만들 예정 -->
-				<c:forEach var="ctg" items="${category}">
-					<a href="resInsertPage.do">${ctg}</a>
+				<c:forEach var="ctg" items="${category}" varStatus="status">
 					<a href="resListPage.do">${ctg}</a>
-					<a href="resViewPage.do">${ctg}</a>
 				</c:forEach>
 			</div>
 		</div>

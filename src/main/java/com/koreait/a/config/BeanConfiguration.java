@@ -2,12 +2,13 @@ package com.koreait.a.config;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-import com.koreait.a.review.command.SelectReviewListCommand;
+import com.koreait.a.command.review.SelectReviewListCommand;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -42,6 +43,10 @@ public class BeanConfiguration {
 		multipartResolver.setDefaultEncoding("utf-8");
 		multipartResolver.setMaxUploadSize(1024 * 1024 * 10);  // 바이트 단위(10MB)
 		return multipartResolver;
+	}
+	@Bean
+	public SqlSessionTemplate sqlSession() throws Exception {
+		return new SqlSessionTemplate(sqlSessionFactory());
 	}
 	@Bean
 	public SelectReviewListCommand selectReviewListCommand() {

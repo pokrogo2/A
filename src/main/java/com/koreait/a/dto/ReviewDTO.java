@@ -7,6 +7,21 @@ public class ReviewDTO {
 	private String content;
 	private String filename;
 	private long storeno;
+	private String storename;
+	private String storecategori;
+	
+	public String getStorename() {
+		return storename;
+	}
+	public void setStorename(String storename) {
+		this.storename = storename;
+	}
+	public String getStorecategori() {
+		return storecategori;
+	}
+	public void setStorecategori(String storecategori) {
+		this.storecategori = storecategori;
+	}
 	public String getWriter() {
 		return writer;
 	}

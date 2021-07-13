@@ -1,4 +1,4 @@
-package com.koreait.a.review.command;
+package com.koreait.a.command.review;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;

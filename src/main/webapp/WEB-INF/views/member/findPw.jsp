@@ -97,6 +97,9 @@
 </head>
 <body>
 	<%@ include file="../layout/header.jsp" %>
+	
+	<section>
+	<div class="container">
 	<h1>비밀번호 찾기</h1>
 	
 	<form id="f" method="post">
@@ -115,5 +118,7 @@
 		<input type="button" value="로그인하러 가기" onclick="location.href='loginPage.do'">	
 			
 	</form>
+		</div>		
+	</section>
 <!-- Footer -->
 <%@ include file="../layout/footer.jsp" %>

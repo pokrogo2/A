@@ -37,6 +37,8 @@
 					<a href="joinPage.do">회원가입</a>
 				</c:if>
 				<c:if test="${not empty loginUser}">
+					<a href="logout.do">로그아웃</a>
+					<span>|</span>
 					<a href="#">마이페이지</a>
 					<span>|</span>
 					<a href="#" id="store_insert_btn">가게 등록</a>

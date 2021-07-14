@@ -6,4 +6,8 @@ public interface MemberDAO {
 	public int join(MemberDTO member);
 	
 	public int idCheck(String id);
+	public MemberDTO login(MemberDTO member);
+	public int emailCheck(String email);
+	public MemberDTO findId(String email);
+	public MemberDTO findPw(String email);
 }

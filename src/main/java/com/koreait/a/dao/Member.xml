@@ -7,11 +7,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.koreait.a.dao.MemberDAO">
 	<insert id="join">
 		INSERT INTO MEMBER
-		VALUES (MEMBER_SEQ.NEXTVAL,#{memberId} ,#{memberPw}, #{memberName},#{memberAddr},#{memberTel}, #{memberEmail},#{memberAge})
+		VALUES (MEMBER_SEQ.NEXTVAL,#{memberId} ,#{memberPw}, #{memberName},#{memberAddr},#{memberTel}, #{memberEmail},#{memberAge},1)
 	</insert>
 	<select id="idCheck" resultType="int">
 		SELECT COUNT(MEMBERID)
 		  FROM MEMBER
 		 WHERE MEMBERID = #{id}
+	</select>
+	<select id="login" resultType="com.koreait.a.dto.MemberDTO">
+		SELECT MEMBERNO
+		, MEMBERID
+		, MEMBERPW
+		, MEMBERNAME
+		,MEMBERTEL
+		,MEMBEREMAIL
+		,MEMBERADDR
+		, MEMBERAGE
+		,STATUS
+		  FROM MEMBER
+		 WHERE MEMBERID = #{memberId}
+		   AND MEMBERPW = #{memberPw} 
+	</select>
+	<select id="emailCheck" resultType="int">
+		SELECT COUNT(MEMBEREMAIL)
+		  FROM MEMBER
+		 WHERE MEMBEREMAIL = #{email}
+	</select>
+	<select id="findId" resultType="com.koreait.a.dto.MemberDTO">
+		SELECT MEMBERID, MEMBERNAME
+		  FROM MEMBER
+		 WHERE MEMBEREMAIL = #{email}
+	</select>
+	<select id="findPw" resultType="com.koreait.a.dto.MemberDTO">
+		SELECT MEMBERID, MEMBERNAME,MEMBERPW
+		  FROM MEMBER
+		 WHERE MEMBEREMAIL = #{email}
 	</select>
 </mapper>

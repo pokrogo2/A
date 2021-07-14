@@ -9,6 +9,14 @@ public class MemberDTO {
 	private String memberTel;
 	private String memberEmail;
 	private long memberAge;
+	private long status;
+	
+	public long getStatus() {
+		return status;
+	}
+	public void setStatus(long status) {
+		this.status = status;
+	}
 	public long getMemberNo() {
 		return memberNo;
 	}

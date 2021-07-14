@@ -9,8 +9,13 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.koreait.a.command.member.EmailAuthCommand;
+import com.koreait.a.command.member.EmailCheckCommand;
+import com.koreait.a.command.member.FindIdCommand;
+import com.koreait.a.command.member.FindPwCommand;
 import com.koreait.a.command.member.IdCheckCommand;
 import com.koreait.a.command.member.JoinCommand;
+import com.koreait.a.command.member.LoginCommand;
+import com.koreait.a.command.member.LogoutCommand;
 import com.koreait.a.command.review.SelectReviewListCommand;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -68,5 +73,25 @@ public class BeanConfiguration {
 	@Bean
 	public IdCheckCommand idCheckCommand() {
 		return new IdCheckCommand();
+	}
+	@Bean
+	public LoginCommand loginCommand() {
+		return new LoginCommand();
+	}
+	@Bean
+	public LogoutCommand logoutCommand() {
+		return new LogoutCommand();
+	}
+	@Bean
+	public EmailCheckCommand emailCheckCommand() {
+		return new EmailCheckCommand();
+	}
+	@Bean
+	public FindIdCommand findIdCommand() {
+		return new FindIdCommand();
+	}
+	@Bean
+	public FindPwCommand findPwCommand() {
+		return new FindPwCommand();
 	}
 }

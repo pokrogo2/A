@@ -6,25 +6,31 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
 public class BeanConfiguration {
 
 	@Bean
-	public DriverManagerDataSource dataSource() {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
-		dataSource.setUrl("jdbc:oracle:thin:@127.0.0.1:1521:xe");
-		dataSource.setUsername("spring");
-		dataSource.setPassword("1111");
-		return dataSource;
+	public HikariConfig hikariConfig() {
+		HikariConfig hikariConfig = new HikariConfig();
+		hikariConfig.setDriverClassName("oracle.jdbc.OracleDriver");
+		hikariConfig.setJdbcUrl("jdbc:oracle:thin:@127.0.0.1:1521:xe");
+		hikariConfig.setUsername("projectA");
+		hikariConfig.setPassword("1111");
+		return hikariConfig;
+	}
+	@Bean(destroyMethod="close")
+	public HikariDataSource hikariDataSource() {
+		return new HikariDataSource(hikariConfig());
 	}
 	@Bean
 	public SqlSessionFactory sqlSessionFactory() throws Exception {
 		SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
-		sqlSessionFactory.setDataSource(dataSource());
+		sqlSessionFactory.setDataSource(hikariDataSource());
 		sqlSessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:com/koreait/a/dao/*.xml"));
 		return sqlSessionFactory.getObject();
 	}
@@ -36,9 +42,21 @@ public class BeanConfiguration {
 	public CommonsMultipartResolver multipartResolver() {
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
 		multipartResolver.setDefaultEncoding("utf-8");
-		multipartResolver.setMaxUploadSize(1024 * 1024 * 10);  // 바이트 단위(10MB)
+		multipartResolver.setMaxUploadSize(1024 * 1024 * 10);  
 		return multipartResolver;
 	}
+	
+	/*
+	@Bean
+	public InsertStoreCommand insertStoreCommand() {
+		return new InsertStoreCommand();
+	}
+	
+	@Bean
+	public SelectStoreListCommand selectStoreListCommand() {
+		return new SelectStoreListCommand();
+	}
+	*/
 	
 	
 }

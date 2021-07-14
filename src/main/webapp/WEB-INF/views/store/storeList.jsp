@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <% request.setCharacterEncoding("UTF-8"); %>
 
@@ -42,15 +43,12 @@
 				if (resultMap.exists) {
 					
 					$.each(resultMap.list, function(i, store){		
-						$('<tr>')
-						
-						.append( $('<td>').text(store.no) )		
-						.append( $('<td>').text(store.image) )
-						.append( $('<td>').text(store.name) )
-						.append( $('<td>').text(store.rating) )
-						.append( $('<td>').text(store.hit) )	
-						.append( $('<td>').html('<input type="hidden" name="no" id="no" value="' + res.no + '">') )
-						.appendTo('#res_list');		
+						$('<tr>')						
+						.append( $('<td>').text(store.storeNo) )		
+						.append( $('<td>').text(store.storeFilename) )
+						.append( $('<td>').text(store.storeName) )
+						.append( $('<td>').text(store.storeHit) )	
+						.appendTo('#store_list');		
 					});				
 				} else {
 					$('<tr>')
@@ -127,15 +125,15 @@
 	function fn_paging() {
 		$('body').on('click', '.previous_block', function(){
 			page = $(this).attr('data-page');		
-			fn_resList();
+			fn_storeList();
 		});
 		$('body').on('click', '.go_page', function(){
 			page = $(this).attr('data-page');
-			fn_resList();
+			fn_storeList();
 		});
 		$('body').on('click', '.next_block', function(){
 			page = $(this).attr('data-page');
-			fn_resList();
+			fn_storeList();
 		});	
 	}
 
@@ -149,15 +147,13 @@
 			<div class="box">
 				<select>
 				
-					<%-- 보류 <option value="review">리뷰별(평점순)</option> --%>
-					
-					
+					<!-- 리뷰별: 보류  -->
+					<option value="review">리뷰별(평점순)</option> 
+										
 					<option value="hit">조회순</option>
 					<option value="post">등록순</option>
 				</select>	
-			</div>
-			
-			<div class="box">
+		
 				<input type="text" id="search" name="search" class="int">
 				<button>검색하기</button>
 			</div>
@@ -169,42 +165,38 @@
 				<tr>
 					<th>No.</th>
 					<th>썸네일</th>
-					<th>상호명</th>
+					<th>상호명</th>	
 					
-					
-					<%-- ** 보류 <th>평점</th> --%>
-					
+					<!--  ** 평점: 보류   -->
+					<th>평점</th>
 					
 					<th>조회수</th>
 				</tr>	
 			</thead>
-			<tbody>
-				<tr>
-					<td>2</td>
-					<td>가게이미지</td>
-					<td>가게2</td>
-					
-					<td>100</td>
-					
-				</tr>		
+			<tbody id="store_list">
 				
-				<tr>
-					<td>1</td>
-					<td>가게이미지</td>
-					<td>가게1</td>
-					
-					<td>250</td>
-					
-				</tr>	
 			</tbody>	
 			
 		<!-- 페이징 -->			
 			<tfoot>
-				<tr>
-					<td colspan="6">
-						페이징 처리 예정			<!-- ${paging} -->
-					</td>
-				</tr>
+				
+				<!-- 게시글 없을 때 -->
+				<c:if test="${empty list}">
+					<tr>
+						<td colspan="5">
+							게시글이 없습니다.
+						</td>
+					</tr>
+				</c:if>
+			
+				<!-- 게시글 있을 때 -->
+				<c:if test="${not empty list}">
+					<tr>
+						<td colspan="5">
+							${paging}
+						</td>
+					</tr>
+				</c:if>
 			</tfoot>
 		</table>
 	
@@ -213,4 +205,4 @@
 	</div>
 	
 <!-- Footer -->
-<%@ include file="../layout/footer.jsp" --%>
+<%@ include file="../layout/footer.jsp"%>

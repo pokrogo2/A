@@ -11,6 +11,5 @@ public class OwnerIDF {
 
 	private long ownerNo;
 	private String ownerName;
-	private String storeName;
 	private String ownerEmail;
 }

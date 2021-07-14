@@ -19,7 +19,7 @@ public class Store {
 	private String storeContent;
 	private String storeMenu;
 	private String storeSns;
-	private int hit;
+	private int storeHit;
 	private String filename1;
 	private int storeTable;
 }

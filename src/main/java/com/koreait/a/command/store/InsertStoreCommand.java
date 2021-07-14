@@ -1,37 +1,27 @@
 package com.koreait.a.command.store;
 
-import java.io.File;
-import java.net.URLEncoder;
-import java.util.List;
-import java.util.Map;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.koreait.a.dao.StoreDAO;
-import com.koreait.a.dto.Store;
-
-public class StoreInsertCommand implements StoreCommand {
+public class InsertStoreCommand implements StoreCommand {
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model) {
-
+		
+		/*
 		Map<String, Object> map = model.asMap();
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)map.get("multipartRequest");
 		
 		Store store = new Store();
 		
-		// ** 나중 작업 -> store.setOwenerName(multipartRequest.getParameter("storeOwnerName"));
-		
+		// store.setOwenerName(multipartRequest.getParameter("storeOwnerName"));		
 		
 		store.setStoreName(multipartRequest.getParameter("storeName"));
 		store.setStoreContent(multipartRequest.getParameter("storeContent"));
 		store.setStoreTable((Integer.parseInt(multipartRequest.getParameter("storeTable"))));
 		store.setStoreTel(multipartRequest.getParameter("storeTel"));
 		store.setStoreAddr(multipartRequest.getParameter("storeAddr"));
-		store.setStoreTime(multipartRequest.getParameter("storeOTime"));
+		store.setStoreTime(multipartRequest.getParameter("storeTime"));
 		store.setStoreSns(multipartRequest.getParameter("storeSns"));
 		store.setStoreCategori(multipartRequest.getParameter("storeCategori"));
 		store.setStoreMenu(multipartRequest.getParameter("storeMenu"));
@@ -54,7 +44,7 @@ public class StoreInsertCommand implements StoreCommand {
 																
 				String uploadFilename = filename + "_" + System.currentTimeMillis() + "." + extension;
 				
-				// 첨부파일을 저장할 서버 위치 (=> resources에 보관)
+				// 첨부파일 저장할 서버 
 				String realPath = multipartRequest.getServletContext().getRealPath("resources/archive");
 				 														
 				// archive 디렉터리 생성
@@ -71,7 +61,7 @@ public class StoreInsertCommand implements StoreCommand {
 					e.printStackTrace();
 				}
 				
-				// DB에 넣는 파일명을 인코딩 처리
+				// DB에 넣는 파일명 인코딩 처리
 				try {
 					uploadFilename = URLEncoder.encode(uploadFilename, "utf-8");
 				} catch (Exception e) { }
@@ -84,7 +74,8 @@ public class StoreInsertCommand implements StoreCommand {
 			
 		}	// for 완료
 
+		*/
+
 	}
 
 }
-	

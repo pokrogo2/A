@@ -2,7 +2,7 @@
 
 .outer {
 	margin: 0 auto;
-	
+	padding-top: 40px;
 }
 
 h3 {
@@ -11,8 +11,7 @@ h3 {
 }	
 
 p {
-	text-align: center;
-	
+	text-align: center;	
 	font-size: 13px;
 	color: red;
 	

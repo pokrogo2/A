@@ -43,8 +43,8 @@
 				<!-- <c:if test="${not empty loginUser}"> </c:if> -->
 					<a href="#">마이페이지</a>
 					<span>|</span>
-					<a href="storeInsertPage.do" id="store_insert_btn">가게 등록</a>
-					<a href="storeViewPage.do" id="store_insert_btn">가게 View</a>
+					<a href="insertStorePage.do" id="store_insert_btn">가게 등록</a>
+					<a href="viewStorePage.do" id="store_insert_btn">가게 View</a>
 					
 					
 				

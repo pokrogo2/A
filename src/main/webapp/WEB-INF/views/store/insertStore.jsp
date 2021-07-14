@@ -8,7 +8,7 @@
 	<jsp:param value="Main" name="title"/>
 </jsp:include>
 
-<link rel="stylesheet" href="resources/asset/css/storeInsert.css">
+<link rel="stylesheet" href="resources/asset/css/insertStore.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <script>
@@ -26,7 +26,7 @@
 				$('#store_table').val() == '' ||
 				$('#store_tel').val() == '' ||
 				$('#store_addr').val() == '' ||
-				$('#store_hours').val() == '' ||
+				$('#store_time').val() == '' ||
 				$('#store_image').val() == '' ) {
 				alert('필수 정보를 입력하세요.');
 				event.preventDefault();
@@ -67,41 +67,41 @@
 				<tbody>
 				
 				
-					<%-- ** 나중 작업
+					<!--
 						<tr>
 							<td>사업주명</td>
 							<td><input type="text" value="${owner.name}" id="owener_name" name="owener_name" class="int" readonly><br></td>
 						<tr>
-					 --%>
+					-->
 					 
 					
 					<tr>
 						<td>상호명 *</td>
-						<td><input type="text" id="store_name" name="store_name" class="int"><br></td>
+						<td><input type="text" id="store_name" name="storeName" class="int"><br></td>
 					<tr>
 						<td>가게 소개 *</td>
-						<td><textarea rows="7" cols="25" id="store_content"></textarea><br></td>
+						<td><textarea rows="7" cols="25" id="store_content" name="storeContent"></textarea><br></td>
 					</tr>
 					<tr>
 						<td>테이블 수 *</td>
-						<td><input type="text" id="store_table" name="store_table" class="int"><br></td>
+						<td><input type="text" id="store_table" name="storeTable" class="int"><br></td>
 					</tr>			
 					<tr>
 						<td>가게 번호 *</td>
-						<td><input type="text" id="store_tel" name="store_tel" class="int"><br></td>
+						<td><input type="text" id="store_tel" name="storeTel" class="int"><br></td>
 					</tr>
 					<tr>
 						<td>가게 주소 *</td>
-						<td><input type="text" id="store_addr" name="store_addr" class="int"><br></td>
+						<td><input type="text" id="store_addr" name="storeAddr" class="int"><br></td>
 					</tr>
 					<tr>
 						<td>운영 시간 *</td>
-						<td><input type="text" id="store_hour" name="store_hours" class="int"><br></td>
+						<td><input type="text" id="store_time" name="storeTime" class="int"><br></td>
 					</tr>
 					<tr>
 					<tr>
 						<td>SNS</td>
-						<td><input type="text" id="store_sns" name="store_sns" class="int"><br></td>
+						<td><input type="text" id="store_sns" name="storeSns" class="int"><br></td>
 					</tr>
 					<tr>
 						<td>카테고리 분류 *</td>
@@ -122,16 +122,20 @@
 					<tr>
 						<td>메뉴 등록</td>
 						<td>
-							<input type="text" id="menu_name" name="menu_name" class="menu_int" placeholder="메뉴명">
-							<input type="text" id="menu_price" name="menu_price" class="menu_int" placeholder="가격(,로 입력)">
+							<input type="text" id="menu_name" name="storeMenu" class="menu_int" placeholder="메뉴명">
+							<!-- <input type="text" id="menu_price" name="storeMenu" class="menu_int" placeholder="가격(,로 입력)">  -->
 						</td>
 					</tr>
+					
+					<!-- 
 					<tr>
 						<td>메뉴 사진 등록</td>
 						<td>
 							<input type="file" name="files" multiple><br>
 						</td>
-					</tr>
+					</tr>				
+					 -->
+					 
 					<tr>
 						<td>가게 대표이미지 *</td>
 						<td>
@@ -157,4 +161,4 @@
 	
 	</div>
 <!-- Footer -->
-<%@ include file="../layout/footer.jsp" --%>
+<%@ include file="../layout/footer.jsp"%>

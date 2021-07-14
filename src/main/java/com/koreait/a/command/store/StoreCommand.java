@@ -6,5 +6,7 @@ import org.springframework.ui.Model;
 
 @Service
 public interface StoreCommand {
+	
 	public void execute(SqlSession sqlSession, Model model);
+	
 }

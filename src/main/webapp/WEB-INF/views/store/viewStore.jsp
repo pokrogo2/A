@@ -8,7 +8,7 @@
 	<jsp:param value="Main" name="title"/>
 </jsp:include>
 
-<link rel="stylesheet" href="resources/asset/css/storeView.css">
+<link rel="stylesheet" href="resources/asset/css/viewStore.css">
 	
 
 	<div class="outer">
@@ -52,7 +52,7 @@
 				<p class="content_box"></p>		
 			</div>
 			
-			<div class="store_hours">
+			<div class="store_time">
 				<p>운영시간 -></p>
 				<p class="content_box"></p>		
 			</div>
@@ -63,15 +63,16 @@
 			</div>
 			
 			<div class="store_menu">
-				<p>메뉴 -></p>
-				<p class="content_box">메뉴명</p>		
-				<p class="content_box">가격</p>		
+				<p>메뉴소개 -></p>
+				<p class="content_box"></p>		
 			</div>
 			
+			<!-- 
 			<div class="store_menu">
 				<p>메뉴 사진 -></p>
 				<p class="content_box"></p>		
 			</div>
+			 -->
 		</div>
 		
 	</div>

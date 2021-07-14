@@ -27,17 +27,17 @@
 ul {
 	overflow: hidden;
 	width: 500px;
-	margin-left: 180px;
+	margin-left: 150px;
 }
 ul > li {
 	float: left;
-	padding: 20px 40px;
+	padding: 20px 30px;
 }
 
 .store_section {
 	width: 100%;
 	border-top: 1px solid gray;
-	padding: 30px;
+	padding: 70px;
 }
 
 .exp_box {

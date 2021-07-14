@@ -8,27 +8,27 @@
 	<jsp:param value="Main" name="title"/>
 </jsp:include>
 
-<link rel="stylesheet" href="resources/asset/css/resList.css">
+<link rel="stylesheet" href="resources/asset/css/storeList.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <script>
 
 	// 페이지 로드 이벤트
 	$(document).ready(function(){
-		fn_resList();
+		fn_storeList();
 		fn_paging();
-		fn_selectResByNo();
+		fn_selectStoreByNo();
 	});
 	
 	
 	// 가게 목록
 	var page = 1;	
-	function fn_resList() {
+	function fn_storeList() {
 		var obj = {
 			page: page
 		};
 		$.ajax({
-			url: 'resList.do',
+			url: 'storeList.do',
 			type: 'post',
 			contentType: 'application/json',
 			data: JSON.stringify(obj),
@@ -37,26 +37,25 @@
 				
 				// 1. 목록 만들기
 				
-				$('#res_list').empty();	
+				$('#store_list').empty();	
 				
 				if (resultMap.exists) {
 					
-					$.each(resultMap.list, function(i, res){		
+					$.each(resultMap.list, function(i, store){		
 						$('<tr>')
 						
-						.append( $('<td>').text(res.no) )		
-						.append( $('<td>').text(res.image) )
-						.append( $('<td>').text(res.name) )
-						.append( $('<td>').text(res.rating) )
-						.append( $('<td>').text(res.hit) )	
-						.append ($('<td>').text(res.postDate))
+						.append( $('<td>').text(store.no) )		
+						.append( $('<td>').text(store.image) )
+						.append( $('<td>').text(store.name) )
+						.append( $('<td>').text(store.rating) )
+						.append( $('<td>').text(store.hit) )	
 						.append( $('<td>').html('<input type="hidden" name="no" id="no" value="' + res.no + '">') )
 						.appendTo('#res_list');		
 					});				
 				} else {
 					$('<tr>')
-					.append('<td colspan="6">등록된 가게가 없습니다.</td>')
-					.appendTo('#res_list');
+					.append('<td colspan="5">등록된 가게가 없습니다.</td>')
+					.appendTo('#store_list');
 				}
 				
 				// 2. 페이징 만들기
@@ -149,7 +148,10 @@
 		<form>
 			<div class="box">
 				<select>
-					<option value="review">리뷰별(평점순)</option>
+				
+					<%-- 보류 <option value="review">리뷰별(평점순)</option> --%>
+					
+					
 					<option value="hit">조회순</option>
 					<option value="post">등록순</option>
 				</select>	
@@ -159,7 +161,7 @@
 				<input type="text" id="search" name="search" class="int">
 				<button>검색하기</button>
 			</div>
-		</form>
+		
 		
 	<!-- 가게 리스트 -->
 		<table border="1">
@@ -168,9 +170,12 @@
 					<th>No.</th>
 					<th>썸네일</th>
 					<th>상호명</th>
-					<th>평점</th>
+					
+					
+					<%-- ** 보류 <th>평점</th> --%>
+					
+					
 					<th>조회수</th>
-					<th>등록일</th>
 				</tr>	
 			</thead>
 			<tbody>
@@ -178,18 +183,18 @@
 					<td>2</td>
 					<td>가게이미지</td>
 					<td>가게2</td>
-					<td>★★★★☆</td>
+					
 					<td>100</td>
-					<td>2021-07-12</td>
+					
 				</tr>		
 				
 				<tr>
 					<td>1</td>
 					<td>가게이미지</td>
 					<td>가게1</td>
-					<td>★★★☆☆</td>
+					
 					<td>250</td>
-					<td>2021-07-12</td>
+					
 				</tr>	
 			</tbody>	
 			
@@ -204,6 +209,8 @@
 		</table>
 	
 	
+		</form>
 	</div>
+	
 <!-- Footer -->
-<%@ include file="../layout/footer.jsp" %>
+<%@ include file="../layout/footer.jsp" --%>

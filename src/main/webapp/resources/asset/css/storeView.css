@@ -7,11 +7,11 @@
 	padding: 30px;
 }
 
-.res_name {
+.store_name {
 	margin: 40px;
 }
 
-.res_image {
+.store_image {
 	width: 300px;
 	height: 200px;
 	border: 1px solid red;
@@ -19,7 +19,7 @@
 	margin-bottom: 30px;
 }
 
-.res_btns {
+.store_btns {
 	padding: 30px;
 	border-bottom: 1px solid gray;
 }
@@ -34,7 +34,7 @@ ul > li {
 	padding: 20px 40px;
 }
 
-.res_section {
+.store_section {
 	width: 100%;
 	border-top: 1px solid gray;
 	padding: 30px;

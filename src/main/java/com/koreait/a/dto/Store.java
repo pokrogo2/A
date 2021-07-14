@@ -7,18 +7,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Restaurant {
+public class Store {
 
 	private long storeNo;
 	private String owenerName;
 	private String storeName;
-	private String storeTEL;
+	private String storeTel;
 	private String storeCategori;
 	private String storeTime;
 	private String storeAddr;
 	private String storeContent;
 	private String storeMenu;
 	private String storeSns;
+	private int hit;
 	private String filename1;
 	private int storeTable;
 }

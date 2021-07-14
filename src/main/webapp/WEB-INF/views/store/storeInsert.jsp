@@ -8,45 +8,47 @@
 	<jsp:param value="Main" name="title"/>
 </jsp:include>
 
-<link rel="stylesheet" href="resources/asset/css/resInsert.css">
+<link rel="stylesheet" href="resources/asset/css/storeInsert.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <script>
 	
 	$(document).ready(function(){
-		fn_resInsert();
-		fn_resTable();
+		fn_storeInsert();
+		fn_storeTable();
 	});
 	
 	// 가게 등록 함수
-	function fn_resInsert(){
+	function fn_storeInsert(){
 		$('#f').submit(function(event){
-			if ($('#r_name').val() == '' ||
-				$('#r_intro').val() == '' ||
-				$('#r_table').val() == '' ||
-				$('#r_tel').val() == '' ||
-				$('#r_addr').val() == '' ||
-				$('#r_hours').val() == '' ||
-				$('#r_image').val() == '' ) {
+			if ($('#store_name').val() == '' ||
+				$('#store_intro').val() == '' ||
+				$('#store_table').val() == '' ||
+				$('#store_tel').val() == '' ||
+				$('#store_addr').val() == '' ||
+				$('#store_hours').val() == '' ||
+				$('#store_image').val() == '' ) {
 				alert('필수 정보를 입력하세요.');
 				event.preventDefault();
 				return false;
 			} 
-			$('#f').attr('action', 'resInsert.do');
+			$('#f').attr('action', 'storeInsert.do');
 			$('#f').submit();	
 		});
 	}
 	
 	// 테이블 갯수 입력창
-	function fn_resTable() {
-		$('#r_table').blur(function(){
-			var resTable = /^[0-9]$/;
-			if ( !resTable.test($('#r_table').val()) ) {
+	function fn_storeTable() {
+		$('#store_table').blur(function(){
+			var storeTable = /^[0-9]$/;
+			if ( !storeTable.test($('#store_table').val()) ) {
 				alert('숫자만 입력해주세요.')
 				return false;
 			}
 		});
 	}
+	
+	// 
 	
 	
 
@@ -63,37 +65,43 @@
 			
 			<table>
 				<tbody>
-					<tr>
-						<td>사업주명</td>
-						<td><input type="text" value="${Owner.name}" id="owener_name" name="owener_name" class="int" readonly><br></td>
-					<tr>
+				
+				
+					<%-- ** 나중 작업
+						<tr>
+							<td>사업주명</td>
+							<td><input type="text" value="${owner.name}" id="owener_name" name="owener_name" class="int" readonly><br></td>
+						<tr>
+					 --%>
+					 
+					
 					<tr>
 						<td>상호명 *</td>
-						<td><input type="text" id="r_name" name="r_name" class="int"><br></td>
+						<td><input type="text" id="store_name" name="store_name" class="int"><br></td>
 					<tr>
 						<td>가게 소개 *</td>
-						<td><textarea rows="7" cols="25" id="r_intro"></textarea><br></td>
+						<td><textarea rows="7" cols="25" id="store_content"></textarea><br></td>
 					</tr>
 					<tr>
 						<td>테이블 수 *</td>
-						<td><input type="text" id="r_table" name="r_table" class="int"><br></td>
+						<td><input type="text" id="store_table" name="store_table" class="int"><br></td>
 					</tr>			
 					<tr>
 						<td>가게 번호 *</td>
-						<td><input type="text" id="r_tel" name="r_tel" class="int"><br></td>
+						<td><input type="text" id="store_tel" name="store_tel" class="int"><br></td>
 					</tr>
 					<tr>
 						<td>가게 주소 *</td>
-						<td><input type="text" id="r_addr" name="r_addr" class="int"><br></td>
+						<td><input type="text" id="store_addr" name="store_addr" class="int"><br></td>
 					</tr>
 					<tr>
 						<td>운영 시간 *</td>
-						<td><input type="text" id="r_hour" name="r_hours" class="int"><br></td>
+						<td><input type="text" id="store_hour" name="store_hours" class="int"><br></td>
 					</tr>
 					<tr>
 					<tr>
 						<td>SNS</td>
-						<td><input type="text" id="r_sns" name="r_sns" class="int"><br></td>
+						<td><input type="text" id="store_sns" name="store_sns" class="int"><br></td>
 					</tr>
 					<tr>
 						<td>카테고리 분류 *</td>
@@ -127,7 +135,7 @@
 					<tr>
 						<td>가게 대표이미지 *</td>
 						<td>
-							<input type="file" id="r_image" name="files" multiple><br>
+							<input type="file" id="store_image" name="files" multiple><br>
 						</td>
 					</tr>
 				</tbody>
@@ -135,7 +143,7 @@
 					<tr>
 						<td colspan="2">						
 								<input type="button" value="뒤로가기" onclick="history.back()" class="btn1">
-								<button id="res_insert" class="btn2">등록하기</button>
+								<button id="store_insert" class="btn2">등록하기</button>
 						</td>
 					</tr>	
 				</tfoot>		
@@ -149,4 +157,4 @@
 	
 	</div>
 <!-- Footer -->
-<%@ include file="../layout/footer.jsp" %>
+<%@ include file="../layout/footer.jsp" --%>

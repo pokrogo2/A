@@ -8,22 +8,22 @@
 	<jsp:param value="Main" name="title"/>
 </jsp:include>
 
-<link rel="stylesheet" href="resources/asset/css/resView.css">
+<link rel="stylesheet" href="resources/asset/css/storeView.css">
 	
 
 	<div class="outer">
 		<h1>가게 View</h1>
 	
-		<div class="res_name">가게1(상호명)</div>
+		<div class="store_name">가게1(상호명)</div>
 		
-		<div class="res_image">
+		<div class="store_image">
 			<div>가게 대표 이미지 box</div>	
 		</div>
 		
-		<div class="res_rating">★평점 4/5</div>
+		<div class="store_rating">★평점 4/5</div>
 		
 		<form>
-			<div class="res_btns">
+			<div class="store_btns">
 				<input type="button" value="공유하기" id="share" name="share">
 				<input type="button" value="지도보기" id="map" name="map">
 				<button>예약하기</button>
@@ -37,38 +37,38 @@
 			<li><a href="#">사진</a></li>
 		</ul>
 		
-		<div class="res_section">
-			<div class="res_exp">
+		<div class="store_section">
+			<div class="store_exp">
 				가게소개 -> 
 				<div class="exp_box"></div>
 			</div>	
-			<div class="res_tel">
+			<div class="store_tel">
 				<p>가게번호 -></p>
 				<p class="content_box"></p>		
 			</div>
 			
-			<div class="res_addr">
+			<div class="store_addr">
 				<p>가게주소 -></p>
 				<p class="content_box"></p>		
 			</div>
 			
-			<div class="res_hours">
+			<div class="store_hours">
 				<p>운영시간 -></p>
 				<p class="content_box"></p>		
 			</div>
 			
-			<div class="res_category">
+			<div class="store_category">
 				<p>카테고리 -></p>
 				<p class="content_box"></p>		
 			</div>
 			
-			<div class="res_menu">
+			<div class="store_menu">
 				<p>메뉴 -></p>
 				<p class="content_box">메뉴명</p>		
 				<p class="content_box">가격</p>		
 			</div>
 			
-			<div class="res_menu">
+			<div class="store_menu">
 				<p>메뉴 사진 -></p>
 				<p class="content_box"></p>		
 			</div>

@@ -1,0 +1,165 @@
+@charset "UTF-8";
+
+
+.myPage_box {margin-top:50px;}
+
+.left {
+	
+	width:20%; 
+	margin-right:50px;
+}
+.left li {
+	padding:20px 0;
+	border-bottom:1px solid #ddd;
+}
+.left li:nth-child(1) {padding-top:0;}
+.left a {font-size:20px;}
+.left a:hover {color:red; font-weight:600;}
+
+
+
+.right {width:75%;}
+h2 {font-size:25px;}
+h3 {font-size:20px;}
+/* 예약 현황 */
+#reservation_status {margin-bottom:100px;}
+#reservation_status a {margin:0;}
+#reservation_status img {width:150px; height:150px;}
+#reservation_status .con {
+	display:flex; 
+	padding:20px 0;
+	border-bottom:1px solid #ddd;
+}
+#reservation_status .con div {width:50%;}
+#reservation_status .con div span {font-weight:800;}
+#reservation_status .con p {margin-top:20px;}
+#reservation_status .con .cancle {
+	width:125px;
+	background-color:black;
+	color:white;
+	text-align:center;
+	line-height:50px;
+	margin-top:104px;
+}
+
+
+/* 예약 내역 */
+#reservation_history_review {margin-bottom:100px;}
+
+#reservation_history_review #history_list {
+	display:flex;
+}
+#history_list .con {
+	margin:0 50px 20px 0;
+	padding:20px 0;
+}
+#history_list .con:nth-child(3) {margin-right:0;}
+#history_list img {width:215px; height:215px;}
+#history_list h3 {padding:5px 0;}
+#history_list p {}
+
+#reservation_history_review #reservation_history_paging {}
+
+#reservation_history_review #insert_review {
+	padding:30px 0;
+	border-top:1px solid #ddd;
+	border-bottom:1px solid #ddd;
+}
+#insert_review #grade {margin-bottom:20px;}
+#grade p {
+	cursor:pointer;
+	float:left; 
+	margin-right:5px; 
+	font-size:24px;
+}
+#grade span {line-height:40px;}
+#insert_review #f {position:relative;}
+#insert_review #f select {
+	width:26%; 
+	margin:0 10px 15px 0; 
+	padding-left:10px;
+}
+#insert_review #f input[type="text"] {
+	width:71%; 
+	padding-left:10px;
+}
+#insert_review #f input[type="file"] {border:none;}
+#insert_review #f input[type="button"] {
+	cursor:pointer;
+	float:right;
+	padding:0 45px;
+	background-color:black;
+	color:white;
+	margin-right:5px;
+	height:52px;
+}
+
+
+/* 리뷰 내역 */
+#review_history {margin-bottom:100px;}
+#review_history .review {
+	display:flex;
+	padding:20px 0;
+	border-bottom:1px solid #ddd;
+}
+#review_history .review > h3 {margin:0 16px;}
+#review_history .review .box {margin:0;}
+
+#review_history .review #box1 {margin-right:20px;}
+#review_history .review #box1 h3 {padding-bottom:10px;}
+#review_history .review #box1 span {color:#333; padding-left:5px; font-size:18px; font-weight:500;}
+#review_history .review #box1 img {width:180px; height:180px;}
+
+#review_history .review #box2 {
+	width:48%;
+	margin-right:20px;
+	margin-top:30px;
+}
+
+#review_history .review #box3 {padding-top:100px;}
+#review_history .review #box3 input {
+	cursor:pointer;
+	padding:0 20px; 
+	margin-top:10px; 
+}
+input[value="리뷰 수정"], input[value="리뷰 삭제"]:hover {background-color:black; color:white;}
+
+#review_grade {margin-bottom:8px;}
+#review_grade p {
+	float:left; 
+	margin-right:3px;
+	font-size:20px;
+}
+#review_grade span {line-height:30px;}
+#review_text {height:50px;}
+#review_img img {width:100px; height:100px; margin-right:10px;}
+
+
+/* 문의내역 */
+#question_history {margin-bottom:100px;}
+#question_history h2 {margin-bottom:20px;}
+#question_history #question_table {
+	border-top:1px solid #666; 
+	border-bottom:1px solid #666;
+}
+#question_history table {width:100%;}
+#question_history tr {
+	height:55px;
+	border-top:1px solid #ddd; 
+	border-bottom:1px solid #ddd;
+}
+#question_history td {text-align:center;}
+#question_history td:nth-child(1) {width:70px;}
+#question_history td:nth-child(2) {width:180px;}
+#question_history td:nth-child(3) {width:320px;}
+#question_history td:nth-child(4) {width:150px;}
+
+#question_history a {text-decoration:underline; color:red;}
+#question_history p {
+	padding:5px;
+	border-radius:100px;
+	margin:5px 20px;
+	color:white;
+}
+#question_history .notAnswer {background-color:gray;}
+#question_history .answer {background-color:darkred;}

@@ -1,5 +1,7 @@
 package com.koreait.a.dao;
 
-public interface OwnerDAO {
+import com.koreait.a.dto.OwnerDTO;
 
+public interface OwnerDAO {
+	public int join(OwnerDTO owner);
 }

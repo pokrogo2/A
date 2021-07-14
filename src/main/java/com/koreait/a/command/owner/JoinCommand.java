@@ -22,23 +22,17 @@ public class JoinCommand implements OwnerCommand {
 		String pw = request.getParameter("pw");
 		String email = request.getParameter("email");
 		String name = request.getParameter("name"); // 사업자명
-		String name1 = request.getParameter("name1"); // 상호명
-		String phone = request.getParameter("phone");
 		String tel = request.getParameter("tel");
-		String address = request.getParameter("address");
 		
 		OwnerDTO owner = new OwnerDTO();
 		owner.setOwnerNo(no);
 		owner.setOwnerPw(SecurityUtils.encodeBase64(pw));
 		owner.setOwnerEmail(email);
 		owner.setOwnerName(SecurityUtils.xxs(name));
-		owner.setOwnerName1(name1);
-		owner.setOwnerPhone(phone);
 		owner.setOwnerTel(tel);
-		owner.setOwnerAddress(address);
 		
 		OwnerDAO ownerDAO = sqlSession.getMapper(OwnerDAO.class);
-		
+		ownerDAO.join(owner);
 
 	}
 

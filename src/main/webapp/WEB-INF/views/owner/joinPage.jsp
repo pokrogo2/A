@@ -87,7 +87,7 @@
 			});
 		}
 			
-		}
+		
 		// 전체 동의 시 나머지 버튼 선택/해제
 		function checkAll(checkAll) {
 			const checkboxes = document.getElementsByName('chk');
@@ -124,7 +124,7 @@
 	<section>
 		<div class="container">
 			<form id="f" metohd="post">
-			<h3>회원가입(사장님)</h3><!--<c:if test->-->
+			<h3>회원가입(사장님)</h3>
 			
 			사업자번호<br>
 			<input type="text" name="no" id="no">

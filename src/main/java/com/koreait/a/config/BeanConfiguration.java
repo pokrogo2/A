@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+import com.koreait.a.command.store.InsertStoreCommand;
+import com.koreait.a.command.store.SelectStoreListCommand;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -46,17 +48,18 @@ public class BeanConfiguration {
 		return multipartResolver;
 	}
 	
-	/*
+	
 	@Bean
 	public InsertStoreCommand insertStoreCommand() {
 		return new InsertStoreCommand();
 	}
 	
+
 	@Bean
 	public SelectStoreListCommand selectStoreListCommand() {
 		return new SelectStoreListCommand();
 	}
-	*/
+	
 	
 	
 }

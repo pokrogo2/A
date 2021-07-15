@@ -45,14 +45,14 @@
 					$.each(resultMap.list, function(i, store){		
 						$('<tr>')						
 						.append( $('<td>').text(store.storeNo) )		
-						.append( $('<td>').text(store.storeFilename) )
+						// .append( $('<td>').text(store.storeFilename) ) 썸네일 보류 
 						.append( $('<td>').text(store.storeName) )
 						.append( $('<td>').text(store.storeHit) )	
 						.appendTo('#store_list');		
 					});				
 				} else {
 					$('<tr>')
-					.append('<td colspan="5">등록된 가게가 없습니다.</td>')
+					.append('<td colspan="3">등록된 가게가 없습니다.</td>')
 					.appendTo('#store_list');
 				}
 				
@@ -174,32 +174,18 @@
 				</tr>	
 			</thead>
 			<tbody id="store_list">
+		
 				
-			</tbody>	
-			
-		<!-- 페이징 -->			
+			</tbody>
 			<tfoot>
-				
-				<!-- 게시글 없을 때 -->
-				<c:if test="${empty list}">
-					<tr>
-						<td colspan="5">
-							게시글이 없습니다.
-						</td>
-					</tr>
-				</c:if>
-			
-				<!-- 게시글 있을 때 -->
-				<c:if test="${not empty list}">
-					<tr>
-						<td colspan="5">
-							${paging}
-						</td>
-					</tr>
-				</c:if>
-			</tfoot>
-		</table>
-	
+				<tr>
+					<td colspan="5">
+						<div id="paging"></div>
+					</td>
+				</tr>
+			</tfoot>	
+		
+		</table>	
 	
 		</form>
 	</div>

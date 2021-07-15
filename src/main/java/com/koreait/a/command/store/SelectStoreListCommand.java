@@ -8,10 +8,8 @@ public class SelectStoreListCommand implements StoreCommand {
 	@Override
 	public void execute(SqlSession sqlSession, Model model) {
 		
-		/*
-		StoreDAO storeDAO = sqlSession.getMapper(StoreDAO.class);
-		model.addAttribute("list", storeDAO.selectStoreList());
-		*/
+		
+		
 		
 		
 	}

@@ -1,32 +1,36 @@
 package com.koreait.a.command.store;
 
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
+
+import com.koreait.a.dao.StoreDAO;
+import com.koreait.a.dto.Store;
 
 public class InsertStoreCommand implements StoreCommand {
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model) {
 		
-		/*
+		
 		Map<String, Object> map = model.asMap();
-		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)map.get("multipartRequest");
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		
-		Store store = new Store();
-		
-		// store.setOwenerName(multipartRequest.getParameter("storeOwnerName"));		
-		
-		store.setStoreName(multipartRequest.getParameter("storeName"));
-		store.setStoreContent(multipartRequest.getParameter("storeContent"));
-		store.setStoreTable((Integer.parseInt(multipartRequest.getParameter("storeTable"))));
-		store.setStoreTel(multipartRequest.getParameter("storeTel"));
-		store.setStoreAddr(multipartRequest.getParameter("storeAddr"));
-		store.setStoreTime(multipartRequest.getParameter("storeTime"));
-		store.setStoreSns(multipartRequest.getParameter("storeSns"));
-		store.setStoreCategori(multipartRequest.getParameter("storeCategori"));
-		store.setStoreMenu(multipartRequest.getParameter("storeMenu"));
+		String storeName = request.getParameter("storeName");
+		String storeContent = request.getParameter("storeContent");
+		int storeTable = (Integer.parseInt(request.getParameter("storeTable")));
+		String storeTel = request.getParameter("storeTel");
+		String storeAddr = request.getParameter("storeAddr");
+		String storeTime = request.getParameter("storeTime");
+
+		StoreDAO storeDAO = sqlSession.getMapper(StoreDAO.class);
+		storeDAO.insertStore(storeName, storeContent, storeTable, storeTel, storeAddr, storeTime);
 		
 		
+		/*
 		List<MultipartFile> files = multipartRequest.getFiles("files");
 		
 		for (MultipartFile file : files) {

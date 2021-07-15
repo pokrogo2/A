@@ -5,6 +5,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.koreait.a.dao.StoreDAO">
 	
+	<insert id="insertStore">
+		INSERT INTO STOREREG
+		VALUES (STOREREG_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, 0, #{param6})
+	
+	</insert>
+	
+	
 	<!-- 
 	<select id="selectStoreList" resultType="com.koreait.a.dto.Store">
 		SELECT NO, OWERNAME, STORENAME, STORETEL, STORECATEGORI, STORETIME, STOREADDR,

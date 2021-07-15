@@ -26,13 +26,14 @@
 				$('#store_table').val() == '' ||
 				$('#store_tel').val() == '' ||
 				$('#store_addr').val() == '' ||
-				$('#store_time').val() == '' ||
-				$('#store_image').val() == '' ) {
+				$('#store_time').val() == '' 
+				// $('#store_image').val() == '' 
+				) {
 				alert('필수 정보를 입력하세요.');
 				event.preventDefault();
 				return false;
 			} 
-			$('#f').attr('action', 'storeInsert.do');
+			$('#f').attr('action', 'insertStore.do');
 			$('#f').submit();	
 		});
 	}
@@ -58,7 +59,7 @@
 	<div class="outer">
 	
 		
-		<form id="f" method="post" enctype="multipart/form-data">
+		<form id="f" method="post">
 		
 			<h3>가게 정보를 입력해주세요 :)</h3>
 			<p>*는 필수사항입니다.</p>
@@ -98,7 +99,8 @@
 						<td>운영 시간 *</td>
 						<td><input type="text" id="store_time" name="storeTime" class="int"><br></td>
 					</tr>
-					<tr>
+					
+					<!-- 
 					<tr>
 						<td>SNS</td>
 						<td><input type="text" id="store_sns" name="storeSns" class="int"><br></td>
@@ -123,18 +125,18 @@
 						<td>메뉴 등록</td>
 						<td>
 							<input type="text" id="menu_name" name="storeMenu" class="menu_int" placeholder="메뉴명">
-							<!-- <input type="text" id="menu_price" name="storeMenu" class="menu_int" placeholder="가격(,로 입력)">  -->
+							<input type="text" id="menu_price" name="storeMenu" class="menu_int" placeholder="가격(,로 입력)"> 
 						</td>
 					</tr>
 					
-					<!-- 
+					
 					<tr>
 						<td>메뉴 사진 등록</td>
 						<td>
 							<input type="file" name="files" multiple><br>
 						</td>
 					</tr>				
-					 -->
+					
 					 
 					<tr>
 						<td>가게 대표이미지 *</td>
@@ -143,6 +145,9 @@
 						</td>
 					</tr>
 				</tbody>
+				
+				 -->
+				 
 				<tfoot>
 					<tr>
 						<td colspan="2">						
@@ -150,7 +155,8 @@
 								<button id="store_insert" class="btn2">등록하기</button>
 						</td>
 					</tr>	
-				</tfoot>		
+				</tfoot>	
+					
 			</table>
 			
 			

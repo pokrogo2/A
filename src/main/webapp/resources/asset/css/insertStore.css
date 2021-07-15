@@ -54,6 +54,7 @@ td:nth-of-type(2n+1) {
 }
 
 .btn1 {
+	font-size: 13px;
 	border: none;
 	background-color: #E0E0DF;
 	margin: 20px;
@@ -67,6 +68,7 @@ td:nth-of-type(2n+1) {
 }
 
 .btn2 {
+	font-size: 13px;
 	border: none;
 	background-color: #B5ECFA;
 	margin-left: 20px;

@@ -59,6 +59,65 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	
+	<!-- 자유게시판 검색결과 -->
+	<select id="fBoardSearch" resultType="com.koreait.a.dto.FBoard">
+		SELECT B.RN, B.NO, B.WRITER, B.CONTENTTYPE, B.TITLE, B.LASTDATE, B.HIT
+		  FROM (SELECT ROWNUM AS RN, A.NO, A.WRITER, A.CONTENTTYPE, A.TITLE, A.LASTDATE, A.HIT
+		  		  FROM (SELECT NO, WRITER, CONTENTTYPE, TITLE, LASTDATE, HIT
+		  				  FROM FBOARD
+		 				 WHERE STATUS = 0
+						 <if test="column != 'BOTH'"> AND ${column} LIKE '%' || #{query} || '%'</if>
+						 <if test="column == 'BOTH'"> AND TITLE LIKE '%' || #{query} || '%' OR CONTENT LIKE '%' || #{query} || '%'</if>
+				 		ORDER BY NO DESC) A) B
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	</select>
+	
+	<!-- 자유게시판 검색결과 리스트 전체 개수 -->
+	<select id="fBoardSearchTotal" resultType="int">
+		SELECT COUNT(NO)
+		  FROM FBOARD
+		WHERE STATUS = 0
+		<if test="column != 'BOTH'"> AND ${column} LIKE '%' || #{query} || '%'</if>
+		<if test="column == 'BOTH'"> AND TITLE LIKE '%' || #{query} || '%' OR CONTENT LIKE '%' || #{query} || '%'</if>
+	</select>
+	
+	
+	<!-- 자유게시판 드롭에 따른 결과 리스트  -->
+	<select id="fBoardDrop" resultType="com.koreait.a.dto.FBoard">
+		SELECT B.RN, B.NO, B.WRITER, B.CONTENTTYPE, B.TITLE, B.LASTDATE, B.HIT
+		  FROM (SELECT ROWNUM AS RN, A.NO, A.WRITER, A.CONTENTTYPE, A.TITLE, A.LASTDATE, A.HIT
+		 	      FROM (SELECT NO, WRITER, CONTENTTYPE, TITLE, LASTDATE, HIT
+		  		  		  FROM FBOARD
+		  		  		 WHERE STATUS = 0
+		 				<if test="drop == 'owner'"> 
+		 				 AND CONTENTTYPE IS NOT NULL
+					 	 ORDER BY NO DESC
+		 				</if>
+		 				<if test="drop == 'nonOwner'"> 
+		 				 AND CONTENTTYPE IS NULL
+				 		 ORDER BY NO DESC
+		 				</if>
+		 				<if test="drop == 'new'"> 
+		 				 ORDER BY NO DESC 
+		 				</if>
+				 		<if test="drop == 'hitHigh'"> 
+		 				 ORDER BY HIT DESC 
+		 				</if> ) A) B
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	</select>
+	
+	<!-- 자유게시판 드롭에 따른 결과  전체 개수  -->
+	<select id="fBoardDropTotal" resultType="int">
+		SELECT COUNT(NO)
+		  FROM FBOARD
+		 WHERE STATUS = 0
+		<if test="drop == 'owner'"> 
+		 AND CONTENTTYPE IS NOT NULL
+		</if>
+		<if test="drop == 'nonOwner'"> 
+		 AND CONTENTTYPE IS NULL
+		</if>
+	</select>
 	
 	
 	

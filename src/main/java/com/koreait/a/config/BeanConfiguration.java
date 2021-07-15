@@ -9,10 +9,12 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.koreait.a.command.fBoard.FBoardDeleteCommand;
+import com.koreait.a.command.fBoard.FBoardDropListCommand;
 import com.koreait.a.command.fBoard.FBoardInsertCommand;
 import com.koreait.a.command.fBoard.FBoardListCommand;
 import com.koreait.a.command.fBoard.FBoardUpdateCommand;
 import com.koreait.a.command.fBoard.FBoardViewCommand;
+import com.koreait.a.command.fBoard.FBoardSearchListCommand;
 import com.koreait.a.command.fReply.FReplyDeleteCommand;
 import com.koreait.a.command.fReply.FReplyInsertCommand;
 import com.koreait.a.command.fReply.FReplyListCommand;
@@ -154,6 +156,14 @@ public class BeanConfiguration {
 	@Bean
 	public FBoardDeleteCommand fBoardDeleteCommand() {
 		return new FBoardDeleteCommand();
+	}
+	@Bean
+	public FBoardSearchListCommand FBoardSearchListCommand() {
+		return new FBoardSearchListCommand();
+	}
+	@Bean
+	public FBoardDropListCommand fBoardDropListCommand() {
+		return new FBoardDropListCommand();
 	}
 	
 	

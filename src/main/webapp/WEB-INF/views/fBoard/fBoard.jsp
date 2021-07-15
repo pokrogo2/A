@@ -15,7 +15,7 @@
 		fn_fBoardList();
 		fn_paging();
 		fn_search();
-		
+		fn_autoDrop();
 	}); // 페이지 로드 이벤트 (종료)
 	
 	var page = 1;
@@ -39,17 +39,15 @@
 	function fn_fBoard_append(resultMap){
 		/* ---------------------------------------------------- */
 		list = resultMap.list;
-		console.log(list);
 		$('#fBoard_list').empty();
 		if (resultMap.status == 200) {
 			$.each(list, function(i, fBoard) {
-				console.log(fBoard.contentType);
 				// 회원이 등록한 게시물일 때
 				if (fBoard.contentType == null) {
 					$('<tr>')
 					.append( $('<td>').text(fBoard.rn) )
 					.append( $('<td>').text(fBoard.writer) )
-					.append( $('<td>').html('<a href="fBoardView.do?no='+fBoard.no+'&loginUser=${loginUser.id}">'+fBoard.title+'</a>') )
+					.append( $('<td>').html('<a href="fBoardView.do?no='+fBoard.no+'&loginUser=${loginUser.memberId}">'+fBoard.title+'</a>') )
 					.append( $('<td>').text(fBoard.hit) )
 					.append( $('<td>').text(fBoard.lastdate) )
 					.appendTo('#fBoard_list');
@@ -58,7 +56,7 @@
 					$('<tr>')
 					.append( $('<td>').text(fBoard.rn) )
 					.append( $('<td>').addClass('type event').text(fBoard.contentType) )							
-					.append( $('<td>').html('<a href="fBoardView.do?no='+fBoard.no+'&loginUser=${loginUser.id}">'+fBoard.title+'</a>') )
+					.append( $('<td>').html('<a href="fBoardView.do?no='+fBoard.no+'&loginUser=${loginUser.memberId}">'+fBoard.title+'</a>') )
 					.append( $('<td>').text(fBoard.hit) )
 					.append( $('<td>').text(fBoard.lastdate) )
 					.appendTo('#fBoard_list');
@@ -67,7 +65,7 @@
 					$('<tr>')
 					.append( $('<td>').text(fBoard.rn) )
 					.append( $('<td>').addClass('type promotion').text(fBoard.contentType) )							
-					.append( $('<td>').html('<a href="fBoardView.do?no='+fBoard.no+'&loginUser=${loginUser.id}">'+fBoard.title+'</a>') )
+					.append( $('<td>').html('<a href="fBoardView.do?no='+fBoard.no+'&loginUser=${loginUser.memberId}">'+fBoard.title+'</a>') )
 					.append( $('<td>').text(fBoard.hit) )
 					.append( $('<td>').text(fBoard.lastdate) )
 					.appendTo('#fBoard_list');
@@ -123,14 +121,17 @@
 	function fn_paging() {
 		$('body').on('click', '.previous_block', function(){
 			page = $(this).attr('data-page');
+			$('#page').val(page);
 			fn_fBoardList();
 		});
 		$('body').on('click', '.next_block', function(){
 			page = $(this).attr('data-page');
+			$('#page').val(page);
 			fn_fBoardList();
 		});
 		$('body').on('click', '.go_page', function(){
 			page = $(this).attr('data-page');
+			$('#page').val(page);
 			fn_fBoardList();
 		});
 	} //
@@ -138,22 +139,52 @@
 	
 	// 검색 결과
 	function fn_search() {
-		$('#f').submit(function(){
+		$('#search_btn').click(function(){
 			if($('#query').val() == '') {
 				fn_fBoardList();
 				return false;
 			}
+			// param1:column[WRITER,TITLE,CONTNET,BOTH] , param2:query, param3:page
+			
 			$.ajax({
 				url: 'searchFBoard.do',
 				type: 'get',
-				data: $('#f').serialize()+'&page='+page, // param1:column[WRITER,TITLE,CONTNET,BOTH] , param2:query, param3:page
+				data: $('#f').serialize(), 
 				dataType: 'json',
 				success: function(resultMap){
 					$('#searchTotal').text('검색결과 : ' + resultMap.searchTotal + '개');
 					if (resultMap.searchTotal == 0) {
+						$('#fBoard_list').empty();
 						$('<tr>')
 						.addClass('searchNone')
 						.append( $('<td colspan="5">').text('검색결과 없음') )
+						.appendTo('#fBoard_list');
+					} else {
+						fn_fBoard_append(resultMap);
+					}
+				},
+				error: function(xhr, text, error) {
+					console.log('에러메세지: ' + error + ", " + text);
+				}
+			});
+		});
+	} //
+	
+	
+	function fn_autoDrop() {
+		$('#dropChoice').mouseout(function(){
+			$.ajax({
+				url: 'fBoardAutoDrop.do',
+				type: 'get',
+				data: 'drop=' + $('#dropChoice').val() + '&page=' + page,
+				dataType: 'json',
+				success: function(resultMap){
+					$('#searchTotal').text('조회결과 : ' + resultMap.dropTotal + '개');
+					if (resultMap.dropTotal == 0) {
+						$('#fBoard_list').empty();
+						$('<tr>')
+						.addClass('searchNone')
+						.append( $('<td colspan="5">').text('조회결과 없음') )
 						.appendTo('#fBoard_list');
 					} else {
 						fn_fBoard_append(resultMap);
@@ -162,6 +193,8 @@
 			});
 		});
 	}
+	
+	
 	
 </script>
 	
@@ -181,11 +214,12 @@
 					<option value="BOTH">제목+내용</option>
 				</select>
 				<input type="text" name="query" id="query">
-				<button><i class="fas fa-search"></i></button>
+				<input type="hidden" value="1" name="page" id="page">
+				<input type="button" value="검색" id="search_btn">
 			</form>
 		</div>
 		<div id="drop">
-			<select name="drop">
+			<select name="drop" id="dropChoice">
 				<option value="new">최근등록 순</option>
 				<option value="hitHigh">조회 순</option>
 				<option value="owner">홍보글+이벤트</option>

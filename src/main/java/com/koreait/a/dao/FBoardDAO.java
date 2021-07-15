@@ -27,17 +27,12 @@ public interface FBoardDAO {
 	// 자유 게시판 삭제
 	public int fBoardDelete(long no);
 	
-	/*
-	 * // 자유게시판 검색
-	public List<FBoard> searchFBoard(QueryDTO queryDTO);
-	public int searchFBoardTotal (QueryDTO queryDTO);
+	// 자유 게시판 검색
+	public List<FBoard> fBoardSearch(FBoardQueryDTO fBoardQueryDTO);
+	public int fBoardSearchTotal (FBoardQueryDTO fBoardQueryDTO);
 
 	// 자유게시판 드롭에 따른 결과
-	public List<FBoard> dropFBoard(QueryDTO queryDTO);
-	public int dropFBoardTotal (QueryDTO queryDTO);
-	
-	
-	
-	*/
+	public List<FBoard> fBoardDrop(FBoardQueryDTO fBoardQueryDTO);
+	public int fBoardDropTotal (FBoardQueryDTO fBoardQueryDTO);
 
 }

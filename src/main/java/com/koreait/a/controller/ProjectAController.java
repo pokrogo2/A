@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.koreait.a.command.fBoard.FBoardDeleteCommand;
+import com.koreait.a.command.fBoard.FBoardDropListCommand;
 import com.koreait.a.command.fBoard.FBoardInsertCommand;
 import com.koreait.a.command.fBoard.FBoardListCommand;
+import com.koreait.a.command.fBoard.FBoardSearchListCommand;
 import com.koreait.a.command.fBoard.FBoardUpdateCommand;
 import com.koreait.a.command.fBoard.FBoardViewCommand;
 import com.koreait.a.command.fReply.FReplyDeleteCommand;
@@ -43,9 +45,12 @@ public class ProjectAController {
 	private FBoardViewCommand fBoardViewCommand;
 	private FBoardUpdateCommand fBoardUpdateCommand;
 	private FBoardDeleteCommand fBoardDeleteCommand;
+	private FBoardSearchListCommand FBoardSearchListCommand;
+	private FBoardDropListCommand fBoardDropListCommand;
 	private FReplyListCommand fReplyListCommand;
 	private FReplyInsertCommand fReplyInsertCommand;
 	private FReplyDeleteCommand fReplyDeleteCommand;
+	
 	
 	// constructor
 	@Autowired
@@ -60,6 +65,8 @@ public class ProjectAController {
 						      FBoardViewCommand fBoardViewCommand,
 						      FBoardUpdateCommand fBoardUpdateCommand,
 						      FBoardDeleteCommand fBoardDeleteCommand,
+						      FBoardSearchListCommand FBoardSearchListCommand,
+						      FBoardDropListCommand fBoardDropListCommand,
 						      FReplyListCommand fReplyListCommand,
 						      FReplyInsertCommand fReplyInsertCommand,
 						      FReplyDeleteCommand fReplyDeleteCommand) {
@@ -75,6 +82,8 @@ public class ProjectAController {
 		this.fBoardViewCommand =  fBoardViewCommand;
 		this.fBoardUpdateCommand = fBoardUpdateCommand;
 		this.fBoardDeleteCommand = fBoardDeleteCommand;
+		this.FBoardSearchListCommand = FBoardSearchListCommand;
+		this.fBoardDropListCommand = fBoardDropListCommand;
 		this.fReplyListCommand = fReplyListCommand;
 		this.fReplyInsertCommand = fReplyInsertCommand;
 		this.fReplyDeleteCommand = fReplyDeleteCommand;
@@ -85,8 +94,6 @@ public class ProjectAController {
 	public String index() {
 		return "index" ;
 	}
-	
-
 	
 	
 	
@@ -213,6 +220,22 @@ public class ProjectAController {
 		model.addAttribute("request", request);
 		model.addAttribute("response", response);
 		fBoardDeleteCommand.execute(sqlSession, model);
+	}
+	
+	/*자유게시판 검색결과*/
+	@GetMapping(value="searchFBoard.do", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public Map<String, Object> searchFBoard(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		return FBoardSearchListCommand.execute(sqlSession, model);
+	}
+
+	/*자유게시판 드랍으로 조회 결과*/
+	@GetMapping(value="fBoardAutoDrop.do", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public Map<String, Object> fBoardAutoDrop(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		return fBoardDropListCommand.execute(sqlSession, model);
 	}
 	
 	

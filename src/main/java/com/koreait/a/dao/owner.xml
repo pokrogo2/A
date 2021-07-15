@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.koreait.a.dao.OwnerDAO">
  
  	<insert id="join">
-		INSERT INTO MEMBER
+		INSERT INTO OWNER
 		VALUES (#{ownerNo}, #{ownerPw}, #{ownerTel},#{ownerEmail}, #{ownerName})
 	</insert>
 	

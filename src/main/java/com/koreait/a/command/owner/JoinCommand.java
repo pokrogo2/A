@@ -21,7 +21,7 @@ public class JoinCommand implements OwnerCommand {
 		long no = Long.parseLong(request.getParameter("no"));
 		String pw = request.getParameter("pw");
 		String email = request.getParameter("email");
-		String name = request.getParameter("name"); // »ηΎχΐΪΈν
+		String name = request.getParameter("name"); // μ‚¬μ—…μλª…
 		String tel = request.getParameter("tel");
 		
 		OwnerDTO owner = new OwnerDTO();

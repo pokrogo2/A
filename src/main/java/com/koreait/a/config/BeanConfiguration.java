@@ -41,7 +41,7 @@ public class BeanConfiguration {
 	public CommonsMultipartResolver multipartResolver() {
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
 		multipartResolver.setDefaultEncoding("utf-8");
-		multipartResolver.setMaxUploadSize(1024 * 1024 * 10);  // ¹ÙÀÌÆ® ´ÜÀ§(10MB)
+		multipartResolver.setMaxUploadSize(1024 * 1024 * 10);  // ë°”ì´íŠ¸ ë‹¨ìœ„(10MB)
 		return multipartResolver;
 	}
 	@Bean

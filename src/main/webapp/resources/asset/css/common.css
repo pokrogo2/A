@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+/*  
+		point-color : ( red : #9B1E24 )
+		sub-color : ( basicBrown : #E3C8C1 )
+		sub-color : ( lightBasic : #FBF1EF )
+		sub_color : (darkRed : #6A1310 )
+*/
+
+
 /* reset */
 *{
 	margin: 0 auto;
@@ -19,12 +27,12 @@
 .clear{clear:both;}
 .upDownBorder {border-top:1px solid lightgray; border-bottom:1px solid lightgray;}
 .none {display:none;}
-.link {color:black;}
-.disable {color:#666;}
-.now_page {color:red;}
+.link {color:black; cursor:pointer;}
+.disable {color:#888;}
+.now_page {color:#9B1E24; font-weight:600;}
 .grade {color:#aaa;}
 .star {color:orange;}
-.grey {color:#aaa;}
+.gray {color:#aaa;}
 .left {float:left;}
 .flex {display:flex;}
 .con_title {
@@ -37,7 +45,7 @@
 
 header, section, footer {width:100%;}
 h1 {font-size:25px;}
-input, button, select {border:1px solid lightgray; height:50px; background-color:white;}
+input, button, select, textarea {border:1px solid lightgray; height:50px; background-color:white;}
 input:focus, section:focus {border:1px solid black;}
 
 
@@ -45,20 +53,25 @@ input:focus, section:focus {border:1px solid black;}
 
 /* Header */
 header {margin:50px 0;}
-#topNav {width:900px; text-align:center; position:relative; margin-bottom:50px;}
+#topNav {width:1000px; text-align:center; position:relative; margin-bottom:50px;}
 .logo {font-size:30px; font-weight:700;}
 .sub_nav {text-align:right; position:absolute; right:0; top:12px;}
 .sub_nav span {margin:0 20px; font-size:13px; color:#999;}
 .sub_nav a {font-weigth:500;}
-.sub_nav a:hover {color:red; font-weight:600; text-decoration:underline;}
+.sub_nav a:hover {color:#9B1E24; font-weight:600; text-decoration:underline;}
 #catgNav {}
-.category {width:900px; text-align:center;}
+.category {width:1000px; text-align:center;}
 .category a {display:inline-block; margin:0 45px; padding:30px 0;}
-.category a:hover {color:red; font-weight:600; border-bottom:3px solid red; padding-bottom:27px; }
+.category a:hover {color:#9B1E24; font-weight:600; border-bottom:3px outset #9B1E24; border-radius:6px; padding-bottom:27px; }
+.category span {padding:0 15px;}
+#sideFix {position:fixed; right:0; top:48%;}
+#sideFix div {width:60px; height:60px; background-color:#FBF1EF;}
+#sideFix a {}
+
 
 /* Footer*/
 footer {padding: 30px 20px; background-color:black; font-size:14px; margin-top:150px;}
-#mainFooter {width:900px; margin: 0 auto;}
+#mainFooter {width:1000px; margin: 0 auto;}
 footer div {margin: 20px 0;}
 footer a {color:white;}
 footer p {color:white; padding-bottom:5px;}
@@ -75,3 +88,11 @@ footer div:nth-child(4) span {padding: 0 5px;}
 		
 /* Section 기보 작업 */
 section {margin:50px 0;}
+		
+		
+		
+		
+		
+		
+
+

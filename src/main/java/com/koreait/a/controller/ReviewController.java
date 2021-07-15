@@ -23,14 +23,12 @@ public class ReviewController {
 	}
 	
 	
-	@GetMapping(value= {"/","index.do"})
-	public String index() {
-		return "index";
-	}
-	@GetMapping(value="reviewPage.do")
+
+	@GetMapping(value="memberMyPage.do")
 	public String review(HttpServletRequest request,Model model) {
 		model.addAttribute("request", request);
 		selectReviewListCommand.execute(sqlSession, model);
-		return "review/reviewPage";
+		return "member/memberMyPage";
 	}
+
 }

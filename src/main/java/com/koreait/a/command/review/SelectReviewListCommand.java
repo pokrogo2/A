@@ -2,17 +2,16 @@ package com.koreait.a.command.review;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 import com.koreait.a.dao.ReviewDAO;
-import com.koreait.a.dto.PageDTO;
+import com.koreait.a.dto.MemberDTO;
 import com.koreait.a.dto.ReviewDTO;
-import com.koreait.a.utils.PagingUtils;
 
 public class SelectReviewListCommand implements ReviewCommand {
 
@@ -21,6 +20,9 @@ public class SelectReviewListCommand implements ReviewCommand {
 		// TODO Auto-generated method stub
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		HttpSession session = request.getSession();
+		MemberDTO loginUser =(MemberDTO)session.getAttribute("loginUser");
+		System.out.println(loginUser.getMemberId());
 		/*
 		Optional<String> opt = Optional.ofNullable(request.getParameter("page"));
 		int page = Integer.parseInt(opt.orElse("1"));
@@ -34,8 +36,8 @@ public class SelectReviewListCommand implements ReviewCommand {
 		*/
 	
 		ReviewDAO reviewDAO = sqlSession.getMapper(ReviewDAO.class);
-		String loginId= request.getParameter("loginId");
-		List<ReviewDTO> list = reviewDAO.selectOne(loginId);
+		//String loginId= request.getParameter("loginId");
+		List<ReviewDTO> list = reviewDAO.selectOne(loginUser.getMemberId());
 		
 		model.addAttribute("list", list);
 		//model.addAttribute("paging", paging);

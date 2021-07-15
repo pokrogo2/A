@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.a.dao.FBoardDAO">
+
+	<!-- 자유게시판 리스트 조회 -->
+	<select id="fBoardList" resultType="com.koreait.a.dto.FBoard">
+		SELECT B.RN, B.NO, B.WRITER, B.CONTENTTYPE, B.TITLE, B.CONTENT, B.FILENAME1, B.POSTDATE, B.LASTDATE, B.HIT
+		  FROM (SELECT ROWNUM AS RN, A.NO, A.WRITER, A.CONTENTTYPE, A.TITLE, A.CONTENT, A.FILENAME1, A.POSTDATE, A.LASTDATE, A.HIT
+		  		  FROM (SELECT NO, WRITER, CONTENTTYPE, TITLE, CONTENT, FILENAME1, POSTDATE, LASTDATE, HIT
+		  				  FROM FBOARD
+		  				 WHERE STATUS = 0
+		 		 		 ORDER BY NO DESC) A) B
+	 	 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	</select>
+	
+	<!-- 자유게시판 리스트 전체 개수 -->
+	<select id="fBoardTotalCount" resultType="int">
+		SELECT COUNT(NO)
+		  FROM FBOARD
+		 WHERE STATUS = 0
+	</select>
+	
+	<!-- 자유게시판 생성  -->
+	<insert id="fBoardInsert">
+		INSERT INTO FBOARD
+		VALUES (FBOARD_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, SYSDATE, SYSDATE, 0, 0)
+	</insert>
+	
+	<!-- 자유게시판 한개 결과  -->
+	<select id="fBoardView" resultType="com.koreait.a.dto.FBoard">
+		SELECT NO, WRITER, CONTENTTYPE, TITLE, CONTENT, FILENAME1, POSTDATE, LASTDATE, HIT
+		  FROM FBOARD
+		 WHERE NO = #{no}
+	</select>
+
+	<!-- 자유게시판 조회수 증가  -->
+	<update id="fBoardHitUp">
+		UPDATE FBOARD
+		   SET HIT = HIT + 1
+		 WHERE NO = #{no}
+	</update>
+	
+	
+	<!-- 자유게시판 수정  -->
+	<update id="fBoardUpdate">
+		UPDATE FBOARD
+		   SET CONTENTTYPE = #{param1}, TITLE = #{param2}, CONTENT = #{param3}, FILENAME1 = #{param4}, LASTDATE = SYSDATE
+		 WHERE NO = #{param5}
+	</update>
+	
+	<!-- 자유게시판 삭제  -->
+	<update id="fBoardDelete">
+		UPDATE FBOARD
+		   SET STATUS = -1
+		 WHERE NO = #{no}
+	</update>
+	
+	
+	
+	
+	
+</mapper>

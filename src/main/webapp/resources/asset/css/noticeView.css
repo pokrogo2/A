@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+.con_title {border:none; padding-bottom:30px;}
+input {
+	cursor:pointer;
+	padding:0 40px;
+	margin:50px 0 20px 0;
+}
+input[value="목록"], input[value="수정"]:hover, input[value="삭제"]:hover {
+	background-color:black; 
+	color:white;
+}
+input[value="수정"] {margin:0 10px;}
+
+.noticeView_box {width:100%;}
+.noticeView_box div {
+	text-align:center;
+	width:100%;
+}
+h2 {font-size:30px;}
+.noticeView_box div:nth-child(1) {
+	padding:30px 0;
+	border-top:2px dotted #ddd;
+	border-bottom:2px dotted #ddd;
+}
+.noticeView_box div:nth-child(2) {padding:50px 0; font-size:18px;}
+.noticeView_box div:nth-child(3) {color:#666; padding-bottom:5px; font-size:13px;}
+.noticeView_box div:nth-child(4) {border-bottom:2px dotted #ddd; padding-bottom:10px;}
+
+.noticeView_box  .sub {
+	font-size:13px;
+	text-align:right;
+}
+.sub .line {font-size:10px; padding:0 5px;}
+.sub .hit {font-size:13px; font-weight:800;}
+
+
+
+
+

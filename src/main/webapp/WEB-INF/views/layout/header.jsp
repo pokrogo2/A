@@ -37,11 +37,13 @@
 					<a href="joinPage.do">회원가입</a>
 				</c:if>
 				<c:if test="${not empty loginUser}">
-					<a href="logout.do">로그아웃</a>
+                    <a href="logout.do">로그아웃</a>
+                    <span>|</span>
+					<a href="memberMyPage.do">마이페이지</a>
 					<span>|</span>
-					<a href="#">마이페이지</a>
+					<a href="insertStorePage.do" id="store_insert_btn">가게 등록</a>
 					<span>|</span>
-					<a href="#" id="store_insert_btn">가게 등록</a>
+					<a href="viewStorePage.do" id="store_insert_btn">가게 View</a>
 				</c:if>
 			</span>
 		</div>
@@ -51,8 +53,26 @@
 				<c:forEach var="ctg" items="${category}">
 					<a href="#">${ctg}</a>
 				</c:forEach>
+				<span>|</span>
+				<a href="fBoardPage.do">자유게시판</a>
 			</div>
+		</div>
+			
+		<div id="sideFix">
+			<div> <a href="noticePage.do">공지사항</a> </div>
+			<div> <a href="#">1:1문의</a> </div>
+			<div> <a href="#">검색</a> </div>
 		</div>
 	</header>
 		
 		<section>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			

@@ -152,11 +152,7 @@
 		
 		<h1>main</h1>
 	
-	<a href="reviewPage.do">리뷰페이지 --> 로그인정보</a>
-	<form action="reviewPage.do">
-		<input type="hidden" name="loginId" value="ABC">
-		<button>이동</button>
-	</form>
+	
 		
 		
 		

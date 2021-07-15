@@ -1,5 +1,52 @@
 @charset "UTF-8";
 
+<<<<<<< HEAD
+.notice_box {
+	border-top:1px solid #888;
+	border-bottom:1px solid #888;
+}
+
+input[value="글 작성"] {
+	padding:0 20px;
+	float:right;
+	margin:50px 0 20px 0;
+}
+input[value="글 작성"]:hover {
+	background-color:black; 
+	color:white;
+	cursor:pointer;
+}
+
+table {width:100%;}
+tr {
+	height:55px;
+	border-top:1px solid #eee;
+	border-bottom:1px solid #eee;
+}
+td {text-align:center;}
+td:nth-child(1) {width:19%;}
+td:nth-child(3) {width:20%;}
+
+thead {}
+thead tr {background-color:#FBF1EF;}
+thead td { font-weight: 800;}
+
+tbody {}
+#notice_list {}
+#notice_list a {font-weight:600;}
+#notice_list a:hover {
+	text-decoration:underline;
+	color:red;
+}
+
+tfoot {}
+#notice_paging {}
+#fBoard_paging {}
+#notice_paging div, #fBoard_paging div {
+	display:inline-block;
+	margin:0 5px;
+}
+=======
 
 .myPage_box {margin-top:50px;}
 
@@ -163,3 +210,10 @@ input[value="리뷰 수정"], input[value="리뷰 삭제"]:hover {background-col
 }
 #question_history .notAnswer {background-color:gray;}
 #question_history .answer {background-color:darkred;}
+
+
+
+
+
+
+>>>>>>> f35502afb3d4787094fc094aa65e187ca0c91280

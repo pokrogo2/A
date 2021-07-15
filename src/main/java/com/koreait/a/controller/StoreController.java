@@ -43,7 +43,7 @@ public class StoreController {
 							  Model model) {
 		model.addAttribute("request", request);
 		insertStoreCommand.execute(sqlSession, model);
-		return "store/insertStore";	
+		return "redirect:storelist.do";	
 	}
 	
 	@GetMapping(value="storeListPage.do")
@@ -51,7 +51,7 @@ public class StoreController {
 		return "store/storeList";
 	}
 	
-	@GetMapping(value="storeList.do", produces="application/json; charset=utf-8")
+	@PostMapping(value="storeList.do", produces="application/json; charset=utf-8")
 	@ResponseBody
 	public Map<String, Object> storeList(@RequestBody Page page,
 										 Model model) {

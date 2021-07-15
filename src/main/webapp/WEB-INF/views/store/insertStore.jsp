@@ -33,7 +33,7 @@
 				event.preventDefault();
 				return false;
 			} 
-			$('#f').attr('action', 'insertStore.do');
+			$('#f').attr('action', 'storeList.do');
 			$('#f').submit();	
 		});
 	}

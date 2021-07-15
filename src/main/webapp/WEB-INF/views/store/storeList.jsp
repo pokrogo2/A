@@ -18,7 +18,8 @@
 	$(document).ready(function(){
 		fn_storeList();
 		fn_paging();
-		fn_selectStoreByNo();
+		
+		
 	});
 	
 	
@@ -38,8 +39,9 @@
 				
 				// 1. 목록 만들기
 				
-				$('#store_list').empty();	
+				$('#store_list').empty();	//  기존 목록 지우기
 				
+				/* 회원 목록 만들어주기*/
 				if (resultMap.exists) {
 					
 					$.each(resultMap.list, function(i, store){		
@@ -59,8 +61,7 @@
 				// 2. 페이징 만들기
 				var paging = resultMap.paging;
 				
-				// 1) 기존 페이징 초기화 
-				$('#paging').empty();		
+				$('#paging').empty();	// 기존 페이징 초기화		
 				
 				
 				// 2) 이전('◀') 
@@ -121,6 +122,7 @@
 			}
 		});
 	}
+	
 	// 가게 목록 페이징(페이징 링크 처리) 
 	function fn_paging() {
 		$('body').on('click', '.previous_block', function(){
@@ -164,11 +166,11 @@
 			<thead>
 				<tr>
 					<th>No.</th>
-					<th>썸네일</th>
+					<!-- <th>썸네일</th> -->
 					<th>상호명</th>	
 					
 					<!--  ** 평점: 보류   -->
-					<th>평점</th>
+					<!--  <th>평점</th> -->
 					
 					<th>조회수</th>
 				</tr>	

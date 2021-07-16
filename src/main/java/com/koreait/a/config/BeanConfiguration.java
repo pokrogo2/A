@@ -9,6 +9,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.koreait.a.command.store.InsertStoreCommand;
+import com.koreait.a.command.store.SelectStoreByNoCommand;
 import com.koreait.a.command.store.SelectStoreListCommand;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -60,6 +61,11 @@ public class BeanConfiguration {
 		return new SelectStoreListCommand();
 	}
 	
+	@Bean
+	public SelectStoreByNoCommand selectStoreByNoCommand() {
+		return new SelectStoreByNoCommand();
+	}
 	
+
 	
 }

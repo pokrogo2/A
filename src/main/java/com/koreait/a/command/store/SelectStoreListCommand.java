@@ -14,7 +14,7 @@ import com.koreait.a.util.PagingUtils;
 
 public class SelectStoreListCommand {
 
-
+	
 	public Map<String, Object> execute(SqlSession sqlSession, Model model) {
 		
 		Map<String, Object> map = model.asMap();
@@ -29,6 +29,7 @@ public class SelectStoreListCommand {
 		
 		Map<String, Object> resultMap = new HashMap<>();
 		resultMap.put("list", list);
+		resultMap.put("exists", list.size() > 0);
 		resultMap.put("paging", paging);
 		return resultMap;
 		

@@ -22,5 +22,26 @@ table {
 	padding: 20px;
 }
 
+	#paging {
+				width: 30%;
+				margin: 0 auto;
+				display: flex;
+				justify-content: space-between;
+				text-align: center;
+			}
+	#paging div {
+		width: 40px;
+		height: 20px;
+	}
+	.disable {
+		color: silver;
+	}
+	.link {
+		cursor: pointer;
+	}
+	.now_page {
+		color: limegreen;
+	}
+
 
 

@@ -3,6 +3,7 @@ package com.koreait.a.controller;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Controller;
@@ -13,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.koreait.a.command.store.InsertStoreCommand;
+import com.koreait.a.command.store.SelectStoreByNoCommand;
 import com.koreait.a.command.store.SelectStoreListCommand;
 import com.koreait.a.dto.Page;
-import com.koreait.a.dto.Store;
 
 import lombok.AllArgsConstructor;
 
@@ -26,7 +27,7 @@ public class StoreController {
 	private SqlSession sqlSession;
 	private InsertStoreCommand insertStoreCommand;
 	private SelectStoreListCommand selectStoreListCommand;
-	
+	private SelectStoreByNoCommand selectStoreByNoCommand;
 
 	@GetMapping(value= {"/", "index.do"})
 	public String index() {
@@ -39,11 +40,12 @@ public class StoreController {
 	}
 	
 	@PostMapping(value="insertStore.do")
-	public String insertStore(HttpServletRequest request ,
+	public void insertStore(HttpServletRequest request,
+							HttpServletResponse response,
 							  Model model) {
 		model.addAttribute("request", request);
+		model.addAttribute("response", response);
 		insertStoreCommand.execute(sqlSession, model);
-		return "redirect:storelist.do";	
 	}
 	
 	@GetMapping(value="storeListPage.do")
@@ -64,5 +66,19 @@ public class StoreController {
 	public String viewStorePage() {
 		return "store/viewStore";
 	}
+	
+	@GetMapping(value="selectStoreByNo.do")
+	public String selectStoreByNo(HttpServletRequest request,
+								  HttpServletResponse response,
+								  Model model) {
+		model.addAttribute("request", request);
+		model.addAttribute("response", response);
+		selectStoreByNoCommand.execute(sqlSession, model);
+		return "store/viewStore";
+	}
+	
+
+	
+	
 	
 }

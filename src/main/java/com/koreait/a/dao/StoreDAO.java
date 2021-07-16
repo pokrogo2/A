@@ -14,5 +14,6 @@ public interface StoreDAO {
 	public int getTotalStoreCount();
 	public int insertStore(String storeName, String storeContent, int storeTable, 
 						   String storeTel, String storeAddr, String storeTime);
+	public Store selectStoreByNo(long storeNo);
 	
 }

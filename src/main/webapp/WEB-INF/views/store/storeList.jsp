@@ -37,18 +37,18 @@
 			dataType: 'json',
 			success: function(resultMap) {
 				
-				// 1. 목록 만들기
+				// 목록 만들기
 				
 				$('#store_list').empty();	//  기존 목록 지우기
 				
-				/* 회원 목록 만들어주기*/
+				/* 가게 목록 만들어주기 */
 				if (resultMap.exists) {
 					
 					$.each(resultMap.list, function(i, store){		
 						$('<tr>')						
 						.append( $('<td>').text(store.storeNo) )		
 						// .append( $('<td>').text(store.storeFilename) ) 썸네일 보류 
-						.append( $('<td>').text(store.storeName) )
+						.append( $('<td>').html('<a href="selectStoreByNo.do?storeNo='+store.storeNo+'">'+store.storeName+'</a>') )
 						.append( $('<td>').text(store.storeHit) )	
 						.appendTo('#store_list');		
 					});				
@@ -58,13 +58,13 @@
 					.appendTo('#store_list');
 				}
 				
-				// 2. 페이징 만들기
+				// 페이징 만들기
 				var paging = resultMap.paging;
 				
 				$('#paging').empty();	// 기존 페이징 초기화		
 				
 				
-				// 2) 이전('◀') 
+				// 이전('◀') 
 				if (paging.beginPage <= paging.pagePerBlock) {	// 이전이 없음(1블록)
 					// class
 					// 1. disable : color silver
@@ -145,7 +145,7 @@
 	
 	<!-- 가게 리스트 검색-->
 	<div class="outer">
-		<form>
+		<form method="post">
 			<div class="box">
 				<select>
 				

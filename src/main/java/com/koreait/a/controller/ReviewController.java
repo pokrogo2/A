@@ -8,15 +8,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.koreait.a.command.review.SelectReviewListCommand;
+import com.koreait.a.command.review.ReviewListCommand;
 
 @Controller
 public class ReviewController {
 	private SqlSession sqlSession;
-	private SelectReviewListCommand selectReviewListCommand;
+	private ReviewListCommand selectReviewListCommand;
 	
 	@Autowired
-	public ReviewController(SqlSession sqlSession, SelectReviewListCommand selectReviewListCommand) {
+	public ReviewController(SqlSession sqlSession, ReviewListCommand selectReviewListCommand) {
 		super();
 		this.sqlSession = sqlSession;
 		this.selectReviewListCommand = selectReviewListCommand;

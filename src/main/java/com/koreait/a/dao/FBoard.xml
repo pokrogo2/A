@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.koreait.a.dao.FBoardDAO">
 
 	<!-- 자유게시판 리스트 조회 -->
-	<select id="fBoardList" resultType="com.koreait.a.dto.FBoard">
+	<select id="fBoardList" resultType="com.koreait.a.dto.FBoardDTO">
 		SELECT B.RN, B.NO, B.WRITER, B.CONTENTTYPE, B.TITLE, B.CONTENT, B.FILENAME1, B.POSTDATE, B.LASTDATE, B.HIT
 		  FROM (SELECT ROWNUM AS RN, A.NO, A.WRITER, A.CONTENTTYPE, A.TITLE, A.CONTENT, A.FILENAME1, A.POSTDATE, A.LASTDATE, A.HIT
 		  		  FROM (SELECT NO, WRITER, CONTENTTYPE, TITLE, CONTENT, FILENAME1, POSTDATE, LASTDATE, HIT
@@ -26,11 +26,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 자유게시판 생성  -->
 	<insert id="fBoardInsert">
 		INSERT INTO FBOARD
-		VALUES (FBOARD_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, SYSDATE, SYSDATE, 0, 0)
+		VALUES (FBOARD_SEQ.NEXTVAL, #{writer}, #{contentType}, #{title}, #{content},#{filename1}, SYSDATE, SYSDATE, 0, 0)
 	</insert>
 	
 	<!-- 자유게시판 한개 결과  -->
-	<select id="fBoardView" resultType="com.koreait.a.dto.FBoard">
+	<select id="fBoardView" resultType="com.koreait.a.dto.FBoardDTO">
 		SELECT NO, WRITER, CONTENTTYPE, TITLE, CONTENT, FILENAME1, POSTDATE, LASTDATE, HIT
 		  FROM FBOARD
 		 WHERE NO = #{no}
@@ -47,8 +47,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 자유게시판 수정  -->
 	<update id="fBoardUpdate">
 		UPDATE FBOARD
-		   SET CONTENTTYPE = #{param1}, TITLE = #{param2}, CONTENT = #{param3}, FILENAME1 = #{param4}, LASTDATE = SYSDATE
-		 WHERE NO = #{param5}
+		   SET CONTENTTYPE = #{contentType}, TITLE = #{title}, CONTENT = #{content}, FILENAME1 = #{filename1}, LASTDATE = SYSDATE
+		 WHERE NO = #{no}
 	</update>
 	
 	<!-- 자유게시판 삭제  -->
@@ -60,7 +60,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<!-- 자유게시판 검색결과 -->
-	<select id="fBoardSearch" resultType="com.koreait.a.dto.FBoard">
+	<select id="fBoardSearch" resultType="com.koreait.a.dto.FBoardDTO">
 		SELECT B.RN, B.NO, B.WRITER, B.CONTENTTYPE, B.TITLE, B.LASTDATE, B.HIT
 		  FROM (SELECT ROWNUM AS RN, A.NO, A.WRITER, A.CONTENTTYPE, A.TITLE, A.LASTDATE, A.HIT
 		  		  FROM (SELECT NO, WRITER, CONTENTTYPE, TITLE, LASTDATE, HIT
@@ -83,7 +83,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<!-- 자유게시판 드롭에 따른 결과 리스트  -->
-	<select id="fBoardDrop" resultType="com.koreait.a.dto.FBoard">
+	<select id="fBoardDrop" resultType="com.koreait.a.dto.FBoardDTO">
 		SELECT B.RN, B.NO, B.WRITER, B.CONTENTTYPE, B.TITLE, B.LASTDATE, B.HIT
 		  FROM (SELECT ROWNUM AS RN, A.NO, A.WRITER, A.CONTENTTYPE, A.TITLE, A.LASTDATE, A.HIT
 		 	      FROM (SELECT NO, WRITER, CONTENTTYPE, TITLE, LASTDATE, HIT

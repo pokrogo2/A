@@ -10,11 +10,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 import com.koreait.a.dao.NoticeDAO;
-import com.koreait.a.dto.Notice;
+import com.koreait.a.dto.NoticeDTO;
 import com.koreait.a.dto.PagingDTO;
-import com.koreait.a.util.PagingUtil_paramFour;
+import com.koreait.a.utils.PagingUtils;
 
-public class SelectNoticeListCommand {
+public class NoticeListCommand {
 
 	
 	public Map<String, Object> execute(SqlSession sqlSession, Model model) {
@@ -30,8 +30,8 @@ public class SelectNoticeListCommand {
 		int recordPerPage = 10;
 		int pagePerBlock = 5;
 		
-		PagingDTO pagingDTO = PagingUtil_paramFour.getPage(recordPerPage, pagePerBlock, totalRecord, page);
-		List<Notice> list = noticeDAO.selectNoticeList(pagingDTO);
+		PagingDTO pagingDTO = PagingUtils.getPage(recordPerPage, pagePerBlock, totalRecord, page);
+		List<NoticeDTO> list = noticeDAO.selectNoticeList(pagingDTO);
 		
 		
 		Map<String, Object> resultMap = new HashMap<>();

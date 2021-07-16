@@ -1,13 +1,13 @@
 package com.koreait.a.dto;
 
-public class Store {
+public class StoreDTO {
 	
 	// field
 	private long storeNo;
-	private String owenerName;
+	private String ownerName;
 	private String storeName;
 	private String storeTel;
-	private String storeCategori;
+	private String storeCategory;
 	private String storeTime;
 	private String storeAddr;
 	private String storeContent;
@@ -18,25 +18,7 @@ public class Store {
 	private int storeTable;
 	
 	// constructor
-	public Store() { }
-	public Store(long storeNo, String owenerName, String storeName, String storeTel, String storeCategori,
-			String storeTime, String storeAddr, String storeContent, String storeMenu, String storeSns, int storeHit,
-			String filename1, int storeTable) {
-		super();
-		this.storeNo = storeNo;
-		this.owenerName = owenerName;
-		this.storeName = storeName;
-		this.storeTel = storeTel;
-		this.storeCategori = storeCategori;
-		this.storeTime = storeTime;
-		this.storeAddr = storeAddr;
-		this.storeContent = storeContent;
-		this.storeMenu = storeMenu;
-		this.storeSns = storeSns;
-		this.storeHit = storeHit;
-		this.filename1 = filename1;
-		this.storeTable = storeTable;
-	}
+
 
 	
 	// getter, setter
@@ -46,11 +28,12 @@ public class Store {
 	public void setStoreNo(long storeNo) {
 		this.storeNo = storeNo;
 	}
-	public String getOwenerName() {
-		return owenerName;
+
+	public String getOwnerName() {
+		return ownerName;
 	}
-	public void setOwenerName(String owenerName) {
-		this.owenerName = owenerName;
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
 	}
 	public String getStoreName() {
 		return storeName;
@@ -64,11 +47,11 @@ public class Store {
 	public void setStoreTel(String storeTel) {
 		this.storeTel = storeTel;
 	}
-	public String getStoreCategori() {
-		return storeCategori;
+	public String getStoreCategory() {
+		return storeCategory;
 	}
-	public void setStoreCategori(String storeCategori) {
-		this.storeCategori = storeCategori;
+	public void setStoreCategory(String storeCategory) {
+		this.storeCategory = storeCategory;
 	}
 	public String getStoreTime() {
 		return storeTime;

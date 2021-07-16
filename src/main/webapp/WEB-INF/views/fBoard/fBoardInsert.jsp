@@ -74,7 +74,7 @@
 					<br>
 						
 					<label for="writer">작성자</label> <br> <!-- readonly -->
-					<input type="text" name="writer" id="writer" value="${loginUser.id}">
+					<input type="text" name="writer" id="writer" value="${loginUser.memberId}">
 					<label for="title">제목</label> <br>
 					<input type="text" name="title" id="title" placeholder="제목">
 					<textarea rows="30" cols="50" name="content" id="content" placeholder="내용 입력"></textarea>

@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import com.koreait.a.dao.MemberDAO;
 import com.koreait.a.dto.MemberDTO;
 
-public class FindIdCommand implements MemberCommand {
+public class MemberFindIdCommand implements MemberCommand {
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model) {

@@ -10,7 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 import com.koreait.a.dao.NoticeDAO;
-import com.koreait.a.dto.Notice;
+import com.koreait.a.dto.NoticeDTO;
 
 public class NoticeInsertCommand implements NoticeCommand {
 
@@ -21,7 +21,7 @@ public class NoticeInsertCommand implements NoticeCommand {
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		HttpServletResponse response = (HttpServletResponse)map.get("response");
 		
-		Notice notice = new Notice();
+		NoticeDTO notice = new NoticeDTO();
 		notice.setWriter(request.getParameter("writer"));
 		notice.setTitle(request.getParameter("title"));
 		notice.setContent(request.getParameter("content"));

@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.koreait.a.dao.FBoardDAO;
+import com.koreait.a.dto.FBoardDTO;
 
 public class FBoardInsertCommand implements FBoardCommand {
 
@@ -28,7 +29,11 @@ public class FBoardInsertCommand implements FBoardCommand {
 		String content = multipartRequest.getParameter("content");
 		String contentType = multipartRequest.getParameter("contentType");	
 		contentType =  contentType == null ? "" : contentType;
-		
+		FBoardDTO fBoardDTO = new  FBoardDTO();
+		fBoardDTO.setWriter(writer);
+		fBoardDTO.setTitle(title);
+		fBoardDTO.setContent(content);
+		fBoardDTO.setContentType(contentType);
 		FBoardDAO fBoardDAO = sqlSession.getMapper(FBoardDAO.class);
 		int result = 0; //결과 확인
 		
@@ -59,13 +64,15 @@ public class FBoardInsertCommand implements FBoardCommand {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
+			fBoardDTO.setFilename1(uploadFilename);
 			// DB에 저장
-			result = fBoardDAO.fBoardInsert(writer, contentType, title, content, uploadFilename);
+			result = fBoardDAO.fBoardInsert(fBoardDTO);
 			
 		} else {
 			// DB에 저장
 			// 첨부파일이 없다.
-			result = fBoardDAO.fBoardInsert(writer, contentType, title, content, "");
+			fBoardDTO.setFilename1("");
+			result = fBoardDAO.fBoardInsert(fBoardDTO);
 		}
 		
 		

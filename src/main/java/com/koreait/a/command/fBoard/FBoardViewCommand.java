@@ -10,7 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 import com.koreait.a.dao.FBoardDAO;
-import com.koreait.a.dto.FBoard;
+import com.koreait.a.dto.FBoardDTO;
 
 public class FBoardViewCommand implements FBoardCommand {
 
@@ -25,7 +25,7 @@ public class FBoardViewCommand implements FBoardCommand {
 		
 		FBoardDAO fBoardDAO = sqlSession.getMapper(FBoardDAO.class);
 		// 공지사항 불러오기
-		FBoard fBoard = fBoardDAO.fBoardView(no);
+		FBoardDTO fBoard = fBoardDAO.fBoardView(no);
 		// 조회수 중가
 		if(fBoard.getWriter() != loginUser) {
 			int count = fBoardDAO.fBoardHitUp(no);

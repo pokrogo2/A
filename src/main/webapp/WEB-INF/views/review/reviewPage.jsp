@@ -36,7 +36,7 @@
 							★
 							</c:forEach>
 						</td>
-						<td>${review.storename} / 카테고리 : ${review.storecategori}</td>			
+						<td>${review.storeName} / 카테고리 : ${review.storeCategory}</td>			
 					</tr>
 					<tr>
 						<td colspan="3">${review.content }</td>

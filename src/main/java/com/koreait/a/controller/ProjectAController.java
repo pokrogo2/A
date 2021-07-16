@@ -28,14 +28,14 @@ import com.koreait.a.command.notice.NoticeDeleteCommand;
 import com.koreait.a.command.notice.NoticeInsertCommand;
 import com.koreait.a.command.notice.NoticeUpdateCommand;
 import com.koreait.a.command.notice.NoticeViewCommand;
-import com.koreait.a.command.notice.SelectNoticeListCommand;
+import com.koreait.a.command.notice.NoticeListCommand;
 
 @Controller
 public class ProjectAController {
 
 	// field
 	private SqlSession sqlSession;
-	private SelectNoticeListCommand selectNoticeListCommand;
+	private NoticeListCommand selectNoticeListCommand;
 	private NoticeViewCommand noticeViewCommand;
 	private NoticeUpdateCommand noticeUpdateCommand;
 	private NoticeDeleteCommand noticeDeleteCommand;
@@ -55,7 +55,7 @@ public class ProjectAController {
 	// constructor
 	@Autowired
 	public ProjectAController(SqlSession sqlSession,
-						      SelectNoticeListCommand selectNoticeListCommand,
+						      NoticeListCommand selectNoticeListCommand,
 						      NoticeViewCommand noticeViewCommand,
 						      NoticeUpdateCommand noticeUpdateCommand,
 						      NoticeDeleteCommand noticeDeleteCommand,

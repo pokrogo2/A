@@ -11,7 +11,7 @@ import com.koreait.a.dao.MemberDAO;
 import com.koreait.a.dto.MemberDTO;
 import com.koreait.a.utils.SecurityUtils;
 
-public class JoinCommand implements MemberCommand {
+public class MemberJoinCommand implements MemberCommand {
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model) {
@@ -25,7 +25,7 @@ public class JoinCommand implements MemberCommand {
 		String email = request.getParameter("email");
 		String tel = request.getParameter("tel");
 		String address = request.getParameter("address");
-		long age = Long.parseLong(request.getParameter("age"));
+		int age = Integer.parseInt(request.getParameter("age"));
 		
 		MemberDTO member = new MemberDTO();
 		member.setMemberId(id);

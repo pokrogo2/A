@@ -10,9 +10,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 import com.koreait.a.dao.FReplyDAO;
-import com.koreait.a.dto.FReply;
+import com.koreait.a.dto.FReplyDTO;
 import com.koreait.a.dto.PagingDTO;
-import com.koreait.a.util.PagingUtil_paramFour;
+import com.koreait.a.utils.PagingUtils;
 
 public class FReplyListCommand {
 
@@ -31,9 +31,8 @@ public class FReplyListCommand {
 		totalRecord = totalRecord > 0 ? totalRecord : 1;
 		int recordPerPage = 5;
 		int pagePerBlock = 5;
-		
-		PagingDTO pagingDTO = PagingUtil_paramFour.getPage(recordPerPage, pagePerBlock, totalRecord, page);
-		List<FReply> list = fReplyDAO.fReplyList(no, pagingDTO.getBeginRecord(), pagingDTO.getEndRecord());
+		PagingDTO pagingDTO = PagingUtils.getPage(recordPerPage, pagePerBlock, totalRecord, page);
+		List<FReplyDTO> list = fReplyDAO.fReplyList(no, pagingDTO.getBeginRecord(), pagingDTO.getEndRecord());
 		
 		Map<String, Object> resultMap = new HashMap<>();
 		if (list.size() > 0) {

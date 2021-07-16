@@ -43,7 +43,7 @@
 			$.each(list, function(i, notice) {
 				$('<tr>')
 				.append( $('<td>').text(notice.rn) )
-				.append( $('<td>').html('<a href="noticeView.do?no='+notice.no+'&loginUser=${loginUser.id}">'+notice.title+'</a>') )
+				.append( $('<td>').html('<a href="noticeView.do?no='+notice.no+'&loginUser=${loginUser.memberId}">'+notice.title+'</a>') )
 				.append( $('<td>').text(notice.lastdate) )
 				.appendTo('#notice_list');
 			});
@@ -115,9 +115,9 @@
 		
 		<h1 class="con_title">공지사항</h1>
 		
-		<c:if test="${loginUser.id == 'ADMIN'}">
+		<c:if test="${loginUser.memberId == 'ADMIN'}">
 		</c:if>
-			<input type="button" value="글 작성" id="insert_btn" onclick="location.href='noticeInsertPage.do?writer=${loginUser.id}'">
+			<input type="button" value="글 작성" id="insert_btn" onclick="location.href='noticeInsertPage.do?writer=${loginUser.memberId}'">
 		
 		<div class="notice_box clear">
 			<table>

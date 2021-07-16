@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.koreait.a.dao.StoreDAO">
 	
 	<!-- 
-	<select id="selectStoreList" resultType="com.koreait.a.dto.Store">
+	<select id="selectStoreList" resultType="com.koreait.a.dto.StoreDTO">
 		SELECT NO, OWERNAME, STORENAME, STORETEL, STORECATEGORI, STORETIME, STOREADDR,
 			   STORECONTENT, STOREMENU, STORESNS, STOREHIT, FILENAME1, STORETABLE
 		  FROM STORE

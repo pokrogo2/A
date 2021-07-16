@@ -6,14 +6,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.koreait.a.dao.FReplyDAO">
 
 	<!-- 댓글 리스트 조회 -->
-	<select id="fReplyList" resultType="com.koreait.a.dto.FReply">
+	<select id="fReplyList" resultType="com.koreait.a.dto.FReplyDTO">
 		SELECT B.RN, B.FNO, B.NO, B.WRITER, B.CONTENT, B.POSTDATE
 		  FROM (SELECT ROWNUM AS RN, A.FNO, A.NO, A.WRITER, A.CONTENT, A.POSTDATE
 		  		  FROM (SELECT FNO, NO, WRITER, CONTENT, POSTDATE
 		  				  FROM FREPLY
-		  				 WHERE NO = #{param1}
+		  				 WHERE NO = #{no}
 		 		 		 ORDER BY FNO DESC) A) B
-	 	 WHERE B.RN BETWEEN #{param2} AND #{param3}
+	 	 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
 	</select>
 	
 	<!-- 댓글 리스트 전체 개수 -->

@@ -70,7 +70,7 @@
 					<!--
 						<tr>
 							<td>사업주명</td>
-							<td><input type="text" value="${owner.name}" id="owener_name" name="owener_name" class="int" readonly><br></td>
+							<td><input type="text" value="${owner.name}" id="owner_name" name="owner_name" class="int" readonly><br></td>
 						<tr>
 					-->
 					 

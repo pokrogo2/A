@@ -3,25 +3,12 @@ package com.koreait.a.dto;
 public class ReviewDTO {
 	private String writer;
 	private long no;
-	private long score;
+	private int score;
 	private String content;
 	private String filename;
-	private long storeno;
-	private String storename;
-	private String storecategori;
-	
-	public String getStorename() {
-		return storename;
-	}
-	public void setStorename(String storename) {
-		this.storename = storename;
-	}
-	public String getStorecategori() {
-		return storecategori;
-	}
-	public void setStorecategori(String storecategori) {
-		this.storecategori = storecategori;
-	}
+	private long storeNo;
+	private String storeName;
+	private String storeCategory;
 	public String getWriter() {
 		return writer;
 	}
@@ -34,10 +21,11 @@ public class ReviewDTO {
 	public void setNo(long no) {
 		this.no = no;
 	}
-	public long getScore() {
+	
+	public int getScore() {
 		return score;
 	}
-	public void setScore(long score) {
+	public void setScore(int score) {
 		this.score = score;
 	}
 	public String getContent() {
@@ -52,12 +40,25 @@ public class ReviewDTO {
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
-	public long getStoreno() {
-		return storeno;
+	public long getStoreNo() {
+		return storeNo;
 	}
-	public void setStoreno(long storeno) {
-		this.storeno = storeno;
+	public void setStoreNo(long storeNo) {
+		this.storeNo = storeNo;
 	}
+	public String getStoreName() {
+		return storeName;
+	}
+	public void setStoreName(String storeName) {
+		this.storeName = storeName;
+	}
+	public String getStoreCategory() {
+		return storeCategory;
+	}
+	public void setStoreCategory(String storeCategory) {
+		this.storeCategory = storeCategory;
+	}
+	
 	
 	
 }

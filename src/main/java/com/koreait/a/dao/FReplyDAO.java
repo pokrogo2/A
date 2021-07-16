@@ -2,7 +2,7 @@ package com.koreait.a.dao;
 
 import java.util.List;
 
-import com.koreait.a.dto.FReply;
+import com.koreait.a.dto.FReplyDTO;
 
 public interface FReplyDAO {
 
@@ -12,9 +12,9 @@ public interface FReplyDAO {
 	 */
 	
 	/*댓글 리스트 결과*/
-	public List<FReply> fReplyList(long no, int beginRecord, int endRecord);
+	public List<FReplyDTO> fReplyList(long no, int beginRecord, int endRecord);
 	public int fReplyTotalCount(long no);
-	public int fReplyInsert(FReply fReply);
+	public int fReplyInsert(FReplyDTO fReply);
 	public int fReplyDelete(long fno);
 	
 }

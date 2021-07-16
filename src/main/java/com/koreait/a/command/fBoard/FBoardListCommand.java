@@ -10,9 +10,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 import com.koreait.a.dao.FBoardDAO;
-import com.koreait.a.dto.FBoard;
+import com.koreait.a.dto.FBoardDTO;
 import com.koreait.a.dto.PagingDTO;
-import com.koreait.a.util.PagingUtil_paramFour;
+import com.koreait.a.utils.PagingUtils;
+
 
 public class FBoardListCommand {
 
@@ -31,8 +32,8 @@ public class FBoardListCommand {
 		int recordPerPage = 10;
 		int pagePerBlock = 5;
 		
-		PagingDTO pagingDTO = PagingUtil_paramFour.getPage(recordPerPage, pagePerBlock, totalRecord, page);
-		List<FBoard> list = fBoardDAO.fBoardList(pagingDTO);
+		PagingDTO pagingDTO = PagingUtils.getPage(recordPerPage, pagePerBlock, totalRecord, page);
+		List<FBoardDTO> list = fBoardDAO.fBoardList(pagingDTO);
 		
 		Map<String, Object> resultMap = new HashMap<>();
 		if (list.size() > 0) {

@@ -3,7 +3,7 @@ package com.koreait.a.dto;
 import java.sql.Date;
 
 
-public class FReply {
+public class FReplyDTO {
 
 	// field
 	private long rn; 
@@ -14,19 +14,6 @@ public class FReply {
 	private Date postdate;
 	
 	
-	// constructor
-	public FReply() {}
-	public FReply(long rn, long fno, long no, String writer, String content, Date postdate) {
-		super();
-		this.rn = rn;
-		this.fno = fno;
-		this.no = no;
-		this.writer = writer;
-		this.content = content;
-		this.postdate = postdate;
-	}
-
-
 
 
 	// Getter and Setter

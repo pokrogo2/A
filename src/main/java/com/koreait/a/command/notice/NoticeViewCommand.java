@@ -10,7 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 import com.koreait.a.dao.NoticeDAO;
-import com.koreait.a.dto.Notice;
+import com.koreait.a.dto.NoticeDTO;
 
 public class NoticeViewCommand implements NoticeCommand {
 
@@ -25,7 +25,7 @@ public class NoticeViewCommand implements NoticeCommand {
 		
 		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
 		// 공지사항 불러오기
-		Notice notice = noticeDAO.noticeView(no);
+		NoticeDTO notice = noticeDAO.noticeView(no);
 		// 조회수 중가
 		if(notice.getWriter() != loginUser) {
 			int count = noticeDAO.hitUp(no);

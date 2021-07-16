@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.a.dao.QnaBoardDAO">
+
+	<insert id="insertBoard" parameterType="com.koreait.a.dto.QnaBoardDTO">
+		INSERT INTO QNABOARD VALUES()
+	</insert>
+
+	<insert id="insertNewBoard" parameterType="com.koreait.mygallery.dto.Board">
+		INSERT INTO BOARD VALUES
+		(QNABOARD_SEQ.NEXTVAL, #{id},#{title}, #{content}, SYSDATE, 0, 0, 0)
+	</insert>
+	
+	
+
+</mapper>

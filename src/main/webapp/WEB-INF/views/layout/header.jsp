@@ -34,7 +34,8 @@
 				<c:if test="${empty loginUser}">
 					<a href="loginPage.do">로그인</a>
 					<span>|</span>
-					<a href="joinPage.do">회원가입</a>
+					<br>
+					<a href="joinPage.do">사장회원가입</a>
 				</c:if>
 				<c:if test="${not empty loginUser}">
                     <a href="logout.do">로그아웃</a>
@@ -60,7 +61,7 @@
 			
 		<div id="sideFix">
 			<div> <a href="noticePage.do">공지사항</a> </div>
-			<div> <a href="#">1:1문의</a> </div>
+			<div> <a href="vsPage.do">1:1문의테스트중</a> </div>
 			<div> <a href="#">검색</a> </div>
 		</div>
 	</header>

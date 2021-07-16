@@ -8,30 +8,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-import com.koreait.a.command.fBoard.FBoardDeleteCommand;
-import com.koreait.a.command.fBoard.FBoardDropListCommand;
-import com.koreait.a.command.fBoard.FBoardInsertCommand;
-import com.koreait.a.command.fBoard.FBoardListCommand;
-import com.koreait.a.command.fBoard.FBoardUpdateCommand;
-import com.koreait.a.command.fBoard.FBoardViewCommand;
-import com.koreait.a.command.fBoard.FBoardSearchListCommand;
-import com.koreait.a.command.fReply.FReplyDeleteCommand;
-import com.koreait.a.command.fReply.FReplyInsertCommand;
-import com.koreait.a.command.fReply.FReplyListCommand;
-import com.koreait.a.command.member.EmailAuthCommand;
-import com.koreait.a.command.member.EmailCheckCommand;
-import com.koreait.a.command.member.FindIdCommand;
-import com.koreait.a.command.member.FindPwCommand;
-import com.koreait.a.command.member.IdCheckCommand;
-import com.koreait.a.command.member.JoinCommand;
-import com.koreait.a.command.member.LoginCommand;
-import com.koreait.a.command.member.LogoutCommand;
-import com.koreait.a.command.notice.NoticeDeleteCommand;
-import com.koreait.a.command.notice.NoticeInsertCommand;
-import com.koreait.a.command.notice.NoticeUpdateCommand;
-import com.koreait.a.command.notice.NoticeViewCommand;
-import com.koreait.a.command.notice.SelectNoticeListCommand;
-import com.koreait.a.command.review.SelectReviewListCommand;
+import com.koreait.a.command.owner.EmailAuthCommand;
+import com.koreait.a.command.owner.EmailCheckCommand;
+import com.koreait.a.command.owner.JoinCommand;
+import com.koreait.a.command.owner.NoCheckCommand;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -71,12 +51,6 @@ public class BeanConfiguration {
 	public SqlSessionTemplate sqlSession() throws Exception {
 		return new SqlSessionTemplate(sqlSessionFactory());
 	}
-	//reviewBean
-	@Bean
-	public SelectReviewListCommand selectReviewListCommand() {
-		return new SelectReviewListCommand();
-	}
-	//memberBean
 	@Bean
 	public JoinCommand joinCommand() {
 		return new JoinCommand();
@@ -86,112 +60,12 @@ public class BeanConfiguration {
 		return new EmailAuthCommand();
 	}
 	@Bean
-	public IdCheckCommand idCheckCommand() {
-		return new IdCheckCommand();
-	}
-	@Bean
-	public LoginCommand loginCommand() {
-		return new LoginCommand();
-	}
-	@Bean
-	public LogoutCommand logoutCommand() {
-		return new LogoutCommand();
-	}
-	@Bean
 	public EmailCheckCommand emailCheckCommand() {
 		return new EmailCheckCommand();
 	}
 	@Bean
-	public FindIdCommand findIdCommand() {
-		return new FindIdCommand();
+	public NoCheckCommand noCheckCommand() {
+		return new NoCheckCommand();
 	}
-	@Bean
-	public FindPwCommand findPwCommand() {
-		return new FindPwCommand();
-	}
-	
-	
-	
-	
-	/* Command - (Notice) Bean생성  */
-	@Bean
-	public SelectNoticeListCommand selectNoticeListCommand() {
-		return new SelectNoticeListCommand();
-	}
-	@Bean
-	public NoticeViewCommand noticeViewCommand() {
-		return new NoticeViewCommand();
-	}
-	@Bean
-	public NoticeUpdateCommand noticeUpdateCommand() {
-		return new NoticeUpdateCommand();
-	}
-	@Bean
-	public NoticeDeleteCommand noticeDeleteCommand() {
-		return new NoticeDeleteCommand();
-	}
-	@Bean
-	public NoticeInsertCommand noticeInsertCommand() {
-		return new NoticeInsertCommand();
-	}
-
-	
-	/* Command - (FBoard) Bean생성  */
-	@Bean
-	public FBoardListCommand fBoardListCommand() {
-		return new FBoardListCommand();
-	}
-	@Bean
-	public FBoardInsertCommand fBoardInsertCommand() {
-		return new FBoardInsertCommand();
-	}
-	@Bean
-	public FBoardViewCommand fBoardViewCommand() {
-		return new FBoardViewCommand();
-	}
-	@Bean
-	public FBoardUpdateCommand fBoardUpdateCommand() {
-		return new FBoardUpdateCommand();
-	}
-	@Bean
-	public FBoardDeleteCommand fBoardDeleteCommand() {
-		return new FBoardDeleteCommand();
-	}
-	@Bean
-	public FBoardSearchListCommand FBoardSearchListCommand() {
-		return new FBoardSearchListCommand();
-	}
-	@Bean
-	public FBoardDropListCommand fBoardDropListCommand() {
-		return new FBoardDropListCommand();
-	}
-	
-	
-	/* Command - (FReply) Bean생성  */
-	@Bean
-	public FReplyListCommand fReplyListCommand() {
-		return new FReplyListCommand();
-	}
-	@Bean
-	public FReplyInsertCommand fReplyInsertCommand() {
-		return new FReplyInsertCommand();
-	}
-	@Bean
-	public FReplyDeleteCommand fReplyDeleteCommand() {
-		return new FReplyDeleteCommand();
-	}
-	//Store Bean생성
-	/* 
-	@Bean
-	public InsertStoreCommand insertStoreCommand() {
-		return new InsertStoreCommand();
-	}
-	
-	@Bean
-	public SelectStoreListCommand selectStoreListCommand() {
-		return new SelectStoreListCommand();
-	}
-	*/
-	
 	
 }

@@ -14,26 +14,19 @@ public class PagingDTO {
 	private int pagePerBlock;
 	private int beginPage;
 	private int endPage;
+	private String loginId;
 	
 	
-	// constructor
-	public PagingDTO() {}
-	public PagingDTO(int page, int totalRecord, int recordPerPage, int beginRecord, int endRecord, int totalPage,
-			int pagePerBlock, int beginPage, int endPage) {
-		super();
-		this.page = page;
-		this.totalRecord = totalRecord;
-		this.recordPerPage = recordPerPage;
-		this.beginRecord = beginRecord;
-		this.endRecord = endRecord;
-		this.totalPage = totalPage;
-		this.pagePerBlock = pagePerBlock;
-		this.beginPage = beginPage;
-		this.endPage = endPage;
+	
+	
+	
+	
+	public String getLoginId() {
+		return loginId;
 	}
-	
-	
-	
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
+	}
 	// Getter and Setter 
 	public int getPage() {
 		return page;

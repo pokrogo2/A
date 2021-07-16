@@ -20,7 +20,7 @@ public class FBoardDeleteCommand implements FBoardCommand {
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		HttpServletResponse response = (HttpServletResponse)map.get("response");
 		
-		long no = Long.parseLong(request.getParameter("no"));
+		int no = Integer.parseInt(request.getParameter("no"));
 		
 		FBoardDAO fBoardDAO = sqlSession.getMapper(FBoardDAO.class);
 		// 자유게시판 삭제

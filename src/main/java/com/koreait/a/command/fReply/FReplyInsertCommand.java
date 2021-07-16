@@ -9,7 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 import com.koreait.a.dao.FReplyDAO;
-import com.koreait.a.dto.FReply;
+import com.koreait.a.dto.FReplyDTO;
 
 public class FReplyInsertCommand {
 
@@ -18,7 +18,7 @@ public class FReplyInsertCommand {
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		
-		FReply fReply = new FReply();
+		FReplyDTO fReply = new FReplyDTO();
 		fReply.setNo(Long.parseLong(request.getParameter("fBoardNo")));
 		fReply.setWriter(request.getParameter("writer"));
 		fReply.setContent(request.getParameter("fReply_content"));

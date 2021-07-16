@@ -15,53 +15,59 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.koreait.a.command.member.EmailAuthCommand;
 import com.koreait.a.command.member.EmailCheckCommand;
-import com.koreait.a.command.member.FindIdCommand;
-import com.koreait.a.command.member.FindPwCommand;
-import com.koreait.a.command.member.IdCheckCommand;
-import com.koreait.a.command.member.JoinCommand;
-import com.koreait.a.command.member.LoginCommand;
-import com.koreait.a.command.member.LogoutCommand;
+import com.koreait.a.command.member.MemberDeleteCommand;
+import com.koreait.a.command.member.MemberFindIdCommand;
+import com.koreait.a.command.member.MemberFindPwCommand;
+import com.koreait.a.command.member.MemberIdCheckCommand;
+import com.koreait.a.command.member.MemberJoinCommand;
+import com.koreait.a.command.member.MemberLoginCommand;
+import com.koreait.a.command.member.MemberLogoutCommand;
 
 @Controller
 public class MemberController {
 	private SqlSession sqlSession;
 	private EmailAuthCommand emailAuthCommand;
-	private JoinCommand joinCommand;
-	private IdCheckCommand idCheckCommand;
-	private LoginCommand loginCommand;
-	private LogoutCommand logoutCommand;
+	private MemberJoinCommand memberJoinCommand;
+	private MemberIdCheckCommand memberIdCheckCommand;
+	private MemberLoginCommand memberLoginCommand;
+	private MemberLogoutCommand memberLogoutCommand;
 	private EmailCheckCommand emailCheckCommand;
-	private FindIdCommand findIdCommand;
-	private FindPwCommand findPwCommand;
+	private MemberFindIdCommand memberFindIdCommand;
+	private MemberFindPwCommand memberFindPwCommand;
+	private MemberDeleteCommand memberDeleteCommand;
 	@Autowired
-	public MemberController(SqlSession sqlSession, EmailAuthCommand emailAuthCommand, 
-			JoinCommand joinCommand,IdCheckCommand idCheckCommand,
-			LoginCommand loginCommand,LogoutCommand logoutCommand,
-			EmailCheckCommand emailCheckCommand,FindIdCommand findIdCommand
-			,FindPwCommand findPwCommand
-			) {
+	public MemberController(SqlSession sqlSession, EmailAuthCommand emailAuthCommand,
+			MemberJoinCommand memberJoinCommand, MemberIdCheckCommand memberIdCheckCommand,
+			MemberLoginCommand memberLoginCommand, MemberLogoutCommand memberLogoutCommand,
+			EmailCheckCommand emailCheckCommand, MemberFindIdCommand memberFindIdCommand,
+			MemberFindPwCommand memberFindPwCommand, MemberDeleteCommand memberDeleteCommand) {
 		super();
 		this.sqlSession = sqlSession;
 		this.emailAuthCommand = emailAuthCommand;
-		this.joinCommand = joinCommand;
-		this.idCheckCommand = idCheckCommand;
-		this.loginCommand = loginCommand;
-		this.logoutCommand = logoutCommand;
+		this.memberJoinCommand = memberJoinCommand;
+		this.memberIdCheckCommand = memberIdCheckCommand;
+		this.memberLoginCommand = memberLoginCommand;
+		this.memberLogoutCommand = memberLogoutCommand;
 		this.emailCheckCommand = emailCheckCommand;
-		this.findIdCommand = findIdCommand;
-		this.findPwCommand = findPwCommand;
+		this.memberFindIdCommand = memberFindIdCommand;
+		this.memberFindPwCommand = memberFindPwCommand;
+		this.memberDeleteCommand = memberDeleteCommand;
 	}
+
+	
 
 	@GetMapping(value="loginPage.do")
 	public String login() {
 		return "member/loginPage";
 	}
+
+
 	@GetMapping(value="idCheck.do",produces="application/json; charset=utf-8")
 	@ResponseBody
 	public Map<String, Integer> idCheck(HttpServletRequest request,
 				Model model) {
 		model.addAttribute("request", request);
-		return idCheckCommand.execute(sqlSession, model);
+		return memberIdCheckCommand.execute(sqlSession, model);
 	}
 
 
@@ -72,7 +78,7 @@ public class MemberController {
 	@PostMapping(value="join.do")
 	public String join(HttpServletRequest request, Model model) {
 		model.addAttribute("request",request);
-		joinCommand.execute(sqlSession, model);
+		memberJoinCommand.execute(sqlSession, model);
 		return "redirect:loginPage.do";
 	}
 	
@@ -89,14 +95,14 @@ public class MemberController {
 	public String login(HttpServletRequest request,
 						Model model) {
 		model.addAttribute("request", request);
-		loginCommand.execute(sqlSession, model);
+		memberLoginCommand.execute(sqlSession, model);
 		return "redirect:loginPage.do";
 	}
 	@GetMapping(value="logout.do")
 	public String logout(HttpSession session,
 						 Model model) {
 		model.addAttribute("session", session);
-		logoutCommand.execute(sqlSession, model);
+		memberLogoutCommand.execute(sqlSession, model);
 		return "redirect:loginPage.do";
 	}
 	@GetMapping(value="findIdPage.do")
@@ -114,7 +120,7 @@ public class MemberController {
 	public String findId(HttpServletRequest request, 
 						 Model model) {
 		model.addAttribute("request", request);
-		findIdCommand.execute(sqlSession, model);
+		memberFindIdCommand.execute(sqlSession, model);
 		return "member/findIdResult";
 	}
 	@GetMapping(value="findPwPage.do")
@@ -125,8 +131,14 @@ public class MemberController {
 	public String findPw(HttpServletRequest request, 
 						 Model model) {
 		model.addAttribute("request", request);
-		findPwCommand.execute(sqlSession, model);
+		memberFindPwCommand.execute(sqlSession, model);
 		return "member/findPwResult";
 	}
-	
+	@GetMapping(value="delete.do")
+	public String leave(HttpSession session,
+						Model model) {
+		model.addAttribute("session", session);
+		memberDeleteCommand.execute(sqlSession, model);
+		return "redirect:/";
+	}
 }

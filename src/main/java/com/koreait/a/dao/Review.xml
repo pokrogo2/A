@@ -9,8 +9,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="selectOne" resultType="com.koreait.a.dto.ReviewDTO">
 	
-		  		 SELECT R.NO ,R.WRITER,R.SCORE,R.CONTENT,R.FILENAME,S.STORENAME,S.STORECATEGORI 
-					FROM REVIEW R , STOREREG S  WHERE R.STORENO =S.STORENO AND R.WRITER=#{param1}
+		  		 SELECT R.NO ,R.WRITER,R.SCORE,R.CONTENT,R.FILENAME,S.STORENAME,S.STORECATEGORY 
+					FROM REVIEW R , STOREREG S  WHERE R.STORENO =S.STORENO AND R.WRITER=#{writer}
 					
 	</select>
 </mapper>

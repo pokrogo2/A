@@ -147,7 +147,7 @@
 			var fno = $(this).parent().parent().find( $('input[name="fno"]') ).val();
 			var writer = $(this).parent().parent().find( $('input[name="writer"]') ).val();
 			/* 
-			if('${loginUser.id}' != writer) {
+			if('${loginUser.memberId}' != writer) {
 				alert('작성자만 삭제할 수 있습니다.');
 				return false;
 			}  
@@ -176,13 +176,15 @@
 		
 		<h1 class="con_title">자유게시판</h1>
 		
-		<!-- 게시글 정보 -->
+		<!-- 게시글 정보 --> 
 		<div class="topBtn">
-			<c:if test="${loginUser.id == fBoard.writer}">
-			</c:if>
-				<input type="button" value="수정" id="updete_btn">
-				<input type="button" value="삭제" id="delete_btn">
-		</div>
+			<c:if test="${loginUser.memberId == fBoard.writer}">
+		</c:if>
+			<input type="button" value="수정" id="updete_btn">
+			<input type="button" value="삭제" id="delete_btn">
+		</div> 
+		
+
 		
 		<div class="fboardView_box clear">
 			<c:if test="${not empty fBoard.contentType}">

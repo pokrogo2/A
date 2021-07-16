@@ -11,16 +11,7 @@ public class FBoardQueryDTO {
 	private int endRecord;
 	
 	
-	// constructor
-	public FBoardQueryDTO() {}
-	public FBoardQueryDTO(String column, String query, String drop, int beginRecord, int endRecord) {
-		super();
-		this.column = column;
-		this.query = query;
-		this.drop = drop;
-		this.beginRecord = beginRecord;
-		this.endRecord = endRecord;
-	}
+
 	
 	// Getter and Setter
 	public String getColumn() {

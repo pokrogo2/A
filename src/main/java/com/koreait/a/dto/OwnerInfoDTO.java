@@ -1,7 +1,7 @@
 package com.koreait.a.dto;
 
 
-public class OwnerIDF {
+public class OwnerInfoDTO {
 
 	private long ownerNo;
 	private String ownerName;

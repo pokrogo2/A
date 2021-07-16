@@ -13,7 +13,7 @@ import com.koreait.a.dao.ReviewDAO;
 import com.koreait.a.dto.MemberDTO;
 import com.koreait.a.dto.ReviewDTO;
 
-public class SelectReviewListCommand implements ReviewCommand {
+public class ReviewListCommand implements ReviewCommand {
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model) {

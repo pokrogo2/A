@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.koreait.a.dao.FBoardDAO;
+import com.koreait.a.dto.FBoardDTO;
 
 public class FBoardUpdateCommand implements FBoardCommand {
 
@@ -31,7 +32,12 @@ public class FBoardUpdateCommand implements FBoardCommand {
 		contentType =  contentType == null ? "" : contentType;
 		String filename0 = multipartRequest.getParameter("filename0");	
 		String fileDelete = multipartRequest.getParameter("fileDelete");	
-		
+		FBoardDTO fBoardDTO = new  FBoardDTO();
+		fBoardDTO.setNo(no);
+		fBoardDTO.setWriter(writer);
+		fBoardDTO.setTitle(title);
+		fBoardDTO.setContent(content);
+		fBoardDTO.setContentType(contentType);
 		FBoardDAO fBoardDAO = sqlSession.getMapper(FBoardDAO.class);
 		int result = 0; //결과 확인
 		
@@ -72,7 +78,8 @@ public class FBoardUpdateCommand implements FBoardCommand {
 				e.printStackTrace();
 			} 
 			// DB에 저장
-			result = fBoardDAO.fBoardUpdate(contentType, title, content, uploadFilename, no);
+			fBoardDTO.setFilename1(uploadFilename);
+			result = fBoardDAO.fBoardUpdate(fBoardDTO);
 			
 		} else if (fileDelete.equals("true")) {
 			// 현재 저장되어 있는 파일을 삭제하고 저장.
@@ -84,12 +91,15 @@ public class FBoardUpdateCommand implements FBoardCommand {
 				}
 			}
 			// DB에 저장
-			result = fBoardDAO.fBoardUpdate(contentType, title, content, "", no);
+			fBoardDTO.setFilename1("");
+			result = fBoardDAO.fBoardUpdate(fBoardDTO);
 		
 		} else {
 			// DB에 저장
 			// 첨부파일이 없다.
-			result = fBoardDAO.fBoardUpdate(contentType, title, content, filename0, no);
+			fBoardDTO.setFilename1(filename0);
+			result = fBoardDAO.fBoardUpdate(fBoardDTO);
+			
 		}
 		
 		

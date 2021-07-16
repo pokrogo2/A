@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 
 import com.koreait.a.dao.MemberDAO;
 
-public class IdCheckCommand {
+public class MemberIdCheckCommand {
 
 	public Map<String,Integer> execute(SqlSession sqlSession, Model model) {
 		// TODO Auto-generated method stub

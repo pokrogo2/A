@@ -3,7 +3,7 @@ package com.koreait.a.dto;
 import java.sql.Date;
 
 
-public class Notice {
+public class NoticeDTO {
 
 	// field
 	private long rn;
@@ -13,24 +13,8 @@ public class Notice {
 	private String content;
 	private Date postdate;
 	private Date lastdate;
-	private long hit;
+	private int hit;
 	
-	
-	
-	// constructor
-	public Notice() {}
-	public Notice(long rn, long no, String writer, String title, String content, Date postdate, Date lastdate,
-			long hit) {
-		super();
-		this.rn = rn;
-		this.no = no;
-		this.writer = writer;
-		this.title = title;
-		this.content = content;
-		this.postdate = postdate;
-		this.lastdate = lastdate;
-		this.hit = hit;
-	}
 	
 	
 	
@@ -77,13 +61,13 @@ public class Notice {
 	public void setLastdate(Date lastdate) {
 		this.lastdate = lastdate;
 	}
-	public long getHit() {
+	public int getHit() {
 		return hit;
 	}
-	public void setHit(long hit) {
+	public void setHit(int hit) {
 		this.hit = hit;
 	}
-	
+
 	
 	
 }

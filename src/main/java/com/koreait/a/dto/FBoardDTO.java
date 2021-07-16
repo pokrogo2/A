@@ -4,7 +4,7 @@ import java.sql.Date;
 
 
 
-public class FBoard {
+public class FBoardDTO {
 
 	// field
 	private long rn;
@@ -16,8 +16,8 @@ public class FBoard {
 	private String filename1;
 	private Date postdate;
 	private Date lastdate;
-	private long hit;
-	private long status; // 정상:0, 삭제:-1
+	private int hit;
+	private int status; // 정상:0, 삭제:-1
 	
 
 	// Getter and Setter
@@ -75,18 +75,19 @@ public class FBoard {
 	public void setLastdate(Date lastdate) {
 		this.lastdate = lastdate;
 	}
-	public long getHit() {
+	public int getHit() {
 		return hit;
 	}
-	public void setHit(long hit) {
+	public void setHit(int hit) {
 		this.hit = hit;
 	}
-	public long getStatus() {
+	public int getStatus() {
 		return status;
 	}
-	public void setStatus(long status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
+	
 	
 	
 	

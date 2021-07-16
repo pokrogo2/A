@@ -8,15 +8,9 @@ public class MemberDTO {
 	private String memberAddr;
 	private String memberTel;
 	private String memberEmail;
-	private long memberAge;
-	private long status;
+	private int memberAge;
+	private int status;
 	
-	public long getStatus() {
-		return status;
-	}
-	public void setStatus(long status) {
-		this.status = status;
-	}
 	public long getMemberNo() {
 		return memberNo;
 	}
@@ -59,12 +53,19 @@ public class MemberDTO {
 	public void setMemberEmail(String memberEmail) {
 		this.memberEmail = memberEmail;
 	}
-	public long getMemberAge() {
+	public int getMemberAge() {
 		return memberAge;
 	}
-	public void setMemberAge(long memberAge) {
+	public void setMemberAge(int memberAge) {
 		this.memberAge = memberAge;
 	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 	
 	
 	

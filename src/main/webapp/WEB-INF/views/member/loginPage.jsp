@@ -24,7 +24,7 @@
 		function fn_leave(){
 			$('#leave_link').click(function(){
 				if (confirm('탈퇴할까요?')){
-					location.href = 'leave.do';
+					location.href = 'delete.do';
 				}
 			})
 		}
@@ -52,7 +52,7 @@
 	
 		<a href="logout.do">로그아웃</a><br>
 		<a id="leave_link">회원탈퇴</a><br>
-		<a href="myPage.do">마이페이지</a><br>
+		<a href="memberMyPage.do">마이페이지</a><br>
 	</c:if>
 	<c:if test="${loginUser.status==0 }">
 		회원번호 : ${loginUser.memberNo}<br>

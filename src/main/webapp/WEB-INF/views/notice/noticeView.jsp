@@ -44,7 +44,7 @@
 			<div class="sub"> 조회수 <span class="line">|</span> <span class="hit">${notice.hit}</span></div>
 			<div>
 				<input type="button" value="목록" onclick="location.href='noticePage.do'">
-				<c:if test="${loginUser.id == 'ADMIN'}">
+				<c:if test="${loginUser.memberId == 'ADMIN'}">
 					<input type="button" value="수정" id="updete_btn">
 					<input type="button" value="삭제" id="delete_btn">
 				</c:if>

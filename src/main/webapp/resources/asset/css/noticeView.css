@@ -1,32 +1,42 @@
 @charset "UTF-8";
 
+/* View에서 h1수정 */
 .con_title {border:none; padding-bottom:30px;}
-input {
+
+/* View의 모든 버튼에 적용 */
+input[type="button"] {
 	cursor:pointer;
 	padding:0 40px;
 	margin:50px 0 20px 0;
 }
 input[value="목록"], input[value="수정"]:hover, input[value="삭제"]:hover {
-	background-color:black; 
+	background-color:#6A1310; 
 	color:white;
 }
 input[value="수정"] {margin:0 10px;}
 
+
+/* 공자사항의 내용 (박스:div) */
 .noticeView_box {width:100%;}
 .noticeView_box div {
 	text-align:center;
 	width:100%;
 }
-h2 {font-size:30px;}
+/* 제목 */
+h2 {font-size:35px; font-weight:500;}
+/* (1)제목 영역 */
 .noticeView_box div:nth-child(1) {
 	padding:30px 0;
 	border-top:2px dotted #ddd;
 	border-bottom:2px dotted #ddd;
 }
-.noticeView_box div:nth-child(2) {padding:50px 0; font-size:18px;}
+/* (2)내용 영역 */
+.noticeView_box div:nth-child(2) {padding:50px 0; font-size:17px;}
+/* (3)내용 in 작성자,작성일 영역 */
 .noticeView_box div:nth-child(3) {color:#666; padding-bottom:5px; font-size:13px;}
+/* (4)내용 in 조회수 영역 */
 .noticeView_box div:nth-child(4) {border-bottom:2px dotted #ddd; padding-bottom:10px;}
-
+/* (3,4)영역 */
 .noticeView_box  .sub {
 	font-size:13px;
 	text-align:right;

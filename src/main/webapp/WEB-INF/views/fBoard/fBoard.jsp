@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
@@ -9,7 +10,8 @@
 	<jsp:param value="FreeBoard" name="title"/>
 </jsp:include>
 
-<link rel="stylesheet" href="resources/asset/css/notice.css">
+<link rel="stylesheet" href="resources/asset/css/fBoard.css">
+<link rel="stylesheet" href="resources/asset/css/boardTable.css">
 <script>
 	$(document).ready(function(){
 		fn_fBoardList();
@@ -199,13 +201,14 @@
 </script>
 	
 	<!-- Section -->
-	<div class="container">
+	<div class="container" >
 		
 		<h1 class="con_title">자유게시판</h1>
 		
-		<input type="button" value="글 작성" onclick="location.href='fBoardInsertPage.do'">
 		
-		<div id="search"> 
+		<input type="button" value="글 작성" onclick="location.href='fBoardInsertPage.do'" >		
+
+		<div id="search"  class="topSelect">
 			<form id="f">
 				<select name="column" id="column">
 					<option value="WRITER">작성자</option>
@@ -218,7 +221,7 @@
 				<input type="button" value="검색" id="search_btn">
 			</form>
 		</div>
-		<div id="drop">
+		<div id="drop" class="topSelect">
 			<select name="drop" id="dropChoice">
 				<option value="new">최근등록 순</option>
 				<option value="hitHigh">조회 순</option>
@@ -227,8 +230,9 @@
 			</select>
 		</div>
 		
-		<div class="fBoard_box clear">
-			<span id="searchTotal"></span>
+		<span id="searchTotal" class="clear"></span>
+		
+		<div class="table_box clear">
 			<table>
 				<thead>
 					<tr>
@@ -242,7 +246,7 @@
 				<tbody id="fBoard_list"></tbody>
 				<tfoot>
 					<tr>
-						<td colspan="5" id="fBoard_paging"></td>
+						<td colspan="5" id="fBoard_paging" class="paging"></td>
 					</tr>
 				</tfoot>
 			</table>

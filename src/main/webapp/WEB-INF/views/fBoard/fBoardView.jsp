@@ -9,12 +9,12 @@
 	<jsp:param value="NoticeView" name="title"/>
 </jsp:include>
 
+<link rel="stylesheet" href="resources/asset/css/boardTable.css">
 <link rel="stylesheet" href="resources/asset/css/fBoardView.css">
 <script>
 	$(document).ready(function(){
 		fn_update();
 		fn_delete();
-		fn_showImg();
 		fn_fReplyList();
 		fn_fReply_paging();
 		fn_fReply_insert();
@@ -32,11 +32,6 @@
 				location.href='fBoardDelete.do?no=${fBoard.no}';
 			}	
 		});
-	}
-	function fn_showImg() {
-		$('#imgClick').click(function(){
-			$('#imgBox').romveClass('none');
-		})
 	}
 	// -------------
 	// 댓글 함수
@@ -59,6 +54,7 @@
 		if(resultMap.status == 200) {
 			$.each(list, function(i, fReply){
 				$('<tr>')
+				.append( $('<td>').text(fReply.rn) )
 				.append( $('<td>').text(fReply.writer) )
 				.append( $('<td>').html(fReply.content + '<span>' + fReply.postdate + '</span>') )
 				.append( $('<td>').html('<input type="button" value="삭제" id="deleteReply_btn">') )
@@ -68,7 +64,7 @@
 			});
 		} else {
 			$('<tr>')
-			.append( $('<td colspan="3">').text('댓글을 입력해보세요.') )
+			.append( $('<td colspan="4" class="noneReply">').text('댓글을 입력해보세요.') )
 			.appendTo('#fReplyList');
 		}
 		// paging
@@ -140,6 +136,7 @@
 				success: function(resultMap) {
 					alert(resultMap.message);
 					fn_fReplyList();
+					$('#fReply_content').val('');
 				}
 			});
 		});
@@ -180,24 +177,25 @@
 		<h1 class="con_title">자유게시판</h1>
 		
 		<!-- 게시글 정보 -->
-		<c:if test="${loginUser.id == fBoard.writer}">
-		</c:if>
-			<input type="button" value="수정" id="updete_btn">
-			<input type="button" value="삭제" id="delete_btn">
+		<div class="topBtn">
+			<c:if test="${loginUser.id == fBoard.writer}">
+			</c:if>
+				<input type="button" value="수정" id="updete_btn">
+				<input type="button" value="삭제" id="delete_btn">
+		</div>
 		
 		<div class="fboardView_box clear">
 			<c:if test="${not empty fBoard.contentType}">
-				<div> ${fBoard.contentType} </div>
+				<div class="contentType"> ${fBoard.contentType} </div>
 			</c:if>
-			<div> <h3>${fBoard.title}</h3> </div>
-			<div> ${fBoard.content} </div>
+			<div> <h2>${fBoard.title}</h2> </div>
+			<div class="content"> ${fBoard.content} </div>
 			<c:if test="${not empty fBoard.filename1}">
-				<span id="imgClick">이미지 보기</span>
-				<div id="imgBox none">
+				<div id="imgBox">
 					<img alt="fBoardImage" src="resources/archive/${fBoard.filename1}">
 				</div>
 			</c:if>
-			<div class="sub"> ${fBoard.writer} <span class="line">|</span> ${fBoard.lastdate}</div>
+			<div class="sub sub1"> ${fBoard.writer} <span class="line">|</span> ${fBoard.lastdate}</div>
 			<div class="sub"> 조회수 <span class="line">|</span> <span class="hit">${fBoard.hit}</span></div>
 		</div>
 		
@@ -205,24 +203,22 @@
 		<div class="fReply_box clear">
 			<c:if test="${not empty loginUser}">
 			</c:if>
-			<div>
+			<div id="fReply_form">
 				<form id="f">
-					<%-- 
-					<span>${loginUser.id}유저</span>
-					<span>|</span> 
-					--%>
-					<input type="text" name="writer" id="writer" > <!-- loginUser로만 사용 가능, hidden으로 숨길 예정 -->
+					<span>${loginUser.id}ADMIN</span>
+					<span>|</span>  
 					<input type="text" name="fReply_content" id="fReply_content" placeholder="댓글 입력">
+					<input type="hidden" name="writer" id="writer" value="${loginUser.writer}" >
 					<input type="hidden" name="fBoardNo" value="${fBoard.no}">
 					<input type="button" value="작성" id="fReply_btn"> 
 				</form>
 			</div>
-			<div id="fReply_table">
+			<div id="fReply_table" class="clear">
 					<table>
 						<tbody id="fReplyList">
 						</tbody>
 					</table>
-					<span id="fReply_paging"></span>
+					<span id="fReply_paging" class="paging"></span>
 				</div>
 		</div>
 		

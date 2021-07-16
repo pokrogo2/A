@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+
+input[value="글 작성"] {
+	margin-bottom:50px;
+}
+
+
+/* 자유 게시판의 칼럼마다의 너비 지정 */
+td:nth-child(1) {width:7%;}
+td:nth-child(2) {width:13%;}
+td:nth-child(3) {width:55%;}
+td:nth-child(4) {width:6%;}
+
+
+/* 자유 게시판의 tbody 영역 */
+#fBoard_list {}
+
+
+
+
+

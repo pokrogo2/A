@@ -9,7 +9,8 @@
 	<jsp:param value="NoticeUpdate" name="title"/>
 </jsp:include>
 
-<link rel="stylesheet" href="resources/asset/css/noticeUpdate.css">
+<link rel="stylesheet" href="resources/asset/css/writeForm.css">
+<link rel="stylesheet" href="resources/asset/css/noticeForm.css">
 <script>
 	$(document).ready(function(){
 		fn_insert();
@@ -52,7 +53,7 @@
 		
 		<h1 class="con_title">공지사항</h1>
 		
-		<div class="noticeInsert_box">
+		<div class="write_box">
 			
 			<form id="f" method="post" action="noticeInsert.do">
 				<div class="btn">
@@ -61,9 +62,10 @@
 				</div>
 				<div class="clear con">
 					<label for="writer">작성자</label> <br>
-					<input type="text" name="writer" id="writer" value="${writer}">
+					<input type="text" name="writer" id="writer" value="${loginUser.id}">
 					<label for="title">제목</label> <br>
 					<input type="text" name="title" id="title" placeholder="제목">
+					<label for="content">내용</label> <br>
 					<textarea rows="30" cols="50" name="content" id="content"></textarea>
 				</div>
 				

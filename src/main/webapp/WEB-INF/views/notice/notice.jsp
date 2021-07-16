@@ -9,6 +9,7 @@
 	<jsp:param value="Notice" name="title"/>
 </jsp:include>
 
+<link rel="stylesheet" href="resources/asset/css/boardTable.css">
 <link rel="stylesheet" href="resources/asset/css/notice.css">
 <script>
 	$(document).ready(function(){
@@ -119,7 +120,7 @@
 		</c:if>
 			<input type="button" value="글 작성" id="insert_btn" onclick="location.href='noticeInsertPage.do?writer=${loginUser.id}'">
 		
-		<div class="notice_box clear">
+		<div class="table_box clear">
 			<table>
 				<thead>
 					<tr>
@@ -131,7 +132,7 @@
 				<tbody id="notice_list"></tbody>
 				<tfoot>
 					<tr>
-						<td colspan="3" id="notice_paging"></td>
+						<td colspan="3" id="notice_paging" class="paging"></td>
 					</tr>
 				</tfoot>
 			</table>

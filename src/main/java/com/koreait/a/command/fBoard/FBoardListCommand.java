@@ -32,6 +32,7 @@ public class FBoardListCommand {
 		int pagePerBlock = 5;
 		
 		PagingDTO pagingDTO = PagingUtil_paramFour.getPage(recordPerPage, pagePerBlock, totalRecord, page);
+		
 		List<FBoard> list = fBoardDAO.fBoardList(pagingDTO);
 		
 		Map<String, Object> resultMap = new HashMap<>();

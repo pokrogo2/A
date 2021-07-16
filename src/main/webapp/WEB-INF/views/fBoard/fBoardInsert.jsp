@@ -9,11 +9,14 @@
 	<jsp:param value="NoticeUpdate" name="title"/>
 </jsp:include>
 
-<link rel="stylesheet" href="resources/asset/css/noticeUpdate.css">
+<link rel="stylesheet" href="resources/asset/css/writeForm.css">
+<link rel="stylesheet" href="resources/asset/css/fBoardForm.css">
+
 <script>
 	$(document).ready(function(){
 		fn_insert();
 		fn_init();
+		fn_onOff();
 	}); // 페이지 로드 이벤트 (종료)
 	
 	function fn_insert() {
@@ -43,7 +46,18 @@
 			$('#file').val('');
 			$('#event').prop('checked',true);
 		});
-	}
+	}//
+	
+	function fn_onOff() {
+		$('input[name="contentType"]').click(function(){
+			$(this).parent().find($('label')).removeClass('click');
+			$(this).next().addClass('click');
+		});
+		$('input[name="fileDelete"]').click(function(){
+			$(this).parent().find($('label')).removeClass('click');
+			$(this).next().addClass('click');
+		});
+	}//
 	
 	
 	
@@ -54,7 +68,7 @@
 		
 		<h1 class="con_title">자유게시판</h1>
 		
-		<div class="noticeInsert_box">
+		<div class="write_box">
 			
 			<form id="f" method="post" action="fBoardInsert.do" enctype="multipart/form-data">
 				<div class="btn">
@@ -63,20 +77,22 @@
 				</div>
 				<div class="clear con">
 					
-					<%-- 
+					<!-- 사장님에게만 보이는 버튼 (무조건 눌려있어야 한다.) -->
 					<c:if test="${not empty loginUser.ownerno}">
-					</c:if> 
-					--%>
-						<input type="radio" name="contentType" value="이벤트" id="event">
-						<label for="event">이벤트</label>
-						<input type="radio" name="contentType" value="홍보글" id="promotion">
-						<label for="promotion">홍보글</label>
+						<div id="radio" class="ownerChoiceRadio">
+							<input type="radio" name="contentType" value="홍보글" id="promotion">
+							<label for="promotion">홍보글</label>
+							<input type="radio" name="contentType" value="이벤트" id="event" checked>
+							<label for="event" class="click">이벤트</label>
+						</div>
+					</c:if>
 					<br>
 						
 					<label for="writer">작성자</label> <br> <!-- readonly -->
 					<input type="text" name="writer" id="writer" value="${loginUser.id}">
 					<label for="title">제목</label> <br>
 					<input type="text" name="title" id="title" placeholder="제목">
+					<label for="content">내용</label> <br>
 					<textarea rows="30" cols="50" name="content" id="content" placeholder="내용 입력"></textarea>
 					<!-- 단일 이미지 추가 -->
 					<input type="file" name="file" id="file"> 

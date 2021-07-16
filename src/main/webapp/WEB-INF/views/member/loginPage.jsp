@@ -37,9 +37,13 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
+	
+	<link rel="stylesheet" href="resources/asset/css/writeForm.css">
+	<link rel="stylesheet" href="resources/asset/css/joinPage.css">
+	
 	<section>
 	<div class="container">
-	<h1>로그인</h1>
+	<h1 class="con_title">로그인</h1>
 	
 	<c:if test="${loginUser != null and loginUser.status ==1}">
 		로그인 성공
@@ -70,15 +74,22 @@
 	<c:if test="${loginUser == null}">
 		<form id="f" action="login.do" method="post">
 			아이디<br>
-			<input type="text" name="id" id="id"><br><br>
+			<input type="text" name="id" id="id" placeholder="ID">
 			비밀번호<br>
-			<input type="password" name="pw" id="pw"><br><br>
+			<input type="password" name="pw" id="pw" placeholder="PassWord">
 			<button>로그인</button>
 		</form>
-		<br>
-		<a href="joinPage.do">회원가입</a>&nbsp;&nbsp;&nbsp;
+		
+		<div class="subLink">
+			<a href="joinPage.do">회원가입</a>
+			<span>|</span>
+			<a href="findIdPage.do">아이디찾기</a>
+			<span>|</span>
+			<a href="findPwPage.do">비밀번호찾기</a>
+		</div>
+<!-- 		<a href="joinPage.do">회원가입</a>&nbsp;&nbsp;&nbsp;
 		<a href="findIdPage.do">아이디찾기</a>&nbsp;&nbsp;&nbsp;
-		<a href="findPwPage.do">비밀번호찾기</a>
+		<a href="findPwPage.do">비밀번호찾기</a> -->
 	</c:if>
 	<a href="index.do">메인</a>
 	</div>		

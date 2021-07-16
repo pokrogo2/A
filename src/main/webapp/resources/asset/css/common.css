@@ -1,10 +1,14 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
 
 /*  
 		point-color : ( red : #9B1E24 )
 		sub-color : ( basicBrown : #E3C8C1 )
-		sub-color : ( lightBasic : #FBF1EF )
 		sub_color : (darkRed : #6A1310 )
+		sub_color : (deepDarkRed : #1E0408 )
+		sub-color : ( lightBeige : #FBF1EF )
+		sub-color : ( lightlightBeige : #FFFAF8 )
 */
 
 
@@ -19,11 +23,13 @@
 	list-style:none;
 	font-size:16px;
 	color:black;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight:300;
 }
 
 
 /* 공통 CSS */
-.container {width:1000px; padding:0 20px;}
+.container {width:1000px; padding:0 20px; position:relative;}
 .clear{clear:both;}
 .upDownBorder {border-top:1px solid lightgray; border-bottom:1px solid lightgray;}
 .none {display:none;}
@@ -31,13 +37,13 @@
 .disable {color:#888;}
 .now_page {color:#9B1E24; font-weight:600;}
 .grade {color:#aaa;}
-.star {color:orange;}
+div .star {color:orange;}
 .gray {color:#aaa;}
 .left {float:left;}
 .flex {display:flex;}
 .con_title {
 	text-align:center;
-	font-size:40px;
+	font-size:50px;
 	font-weight:800;
 	padding: 50px 0 100px 0;
 	border-bottom: 1px solid #ddd;
@@ -46,8 +52,9 @@
 header, section, footer {width:100%;}
 h1 {font-size:25px;}
 input, button, select, textarea {border:1px solid lightgray; height:50px; background-color:white;}
-input:focus, section:focus {border:1px solid black;}
-
+input[type="text"], input[type="password"] {border:none; border-bottom:2px solid #ddd;}
+section:focus {border:1px solid #1E0408;}
+input[type="button"], button {border-radius:20px;}
 
 
 
@@ -64,9 +71,9 @@ header {margin:50px 0;}
 .category a {display:inline-block; margin:0 45px; padding:30px 0;}
 .category a:hover {color:#9B1E24; font-weight:600; border-bottom:3px outset #9B1E24; border-radius:6px; padding-bottom:27px; }
 .category span {padding:0 15px;}
-#sideFix {position:fixed; right:0; top:48%;}
-#sideFix div {width:60px; height:60px; background-color:#FBF1EF;}
-#sideFix a {}
+#sideFix {position:fixed; right:0; top:48%; z-index:1;}
+#sideFix div {width:60px; height:60px; background-color:#1E0408; color:white;}
+#sideFix a {color:white;}
 
 
 /* Footer*/

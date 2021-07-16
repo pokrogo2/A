@@ -16,7 +16,7 @@ import com.koreait.a.command.member.MemberLogoutCommand;
 public class MemberConfig {
 	//memberBean
 			@Bean
-			public MemberJoinCommand joinCommand() {
+			public MemberJoinCommand memberJoinCommand() {
 				return new MemberJoinCommand();
 			}
 			@Bean

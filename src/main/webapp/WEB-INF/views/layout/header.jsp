@@ -34,7 +34,10 @@
 				<c:if test="${empty loginUser}">
 					<a href="loginPage.do">로그인</a>
 					<span>|</span>
-					<a href="joinPage.do">회원가입</a>
+					<a href="joinPage.do">회원가입</a><br><br>
+					<a href="loginPage.do">로그인</a>
+					<span>|</span>
+					<a href="ownerJoinPage.do">회원가입</a>
 				</c:if>
 				<c:if test="${not empty loginUser}">
                     <a href="logout.do">로그아웃</a>

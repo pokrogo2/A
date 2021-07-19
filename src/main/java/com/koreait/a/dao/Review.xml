@@ -13,4 +13,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					FROM REVIEW R , STOREREG S  WHERE R.STORENO =S.STORENO AND R.WRITER=#{writer}
 					
 	</select>
+	<insert id="insertReview" >
+		INSERT INTO REVIEW VALUES(#{writer},REVIEW_SEQ.NEXTVAL,#{score},#{content},#{filename},#{storeNo})
+	
+	</insert>
+	<delete id="deleteReview">
+		DELETE FROM REVIEW WHERE NO=#{no} 
+	
+	</delete>
+	<select id ="updateSelect" resultType="com.koreait.a.dto.ReviewDTO">
+		SELECT R.NO ,R.WRITER,R.SCORE,R.CONTENT,R.FILENAME,S.STORENAME,S.STORECATEGORY 
+					FROM REVIEW R , STOREREG S  WHERE R.STORENO =S.STORENO AND R.NO=#{no}
+	
+	
+	</select>
+	<update id="updateReview">
+		UPDATE REVIEW
+		SET WRITER=#{writer},
+		SCORE = #{score},
+		CONTENT=#{content},
+		FILENAME=#{filename}
+	</update>
 </mapper>

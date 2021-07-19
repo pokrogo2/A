@@ -11,12 +11,6 @@
 
 <link rel="stylesheet" href="resources/asset/css/myPage.css">
 <script>
-	$(document).ready(function(){
-		
-		
-		
-	}); // 페이지 로드 이벤트 (종료)
-	
 	
 </script>
 	
@@ -56,6 +50,10 @@
 				</div>
 				
 				<div id="reservation_history_review" class="">
+				
+				<!-- 예약 내역  -->
+				
+				
 					<h2>예약 내역</h2>
 					<div id="history_list">
 						<div class="con">
@@ -75,62 +73,15 @@
 						</div>
 					</div>
 					<div id="reservation_history_paging"></div>
-					<div id="insert_review">
-						<div id="grade">
-							<p class="star">★</p>
-							<p class="star">★</p>
-							<p class="star">★</p>
-							<p class="star">★</p>
-							<p class="grey">★</p>
-							<span class="grey">(평점 선택)</span>
-						</div>
-						<form id="f" action="#" method="post" enctype="multipart/form-data" class="clear" >
-							<select name="review_store">
-								<option value="">== 예약한 음식점 ==</option>
-								<option value="한솥">한솥</option>
-								<option value="이삭토스트">이삭토스트</option>
-								<option value="홍콩반점">홍콩반점</option>
-							</select>
-							<input type="text" name="review" id="review" placeholder="리뷰를 작성하세요">
-							<input type="file" name="review_img" multiple>
-							<input type="button" value="리뷰 작성" id="review_btn">
-						</form>
-					</div>
-				</div>
-				
+					<!--  리뷰 작성란 -->
+				<%@ include file="../review/reviewInsert.jsp" %>
 				<div id="review_history" class="">
 					<h2>내가 쓴 리뷰</h2>
-					<%@ include file="../review/reviewPage.jsp" %>
-					<div class="review">
-						<h3>1</h3>
-						<div id="box1" class="box">
-							<h3>음식점1<span>신촌지점</span></h3>
-							<a href="#"><img alt="store1" src="resources/archive/03.jpg" /></a>
-						</div>
-						<div id="box2"  class="box">
-							<div id="review_grade">
-								<p class="star">★</p>
-								<p class="star">★</p>
-								<p class="star">★</p>
-								<p class="star">★</p>
-								<p class="grey">★</p>
-								<span class="grey">(평점)</span>
-							</div>
-							<p id="review_text">리뷰내용</p>
-							<div id="review_img">
-									<img alt="review_img" src="resources/archive/03.jpg">
-									<img alt="review_img" src="resources/archive/03.jpg">
-									<img alt="review_img" src="resources/archive/03.jpg">
-								<c:if test="${not empty reivew.image}">
-								</c:if>
-							</div>
-						</div>
-						<div id="box3" class="box">
-							<input type="button" value="리뷰 수정" id="update_review_btn">
-							<br>
-							<input type="button" value="리뷰 삭제" id="delete_review_btn">
-						</div>
-					</div> <!-- review -->
+					<c:if test="${empty list}">
+		<h3>작성된리뷰가 없습니다.</h3>
+		
+	</c:if>
+			<%@ include file="../review/reviewPage.jsp" %>
 					<div id="review_padding"></div>
 				</div>
 				
@@ -172,6 +123,7 @@
 				</div>
 				
 			</div> <!-- right -->
+		</div>
 		</div>
 		
 		

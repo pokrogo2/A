@@ -63,6 +63,7 @@ input[type="button"], button {border-radius:20px;}
 header {margin:50px 0;}
 #topNav {width:1000px; text-align:center; position:relative; margin-bottom:50px;}
 .logo {font-size:30px; font-weight:700;}
+.logo img {width:65px;}
 .sub_nav {text-align:right; position:absolute; right:0; top:12px;}
 .sub_nav span {margin:0 20px; font-size:13px; color:#999;}
 .sub_nav a {font-weigth:500;}
@@ -89,19 +90,19 @@ header {margin:50px 0;}
 
 
 /* Footer*/
-footer {padding: 30px 20px; background-color:black; font-size:14px; margin-top:150px;}
+footer {padding: 30px 20px; background-color:#1E0408; font-size:14px; margin-top:150px;}
 #mainFooter {width:1000px; margin: 0 auto;}
 footer div {margin: 20px 0;}
-footer a {color:white;}
-footer p {color:white; padding-bottom:5px;}
+footer a {color:#FFFAF8;}
+footer p {color:#FBF1EF; padding-bottom:5px;}
 footer .f_span {float:right; font-weight:600;}
-footer .f_span:hover {color:white; cursor:pointer;}
+footer .f_span:hover {color:#FFFAF8; cursor:pointer;}
 footer span:nth-child(2) span {padding: 0 10px 0 13px;}
 footer p, footer span {color:#888; font-size:12px;}
 footer div:nth-child(1) {margin-bottom:40px;}
 footer div:nth-child(1) a:nth-child(1) {font-weight:700;}
 footer div:nth-child(1) a:nth-child(2) {font-weight:800;}
-footer div:nth-child(2) p:nth-child(1) {color:white;}
+footer div:nth-child(2) p:nth-child(1) {color:#FFFAF8;}
 footer div:nth-child(3) a {font-weight:600;}
 footer div:nth-child(4) span {padding: 0 5px;}
 		

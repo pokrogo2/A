@@ -24,7 +24,7 @@
 					<span class="f_span">이용약관 <span>|</span>개인정보 처리방침</span>
 				</div>
 				<div>
-					<p>프로젝트명:A+<span>|</span>조장:송재영<span>|</span>조원:김수연,김현성,이유나 주제:음식점실시간좌석조회및예약시스템</p>
+					<p>프로젝트명:A+<span>|</span>조장:송재영<span>|</span>조원:김수연,김현성,이유나 <span>|</span>주제:음식점실시간좌석조회및예약시스템</p>
 					<p>조원이메일: 송재영(pokrogo@gmail.com)<span>|</span>김수연(kimsuyeon7598@gmail.com)<span>|</span>김현성(khskhs4215@naver.com)<span>|</span>이유나(pinkspringyn@gmail.com)</p>
 					<p>프로젝트 구현 : SpringFrame</p>
 					<p>감사합니다.</p>

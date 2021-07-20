@@ -29,7 +29,7 @@
 
 	<header>
 		<div id="topNav">
-			<a href="index.do" class="logo">LOGO</a>
+			<a href="index.do" class="logo"><img alt="logoA" src="resources/asset/img/logoAA.png"> </a>
 			<span class="sub_nav">
 				<c:if test="${empty loginUser}">
 					<a href="loginPage.do">로그인</a>

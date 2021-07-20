@@ -48,7 +48,7 @@
 		
 		<div class="flex">
 			<div id="left" class="left myPage_box">
-				<a href="#">예약 현황</a>
+				<a href="#" class="click">예약 현황</a>
 				<a href="#reservation_history_review">예약 내역 및 리뷰</a>
 				<a href="#review_history">내가 쓴 리뷰</a>
 				<a href="#question_history">문의 내역</a>

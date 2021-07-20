@@ -14,12 +14,23 @@
 <link rel="stylesheet" href="resources/asset/css/boardTable.css">
 <script>
 	$(document).ready(function(){
+		fn_fBoardNav();
 		fn_fBoardList();
 		fn_paging();
 		fn_search();
 		fn_autoDrop();
 	}); // 페이지 로드 이벤트 (종료)
 	
+	
+	
+	/* 함수 */
+	
+	// 자유게시판 체크 확인 (red)
+	function fn_fBoardNav() {
+		$('#fBoardNav').addClass('navClick');
+	}
+	
+	// 자유게시판 리스트 호출
 	var page = 1;
 	function fn_fBoardList() {
 		
@@ -37,6 +48,7 @@
 			}
 		});
 	} //
+	// 자유 게시판 출력 + 페이징 출력
 	var list = null;
 	function fn_fBoard_append(resultMap){
 		/* ---------------------------------------------------- */
@@ -118,8 +130,8 @@
 			.text('▶')
 			.appendTo('#fBoard_paging');
 		}
-	};
-	
+	}; //
+	// 페이지 클릭 시 (data-page)의 value값을 page에 대입 후, 게시글 호출
 	function fn_paging() {
 		$('body').on('click', '.previous_block', function(){
 			page = $(this).attr('data-page');
@@ -172,7 +184,7 @@
 		});
 	} //
 	
-	
+	// Drop으로 조회 기능 (최신 순, 조회 순, 사장님글만 보기, 사징님글 제외)
 	function fn_autoDrop() {
 		$('#dropChoice').mouseout(function(){
 			$.ajax({

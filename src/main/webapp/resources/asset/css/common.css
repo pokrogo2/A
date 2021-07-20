@@ -37,6 +37,13 @@
 .disable {color:#888;}
 .now_page {color:#9B1E24; font-weight:600;}
 .click {color:#9B1E24; font-weight:600;}
+.navClick {
+	color:#9B1E24; 
+	font-weight:600; 
+	border-bottom:3px outset #9B1E24; 
+	border-radius:6px; 
+	padding-bottom:27px;
+}
 .grade {color:#aaa;}
 div .star {color:orange;}
 .gray {color:#aaa;}
@@ -69,10 +76,10 @@ header {margin:50px 0;}
 .sub_nav a {font-weigth:500;}
 .sub_nav a:hover {color:#9B1E24; font-weight:600; text-decoration:underline;}
 #catgNav {}
-.category {width:1000px; text-align:center;}
-.category a {display:inline-block; margin:0 45px; padding:30px 0;}
-.category a:hover {color:#9B1E24; font-weight:600; border-bottom:3px outset #9B1E24; border-radius:6px; padding-bottom:27px; }
-.category span {padding:0 15px;}
+#category {width:1000px; text-align:center;}
+#category a {display:inline-block; margin:0 45px; padding:30px 0;}
+#category a:hover {color:#9B1E24; font-weight:600; border-bottom:3px outset #9B1E24; border-radius:6px; padding-bottom:27px; }
+#category span {padding:0 15px;}
 #sideFix {
 	position:fixed; 
 	right:0; 

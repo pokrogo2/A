@@ -21,7 +21,19 @@
 	
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script>
+		$(document).ready(function(){
+			fn_navClick();
+		}); // 페이지 로드 이벤트 종료
 		
+		/* 함수 */
+		function fn_navClick() {
+			$( $('#category').find('a') ).click(function(){
+				$( $('#category').find('a') ).removeClass('navClick');
+				$(this).addClass('navClick');
+			})
+		}
+		
+	
 	</script>
 	
 </head>
@@ -48,13 +60,13 @@
 			</span>
 		</div>
 		<div id="catgNav" class="upDownBorder">
-			<div class="clear category">
+			<div id="category" class="clear">
 				<!-- 링크 작업 시, ?category=${ctg} 넣어서 해당 카테고리 리스트만 만들 예정 -->
 				<c:forEach var="ctg" items="${category}">
 					<a href="#">${ctg}</a>
 				</c:forEach>
 				<span>|</span>
-				<a href="fBoardPage.do">자유게시판</a>
+				<a href="fBoardPage.do" id="fBoardNav">자유게시판</a>
 			</div>
 		</div>
 			

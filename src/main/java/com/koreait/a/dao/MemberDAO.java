@@ -11,4 +11,6 @@ public interface MemberDAO {
 	public MemberDTO findId(String email);
 	public MemberDTO findPw(String email);
 	public int delete(long no);
+	public int updateMember(MemberDTO member);
+	
 }

@@ -22,6 +22,7 @@ import com.koreait.a.command.member.MemberIdCheckCommand;
 import com.koreait.a.command.member.MemberJoinCommand;
 import com.koreait.a.command.member.MemberLoginCommand;
 import com.koreait.a.command.member.MemberLogoutCommand;
+import com.koreait.a.command.member.MemberUpdateCommand;
 
 @Controller
 public class MemberController {
@@ -35,12 +36,15 @@ public class MemberController {
 	private MemberFindIdCommand memberFindIdCommand;
 	private MemberFindPwCommand memberFindPwCommand;
 	private MemberDeleteCommand memberDeleteCommand;
+	private MemberUpdateCommand memberUpdateCommand;
+
 	@Autowired
 	public MemberController(SqlSession sqlSession, EmailAuthCommand emailAuthCommand,
 			MemberJoinCommand memberJoinCommand, MemberIdCheckCommand memberIdCheckCommand,
 			MemberLoginCommand memberLoginCommand, MemberLogoutCommand memberLogoutCommand,
 			EmailCheckCommand emailCheckCommand, MemberFindIdCommand memberFindIdCommand,
-			MemberFindPwCommand memberFindPwCommand, MemberDeleteCommand memberDeleteCommand) {
+			MemberFindPwCommand memberFindPwCommand, MemberDeleteCommand memberDeleteCommand,
+			MemberUpdateCommand memberUpdateCommand) {
 		super();
 		this.sqlSession = sqlSession;
 		this.emailAuthCommand = emailAuthCommand;
@@ -52,6 +56,8 @@ public class MemberController {
 		this.memberFindIdCommand = memberFindIdCommand;
 		this.memberFindPwCommand = memberFindPwCommand;
 		this.memberDeleteCommand = memberDeleteCommand;
+		this.memberUpdateCommand = memberUpdateCommand;
+
 	}
 
 	
@@ -60,8 +66,11 @@ public class MemberController {
 	public String login() {
 		return "member/loginPage";
 	}
-
-
+	
+		@GetMapping(value="memberUpdatePage.do")
+	public String memberUpdatePage() {
+		return "member/updatePage";
+	}
 	@GetMapping(value="idCheck.do",produces="application/json; charset=utf-8")
 	@ResponseBody
 	public Map<String, Integer> idCheck(HttpServletRequest request,
@@ -141,4 +150,12 @@ public class MemberController {
 		memberDeleteCommand.execute(sqlSession, model);
 		return "redirect:/";
 	}
+	@PostMapping(value="updateMember.do")
+	public String updateMember(HttpServletRequest request, 
+			 Model model) {
+		model.addAttribute("request", request);
+		memberUpdateCommand.execute(sqlSession, model);
+		return "member/memberMyPage";
+	}
+	
 }

@@ -12,6 +12,8 @@ import com.koreait.a.command.member.MemberIdCheckCommand;
 import com.koreait.a.command.member.MemberJoinCommand;
 import com.koreait.a.command.member.MemberLoginCommand;
 import com.koreait.a.command.member.MemberLogoutCommand;
+import com.koreait.a.command.member.MemberUpdateCommand;
+
 @Configuration
 public class MemberConfig {
 	//memberBean
@@ -51,4 +53,9 @@ public class MemberConfig {
 			public MemberDeleteCommand deleteCommand() {
 				return new MemberDeleteCommand();
 			}
+			@Bean
+			public MemberUpdateCommand memberUpdateCommand() {
+				return new MemberUpdateCommand();
+			}
+			
 }

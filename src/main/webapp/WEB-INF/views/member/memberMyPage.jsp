@@ -9,6 +9,7 @@
 	<jsp:param value="Main" name="title"/>
 </jsp:include>
 
+<link rel="stylesheet" href="resources/asset/css/writeForm.css">
 <link rel="stylesheet" href="resources/asset/css/myPage.css">
 <script>
 	
@@ -27,7 +28,7 @@
 					<li><a href="#reservation_history_review">예약 내역 및 리뷰</a></li>
 					<li><a href="#review_history">내가 쓴 리뷰</a></li>
 					<li><a href="#question_history">문의 내역</a></li>
-					<li><a href="#">개인 정보 수정</a></li>
+					<li><a href="memberUpdatePage.do">개인 정보 수정</a></li>
 				</ul>
 			</div>
 			

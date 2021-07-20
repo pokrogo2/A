@@ -177,9 +177,9 @@
 		<!-- 게시글 정보 --> 
 		<div class="topBtn">
 			<c:if test="${loginUser.memberId == fBoard.writer}">
-		</c:if>
-			<input type="button" value="수정" id="updete_btn">
-			<input type="button" value="삭제" id="delete_btn">
+				<input type="button" value="수정" id="updete_btn">
+				<input type="button" value="삭제" id="delete_btn">
+			</c:if>
 		</div> 
 		
 

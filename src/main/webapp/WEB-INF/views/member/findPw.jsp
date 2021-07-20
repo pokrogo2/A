@@ -98,27 +98,32 @@
 <body>
 	<%@ include file="../layout/header.jsp" %>
 	
+	<link rel="stylesheet" href="resources/asset/css/writeForm.css">
+	<link rel="stylesheet" href="resources/asset/css/memberFind.css">
+	
 	<section>
 	<div class="container">
-	<h1>비밀번호 찾기</h1>
-	
-	<form id="f" method="post">
-		<%-- 아이디를 입력해 주세요 <br>
-		<input type="text" name="id" id="id">--%>
-		<br><br>
-		가입 당시 이메일<br>
-		<input type="text" name="email" id="email">
-		<input type="button" value="인증번호받기" id="verify_num_btn"><br><br>
-		<span id="email_result"></span><br><br>
-		<input type="text" name="user_key" id="user_key">
-		<input type="button" value="인증하기" id="verify_btn"><br><br>
+		<h1 class="con_title">비밀번호 찾기</h1>
 		
-		<input type="button" value="비밀번호 찾기" id="find_pw_btn">
+		<form id="f" method="post">
+			<%-- 아이디를 입력해 주세요 <br>
+			<input type="text" name="id" id="id">--%>
+			<div class="emailBox">
+				<h2>가입 당시 이메일로 비밀번호 찾기</h2>
+				<input type="text" name="email" id="email">
+				<input type="button" value="인증번호받기" id="verify_num_btn">
+				<span id="email_result"></span>
 		
-		<input type="button" value="로그인하러 가기" onclick="location.href='loginPage.do'">	
+				<input type="text" name="user_key" id="user_key">
+				<input type="button" value="인증하기" id="verify_btn"><br><br>
+			</div>
 			
-	</form>
-		</div>		
+			<input type="button" value="비밀번호 찾기" id="find_pw_btn">
+			
+			<input type="button" value="로그인하러 가기" onclick="location.href='loginPage.do'">	
+				
+		</form>
+	</div>		
 	</section>
 <!-- Footer -->
 <%@ include file="../layout/footer.jsp" %>

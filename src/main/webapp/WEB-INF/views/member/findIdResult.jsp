@@ -15,25 +15,29 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
-
+	
+	<link rel="stylesheet" href="resources/asset/css/writeForm.css">
+	<link rel="stylesheet" href="resources/asset/css/memberFindResult.css">
 	
 	<!-- Section -->
 	
 	<section>
 	<div class="container">
-	<h1>아이디 찾기 결과</h1>
-	
-	<c:if test="${findUser == null}">
-		일치하는 회원 정보가 없습니다.<br><br>
-		<a href="findIdPage.do">아이디 찾기</a>
-	</c:if>
-	<c:if test="${findUser != null}">
-
-		아이디 : ${findUser.memberId}<br>
-		이름 : ${findUser.memberName}<br><br>
-		<input type="button" value="로그인하러 가기" onclick="location.href='loginPage.do'">	
-		<input type="button" value="비밀번호 찾기" onclick="location.href='findPwPage.do'">	
-	</c:if>
+		<h1 class="con_title">아이디 찾기 결과</h1>
+		
+		<c:if test="${findUser == null}">
+			<h2>일치하는 회원 정보가 없습니다.</h2>
+			<a href="findIdPage.do">아이디 찾기</a>
+		</c:if>
+		
+		<c:if test="${findUser != null}">
+			<p>아이디 : <span>${findUser.memberId}</span></p>
+			<p>이름 : <span>${findUser.memberName}</span></p>
+			<div class="btnBox">
+				<input type="button" value="로그인하러 가기" onclick="location.href='loginPage.do'">	
+				<input type="button" value="비밀번호 찾기" onclick="location.href='findPwPage.do'">
+			</div>	
+		</c:if>
 	</div>		
 	</section>
 <!-- Footer -->

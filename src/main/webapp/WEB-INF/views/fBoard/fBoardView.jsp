@@ -207,10 +207,10 @@
 			</c:if>
 			<div id="fReply_form">
 				<form id="f">
-					<span>${loginUser.id}ADMIN</span>
+					<span>${loginUser.memberId}ADMIN</span>
 					<span>|</span>  
 					<input type="text" name="fReply_content" id="fReply_content" placeholder="댓글 입력">
-					<input type="hidden" name="writer" id="writer" value="${loginUser.writer}" >
+					<input type="hidden" name="writer" id="writer" value="${loginUser.memberId}" >
 					<input type="hidden" name="fBoardNo" value="${fBoard.no}">
 					<input type="button" value="작성" id="fReply_btn"> 
 				</form>

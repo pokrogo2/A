@@ -96,9 +96,12 @@
 							<select name="review_store">
 								<option value="${review.storeNo }">${review.storeName }</option>
 							</select>
+							
 							<input type="text" name="content" id="review" placeholder="리뷰를 작성하세요" value="${review.content }">
-							<input type="file" name="review_img" multiple>
+							<input type="file" name="reviewimg2" multiple>
 							<input type="hidden" name="writer" id="writer" value="${loginUser.memberId }">
+							<input type="hidden" name="reviewimg" value="${review.filename }">
+							<input type="hidden" name="no" value="${review.no }">
 							<button>작성</button>
 							
 						</form>

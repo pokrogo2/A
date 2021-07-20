@@ -34,46 +34,57 @@ public class ReviewInsertCommand implements ReviewCommand {
 		review.setScore(score);
 		review.setContent(content);
 		review.setStoreNo(storeNo);
+		
+		
+		
+		List<MultipartFile> files = multipartRequest.getFiles("reviewimg");
 		ReviewDAO reviewDAO = sqlSession.getMapper(ReviewDAO.class);
-		
-		
-		MultipartFile file = multipartRequest.getFile("review_img");
-		int result= 0;
-		if (file != null && !file.isEmpty()) {
-			// 저장할 파일 이름명 
-			String originalFilename = file.getOriginalFilename();
-			String extension = originalFilename.substring( originalFilename.lastIndexOf('.') + 1 );
-			String filename = originalFilename.substring(0, originalFilename.lastIndexOf("."));
-			String uploadFilename = filename + "_" + System.currentTimeMillis() + "." + extension;
-			// 저장할 위치 생성
-			String realPath = multipartRequest.getServletContext().getRealPath("resources/archive");
-			File archive = new File(realPath);
-			if (!archive.exists()) {
-				archive.mkdirs();
-			} 
-			// 서버에 첨부파일 저장
-			File attach = new File(archive, uploadFilename);
-			try {
-				file.transferTo(attach);
-			} catch (IOException e) {
-				e.printStackTrace();
-			} 
-			// DB에 저장 할 때 파일명 인코딩 (한글로된 파일이 있을 수 있다.)
-			try {
+		for (MultipartFile file : files) {
+			
+			if (file != null && !file.isEmpty()) {
+
+				// 올릴 때 파일명
+				String originalFilename = file.getOriginalFilename();
+				
+				// 서버에 저장할 파일명
+				// 파일명의 중복 방지 대책이 필요
+				// 파일명_올린시간.확장자
+				String extension = originalFilename.substring( originalFilename.lastIndexOf(".") + 1 );
+				String filename = originalFilename.substring( 0, originalFilename.lastIndexOf(".") );
+				String uploadFilename = filename + "_" + System.currentTimeMillis() + "." + extension;
+				
+				// 첨부파일을 저장할 서버 위치
+				String realPath = multipartRequest.getServletContext().getRealPath("resources/archive");  // archive 디렉터리는 없으므로 생성이 필요
+				// archive 디렉터리 생성
+				File archive = new File(realPath);
+				if ( !archive.exists() ) {
+					archive.mkdirs();
+				}
+				
+				// 서버에 첨부파일 저장
+				File attach = new File(archive, uploadFilename);
+				try {
+					file.transferTo(attach);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				// DB에 넣는 파일명을 인코딩 처리
+				try {
 				uploadFilename = URLEncoder.encode(uploadFilename, "UTF-8");
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
 			review.setFilename(uploadFilename);
 			// DB에 저장
-			result = reviewDAO.insertReview(review);
+			reviewDAO.insertReview(review);
 			
 		} else {
 			// DB에 저장
 			// 첨부파일이 없다.
 			review.setFilename("");
-			result = reviewDAO.insertReview(review);
+			reviewDAO.insertReview(review);
 		}
-
+		}
 }
 }

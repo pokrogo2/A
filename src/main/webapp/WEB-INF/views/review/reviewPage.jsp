@@ -26,7 +26,7 @@
 						<h3>${review.no}</h3>
 						<div id="box1" class="box">
 							<h3>${review.storeName}<span>${review.storeCategory}</span></h3>
-							<a href="#"><img alt="${filename}" src="resources/archive/${filename}" /></a>
+							<a href="#"><img alt="review_img" src="resources/archive/${review.filename}" /></a>
 						</div>
 						
 						<div id="box2"  class="box">
@@ -40,11 +40,7 @@
 							</div>
 							<p id="review_text">${review.content }</p>
 							<div id="review_img">
-									<img alt="review_img" src="resources/archive/03.jpg">
-									<img alt="review_img" src="resources/archive/03.jpg">
-									<img alt="review_img" src="resources/archive/03.jpg">
-								<c:if test="${not empty reivew.image}">
-								</c:if>
+								
 							</div>
 						</div>
 						<div id="box3" class="box">

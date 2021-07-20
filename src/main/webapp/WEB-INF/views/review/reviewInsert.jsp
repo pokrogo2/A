@@ -83,7 +83,7 @@
 								<option value="홍콩반점">홍콩반점</option>
 							</select>
 							<input type="text" name="content" id="review" placeholder="리뷰를 작성하세요">
-							<input type="file" name="review_img" multiple>
+							<input type="file" name="reviewimg" multiple>
 							<input type="hidden" name="writer" id="writer" value="${loginUser.memberId }">
 							<button>작성</button>
 							

@@ -26,16 +26,16 @@ public class ReviewUpdateCommand implements ReviewCommand {
 		String content = multipartRequest.getParameter("content");
 		long storeNo = Long.parseLong(multipartRequest.getParameter("review_store"));
 		int score = Integer.parseInt(multipartRequest.getParameter("star"));
-		
+		long no = Long.parseLong(multipartRequest.getParameter("no"));
 		
 		ReviewDTO review = new ReviewDTO();
 		review.setWriter(writer);
 		review.setScore(score);
 		review.setContent(content);
 		review.setStoreNo(storeNo);
-		
-		String filename1 = multipartRequest.getParameter("review_img");    // 서버에 저장된 첨부파일명
-		MultipartFile filename2 = multipartRequest.getFile("review_img");  // 새로운 첨부파일
+		review.setNo(no);
+		String filename1 = multipartRequest.getParameter("reviewimg");    // 서버에 저장된 첨부파일명
+		MultipartFile filename2 = multipartRequest.getFile("reviewimg2");  // 새로운 첨부파일
 		
 		String realPath = multipartRequest.getServletContext().getRealPath("resources/archive");
 		

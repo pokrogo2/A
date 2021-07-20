@@ -117,8 +117,8 @@
 		<h1 class="con_title">공지사항</h1>
 		
 		<c:if test="${loginUser.memberId == 'ADMIN'}">
-		</c:if>
 			<input type="button" value="글 작성" id="insert_btn" onclick="location.href='noticeInsertPage.do?writer=${loginUser.memberId}'">
+		</c:if>
 		
 		<div class="table_box clear">
 			<table>

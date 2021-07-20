@@ -57,7 +57,7 @@
 					// 가게 사장님이 등록한 게시물일 때 : 이벤트 글일 때
 					$('<tr>')
 					.append( $('<td>').text(fBoard.rn) )
-					.append( $('<td>').addClass('type event').text(fBoard.contentType) )							
+					.append( $('<td>').html('<span class="type event">'+fBoard.contentType+'</span>') )							
 					.append( $('<td>').html('<a href="fBoardView.do?no='+fBoard.no+'&loginUser=${loginUser.memberId}">'+fBoard.title+'</a>') )
 					.append( $('<td>').text(fBoard.hit) )
 					.append( $('<td>').text(fBoard.lastdate) )
@@ -66,7 +66,7 @@
 					// 가게 사장님이 등록한 게시물일 때 : 홍보글 일 때
 					$('<tr>')
 					.append( $('<td>').text(fBoard.rn) )
-					.append( $('<td>').addClass('type promotion').text(fBoard.contentType) )							
+					.append( $('<td>').html('<span class="type promotion">'+fBoard.contentType+'</span>') )							
 					.append( $('<td>').html('<a href="fBoardView.do?no='+fBoard.no+'&loginUser=${loginUser.memberId}">'+fBoard.title+'</a>') )
 					.append( $('<td>').text(fBoard.hit) )
 					.append( $('<td>').text(fBoard.lastdate) )
@@ -205,8 +205,9 @@
 		
 		<h1 class="con_title">자유게시판</h1>
 		
-		
-		<input type="button" value="글 작성" onclick="location.href='fBoardInsertPage.do'" >		
+		<c:if test="${not empty loginUser}">
+			<input type="button" value="글 작성" onclick="location.href='fBoardInsertPage.do'" >		
+		</c:if>
 
 		<div id="search"  class="topSelect">
 			<form id="f">

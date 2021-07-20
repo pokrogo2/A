@@ -9,13 +9,33 @@
 	<jsp:param value="Main" name="title"/>
 </jsp:include>
 
+<link rel="stylesheet" href="resources/asset/css/writeForm.css">
 <link rel="stylesheet" href="resources/asset/css/myPage.css">
 <script>
 	$(document).ready(function(){
-		
-		
-		
+		fn_leftClick();
 	}); // 페이지 로드 이벤트 (종료)
+	
+	
+	
+	/* 함수 */
+	function fn_leftClick() {
+		$('a').click(function(){
+			$('#left').find( $('a') ).removeClass('click');
+			$(this).addClass('click');
+			$('#rigthList').removeClass('none');
+			$('#rigthMember').addClass('none');
+		});
+		
+		$('#memberUp').click(function(){
+			$('#rigthMember').removeClass('none');
+			$('#rigthList').addClass('none');
+			$('#memberUp').addClass('click');
+		});
+	} // 
+	
+	
+	
 	
 	
 </script>
@@ -28,16 +48,14 @@
 		
 		<div class="flex">
 			<div id="left" class="left myPage_box">
-				<ul>
-					<li><a href="#">예약 현황</a></li>
-					<li><a href="#reservation_history_review">예약 내역 및 리뷰</a></li>
-					<li><a href="#review_history">내가 쓴 리뷰</a></li>
-					<li><a href="#question_history">문의 내역</a></li>
-					<li><a href="#">개인 정보 수정</a></li>
-				</ul>
+				<a href="#">예약 현황</a>
+				<a href="#reservation_history_review">예약 내역 및 리뷰</a>
+				<a href="#review_history">내가 쓴 리뷰</a>
+				<a href="#question_history">문의 내역</a>
+				<a href="#" id="memberUp">개인 정보 수정</a>
 			</div>
 			
-			<div class="right myPage_box">
+			<div class="right myPage_box" id="rigthList">
 			
 				<div id="reservation_status" class="">
 					<h2>예약 현황</h2>
@@ -172,6 +190,72 @@
 				</div>
 				
 			</div> <!-- right -->
+			
+			<div class="right myPage_box none" id="rigthMember">
+				<form id="f2" method="post">
+					<table>
+						<tbody>
+					
+							<tr>
+								<td>아이디</td>
+								<td><input type="text" name="id" id="id" value="${loginUser.memberId}" readonly></td>
+							</tr>
+							<tr>
+								<td>현재 비밀번호</td>
+								<td>
+									<input type="password" name="pw0" id="pw0">
+									<span id="pw0_result"></span>
+								</td>
+							</tr>
+							<tr>
+								<td>새 비밀번호</td>
+								<td>
+									<input type="password" name="pw" id="pw">
+									<span id="pw_result"></span>
+								</td>
+							</tr>
+							<tr>
+								<td>새 비밀번호 확인</td>
+								<td>
+									<input type="password" name="pw2" id="pw2">
+									<span id="pw2_result"></span>
+								</td>
+							</tr>
+							<tr>
+								<td>이름</td>
+								<td><input type="text" name="name" id="name" value="${loginUser.memberName}"></td>
+							</tr>
+							<tr>
+								<td>이메일</td>
+								<td class="memberEmail">
+									<input type="text" name="email" id="email">
+									<input type="button" value="인증번호받기" id="verify_num_btn">
+									<input type="text" name="user_key" id="user_key">
+									<input type="button" value="인증하기" id="verify_btn">
+								</td>
+							</tr>
+							<tr>
+								<td>주소</td>
+								<td><input type="text" name="address" id="address" value="${loginUser.memberAddr}"></td>
+							</tr>
+							<tr>
+								<td>전화번호</td>
+								<td><input type="text" name="tel" id ="tel" value="${loginUser.memberTel}"></td>
+							</tr>
+							<tr>
+								<td>나이</td>
+								<td><input type="text" name="age" id="age" value="${loginUser.memberAge}"></td>
+							</tr>
+							<tr>
+								<td colspan="2" class="bottomBtn"><input type="button" value="개인정보 수정하기" id="memberUpdate_btn"></td>
+							</tr>
+							
+						</tbody>
+					</table>
+				</form>
+			</div>
+			
+			
 		</div>
 		
 		

@@ -29,13 +29,14 @@
 
 
 /* 공통 CSS */
-.container {width:1000px; padding:0 20px; position:relative;}
+.container {width:1040px; padding:0 20px; position:relative;}
 .clear{clear:both;}
 .upDownBorder {border-top:1px solid lightgray; border-bottom:1px solid lightgray;}
 .none {display:none;}
 .link {color:black; cursor:pointer;}
 .disable {color:#888;}
 .now_page {color:#9B1E24; font-weight:600;}
+.click {color:#9B1E24; font-weight:600;}
 .grade {color:#aaa;}
 div .star {color:orange;}
 .gray {color:#aaa;}
@@ -71,9 +72,20 @@ header {margin:50px 0;}
 .category a {display:inline-block; margin:0 45px; padding:30px 0;}
 .category a:hover {color:#9B1E24; font-weight:600; border-bottom:3px outset #9B1E24; border-radius:6px; padding-bottom:27px; }
 .category span {padding:0 15px;}
-#sideFix {position:fixed; right:0; top:48%; z-index:1;}
-#sideFix div {width:60px; height:60px; background-color:#1E0408; color:white;}
-#sideFix a {color:white;}
+#sideFix {
+	position:fixed; 
+	right:0; 
+	top:32%; 
+	z-index:1;
+}
+#sideFix div {width:60px; height:60px; background-color:#ddd; color:white;}
+#sideFix i {
+	color:white;
+	font-size:25px;
+	text-align:center;
+	width:100%;
+	line-height:60px;
+}
 
 
 /* Footer*/

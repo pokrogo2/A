@@ -10,6 +10,32 @@
 </jsp:include>
 
 <link rel="stylesheet" href="resources/asset/css/main.css">
+
+<script>
+	$(document).ready(function(){
+		
+	}) // 페이지 로드 이벤트 조료
+	
+	/* function fn_bannerLink() {
+		$('#storeBann').click(function(){
+				
+			$.ajax({
+				url: 'storeExist.do',
+				type: 'post',
+				data: 'ownerName=${loginUser.memberName}',
+				dataType: 'json',
+				success: function(resultMap) {
+					if (resultMap.result > 0) {
+						$('#storeBann').attr('href', 'viewStorePage.do');
+					} else {
+						$('#storeBann').attr('href', 'insertStorePage.do');						
+					}
+				}
+			});
+		});
+	} */
+	
+</script>
 	
 	<!-- Section -->
 	<div class="container">
@@ -42,6 +68,15 @@
 				<button><i class="fas fa-search"></i></button>
 			</form>
 		</div> <!-- mainSearch -->
+		
+		
+		<c:if test="${not empty loginUser}">
+			<div class="storebannBox">
+				<a id="storeBann"><img alt="banner1" src="resources/asset/img/mainBanner.jpg"></a>
+			</div>
+		</c:if>
+		
+		
 		
 		<div id=recommandStore>
 		

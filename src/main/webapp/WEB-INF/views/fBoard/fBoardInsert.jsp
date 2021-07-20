@@ -78,7 +78,7 @@
 				<div class="clear con">
 					
 					<!-- 사장님에게만 보이는 버튼 (무조건 눌려있어야 한다.) -->
-					<c:if test="${not empty loginUser.ownerno}">
+					<c:if test="${loginUser.status == 1}">
 						<div id="radio" class="ownerChoiceRadio">
 							<input type="radio" name="contentType" value="홍보글" id="promotion">
 							<label for="promotion">홍보글</label>

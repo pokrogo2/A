@@ -59,9 +59,9 @@
 		</div>
 			
 		<div id="sideFix">
-			<div> <a href="noticePage.do">공지사항</a> </div>
-			<div> <a href="#">1:1문의</a> </div>
-			<div> <a href="#">검색</a> </div>
+			<div> <a href="noticePage.do"> <i class="fas fa-exclamation"></i> </a></div>
+			<div> <a href="#"> <i class="far fa-comments"></i> </a> </div>
+			<div> <a href="#"> <i class="fas fa-search"></i> </a> </div>
 		</div>
 	</header>
 		

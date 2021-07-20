@@ -6,7 +6,7 @@
 
 <!-- Header -->
 <jsp:include page="../layout/header.jsp">
-	<jsp:param value="NoticeView" name="title"/>
+	<jsp:param value="FBoardView" name="title"/>
 </jsp:include>
 
 <link rel="stylesheet" href="resources/asset/css/boardTable.css">
@@ -28,7 +28,7 @@
 	}
 	function fn_delete() {
 		$('#delete_btn').click(function(){
-			if(confirm('해당 공지사항 게시판을 삭제하시겠습니까?')) {
+			if(confirm('해당 게시글을 삭제하시겠습니까?')) {
 				location.href='fBoardDelete.do?no=${fBoard.no}';
 			}	
 		});
@@ -146,12 +146,10 @@
 		$('body').on('click', '#deleteReply_btn', function(){
 			var fno = $(this).parent().parent().find( $('input[name="fno"]') ).val();
 			var writer = $(this).parent().parent().find( $('input[name="writer"]') ).val();
-			/* 
 			if('${loginUser.memberId}' != writer) {
 				alert('작성자만 삭제할 수 있습니다.');
 				return false;
 			}  
-			*/
 			if(confirm('해당 댓글을 삭제하시겠습니까?')) {
 				$.ajax({
 					url: 'fReplyDelete.do',
@@ -204,17 +202,17 @@
 		<!-- 댓글 입력 -->
 		<div class="fReply_box clear">
 			<c:if test="${not empty loginUser}">
+				<div id="fReply_form">
+					<form id="f">
+						<span>${loginUser.memberId}</span>
+						<span>|</span>  
+						<input type="text" name="fReply_content" id="fReply_content" placeholder="댓글 입력">
+						<input type="hidden" name="writer" id="writer" value="${loginUser.memberId}" >
+						<input type="hidden" name="fBoardNo" value="${fBoard.no}">
+						<input type="button" value="작성" id="fReply_btn"> 
+					</form>
+				</div>
 			</c:if>
-			<div id="fReply_form">
-				<form id="f">
-					<span>${loginUser.id}ADMIN</span>
-					<span>|</span>  
-					<input type="text" name="fReply_content" id="fReply_content" placeholder="댓글 입력">
-					<input type="hidden" name="writer" id="writer" value="${loginUser.writer}" >
-					<input type="hidden" name="fBoardNo" value="${fBoard.no}">
-					<input type="button" value="작성" id="fReply_btn"> 
-				</form>
-			</div>
 			<div id="fReply_table" class="clear">
 					<table>
 						<tbody id="fReplyList">

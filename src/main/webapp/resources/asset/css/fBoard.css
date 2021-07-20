@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
 
-input[value="글 작성"] {
-	margin-bottom:50px;
-}
+
+/* 상단의 검색바와 죄회 드롭 */
+#search, #drop {margin-top:50px;}
 
 
 /* 자유 게시판의 칼럼마다의 너비 지정 */
@@ -17,6 +17,13 @@ td:nth-child(4) {width:6%;}
 #fBoard_list {}
 
 
-
+/* 이벤트, 홍보글 */
+.type {
+	border-radius:100px;
+	padding: 5px 16px;
+	font-weight:600;
+}
+.promotion {background-color:#FBF1EF; color:#9b1e24;}
+.event {background-color:#E3C8C1; color:#6a1310;}
 
 

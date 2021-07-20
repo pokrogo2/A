@@ -32,7 +32,7 @@ public class FBoardViewCommand implements FBoardCommand {
 			fBoard.setHit(fBoard.getHit() + 1);
 		}
 		
-		response.setCharacterEncoding("UTF-8");
+		response.setContentType("html/text; charset=UTF-8"); 
 		try {
 			if (fBoard != null) {
 				model.addAttribute("fBoard", fBoard);

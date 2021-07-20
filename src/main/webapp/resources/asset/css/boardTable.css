@@ -2,10 +2,11 @@
 
 /* 글 작성 버튼 */
 input[value="글 작성"] {
-	padding:0 20px;
+	padding:0 30px;
 	display:block;
 	margin-right:0;
 	margin-top:20px;
+	font-weight:400;
 }
 input[value="글 작성"]:hover {
 	background-color:#1E0408; 

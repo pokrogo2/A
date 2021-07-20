@@ -11,9 +11,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  FROM (SELECT ROWNUM AS RN, A.FNO, A.NO, A.WRITER, A.CONTENT, A.POSTDATE
 		  		  FROM (SELECT FNO, NO, WRITER, CONTENT, POSTDATE
 		  				  FROM FREPLY
-		  				 WHERE NO = #{no}
+		  				 WHERE NO = #{param1}
 		 		 		 ORDER BY FNO DESC) A) B
-	 	 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	 	 WHERE B.RN BETWEEN #{param2} AND #{param3}
 	</select>
 	
 	<!-- 댓글 리스트 전체 개수 -->

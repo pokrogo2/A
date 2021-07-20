@@ -66,10 +66,11 @@ img {width:700px;}
 #fReply_form {
 	width:700px;
 	border: 1px solid lightgray;
+	height:65px;
 }
-form {position:relative;}
+form {position:relative; line-height:65px;}
 form span {font-weight:500;}
-form span:nth-child(1) {padding-left:20px;}
+form span:nth-child(1) {padding-left:30px;}
 form span:nth-child(2) {padding: 0 30px;}
 input {}
 input[value="작성"] {
@@ -78,6 +79,8 @@ input[value="작성"] {
 	border:none;
 	background-color:#6A1310;
 	color:#FFFAF8;
+	height:65px;
+	border-radius:0;
 }
 input[name="fReply_content"] {border:none;}
 
@@ -110,7 +113,7 @@ tbody span {
 	padding:5px 10px 0 0; 
 }
 tbody input[value="삭제"] {
-	height:30px;
+	height:40px;
 	border-radius:100px;
 	margin:0;
 }

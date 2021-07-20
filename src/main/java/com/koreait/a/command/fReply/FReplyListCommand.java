@@ -27,6 +27,8 @@ public class FReplyListCommand {
 		
 		long no = Long.parseLong(request.getParameter("no"));
 		int page = Integer.parseInt(request.getParameter("page"));
+		
+		
 		int totalRecord = fReplyDAO.fReplyTotalCount(no);
 		totalRecord = totalRecord > 0 ? totalRecord : 1;
 		int recordPerPage = 5;

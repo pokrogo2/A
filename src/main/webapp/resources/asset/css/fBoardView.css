@@ -63,19 +63,22 @@ img {width:700px;}
 
 
 
+
 /* 댓글 영역 */
 .fReply_box {width:100%;}
+
 /* 댓글 영역의 댓글 입력창을 담고 있는 div */
 #fReply_form {
 	width:700px;
 	border: 1px solid lightgray;
 	height:65px;
 }
+
+/* 댓글을 입력하는 입력창 */
 form {position:relative; line-height:65px;}
 form span {font-weight:500;}
 form span:nth-child(1) {padding-left:30px;}
 form span:nth-child(2) {padding: 0 30px;}
-input {}
 input[value="작성"] {
 	margin:0;
 	float:right;
@@ -87,6 +90,7 @@ input[value="작성"] {
 }
 input[name="fReply_content"] {border:none;}
 
+/* 댓글 리스트를 담고 있는 div */
 #fReply_table{
 	margin: 50px 0;
 	border-top:1px solid; 
@@ -95,8 +99,8 @@ input[name="fReply_content"] {border:none;}
 }
 table {width:100%; margin-bottom:15px;}
 #fReplyList {}
+.noneReply {font-size:20px; font-weight:500;} /* 작성된 댓글이 없다면 보여지는 영역 */
 td {height:65px; }
-.noneReply {font-size:20px; font-weight:500;}
 td:nth-child(1) {width:8%;}
 td:nth-child(2) {
 	font-size:20px; 
@@ -108,7 +112,7 @@ td:nth-child(3) {
 	padding-left:10px;
 }
 td:nth-child(4) {width:20%;}
-tbody span {
+tbody span {  /* 댓글의 작성일 표시 */ 
 	display:block;
 	font-size:13px;
 	color:#999;
@@ -121,7 +125,7 @@ tbody input[value="삭제"] {
 	margin:0;
 }
 
-
+/* 댓글의 페이징 */
 #fReply_paging {text-align:center; display:block;}
 
 

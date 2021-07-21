@@ -7,6 +7,7 @@
 	font-weight:300;
 }
 
+/* 회원가입의 form */
 #f {
 	width:450px;
 	font-size:14px; 
@@ -14,11 +15,11 @@
 	color:#333;
 }
 
-input {height:40px;}
+input {height:40px;} /* height 수정 */
 input[type="text"], input[type="password"] {margin-bottom:65px;}
 textarea {height:235px; margin-bottom:10px;}
 
-#f span {display:block; margin-bottom:60px; font-size:14px;}
+#f span {display:block; margin-bottom:60px; font-size:14px;} /* 정규식과 비교, 내용 표시 */
 input[name="id"], input[type="password"] {margin-bottom:10px;}
 
 input[id="join_btn"] {
@@ -29,7 +30,7 @@ input[id="join_btn"] {
 	background-color:#9B1E24;
 	color: #FFFAF8;
 }
-#f input:focus {border-color:#9B1E24; color:black;}
+#f input:focus {border-color:#9B1E24; color:black;} /* 현재 입력 중인 .input을 확인 할 수 있도록 */
 
 
 /* 이메일 */

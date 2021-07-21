@@ -1,7 +1,10 @@
 @charset "UTF-8";
 
+/* 메인 컨텐츠의 titles */
+h1 {font-size:30px; font-weight:500;}
 
-/* 음식점 검색창 : BIG */
+
+/* 1) 음식점 검색창 : BIG */
 #mainSearch {
 	width:100%;
 	height:105px;
@@ -41,14 +44,15 @@ input, button, select  {
 	color:#9B1E24;
 }
 
-h1 {font-size:30px; font-weight:500;}
 
 
-/* 가게 관리 배너 */
+/* 2) 가게 관리 배너 */
 .storebannBox {margin-bottom:150px;}
+.storebannBox img {widht:100%;}
 
 
-/* 추천 음식점 */
+
+/* 3) 추천 음식점 */
 #recommandStore {
 	position:relative;
 	margin-bottom:100px;
@@ -78,7 +82,7 @@ h1 {font-size:30px; font-weight:500;}
 #content .sub_p2 {display:inline-block;}
 #content .sub_p2 p {font-size:15px;}
 #content .sub_p2 span {color:#9B1E24; font-weight:600;}
-#content #grade  {margin-bottom:5px;}
+#content #grade  {margin-bottom:5px;} /* 음식점의 평점 */
 #content #grade p {display:inline-block;}
 #content #review {width:205px; height:45px;}
 
@@ -93,7 +97,8 @@ h1 {font-size:30px; font-weight:500;}
 #return i:hover {color:black;}
 
 
-/* 신규 등록 음식점 */
+
+/* 4) 신규 등록 음식점 */
 #insertStoreList {}
 #insertStoreList h1 {margin-bottom:20px;}
 #insertStoreList a {

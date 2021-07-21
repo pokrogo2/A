@@ -19,18 +19,20 @@
 	
 	
 	/* 함수 */
+	
+	// 죄측의 Tap 클릭 시, 클릭된 영역의 변경요소 확인
 	function fn_leftClick() {
 		$('a').click(function(){
-			$('#left').find( $('a') ).removeClass('click');
-			$(this).addClass('click');
+			$('#left').find( $('a') ).removeClass('tabClick');
+			$(this).addClass('tabClick');
 			$('#rigthList').removeClass('none');
 			$('#rigthMember').addClass('none');
 		});
 		
-		$('#memberUp').click(function(){
+		$('#memberUp').click(function(){ 
 			$('#rigthMember').removeClass('none');
 			$('#rigthList').addClass('none');
-			$('#memberUp').addClass('click');
+			$('#memberUp').addClass('tabClick');
 		});
 	} // 
 	
@@ -48,7 +50,7 @@
 		
 		<div class="flex">
 			<div id="left" class="left myPage_box">
-				<a href="#" class="click">예약 현황</a>
+				<a href="#" class="tabClick">예약 현황</a>
 				<a href="#reservation_history_review">예약 내역 및 리뷰</a>
 				<a href="#review_history">내가 쓴 리뷰</a>
 				<a href="#question_history">문의 내역</a>

@@ -14,10 +14,18 @@
 
 <script>
 	$(document).ready(function(){
+		fn_fBoardNav();
 		fn_insert();
 		fn_init();
 		fn_onOff();
 	}); // 페이지 로드 이벤트 (종료)
+	
+	
+	/* 함수 */
+	// 자유게시판 체크 확인 (red)
+	function fn_fBoardNav() {
+		$('#fBoardNav').addClass('navClick');
+	}
 	
 	function fn_insert() {
 		$('#f').submit(function(event){

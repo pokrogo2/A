@@ -1,11 +1,14 @@
 @charset "UTF-8";
 
-/* View에서 h1수정 */
+/* FindId&FindPw에서 h1수정 */
 .con_title {
 	border:none; 
 	padding-bottom:50px;
 	font-weight:300;
 }
+
+
+/* 서브 타이틀 */
 h2 {
 	text-align:center;
 	font-size:20px;
@@ -14,6 +17,8 @@ h2 {
 	font-weight:200;
 }
 
+
+/* 아이디, 비밀번호를 찾기 위한 정보를 넘겨주는 form */
 #f {
 	width:450px;
 	font-size:14px; 
@@ -32,14 +37,6 @@ input[type="button"] {padding:0;}
 	border-color:#6A1310;
 }
 .emailBox input[name="email"] {margin-bottom:0;}
-
-/* 이메일 인증 span */
-#email_result {
-	display: block;
-	padding-top:5px; 
-	margin-bottom:30px;
-}
-
 .emailBox input[type="button"] {
 	width:120px;
 	border-radius:100px;
@@ -49,7 +46,15 @@ input[type="button"] {padding:0;}
 	color:#FFFAF8;
 }
 
+/* 이메일 인증 span */
+#email_result {
+	display: block;
+	padding-top:5px; 
+	margin-bottom:30px;
+}
 
+
+/* 버튼 */
 input[value="아이디 찾기"], input[value="비밀번호 찾기"] {
 	width:100%;
 	background-color:#6A1310; 

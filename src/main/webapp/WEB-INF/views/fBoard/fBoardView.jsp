@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="resources/asset/css/fBoardView.css">
 <script>
 	$(document).ready(function(){
+		fn_fBoardNav();
 		fn_update();
 		fn_delete();
 		fn_fReplyList();
@@ -20,6 +21,13 @@
 		fn_fReply_insert();
 		fn_fReply_delete();
 	}); // 페이지 로드 이벤트 (종료)
+	
+	
+	/* 함수 */
+	// 자유게시판 체크 확인 (red)
+	function fn_fBoardNav() {
+		$('#fBoardNav').addClass('navClick');
+	}
 	
 	function fn_update() {
 		$('#updete_btn').click(function(){

@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+/* 글 작성, 글 수정 등의 form태그르 사용하게 되는 모든 영역에서 사용하는 공통CSS */
+
+
 /* form의 영역을 감싸는 div */
 .write_box {margin:50px 0;}
 
@@ -7,26 +10,55 @@
 #f {width:700px;}
 
 /* (form)의 reset */
-input[type="text"], input[type="password"], textarea, button {width:100%; margin-bottom:40px;}
-input[type="button"], button {cursor:pointer;}
-textarea { padding-left:10px;}
+.btn {float:right; margin-bottom:20px;}
+
+label {
+	font-size:14px; 
+	font-weight:400; 
+	color:#aaa;
+}
+
+input[type="text"], 
+input[type="password"], 
+textarea, 
+button {
+	width:100%; 
+	margin-bottom:40px;
+}
+
+input[type="button"], 
+button {
+	cursor:pointer;
+}
+
+textarea { 
+	padding-left:10px;
+	 padding-top:10px; 
+	 height:425px; 
+	 margin-top:5px;
+}
+
+input[name="title"], 
+textarea {
+	border-color:#6a1310;
+}
+
 input[type="button"] {padding:0 40px;}
 
-.btn {float:right; margin-bottom:20px;}
 input[value="목록"] {margin:0 10px;}
 
-button, input[value="초기화"]:hover, input[value="수정"]:hover {
+button, input[value="초기화"]:hover, 
+input[value="수정"]:hover {
 	background-color:#6A1310; 
 	color:#FFFAF8;
 }
 
-label {font-size:14px; font-weight:400; color:#aaa;}
-textarea {padding-top:10px; height:425px; margin-top:5px;}
-input[name="writer"] {
+
+input[name="writer"] {  /* 작성자는 수정할 수 없다. 회색으로 고정 */
 	color:#333;
 	font-weight:400;
 }
-input[name="title"], textarea {border-color:#6a1310;}
+
 
 
 

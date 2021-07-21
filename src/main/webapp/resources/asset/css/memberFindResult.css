@@ -1,18 +1,19 @@
 @charset "UTF-8";
 
-/* View에서 h1수정 */
+/* FindResult에서 h1수정 */
 .con_title {
 	border:none; 
 	padding-bottom:50px;
 	font-weight:300;
 }
 
-/* 아이디 검색 결과가 없을 떼 */
+/* 아이디,비밀번호 검색 결과가 없을 떼 */
 h2 {
 	text-align:center;
 	font-size:30px;
 	font-weight:600;
 }
+
 /* 아이디 찾기 : 링크 */
 .container a {
 	display:block;
@@ -30,7 +31,8 @@ h2 {
 	color:#FFFAF8;
 }
 
-/* 아이디 검색 결과가 있을 때 */
+
+/* 아이디,비밀번호 검색 결과가 있을 때 */
 .container  p {
 	text-align: center;
 	font-size: 20px;

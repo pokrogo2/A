@@ -1,4 +1,17 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+
+/*  
+		point-color : ( red : #9B1E24 )
+		sub-color : ( basicBrown : #E3C8C1 )
+		sub_color : (darkRed : #6A1310 )
+		sub_color : (deepDarkRed : #1E0408 )
+		sub-color : ( lightBeige : #FBF1EF )
+		sub-color : ( lightlightBeige : #FFFAF8 )
+*/
+
+
 /* reset */
 *{
 	margin: 0 auto;
@@ -10,50 +23,112 @@
 	list-style:none;
 	font-size:16px;
 	color:black;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight:300;
 }
 
 
 /* 공통 CSS */
-.container {width:900px;}
-.clear{clear:both;}
-.upDownBorder {border-top:1px solid lightgray; border-bottom:1px solid lightgray;}
+.container {width:1040px; padding:0 20px; position:relative;} 	 /* 모든 페이지의 전체 box 크기 */
+
+/* 지정 클래스 */
+.clear{clear:both;}		
 .none {display:none;}
-.link {color:black;}
-.disable {color:#666;}
-.now_page {color:red;}
+.gray {color:#aaa;}
+.left {float:left;}
+.flex {display:flex;}
+
+/* 네비게이션 및 마이 페이지의 메뉴 클릭 시 */
+.tabClick {color:#9B1E24; font-weight:600;}
+.navClick {
+	color:#9B1E24; 
+	font-weight:600; 
+	border-bottom:3px outset #9B1E24; 
+	border-radius:6px;
+}
+
+/* 페이징 관련 class */
+.link {color:black; cursor:pointer;}
+.disable {color:#888;}
+.now_page {color:#9B1E24; font-weight:600;}
+.upDownBorder {border-top:1px solid lightgray; border-bottom:1px solid lightgray;}
+.grade {color:#aaa;}
+div .star {color:orange;}
+.con_title {
+	text-align:center;
+	font-size:50px;
+	font-weight:800;
+	padding: 50px 0 100px 0;
+	border-bottom: 1px solid #ddd;
+}
+
+
+/* 전테적인 태그 자체의 CSS */
+header, section, footer {width:100%;}
+h1 {font-size:25px;}
+
+/* form태그의 input의 기본적인 CSS */
+input, button, select, textarea {border:1px solid lightgray; height:50px; background-color:white;}
+input[type="text"], input[type="password"] {border:none; border-bottom:2px solid #ddd;}
+section:focus {border:1px solid #1E0408;}
+input[type="button"], button {border-radius:100px;}
+
+
 
 
 
 
 /* Header */
 header {margin:50px 0;}
-#topNav {width:900px; text-align:center; position:relative; margin-bottom:50px;}
+#topNav {width:1000px; text-align:center; position:relative; margin-bottom:50px;}
 .logo {font-size:30px; font-weight:700;}
+.logo img {width:65px;}
 .sub_nav {text-align:right; position:absolute; right:0; top:12px;}
 .sub_nav span {margin:0 20px; font-size:13px; color:#999;}
 .sub_nav a {font-weigth:500;}
-.sub_nav a:hover {color:red; font-weight:600; text-decoration:underline;}
+.sub_nav a:hover {color:#9B1E24; font-weight:600; text-decoration:underline;}
 #catgNav {}
-.category {width:900px; text-align:center;}
-.category a {display:inline-block; margin:0 45px; padding:30px 0;}
-.category a:hover {color:red; font-weight:600; border-bottom:3px solid red; padding-bottom:27px; }
+#category {width:1000px; text-align:center;}
+#category a {display:inline-block; margin:0 45px; padding:30px 0 29px 0;}
+#category a:hover {color:#9B1E24; font-weight:600; border-bottom:3px outset #9B1E24; border-radius:6px; padding-bottom:28px; }
+#category span {padding:0 15px;}
+#sideFix {
+	position:fixed; 
+	right:0; 
+	top:32%; 
+	z-index:1;
+}
+#sideFix div {width:60px; height:60px; background-color:#ddd; color:white;}
+#sideFix i {
+	color:white;
+	font-size:25px;
+	text-align:center;
+	width:100%;
+	line-height:60px;
+}
+
+
 
 /* Footer*/
-footer {padding: 30px 20px; background-color:black; font-size:14px;}
-#mainFooter {width:900px; margin: 0 auto;}
+footer {padding: 30px 20px; background-color:black; font-size:14px; margin-top:150px;}
+#mainFooter {width:1000px; margin: 0 auto;}
 footer div {margin: 20px 0;}
-footer a {color:white;}
-footer p {color:white; padding-bottom:5px;}
+footer a {color:#FFFAF8;}
+footer p {color:#FBF1EF; padding-bottom:5px;}
 footer .f_span {float:right; font-weight:600;}
-footer .f_span:hover {color:white; cursor:pointer;}
+footer .f_span:hover {color:#FFFAF8; cursor:pointer;}
 footer span:nth-child(2) span {padding: 0 10px 0 13px;}
 footer p, footer span {color:#888; font-size:12px;}
 footer div:nth-child(1) {margin-bottom:40px;}
 footer div:nth-child(1) a:nth-child(1) {font-weight:700;}
 footer div:nth-child(1) a:nth-child(2) {font-weight:800;}
-footer div:nth-child(2) p:nth-child(1) {color:white;}
+footer div:nth-child(2) p:nth-child(1) {color:#FFFAF8;}
 footer div:nth-child(3) a {font-weight:600;}
 footer div:nth-child(4) span {padding: 0 5px;}
+
+footer img {
+	width:25px;
+}
 		
 /* Section 기보 작업 */
 section {margin:50px 0;}

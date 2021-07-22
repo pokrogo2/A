@@ -1,20 +1,28 @@
 @charset "UTF-8";
 
+/* h1수정 */
+.con_title {
+	border:none; 
+	padding-bottom:60px;
+	font-weight:300;
+}
 
 .myPage_box {margin-top:50px;}
 
 .left {
-	
 	width:20%; 
 	margin-right:50px;
 }
-.left li {
-	padding:20px 0;
+.left a {
+	font-size:20px;
+	margin-top:20px;
+	padding-bottom:20px;
 	border-bottom:1px solid #ddd;
+	display:block;
 }
-.left li:nth-child(1) {padding-top:0;}
-.left a {font-size:20px;}
-.left a:hover {color:red; font-weight:600;}
+
+.left a:nth-child(1) {padding-top:0;}
+.left a:hover {color:#9B1E24; font-weight:600;}
 
 
 
@@ -163,6 +171,60 @@ input[value="리뷰 수정"], input[value="리뷰 삭제"]:hover {background-col
 }
 #question_history .notAnswer {background-color:gray;}
 #question_history .answer {background-color:darkred;}
+
+
+
+
+/* 개인정보 수정 */
+#rigthMember {}
+#f2 {}
+table {width:100%; margin-left:20px;}
+tr {height:80px;}
+td {}
+td:nth-child(1) {width:22%; color:#888;}
+td:nth-child(2) {width:78%;}
+
+
+/* input CSS */
+#f2 input[type="text"], #f2 input[type="password"] {
+	margin-bottom:0;
+	font-weight:400;
+}
+#f2 span {
+	font-size:14px;
+	paddig-top:5px;
+}
+/* 이메일을 담고 있는 td 태그 */
+.memberEmail {}
+.memberEmail input[type="button"] {
+	padding:0;
+	width:120px;
+	border-radius:100px; 
+}
+.memberEmail input[type="button"]:hover {
+	background-color:#6A1310; 
+	color:#FFFAF8; 
+}
+.memberEmail input[type="text"] {
+	width:74%; 
+	margin-right:20px; 
+	margin-top:15px;
+
+}
+input[name="address"] {margin-top:5px;}
+
+
+
+
+/* 수정 버튼을 감싸고 있느 td 태그 */
+.bottomBtn {text-align:right;} 
+input[value="개인정보 수정하기"] {
+	padding: 0;
+	width:200px;
+	background-color:#6A1310; 
+	color:#FFFAF8;\
+}
+
 
 
 

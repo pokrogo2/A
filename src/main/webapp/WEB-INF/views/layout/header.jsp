@@ -53,8 +53,8 @@
                     <span>|</span>
 					<a href="memberMyPage.do">마이페이지</a>
 					<span>|</span>
-					<a href="storeInsertPage.do" id="store_insert_btn">가게 등록</a>
 				</c:if>
+					<a href="storeInsertPage.do" id="store_insert_btn">가게 등록</a>
 			</span>
 		</div>
 		<div id="catgNav" class="upDownBorder">

@@ -12,7 +12,7 @@ input[value="목록"]:hover {
 	background-color:#9B1E24;
 	color:#FFFAF8;
 }
-input[type="radio"] {
+input[type="radio"] {  /* radio버튼 업애기 */
 	display:none;
 }
 #radio, label {border-radius:100px;}
@@ -37,6 +37,8 @@ input[type="radio"] {
 	height:40px;
 	line-height:40px;
 }
+
+/* 현재 저장되어 있는 파일을 삭제할 것인지 표시하는 radio */
 .fileDeleteChoice {
 	width:250px;
 	height:35px;
@@ -48,6 +50,7 @@ input[type="radio"] {
 	height:35px;
 	line-height:35px;
 }
+
 label[for="event"] {left:-1px;}
 label[for="promotion"] {right:-1px;}
 label[for="false"] {right:-1px;}
@@ -55,17 +58,6 @@ label[for="false"] {right:-1px;}
 
 /* 게시글 수정 form */
 input[type="file"] {border:none; height:30px; margin-bottom:10px;}
-
-
-
-
-
-
-
-
-
-
-
 
 
 

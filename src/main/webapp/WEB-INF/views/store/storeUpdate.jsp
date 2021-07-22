@@ -15,19 +15,47 @@
 	<script>
 	
 		$(document).ready(function(){
-			
+			fn_update();
 			fn_storeList();
-			fn_storeCategory();
-			fn_storeTable();
+			fn_storeTable()
 		});
 	
 		
-		// 카테고리 선택 
-		function fn_storeCategory() {
-			$('input:radio[name=storeCategory].attr("checked", true)');
-		}
-		
-		
+		// 수정하기
+		function fn_update(){
+			
+			$('#f').submit(function(event){
+				// 필수 항목 입력 
+				if ($('#store_cotent').val() == '' ||
+					$('#store_table').val() == '' ||
+					$('#store_tel').val() == '' ||
+					$('#store_addr').val() == '' ||
+					$('#store_time').val() == '' ||
+					$('#store_category').val() == '' ||
+					$('#file').val() == '' 
+					) {
+						alert('필수 정보를 입력하세요.');
+						event.preventDefault();
+						return false;
+					} 
+				// 변동사항 없을 경우
+				else ( $('#store_content').val() == '${store.storeContent}'
+						 && $('#store_table').val() == '${store.storeTable}' 
+						 && $('#store_tel').val() == '${store.storeTel}' 
+						 && $('#store_addr').val() == '${store.storeAddr}' 
+						 && $('#store_time').val() == '${store.storeTime}' 
+						 && $('#store_category').val() == '${store.storeCategory}' 
+						 && $('#file').val() == '${store.saveFilename}' ) {
+							alert('수정할 내용이 없습니다.');
+							$('#store_content').focus();
+							event.preventDefault();
+							return false;				
+						}
+				
+				});
+			
+			}
+	
 	
 		// 테이블 갯수 입력창
 		function fn_storeTable() {
@@ -57,7 +85,7 @@
 	<!-- Body -->	
 	<div class="outer">
 		
-		<form id="f" method="post" enctype="multipart/form-data">
+		<form id="f" action="storeUpdate.do" method="post" enctype="multipart/form-data">
 			<div class="store_name">
 				<input type="text" id="storeName" name="storeName" value="${store.storeName}">
 			</div>
@@ -182,8 +210,7 @@
 				
 				<div class="btns">
 				<div>
-					<!-- 수정 중 -->
-					<!-- <button id="update_btn">수정하기</button> -->
+					<button id="update_btn">수정하기</button>
 					<input type="button" value="가게 목록보기" id="storeList_btn">
 					
 					<input type="hidden" name="storeNo" value="${store.storeNo}">

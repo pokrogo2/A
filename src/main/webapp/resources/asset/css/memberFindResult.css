@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+/* FindResult에서 h1수정 */
+.con_title {
+	border:none; 
+	padding-bottom:50px;
+	font-weight:300;
+}
+
+/* 아이디,비밀번호 검색 결과가 없을 떼 */
+h2 {
+	text-align:center;
+	font-size:30px;
+	font-weight:600;
+}
+
+/* 아이디 찾기 : 링크 */
+.container a {
+	display:block;
+	text-align:center;
+	width:150px;
+	border:1px solid #6A1310;
+	color:#6A1310;
+	border-radius:100px;
+	margin-top:20px;
+	padding:8px 0;
+	
+}
+.container a:hover {
+	background-color:#6A1310; 
+	color:#FFFAF8;
+}
+
+
+/* 아이디,비밀번호 검색 결과가 있을 때 */
+.container  p {
+	text-align: center;
+	font-size: 20px;
+	padding: 5px 0;
+}
+.container  span {
+	font-size: 25px;
+	font-weight:600;
+	padding-left:10px;
+}
+
+/* 로그인하러 가기, 비밀번호 찾기 (버튼)을 담고 있는 div 태그 */
+.btnBox {
+	text-align:center;
+	margin-top:50px;
+}
+input[value="로그인하러 가기"] {
+	border-color: #6A1310;
+	color:#6A1310;
+}
+input[value="비밀번호 찾기"] {
+	margin-left:20px;
+}
+.btnBox input:hover {
+	background-color:#6A1310; 
+	color:#FFFAF8;
+}
+
+
+
+
+

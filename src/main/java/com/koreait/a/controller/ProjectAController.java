@@ -98,7 +98,6 @@ public class ProjectAController {
 	*/
 	
 	
-	
 	// -----------------------------------------------------
 	
 	
@@ -273,6 +272,16 @@ public class ProjectAController {
 
 
 
+
+	// --------------------------------------------------------------------------------------
+	
+	/* 가게 관리 배너 클릭  */
+	@GetMapping(value="storeExist.do", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public Map<String, Object> storeExist(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		return fReplyDeleteCommand.execute(sqlSession, model);
+	}
 
 
 

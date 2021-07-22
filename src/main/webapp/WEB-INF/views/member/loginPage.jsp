@@ -39,7 +39,7 @@
 	<jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 	
 	<link rel="stylesheet" href="resources/asset/css/writeForm.css">
-	<link rel="stylesheet" href="resources/asset/css/joinPage.css">
+	<link rel="stylesheet" href="resources/asset/css/loginPage.css">
 	
 	<section>
 	<div class="container">

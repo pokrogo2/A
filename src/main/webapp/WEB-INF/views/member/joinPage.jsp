@@ -199,7 +199,8 @@
 										- 협력회사로부터의 제공
 										- 생성정보 수집 툴을 통한 수집
 								</textarea>
-								<input type="checkbox" name="chk">개인정보 수입 및 이용에 동의합니다.
+								<input type="checkbox" name="chk" id="chk">
+								<label for="chk">개인정보 수입 및 이용에 동의합니다.</label>
 							</td>
 						</tr>
 					</tbody>

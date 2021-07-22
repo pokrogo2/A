@@ -1,22 +1,126 @@
 @charset "UTF-8";
 
+/* 메인 컨텐츠의 titles */
+h1 {font-size:30px; font-weight:500;}
+
+
+/* 1) 음식점 검색창 : BIG */
 #mainSearch {
-	width:900px;
-	height:70px;
-	border: 3px solid black;
+	width:100%;
+	height:105px;
+	border: 10px solid transparent;
 	border-radius:100px; 
+	margin:150px 0;
+	background-image: linear-gradient(white, white), linear-gradient(to left, #9B1E24, #6A1310, #1E0408);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
 }
 #mainSearch #f {
 	text-align:center;
+	position:relative;
 }
-#mainSearch #f input, #mainSearch #f button, #mainSearch #f select  {
+input, button, select  {
 	border:none;
 	background-color:white; 
 	height:40px;
-	margin:0 5px;
-	line-height:65px;
+	margin:0 15px;
+	margin-top:20px;
+	font-size:18px;
+	font-weight:500;
 }
-#mainSearch #f select {width:100px;}
-#mainSearch #f select:nth-child(3) {width:150px;}
-#mainSearch #f input {width:350px;}
-#mainSearch #f button i {font-size:30px;}
+/* select(1) : 지역선택, select(2) : 지역구 선택, select(3) : 음식점 카테고리 선택 */
+#mainSearch #f select:nth-child(1) {width:100px;}
+#mainSearch #f select:nth-child(2) {width:80px;}
+#mainSearch #f select:nth-child(3) {width:155px;}
+/* input: 검색어 입력 */
+#mainSearch #f input {width:315px; border:none;}
+/* button: 검색버튼 */
+#mainSearch #f button {width:60px;}
+#mainSearch #f button i {
+	font-size:32px; 
+	position:absolute; 
+	top:24px; 
+	cursor:pointer; 
+	color:#9B1E24;
+}
+
+
+
+/* 2) 가게 관리 배너 */
+.storebannBox {margin-bottom:150px;}
+.storebannBox img {widht:100%;}
+
+
+
+/* 3) 추천 음식점 */
+#recommandStore {
+	position:relative;
+	margin-bottom:100px;
+}
+#recommandStore h1 {margin-bottom:15px;}
+#recommandStore #storeBox  {display:flex; justify-content:space-between;}
+#storeBox .box {
+	width:460px;
+	height:230px;
+	/* border:1px solid gray; */
+	border-radius:60px;
+	box-shadow:3px 9px 12px #F4EDEB;
+	cursor:pointer;
+}
+#storeBox .box .box_con {float:left;}
+#storeBox .box img {
+	width:160px; 
+	height:160px;
+	margin:37px 20px 0 35px;
+}
+#storeBox .box #content { margin-top:37px; }
+#content h3 {font-size:22px; font-weight:600; margin-bottom:5px;}
+#content span {color:#aaa;}
+#content h3 span {font-size:20px; font-weight:500; padding-left:5px;}
+#content h2 {font-size:40px; display:inline;}
+#content h2 span {font-size:35px; padding-left:3px; color:#9B1E24;}
+#content .sub_p2 {display:inline-block;}
+#content .sub_p2 p {font-size:15px;}
+#content .sub_p2 span {color:#9B1E24; font-weight:600;}
+#content #grade  {margin-bottom:5px;} /* 음식점의 평점 */
+#content #grade p {display:inline-block;}
+#content #review {width:205px; height:45px;}
+
+#recommandStore #return {
+	text-align:right; 
+	color:#888;
+	 font-size:14px;
+	 margin: 20px 10px 0 0 ;
+	 /* text-decoration:underline; */
+}
+#return i {margin-left:10px; font-size:18px; color:#888;}
+#return i:hover {color:black;}
+
+
+
+/* 4) 신규 등록 음식점 */
+#insertStoreList {}
+#insertStoreList h1 {margin-bottom:20px;}
+#insertStoreList a {
+	text-align:right; 
+	color:#888;
+	display:flow-root;
+	margin-bottom:10px;
+}
+#insertStoreList a:hover {
+	color:black;
+	font-weight:600;
+}
+#insertStoreList #list {
+	position:relative;
+	height:300px;
+}
+#insertStoreList #list div {
+	width:210px; 
+	float:left;
+	margin-right:40px;
+}
+#insertStoreList #list div:nth-child(4) {margin-right:0;}
+#list div img {width:100%; height:210px;}
+#list div h3 {font-size:20px; font-weight:600; margin:5px 0;}
+#list div p {widht:100%;}

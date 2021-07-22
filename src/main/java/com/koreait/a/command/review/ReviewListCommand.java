@@ -21,14 +21,15 @@ public class ReviewListCommand implements ReviewCommand {
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		HttpSession session = request.getSession();
+		
+		
 		MemberDTO loginUser =(MemberDTO)session.getAttribute("loginUser");
-		System.out.println(loginUser.getMemberId());
 		/*
 		Optional<String> opt = Optional.ofNullable(request.getParameter("page"));
 		int page = Integer.parseInt(opt.orElse("1"));
 		ReviewDAO reviewDAO = sqlSession.getMapper(ReviewDAO.class);
 		int totalRecord = reviewDAO.getTotalRecord();
-		String loginId = request.getParameter("loginId");
+		String loginId = loginUser.getMemberId();
 		PageDTO pageDTO = PagingUtils.getPage(loginId,totalRecord, page);
 		
 		List<ReviewDTO> list = reviewDAO.searchAll(pageDTO);

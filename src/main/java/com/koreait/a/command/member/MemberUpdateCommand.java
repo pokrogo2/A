@@ -20,10 +20,8 @@ public class MemberUpdateCommand implements MemberCommand {
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		
 		long no = Long.parseLong(request.getParameter("no"));
-		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String name = request.getParameter("name");
-		String email = request.getParameter("email");
 		String tel = request.getParameter("tel");
 		String addr = request.getParameter("addr");
 		int age = Integer.parseInt(request.getParameter("age"));

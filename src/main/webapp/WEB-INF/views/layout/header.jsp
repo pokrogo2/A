@@ -21,7 +21,19 @@
 	
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script>
+		$(document).ready(function(){
+			fn_navClick();
+		}); // 페이지 로드 이벤트 종료
 		
+		/* 함수 */
+		function fn_navClick() {
+			$( $('#category').find('a') ).click(function(){
+				$( $('#category').find('a') ).removeClass('navClick');
+				$(this).addClass('navClick');
+			})
+		}
+		
+	
 	</script>
 	
 </head>
@@ -29,7 +41,7 @@
 
 	<header>
 		<div id="topNav">
-			<a href="index.do" class="logo">LOGO</a>
+			<a href="index.do" class="logo"><img alt="logoA" src="resources/asset/img/logoAA.png"> </a>
 			<span class="sub_nav">
 				<c:if test="${empty loginUser}">
 					<a href="loginPage.do">로그인</a>
@@ -48,20 +60,20 @@
 			</span>
 		</div>
 		<div id="catgNav" class="upDownBorder">
-			<div class="clear category">
+			<div id="category" class="clear">
 				<!-- 링크 작업 시, ?category=${ctg} 넣어서 해당 카테고리 리스트만 만들 예정 -->
 				<c:forEach var="ctg" items="${category}">
 					<a href="#">${ctg}</a>
 				</c:forEach>
 				<span>|</span>
-				<a href="fBoardPage.do">자유게시판</a>
+				<a href="fBoardPage.do" id="fBoardNav">자유게시판</a>
 			</div>
 		</div>
 			
 		<div id="sideFix">
-			<div> <a href="noticePage.do">공지사항</a> </div>
-			<div> <a href="#">1:1문의</a> </div>
-			<div> <a href="#">검색</a> </div>
+			<div> <a href="noticePage.do"> <i class="fas fa-exclamation"></i> </a></div>
+			<div> <a href="#"> <i class="far fa-comments"></i> </a> </div>
+			<div> <a href="#"> <i class="fas fa-search"></i> </a> </div>
 		</div>
 	</header>
 		

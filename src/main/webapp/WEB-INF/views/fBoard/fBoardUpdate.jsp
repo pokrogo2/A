@@ -13,11 +13,19 @@
 <link rel="stylesheet" href="resources/asset/css/fBoardForm.css">
 <script>
 	$(document).ready(function(){
+		fn_fBoardNav();
 		fn_update();
 		fn_init();
 		fn_contentType_checked();
 		fn_onOff();
 	}); // 페이지 로드 이벤트 (종료)
+	
+	
+	/* 함수 */
+	// 자유게시판 체크 확인 (red)
+	function fn_fBoardNav() {
+		$('#fBoardNav').addClass('navClick');
+	}
 	
 	function fn_update() {
 		$('#f').submit(function(event){
@@ -92,8 +100,7 @@
 					<input type="hidden" name="filename0" value="${fBoard.filename1}">
 					
 					<!-- 홍보글,이벤트 일때만 보이는 tap(radio) -->
-					<c:if test="${not empty loginUser.ownerno}">
-					</c:if>
+					
 						<div id="radio" class="ownerChoiceRadio">
 							<input type="radio" name="contentType" value="홍보글" id="promotion">
 							<label for="promotion">홍보글</label>

@@ -12,7 +12,23 @@
 <link rel="stylesheet" href="resources/asset/css/writeForm.css">
 <link rel="stylesheet" href="resources/asset/css/myPage.css">
 <script>
+/* 함수 */
+
+// 죄측의 Tap 클릭 시, 클릭된 영역의 변경요소 확인
+function fn_leftClick() {
+	$('a').click(function(){
+		$('#left').find( $('a') ).removeClass('tabClick');
+		$(this).addClass('tabClick');
+		$('#rigthList').removeClass('none');
+		$('#rigthMember').addClass('none');
+	});
 	
+	$('#memberUp').click(function(){ 
+		$('#rigthMember').removeClass('none');
+		$('#rigthList').addClass('none');
+		$('#memberUp').addClass('tabClick');
+	});
+
 </script>
 	
 	<!-- Section -->

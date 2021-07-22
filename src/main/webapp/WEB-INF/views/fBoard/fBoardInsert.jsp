@@ -14,10 +14,18 @@
 
 <script>
 	$(document).ready(function(){
+		fn_fBoardNav();
 		fn_insert();
 		fn_init();
 		fn_onOff();
 	}); // 페이지 로드 이벤트 (종료)
+	
+	
+	/* 함수 */
+	// 자유게시판 체크 확인 (red)
+	function fn_fBoardNav() {
+		$('#fBoardNav').addClass('navClick');
+	}
 	
 	function fn_insert() {
 		$('#f').submit(function(event){
@@ -78,7 +86,7 @@
 				<div class="clear con">
 					
 					<!-- 사장님에게만 보이는 버튼 (무조건 눌려있어야 한다.) -->
-					<c:if test="${not empty loginUser.ownerno}">
+					<c:if test="${loginUser.status == 1}">
 						<div id="radio" class="ownerChoiceRadio">
 							<input type="radio" name="contentType" value="홍보글" id="promotion">
 							<label for="promotion">홍보글</label>

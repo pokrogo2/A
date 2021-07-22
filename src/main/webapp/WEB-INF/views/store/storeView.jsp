@@ -15,12 +15,19 @@
 	<script>
 	
 		$(document).ready(function(){
-			
+			fn_update();
 			fn_storeList();
 			fn_storeCategory();
 			fn_storeTable();
 		});
 	
+		
+		// 수정하기
+		function fn_update(){
+			$('#update_btn').click(function(){
+				location.href='storeUpdatePage.do?storeNo=${store.storeNo}';
+			});
+		}
 		
 		// 카테고리 선택 
 		function fn_storeCategory() {
@@ -182,8 +189,8 @@
 				
 				<div class="btns">
 				<div>
-					<!-- 수정 중 -->
-					<!-- <button id="update_btn">수정하기</button> -->
+					
+					<button id="update_btn">수정하기</button> 
 					<input type="button" value="가게 목록보기" id="storeList_btn">
 					
 					<input type="hidden" name="storeNo" value="${store.storeNo}">

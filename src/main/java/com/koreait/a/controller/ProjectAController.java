@@ -89,11 +89,13 @@ public class ProjectAController {
 		this.fReplyDeleteCommand = fReplyDeleteCommand;
 	}
 	
-	/* index 시작 */
+	/*
+	/* index 시작 
 	@GetMapping(value= {"/", "index.do"})
 	public String index() {
 		return "index" ;
 	}
+	*/
 	
 	
 	

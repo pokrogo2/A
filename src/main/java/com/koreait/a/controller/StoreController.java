@@ -55,6 +55,7 @@ public class StoreController {
 		}
 		
 		
+		
 
 		// 가게 등록 
 		@GetMapping(value="storeInsertPage.do")

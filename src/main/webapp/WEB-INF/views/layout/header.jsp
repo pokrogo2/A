@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<%
 		request.setCharacterEncoding("UTF-8");
 		Optional<String> opt = Optional.ofNullable(request.getParameter("JSP_title"));
@@ -21,7 +21,19 @@
 	
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script>
+		$(document).ready(function(){
+			fn_navClick();
+		}); // 페이지 로드 이벤트 종료
 		
+		/* 함수 */
+		function fn_navClick() {
+			$( $('#category').find('a') ).click(function(){
+				$( $('#category').find('a') ).removeClass('navClick');
+				$(this).addClass('navClick');
+			})
+		}
+		
+	
 	</script>
 	
 </head>
@@ -29,34 +41,39 @@
 
 	<header>
 		<div id="topNav">
-			<a class="logo">LOGO</a>
+			<a href="index.do" class="logo"><img alt="logoA" src="resources/asset/img/logoAA.png"> </a>
 			<span class="sub_nav">
-			
-			
-			
-				<!-- 나중에 수정할 부분 -->
-				<!-- <c:if test="${empty loginUser}"></c:if> -->
-					<a href="#">로그인</a>
+				<c:if test="${empty loginUser}">
+					<a href="loginPage.do">로그인</a>
 					<span>|</span>
-					<a href="#">회원가입</a><br>
-				
-				<!-- <c:if test="${not empty loginUser}"> </c:if> -->
-					<a href="#">마이페이지</a>
+					<a href="joinPage.do">회원가입</a>
+				</c:if>
+				<c:if test="${not empty loginUser}">
+                    <a href="logout.do">로그아웃</a>
+                    <span>|</span>
+					<a href="memberMyPage.do">마이페이지</a>
 					<span>|</span>
 					<a href="storeInsertPage.do" id="store_insert_btn">가게 등록</a>
-					
-					
-				
+				</c:if>
 			</span>
 		</div>
 		<div id="catgNav" class="upDownBorder">
-			<div class="clear category">
+			<div id="category" class="clear">
 				<!-- 링크 작업 시, ?category=${ctg} 넣어서 해당 카테고리 리스트만 만들 예정 -->
-				<c:forEach var="ctg" items="${category}" varStatus="status">
+				<c:forEach var="ctg" items="${category}">
 					<a href="storeList.do">${ctg}</a>
 				</c:forEach>
+				<span>|</span>
+				<a href="fBoardPage.do" id="fBoardNav">자유게시판</a>
 			</div>
+		</div>
+			
+		<div id="sideFix">
+			<div> <a href="noticePage.do"> <i class="fas fa-exclamation"></i> </a></div>
+			<div> <a href="#"> <i class="far fa-comments"></i> </a> </div>
+			<div> <a href="#"> <i class="fas fa-search"></i> </a> </div>
 		</div>
 	</header>
 		
 		<section>
+			

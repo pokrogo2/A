@@ -8,9 +8,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 import com.koreait.a.dao.StoreDAO;
-import com.koreait.a.dto.Store;
+import com.koreait.a.dto.StoreDTO;
 
-public class SelectStoreByNoCommand implements StoreCommand {
+public class StoreViewCommand implements StoreCommand {
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model) {
@@ -21,13 +21,20 @@ public class SelectStoreByNoCommand implements StoreCommand {
 		
 		long storeNo = Long.parseLong(request.getParameter("storeNo"));
 		
-		StoreDAO storeDAO = sqlSession.getMapper(StoreDAO.class);
-		Store store = storeDAO.selectStoreByNo(storeNo);
 		
+		StoreDAO storeDAO = sqlSession.getMapper(StoreDAO.class);
+		
+		// 가게 불러오기
+		StoreDTO store = storeDAO.storeView(storeNo);
 		model.addAttribute("store", store);
-	
+				
+		// 조회수 증가
+		storeDAO.storeHit(storeNo);
+
+		
 		
 
+		
 	}
 
 }

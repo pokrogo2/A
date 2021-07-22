@@ -6,79 +6,132 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartRequest;
 
-import com.koreait.a.command.store.InsertStoreCommand;
-import com.koreait.a.command.store.SelectStoreByNoCommand;
-import com.koreait.a.command.store.SelectStoreListCommand;
-import com.koreait.a.dto.Page;
+import com.koreait.a.command.store.StoreDeleteCommand;
+import com.koreait.a.command.store.StoreInsertCommand;
+import com.koreait.a.command.store.StoreListCommand;
+import com.koreait.a.command.store.StoreUpdateCommand;
+import com.koreait.a.command.store.StoreViewCommand;
 
 import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
 @Controller
 public class StoreController {
 
+	// field
 	private SqlSession sqlSession;
-	private InsertStoreCommand insertStoreCommand;
-	private SelectStoreListCommand selectStoreListCommand;
-	private SelectStoreByNoCommand selectStoreByNoCommand;
+	private StoreInsertCommand storeInsertCommand;
+	private StoreListCommand storeListCommand;
+	private StoreViewCommand storeViewCommand;
+	private StoreUpdateCommand storeUpdateCommand;
+	private StoreDeleteCommand storeDeleteCommand;
 
+	// constructor
+	@Autowired
+	public StoreController(SqlSession sqlSession, 
+			  			   StoreInsertCommand storeInsertCommand,
+			  			   StoreListCommand storeListCommand, 
+			  			   StoreViewCommand storeViewCommand,
+			  			   StoreUpdateCommand storeUpdateCommand,
+			  			   StoreDeleteCommand storeDeleteCommand) {
+		super();
+		this.sqlSession = sqlSession;
+		this.storeInsertCommand = storeInsertCommand;
+		this.storeListCommand = storeListCommand;
+		this.storeViewCommand = storeViewCommand;
+		this.storeUpdateCommand = storeUpdateCommand;
+		this.storeDeleteCommand = storeDeleteCommand;
+	}
+	
+	
+	// index 페이지 
 	@GetMapping(value= {"/", "index.do"})
 	public String index() {
 		return "index";
 	}
 	
-	@GetMapping(value="insertStorePage.do")
+
+	// 가게 등록 
+	@GetMapping(value="storeInsertPage.do")
 	public String insertStorePage() {
-		return "store/insertStore";
+		return "store/storeInsert";
 	}
 	
-	@PostMapping(value="insertStore.do")
-	public void insertStore(HttpServletRequest request,
-							HttpServletResponse response,
+	@PostMapping(value="storeInsert.do")
+	public String insertStore(MultipartRequest multipartRequest,
 							  Model model) {
-		model.addAttribute("request", request);
-		model.addAttribute("response", response);
-		insertStoreCommand.execute(sqlSession, model);
+		model.addAttribute("multipartRequest", multipartRequest);
+		storeInsertCommand.execute(sqlSession, model);
+		return "redirect:storeList.do";
 	}
 	
+	/*
 	@GetMapping(value="storeListPage.do")
 	public String storeListPage() {
 		return "store/storeList";
 	}
+	*/
 	
-	@PostMapping(value="storeList.do", produces="application/json; charset=utf-8")
-	@ResponseBody
-	public Map<String, Object> storeList(@RequestBody Page page,
-										 Model model) {
-		model.addAttribute("page", page.getPage());
-		return selectStoreListCommand.execute(sqlSession, model);
-		
+	
+	// 가게 리스트 
+	@GetMapping(value="storeList.do")
+	public String storeList(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		storeListCommand.execute(sqlSession, model);
+		return "store/storeList";
 	} 
 	
-	@GetMapping(value="viewStorePage.do")
-	public String viewStorePage() {
-		return "store/viewStore";
-	}
 	
-	@GetMapping(value="selectStoreByNo.do")
+	// 가게 view 
+	
+	@GetMapping(value="storeViewPage.do")
+	public String viewStorePage() {
+		return "store/storeView";
+	}
+		
+	@GetMapping(value="storeView.do")
 	public String selectStoreByNo(HttpServletRequest request,
-								  HttpServletResponse response,
 								  Model model) {
 		model.addAttribute("request", request);
-		model.addAttribute("response", response);
-		selectStoreByNoCommand.execute(sqlSession, model);
-		return "store/viewStore";
+		storeViewCommand.execute(sqlSession, model);
+		return "store/storeView";
 	}
 	
-
+	// 가게 Update Page
+	@GetMapping(value="storeUpdatePage.do")
+	public String storeUpdatePage(HttpServletRequest request, 
+									HttpServletResponse response, 
+									Model model) {
+		model.addAttribute("request", request);
+		model.addAttribute("response", response);
+		storeViewCommand.execute(sqlSession, model);
+		return "store/storeUpdate";
+	}
 	
+	// 가게 Update
+	@PostMapping(value="storeUpdate.do")
+	public String storeUpdate(MultipartRequest multipartRequest,Model model) {
+	model.addAttribute("multipartRequest", multipartRequest);
+	storeUpdateCommand.execute(sqlSession, model);
+	return "redirect:storeList.do";
+	}
 	
-	
+	// 가게 등록 삭제
+	@PostMapping(value="storeDelete.do")
+	public String storeDelete(MultipartHttpServletRequest multipartRequest,
+							HttpServletResponse response, 
+							Model model) {
+	model.addAttribute("multipartRequest", multipartRequest);
+	model.addAttribute("response", response);
+	storeDeleteCommand.execute(sqlSession, model);
+	return "redirect:storeList.do";
+	}
 }

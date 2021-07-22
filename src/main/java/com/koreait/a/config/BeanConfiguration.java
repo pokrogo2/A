@@ -8,9 +8,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-import com.koreait.a.command.store.InsertStoreCommand;
-import com.koreait.a.command.store.SelectStoreByNoCommand;
-import com.koreait.a.command.store.SelectStoreListCommand;
+import com.koreait.a.command.store.StoreDeleteCommand;
+import com.koreait.a.command.store.StoreInsertCommand;
+import com.koreait.a.command.store.StoreListCommand;
+import com.koreait.a.command.store.StoreUpdateCommand;
+import com.koreait.a.command.store.StoreViewCommand;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -51,19 +53,28 @@ public class BeanConfiguration {
 	
 	
 	@Bean
-	public InsertStoreCommand insertStoreCommand() {
-		return new InsertStoreCommand();
-	}
-	
-
-	@Bean
-	public SelectStoreListCommand selectStoreListCommand() {
-		return new SelectStoreListCommand();
+	public StoreInsertCommand storeInsertCommand() {
+		return new StoreInsertCommand();
 	}
 	
 	@Bean
-	public SelectStoreByNoCommand selectStoreByNoCommand() {
-		return new SelectStoreByNoCommand();
+	public StoreListCommand storeListCommand() {
+		return new StoreListCommand();
+	}
+	
+	@Bean
+	public StoreViewCommand storeViewCommand() {
+		return new StoreViewCommand();
+	}
+	
+	@Bean
+	public StoreUpdateCommand storeUpdateCommand() {
+		return new StoreUpdateCommand();
+	}
+	
+	@Bean
+	public StoreDeleteCommand storeDeleteCommand() {
+		return new StoreDeleteCommand();
 	}
 	
 

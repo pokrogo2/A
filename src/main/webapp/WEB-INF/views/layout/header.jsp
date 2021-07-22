@@ -43,8 +43,7 @@
 				<!-- <c:if test="${not empty loginUser}"> </c:if> -->
 					<a href="#">마이페이지</a>
 					<span>|</span>
-					<a href="insertStorePage.do" id="store_insert_btn">가게 등록</a>
-					<a href="viewStorePage.do" id="store_insert_btn">가게 View</a>
+					<a href="storeInsertPage.do" id="store_insert_btn">가게 등록</a>
 					
 					
 				
@@ -54,7 +53,7 @@
 			<div class="clear category">
 				<!-- 링크 작업 시, ?category=${ctg} 넣어서 해당 카테고리 리스트만 만들 예정 -->
 				<c:forEach var="ctg" items="${category}" varStatus="status">
-					<a href="storeListPage.do">${ctg}</a>
+					<a href="storeList.do">${ctg}</a>
 				</c:forEach>
 			</div>
 		</div>

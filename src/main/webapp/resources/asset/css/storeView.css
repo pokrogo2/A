@@ -8,16 +8,17 @@
 }
 
 .store_name {
+	font-size: 30px;
+	font-weight: 900;
 	margin: 40px;
 }
 
 .store_image {
-	width: 300px;
-	height: 200px;
-	border: 1px solid red;
+	width: 600px;
 	padding: 80px;
 	margin-bottom: 30px;
 }
+
 
 .store_btns {
 	padding: 30px;
@@ -37,19 +38,38 @@ ul > li {
 .store_section {
 	width: 100%;
 	border-top: 1px solid gray;
-	padding: 70px;
+	margin: 0 auto;
+	
 }
 
-.exp_box {
-	width: 300px;
-	height: 200px;
-	border: 1px solid blue;	
+.storeView_outer {
+	margin: 80px 150px;
+	
+}
+.storeView_list {
+	width: 70%;
+	text-align: center;
+	display: flex;
+    flex-direction: row;  
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid gray;
 }
 
-.content_box {
-	width: 300px;
+.list_left {
+	margin-right: 30px;
+}
+
+.list_right {
+	margin-left: 60px;
+}
+
+
+.btns {
+	width: 100%;
 	height: 100px;
-	border: 1px solid blue;	
+	padding: 30px;
+	
 }
 
 

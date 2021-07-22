@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+/* 글 작성 버튼 */
+input[value="글 작성"] {
+	margin-bottom:50px;
+}
+
+/* 공지사항 테이블의 행의 높이 */
+tr {
+	height:55px;
+}
+/* 공지사항 칼럼 별 너비 */
+td:nth-child(1) {width:19%;}
+td:nth-child(3) {width:20%;}
+
+
+

@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+/* form의 영역을 감싸는 div */
+.write_box {margin:50px 0;}
+
+
+#f {width:700px;}
+
+/* (form)의 reset */
+input[type="text"], input[type="password"], textarea, button {width:100%; margin-bottom:40px;}
+input[type="password"] {width:100%;}
+input[type="button"], button {cursor:pointer;}
+textarea { padding-left:10px;}
+input[type="button"] {padding:0 40px;}
+
+.btn {float:right; margin-bottom:20px;}
+input[value="목록"] {margin:0 10px;}
+
+button, input[value="초기화"]:hover, input[value="수정"]:hover {
+	background-color:#6A1310; 
+	color:#FFFAF8;
+}
+
+label {font-size:14px; font-weight:400; color:#aaa;}
+textarea {padding-top:10px; height:425px; margin-top:5px;}
+input[name="writer"] {
+	color:#333;
+	font-weight:400;
+}
+input[name="title"], textarea {border-color:#6a1310;}
+
+
+
+/* 배경을 칠한 버튼은 작어보여서 높이를 +2~3px 준다 */
+button {height:55px; margin-top:10px;}
+
+
+

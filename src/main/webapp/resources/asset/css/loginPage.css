@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+/* View에서 h1수정 */
+.con_title {
+	border:none; 
+	padding-bottom:50px;
+	font-weight:300;
+}
+
+#f {
+	width:450px;
+	font-size:14px; 
+	font-weight:400; 
+	color:#aaa;
+}
+
+#f button {margin-top:50px; margin-bottom:10px;}
+#f input {border-color:#9B1E24;}
+
+.subLink {
+	text-align:center;
+}
+.subLink a {color:#aaa;}
+.subLink a:hover {color:black; font-weight:500;}
+.subLink span {padding:0 15px; font-size:13px; color:#aaa;}
+

@@ -1,17 +1,18 @@
 package com.koreait.a.dao;
 
+
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.koreait.a.dto.PageDTO;
+import com.koreait.a.dto.PagingDTO;
 import com.koreait.a.dto.StoreDTO;
 
 @Repository
 public interface StoreDAO {
 
 	// 가게 목록
-	public List<StoreDTO> storeList(PageDTO pageDTO);
+	public List<StoreDTO> storeList(PagingDTO pagingDTO);
 	
 	// 가게 목록 조회수
 	public int storeHit(long storeNo);

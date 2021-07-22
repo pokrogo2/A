@@ -1,7 +1,10 @@
 package com.koreait.a.dto;
 
-public class PageDTO {
 
+
+public class PagingDTO {
+
+	// field
 	private int page;
 	private int totalRecord;
 	private int recordPerPage;
@@ -11,8 +14,20 @@ public class PageDTO {
 	private int pagePerBlock;
 	private int beginPage;
 	private int endPage;
+	private String loginId;
 	
-	// getter, setter
+	
+	
+	
+	
+	
+	public String getLoginId() {
+		return loginId;
+	}
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
+	}
+	// Getter and Setter 
 	public int getPage() {
 		return page;
 	}
@@ -67,6 +82,11 @@ public class PageDTO {
 	public void setEndPage(int endPage) {
 		this.endPage = endPage;
 	}
+	
+	
+	
+	
+	
 	
 	
 	

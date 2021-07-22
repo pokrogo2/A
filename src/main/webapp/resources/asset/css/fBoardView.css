@@ -1,0 +1,142 @@
+@charset "UTF-8";
+
+/* 수정, 삭제 버튼을 담고 있는 div */
+.topBtn {text-align:right;}
+
+
+/* View의 모든 버튼에 적용 */
+input[type="button"] {
+	cursor:pointer;
+	padding:0 40px;
+	margin:50px 0 20px 0;
+}
+input[value="목록"], input[value="수정"]:hover, input[value="삭제"]:hover {
+	background-color:#6A1310; 
+	color:white;
+}
+input[value="수정"] {margin:0 10px;}
+input[value="목록"] {margin:0 auto; display:block;}
+
+
+/* 공자사항의 내용 (박스:div) */
+.fboardView_box {width:100%; margin-bottom:50px;}
+.fboardView_box div {text-align:center;}
+
+/* 이벤트,홍보글일 때 */
+.contentType {
+	display:block;
+	width:125px;
+	height:40px;
+	line-height:40px;
+	font-size:18px;
+	background-color:#9B1E24;
+	color:#FFFAF8;
+	border-radius:100px;
+	margin-bottom:30px;
+}
+
+/* 제목 */
+h2 {font-size:30px; font-weight:600;}
+
+/* 내용 영역 */
+.content {
+	width:70%;
+	margin: 30px auto;
+	font-size:18p;
+}
+
+/* img */
+img {width:700px;}
+
+/* 서브 영역 : 작성자,작성일,조회수 */
+.fboardView_box .sub {
+	font-size:13px;
+	text-align:right;
+}
+.sub1 {margin-top:50px;}
+.sub .line {font-size:10px; padding:0 5px;}
+.sub .hit {font-size:13px; font-weight:800;}
+
+
+
+
+/* 댓글 영역 */
+.fReply_box {width:100%;}
+/* 댓글 영역의 댓글 입력창을 담고 있는 div */
+#fReply_form {
+	width:700px;
+	border: 1px solid lightgray;
+}
+form {position:relative;}
+form span {font-weight:500;}
+form span:nth-child(1) {padding-left:20px;}
+form span:nth-child(2) {padding: 0 30px;}
+input {}
+input[value="작성"] {
+	margin:0;
+	float:right;
+	border:none;
+	background-color:#6A1310;
+	color:#FFFAF8;
+}
+input[name="fReply_content"] {border:none;}
+
+#fReply_table{
+	margin: 50px 0;
+	border-top:1px solid; 
+	border-bottom:1px solid; 
+	padding-bottom:15px;
+}
+table {width:100%; margin-bottom:15px;}
+#fReplyList {}
+td {height:65px; }
+.noneReply {font-size:20px; font-weight:500;}
+td:nth-child(1) {width:8%;}
+td:nth-child(2) {
+	font-size:20px; 
+	font-weight:500;
+	width:15%;
+}
+td:nth-child(3) {
+	text-align:left; 
+	padding-left:10px;
+}
+td:nth-child(4) {width:20%;}
+tbody span {
+	display:block;
+	font-size:13px;
+	color:#999;
+	text-align:right;
+	padding:5px 10px 0 0; 
+}
+tbody input[value="삭제"] {
+	height:30px;
+	border-radius:100px;
+	margin:0;
+}
+
+
+#fReply_paging {text-align:center; display:block;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

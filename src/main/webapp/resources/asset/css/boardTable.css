@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+/* 글 작성 버튼 */
+input[value="글 작성"] {
+	padding:0 20px;
+	display:block;
+	margin-right:0;
+	margin-top:20px;
+}
+input[value="글 작성"]:hover {
+	background-color:#1E0408; 
+	color:white;
+	cursor:pointer;
+}
+
+
+/* 검색버튼, 조회드롭 : 한 라인에 표시 */
+.topSelect {float:left;}
+#search {
+	border: 1px solid #6a1310;
+	border-radius:100px;
+	width:385px;
+	height:40px;
+	text-align:center;
+}
+#search form {position:relative;}
+#search select {
+	height:25px;
+	border:none;
+	margin-top:7px;
+}
+#search input[type="text"] {
+	height:25px;
+	border:none;
+	width:160px;
+}
+#search input[type="button"] {
+	float:right;
+	border:none;
+	border-radius: 100px;
+	width:86px;
+	height:38px;
+	background-color:#6a1310;
+	color:white;
+}
+
+#drop {margin-bottom:20px; float:right;}
+#drop select {
+	padding-left:10px;
+	height:40px;
+	border-left:none;
+	border-right:none;
+	background-color: #f9f9f9;
+}
+
+
+/* 검색결과 및 조회로 인해 게시판의 리스트가 변할 때, 게시판의 게수 표시 */
+#searchTotal {display:block; margin-bottom:10px;}
+
+
+/* 게시판 리스트 테이블 */
+.table_box {
+	border-top:1px solid #888;
+	border-bottom:1px solid #888;
+}
+table {width:100%;}
+tr {height:50px;}
+td {text-align:center;}
+/* td:nth-child(1) {} >>> 해당 칼럼마다의 너비는 따로 지정 */
+
+
+/* 게시판 칼럼명 영역 */
+thead {}
+thead tr {background-color:#6A1310;}
+thead td { font-weight: 400; color: #FFFAF8;}
+
+
+/* 게시판 리스트 영역 */
+tbody {}
+tbody tr {
+	border-top:1px solid #eee;
+	border-bottom:1px solid #eee;
+}
+tbody a {font-weight:500;}
+tbody a:hover {
+	text-decoration:underline;
+	color:#6A1310;
+}
+
+
+/* 페이징 영역 */
+tfoot {}
+.paging div {
+	display:inline-block;
+	margin:0 5px;
+}
+
+
+
+
+

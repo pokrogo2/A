@@ -10,9 +10,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 import com.koreait.a.dao.StoreDAO;
-import com.koreait.a.dto.PageDTO;
+import com.koreait.a.dto.PagingDTO;
 import com.koreait.a.dto.StoreDTO;
-import com.koreait.a.util.PagingUtils;
+import com.koreait.a.utils.PagingUtils;
 
 public class StoreListCommand implements StoreCommand {
 
@@ -27,10 +27,12 @@ public class StoreListCommand implements StoreCommand {
 		
 		StoreDAO storeDAO = sqlSession.getMapper(StoreDAO.class);
 		int totalRecord = storeDAO.storeTotalCount();
+		int recordPerPage = 10;
+		int pagePerBlock = 5;
 		
-		PageDTO pageDTO = PagingUtils.getPage(totalRecord, page);
+		PagingDTO pagingDTO = PagingUtils.getPage(recordPerPage, pagePerBlock, totalRecord, page);
 		
-		List<StoreDTO> list = storeDAO.storeList(pageDTO);
+		List<StoreDTO> list = storeDAO.storeList(pagingDTO);
 		String paging = PagingUtils.getPaging("storeList.do", page);
 		
 		model.addAttribute("list", list);

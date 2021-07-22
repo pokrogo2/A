@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<%
 		request.setCharacterEncoding("UTF-8");
 		Optional<String> opt = Optional.ofNullable(request.getParameter("JSP_title"));

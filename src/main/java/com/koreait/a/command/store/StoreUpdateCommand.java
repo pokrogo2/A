@@ -20,17 +20,6 @@ public class StoreUpdateCommand implements StoreCommand {
 		Map<String, Object> map = model.asMap();
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)map.get("multipartRequest");
 		
-		/*
-		String storeName = multipartRequest.getParameter("storeName");
-		String storeContent = multipartRequest.getParameter("storeContent");
-		int storeTable = (Integer.parseInt(multipartRequest.getParameter("storeTable")));
-		String storeTel = multipartRequest.getParameter("storeTel");
-		String storeAddr = multipartRequest.getParameter("storeAddr");
-		String storeTime = multipartRequest.getParameter("storeTime");
-		String storeSns = multipartRequest.getParameter("storeSns");
-		String storeCategory = multipartRequest.getParameter("storeCategory");
-		String storeMenu = multipartRequest.getParameter("storeMenu");
-		*/
 		
 		StoreDTO storeDTO = new StoreDTO();
 		storeDTO.setStoreName(multipartRequest.getParameter("storeName"));

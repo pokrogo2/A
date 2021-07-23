@@ -11,8 +11,9 @@ import org.springframework.ui.Model;
 import com.koreait.a.dao.FReplyDAO;
 import com.koreait.a.dto.FReplyDTO;
 
-public class FReplyInsertCommand {
+public class FReplyInsertCommand implements FReplyCommand{
 
+	@Override
 	public Map<String, Object> execute(SqlSession sqlSession, Model model) {
 
 		Map<String, Object> map = model.asMap();

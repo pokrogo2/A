@@ -10,8 +10,9 @@ import org.springframework.ui.Model;
 
 import com.koreait.a.dao.FReplyDAO;
 
-public class FReplyDeleteCommand {
+public class FReplyDeleteCommand implements FReplyCommand {
 
+	@Override
 	public Map<String, Object> execute(SqlSession sqlSession, Model model) {
 
 		Map<String, Object> map = model.asMap();

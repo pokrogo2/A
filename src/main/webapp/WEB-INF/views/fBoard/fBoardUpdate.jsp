@@ -44,7 +44,6 @@
 				event.preventDefault();
 				return false;
 			} else if ( $('#title').val() == '${fBoard.title}'
-					 && $('#content').val() == '${fBoard.content}' 
 					 && $('input[name="fileDelete"]').val() == $('#false').val() ) {
 				alert('수정할 내용이 없습니다.');
 				$('#title').focus();

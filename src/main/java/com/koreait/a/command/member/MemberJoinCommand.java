@@ -1,4 +1,4 @@
-package com.koreait.a.command.member;
+	package com.koreait.a.command.member;
 
 import java.io.IOException;
 import java.util.Map;
@@ -29,6 +29,7 @@ public class MemberJoinCommand implements MemberCommand {
 		String address = request.getParameter("address");
 		int age = Integer.parseInt(request.getParameter("age"));
 		
+		
 		int result;
 		
 		MemberDTO member = new MemberDTO();
@@ -41,18 +42,18 @@ public class MemberJoinCommand implements MemberCommand {
 		member.setMemberAge(age);
 		
 		MemberDAO memberDAO = sqlSession.getMapper(MemberDAO.class);
+		response.setContentType("text/html; charset=UTF-8");
 		result = memberDAO.join(member);
-		response.setContentType("html/text; charset=UTF-8");
 		try {
-			if(result ==0) {
-				response.getWriter().println("<script>");
-				response.getWriter().println("alert('회원가입에 실패하였습니다.')");
-				response.getWriter().println("location.href='joinPage.do'");
-				response.getWriter().println("</script>");
-			}else {
+			if(result != 0) {
 				response.getWriter().println("<script>");
 				response.getWriter().println("alert('회원가입에 성공하였습니다.')");
 				response.getWriter().println("location.href='login.do'");
+				response.getWriter().println("</script>");
+			}else {
+				response.getWriter().println("<script>");
+				response.getWriter().println("alert('회원가입에 실패하였습니다.')");
+				response.getWriter().println("location.href='joinPage.do'");
 				response.getWriter().println("</script>");
 			}
 		}catch(IOException e) {

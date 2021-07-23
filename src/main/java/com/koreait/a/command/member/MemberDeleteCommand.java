@@ -20,14 +20,15 @@ public class MemberDeleteCommand implements MemberCommand {
 		Map<String, Object> map = model.asMap();
 		HttpSession session = (HttpSession)map.get("session");
 		HttpServletResponse response = (HttpServletResponse)map.get("response");
+	
 		
 		long no = ((MemberDTO)session.getAttribute("loginUser")).getMemberNo();
 		System.out.println(no);
 		MemberDAO memberDAO = sqlSession.getMapper(MemberDAO.class);
+		response.setContentType("text/html; charset=UTF-8");
 		int count = memberDAO.delete(no);
-		response.setContentType("html/text; charset=UTF-8");
 		try {
-		if (count > 0) {
+		if (count != 0) {
 			session.invalidate();
 			response.getWriter().println("<script>");
 			response.getWriter().println("alert('탈퇴에 성공하였습니다.')");

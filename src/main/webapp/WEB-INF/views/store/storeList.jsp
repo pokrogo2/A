@@ -14,31 +14,57 @@
 
 <script>
 
+	$(documnet).ready(function(){
+		fn_search();
+	});
 
+	
+	// 가게 목록 검색
+	function fn_search(){
+		$('#search_btn').click(function(){
+			/*
+			if ($('#column').val() == '') {
+				alert('검색 카테고리를 선택하세요.');
+				$('#column').focus();
+				return false;
+			}
+			*/
+			$('#f').attr('action', 'search.do');
+			$('#f').submit();
+		});
+	}
 
+	
+	
 </script>
 
 
 <!-- 가게 리스트 검색-->
 <div class="outer">
-	<form>
-		<div class="box">
-			<select>
-			
-				<!-- 리뷰별: 보류 
-				<option value="review">리뷰별(평점순)</option> 
-				 -->
-									
-				<option value="hit">조회순</option>
-				<option value="post">등록순</option>
+	<form id="f" method="get">
+		<div class="search_box">
+			<select id="column" name="column">
+				<option value="STORENAME" data-name="storeName">상호명</option>
 			</select>	
-	
-			<input type="text" id="search" name="search" class="int">
-			<button>검색하기</button>
+			
+			<!---- query 검색 or 조회순/등록순 둘 중 하나로 검색 ---->
+			<input list="auto_complete_list" type="text" name="query" id="query">
+			<datalist id="auto_complete_list">
+			</datalist>
+			
+			<select id="" name="">
+				<!-- 리뷰별: 보류 
+					<option value="review">리뷰별(평점순)</option> 
+				 -->
+				<option value="STOREHIT" data-name="storeHit">조회순</option>
+				<option value="STORENO" data-name="storeNo">등록순</option>
+			</select>	
+			<input type="button" value="검색" id="search_btn">						
 		</div>
-	
+	</form>
 	
 <!-- 가게 리스트 -->
+	<form>
 	<table border="1">
 		<thead>
 			<tr>

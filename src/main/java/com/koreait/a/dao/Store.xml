@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 조회수 -->
 	<update id="storeHit">
 		UPDATE STOREREG
-		   SET STOREHIT = #{storeHit + 1}
+		   SET STOREHIT = storeHit + 1
 		 WHERE STORENO = #{storeNo}
 	</update>
 	
@@ -60,10 +60,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	     WHERE STORENO = #{storeNo}
 	</select>
 	
-	<!-- 가게 수정 -->
+	<!-- 가게 업데이트 -->
 	<update id="storeUpdate">
 		UPDATE STOREREG
-		   SET STORENAME = #{storeName}, STORECOTENT = #{storeContent}, STORETEL = #{storeTel}, STOREADDR = #{storeAddr}, 
+		   SET STORENAME = #{storeName}, STORECONTENT = #{storeContent}, STORETEL = #{storeTel}, STOREADDR = #{storeAddr}, 
 		       STORETIME = #{storeTime}, STORESNS = #{storeSns}, STORECATEGORY = #{storeCategory},
 		       STOREMENU = #{storeMenu}, ORIGINFILENAME = #{originFilename}, SAVEFILENAME = #{saveFilename}
 		 WHERE STORENO = #{storeNo}	

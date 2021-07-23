@@ -19,17 +19,19 @@ public class StoreViewCommand implements StoreCommand {
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		
-		long storeNo = Long.parseLong(request.getParameter("storeNo"));
-		
+		// 전달받은 데이터 옮겨주기
+		long storeNo = Long.parseLong(request.getParameter("storeNo"));	
 		
 		StoreDAO storeDAO = sqlSession.getMapper(StoreDAO.class);
 		
-		// 가게 불러오기
-		StoreDTO store = storeDAO.storeView(storeNo);
-		model.addAttribute("store", store);
-				
 		// 조회수 증가
 		storeDAO.storeHit(storeNo);
+
+		// 가게 불러오기
+		StoreDTO store = storeDAO.storeView(storeNo);
+		// storeDTO 전달 
+		model.addAttribute("store", store);
+				
 
 		
 		

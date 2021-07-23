@@ -116,10 +116,9 @@ public class StoreController {
 		
 		// 가게 Update
 		@PostMapping(value="storeUpdate.do")
-		public String storeUpdate(MultipartRequest multipartRequest,Model model) {
+		public void storeUpdate(MultipartRequest multipartRequest,Model model) {
 		model.addAttribute("multipartRequest", multipartRequest);
 		storeUpdateCommand.execute(sqlSession, model);
-		return "redirect:storeList.do";
 		}
 		
 		// 가게 등록 삭제

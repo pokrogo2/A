@@ -16,53 +16,78 @@
 	
 		$(document).ready(function(){
 			fn_update();
-			fn_storeList();
 			fn_storeTable()
+			fn_storeList();
+			fn_storeCategory();
+			fn_fileAlert();
 		});
-	
 		
-		// 수정하기
+		
+		// 가게 업데이트
 		function fn_update(){
-			
 			$('#f').submit(function(event){
-				// 필수 항목 입력 
-				if ($('#store_cotent').val() == '' ||
+				if ($('#store_name').val() == '' ||
+					$('#store_content').val() == '' ||
 					$('#store_table').val() == '' ||
 					$('#store_tel').val() == '' ||
 					$('#store_addr').val() == '' ||
 					$('#store_time').val() == '' ||
-					$('#store_category').val() == '' ||
-					$('#file').val() == '' 
+					$('input[name="storeCategory"]').val() == '' 
 					) {
 						alert('필수 정보를 입력하세요.');
 						event.preventDefault();
 						return false;
-					} 
-				// 변동사항 없을 경우
-				else ( $('#store_content').val() == '${store.storeContent}'
-						 && $('#store_table').val() == '${store.storeTable}' 
-						 && $('#store_tel').val() == '${store.storeTel}' 
-						 && $('#store_addr').val() == '${store.storeAddr}' 
-						 && $('#store_time').val() == '${store.storeTime}' 
-						 && $('#store_category').val() == '${store.storeCategory}' 
-						 && $('#file').val() == '${store.saveFilename}' ) {
-							alert('수정할 내용이 없습니다.');
-							$('#store_content').focus();
-							event.preventDefault();
-							return false;				
-						}
-				
-				});
-			
-			}
-	
-	
+				} else ( $('#store_name').val() == '${store.storeName}'
+					 && $('#store_content').val() == '${store.storeContent}' 
+					 && $('#store_table').val() == '${store.storeTable}' 
+					 && $('#store_tel').val() == '${store.storeTel}' 
+					 && $('#store_addr').val() == '${store.storeAddr}' 
+					 && $('#store_time').val() == '${store.storeTime}' )
+						  {
+					alert('수정할 내용이 없습니다.');
+					$('#title').focus();
+					event.preventDefault();
+					return false;				
+				}	
+				$('#f').attr('action', 'storeUpdate.do');
+				$('#f').submit();	
+			});
+		}
+		
+		// && $('input[name="storeCategory"]').val() == $('#false').val() )
+		
 		// 테이블 갯수 입력창
 		function fn_storeTable() {
 			$('#store_table').blur(function(){
 				var storeTable = /^[0-9]{1,3}$/;
 				if ( !storeTable.test($('#store_table').val()) ) {
 					alert('숫자만 입력해주세요. (3자리를 넘을 수 없습니다.)')
+					return false;
+				}
+			});
+		}
+		
+		// 카테고리 선택 
+		function fn_storeCategory() {
+			$('input:radio[name=storeCategory].attr("checked", true)');
+		}
+		
+		
+		// 파일 업로드 제한 
+		function fn_fileAlert(){
+			$('#file').change(function(){
+				var extension = $(this).val().substring($(this).val().lastIndexOf('.') + 1).toUpperCase();
+				var extList = ['JPG', 'JPEG', 'PNG', 'GIF'];
+				if ($.inArray(extension, extList) == -1) {
+					alert('확장자가 jpg, jpeg, png, gif인 파일만 업로드 가능합니다.');
+					$(this).val('');
+					return false;
+				}
+				var maxSize = 1024 * 1024 * 10; 
+				var fileSize = $(this)[0].files[0].size;
+				if (fileSize > maxSize) {
+					alert('10MB 이하의 파일만 업로드 가능합니다.');
+					$(this).val('');
 					return false;
 				}
 			});
@@ -87,7 +112,7 @@
 		
 		<form id="f" action="storeUpdate.do" method="post" enctype="multipart/form-data">
 			<div class="store_name">
-				<input type="text" id="storeName" name="storeName" value="${store.storeName}">
+				<input type="text" id="store_name" name="storeName" value="${store.storeName}">
 			</div>
 			<div>평점: ★★★★☆</div>
 			
@@ -97,7 +122,7 @@
 				</div>
 				<!-- 첨부 파일 변경  -->
 				<div>
-					<input type="file" name="new_file">
+					<input type="file" id="file" name="newFile">
 					기존에 ${store.originFilename} 파일이 첨부되어있습니다.<br><br>		
 				</div>
 			
@@ -136,7 +161,7 @@
 						<li class="storeView_list">
 							<div class="list_left"><h2>테이블 수</h2></div>
 							<div class="list_right">
-								<span><input type="text" id="storeTable" name="storeTable" value="${store.storeTable}"></span>
+								<span><input type="text" id="store_table" name="storeTable" value="${store.storeTable}"></span>
 							</div>					
 						</li>		
 					</ul>
@@ -145,7 +170,7 @@
 						<li class="storeView_list">
 							<div class="list_left"><h2>가게 번호</h2></div>
 							<div class="list_right">
-							<span><input type="text" id="storeTel" name="storeTel" value="${store.storeTel}"></span>
+							<span><input type="text" id="store_tel" name="storeTel" value="${store.storeTel}"></span>
 							</div>					
 						</li>		
 					</ul>
@@ -154,7 +179,7 @@
 						<li class="storeView_list">
 							<div class="list_left"><h2>가게 주소</h2></div>
 							<div class="list_right">
-							<span><input type="text" id="storeAddr" name="storeAddr" value="${store.storeAddr}"></span>
+							<span><input type="text" id="store_addr" name="storeAddr" value="${store.storeAddr}"></span>
 							</div>					
 						</li>		
 					</ul>
@@ -163,7 +188,7 @@
 						<li class="storeView_list">
 							<div class="list_left"><h2>운영 시간</h2></div>
 							<div class="list_right">
-							<span><input type="text" id="storeTime" name="storeTime" value="${store.storeTime}"></span>
+							<span><input type="text" id="store_time" name="storeTime" value="${store.storeTime}"></span>
 							</div>					
 						</li>		
 					</ul>
@@ -172,7 +197,7 @@
 						<li class="storeView_list">
 							<div class="list_left"><h2>SNS</h2></div>
 							<div class="list_right">
-							<span><input type="text" id="storeSns" name="storeSns" value="${store.storeSns}"></span>
+							<span><input type="text" id="store_sns" name="storeSns" value="${store.storeSns}"></span>
 							</div>					
 						</li>		
 					</ul>

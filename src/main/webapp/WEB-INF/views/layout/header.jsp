@@ -53,17 +53,15 @@
                     <span>|</span>
 					<a href="memberMyPage.do">마이페이지</a>
 					<span>|</span>
-					<a href="insertStorePage.do" id="store_insert_btn">가게 등록</a>
-					<span>|</span>
-					<a href="viewStorePage.do" id="store_insert_btn">가게 View</a>
 				</c:if>
+					<a href="storeInsertPage.do" id="store_insert_btn">가게 등록</a>
 			</span>
 		</div>
 		<div id="catgNav" class="upDownBorder">
 			<div id="category" class="clear">
 				<!-- 링크 작업 시, ?category=${ctg} 넣어서 해당 카테고리 리스트만 만들 예정 -->
 				<c:forEach var="ctg" items="${category}">
-					<a href="#">${ctg}</a>
+					<a href="storeList.do">${ctg}</a>
 				</c:forEach>
 				<span>|</span>
 				<a href="fBoardPage.do" id="fBoardNav">자유게시판</a>
@@ -78,13 +76,4 @@
 	</header>
 		
 		<section>
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			

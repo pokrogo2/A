@@ -5,15 +5,77 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.koreait.a.dao.StoreDAO">
 	
-	<!-- 
-	<select id="selectStoreList" resultType="com.koreait.a.dto.StoreDTO">
-		SELECT NO, OWERNAME, STORENAME, STORETEL, STORECATEGORI, STORETIME, STOREADDR,
-			   STORECONTENT, STOREMENU, STORESNS, STOREHIT, FILENAME1, STORETABLE
-		  FROM STORE
-		 ORDER BY NO DESC;
-	</select>
-	 -->
+	<!-- 가게 등록 -->
+	<insert id="storeInsert">
+		INSERT INTO STOREREG
+		VALUES (STOREREG_SEQ.NEXTVAL, #{storeName}, #{storeContent}, #{storeTable}, #{storeTel}, #{storeAddr}, 
+			    #{storeTime}, #{storeSns}, #{storeCategory}, #{storeMenu}, #{originFilename}, #{saveFilename}, 0)	
+	</insert>
 	
+	<!-- 전체 가게 등록 갯수 -->
+	<select id="storeTotalCount" resultType="int">
+		SELECT COUNT(STORENO)
+		  FROM STOREREG
+	</select>
+	
+	<!-- 조회수 -->
+	<update id="storeHit">
+		UPDATE STOREREG
+		   SET STOREHIT = storeHit + 1
+		 WHERE STORENO = #{storeNo}
+	</update>
+	
+	
+	
+	<!--  
+	<select id="storeList" resultType="com.koreait.a.dto.StoreDTO">
+		SELECT B.RN, B.STORENO, B.STORENAME, B.STORECONTENT, B.STORETABLE, B.STORETEL, B.STOREADDR,
+		       B.STORETIME, B.STORESNS, B.STORECATEGORY, B.STOREMENU, B.ORIGINFILENAME, B.SAVEFILENAME, B.STOREHIT
+		  FROM (SELECT ROWNUM AS RN, A.STORENO, A.STORENAME, A.STORECONTENT, A.STORETABLE, A.STORETEL, A.STOREADDR,
+		               A.STORETIME, A.STORESNS, A.STORECATEGORY, A.STOREMENU, A.ORIGINFILENAME, A.SAVEFILENAME, A.STOREHIT
+		  		  FROM (SELECT STORENO, STORENAME, STORECONTENT, STORETABLE, STORETEL, STOREADDR,
+		  		  	           STORETIME, STORESNS, STORECATEGORY, STOREMENU, ORIGINFILENAME, SAVEFILENAME, STOREHIT
+		  		  		  FROM STOREREG
+		  		  		 ORDER BY STORENO DESC) A) B
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	</select>
+	-->
+	
+	<!-- 가게 목록 -->
+	<select id="storeList" resultType="com.koreait.a.dto.StoreDTO">
+		SELECT B.*
+		  FROM (SELECT ROWNUM AS RN, A.*
+		          FROM (SELECT *
+		                  FROM STOREREG
+		                 ORDER BY STORENO) A) B 
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	
+	</select>
+
+	<!-- 가게 목록 반환 -->
+	<select id="storeView" resultType="com.koreait.a.dto.StoreDTO">
+		SELECT STORENO, STORENAME, STORECONTENT, STORETABLE, STORETEL, STOREADDR,
+		       STORETIME, STORESNS, STORECATEGORY, STOREMENU, ORIGINFILENAME, SAVEFILENAME, STOREHIT
+	      FROM STOREREG
+	     WHERE STORENO = #{storeNo}
+	</select>
+	
+	<!-- 가게 업데이트 -->
+	<update id="storeUpdate">
+		UPDATE STOREREG
+		   SET STORENAME = #{storeName}, STORECONTENT = #{storeContent}, STORETEL = #{storeTel}, STOREADDR = #{storeAddr}, 
+		       STORETIME = #{storeTime}, STORESNS = #{storeSns}, STORECATEGORY = #{storeCategory},
+		       STOREMENU = #{storeMenu}, ORIGINFILENAME = #{originFilename}, SAVEFILENAME = #{saveFilename}
+		 WHERE STORENO = #{storeNo}	
+	</update>
+	
+	<!-- 가게 등록 삭제 -->
+	<delete id="storeDelete">
+		DELETE
+		  FROM STOREREG
+		 WHERE STORENO = #{storeNo}
+	
+	</delete>
 	
 	
 </mapper>

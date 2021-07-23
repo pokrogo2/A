@@ -14,9 +14,9 @@ import com.koreait.a.dto.FReplyDTO;
 import com.koreait.a.dto.PagingDTO;
 import com.koreait.a.utils.PagingUtils;
 
-public class FReplyListCommand {
+public class FReplyListCommand implements FReplyCommand{
 
-	
+	@Override
 	public Map<String, Object> execute(SqlSession sqlSession, Model model) {
 		
 		

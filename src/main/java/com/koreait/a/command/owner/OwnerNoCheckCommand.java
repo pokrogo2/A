@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 
 import com.koreait.a.dao.OwnerDAO;
 
-public class NoCheckCommand {
+public class OwnerNoCheckCommand {
 	
 	public Map<String, Integer> execute(SqlSession sqlSession, Model model) {
 		Map<String, Object> map = model.asMap();

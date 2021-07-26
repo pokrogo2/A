@@ -11,7 +11,7 @@ import com.koreait.a.dao.OwnerDAO;
 import com.koreait.a.dto.OwnerDTO;
 import com.koreait.a.utils.SecurityUtils;
 
-public class JoinCommand implements OwnerCommand {
+public class OwnerJoinCommand implements OwnerCommand {
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model) {

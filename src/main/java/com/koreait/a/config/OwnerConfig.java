@@ -3,8 +3,8 @@ package com.koreait.a.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.koreait.a.command.owner.JoinCommand;
-import com.koreait.a.command.owner.NoCheckCommand;
+import com.koreait.a.command.owner.OwnerJoinCommand;
+import com.koreait.a.command.owner.OwnerNoCheckCommand;
 import com.koreait.a.command.owner.OwnerDeleteCommand;
 import com.koreait.a.command.owner.OwnerEmailCheckCommand;
 import com.koreait.a.command.owner.OwnerFindPwCommand;
@@ -14,8 +14,8 @@ import com.koreait.a.command.owner.OwnerLogoutCommand;
 public class OwnerConfig {
 	
 	@Bean
-	public JoinCommand joinCommand() {
-		return new JoinCommand();
+	public OwnerJoinCommand joinCommand() {
+		return new OwnerJoinCommand();
 	}
 
 	@Bean
@@ -23,8 +23,8 @@ public class OwnerConfig {
 		return new OwnerEmailCheckCommand();
 	}
 	@Bean
-	public NoCheckCommand noCheckCommand() {
-		return new NoCheckCommand();
+	public OwnerNoCheckCommand noCheckCommand() {
+		return new OwnerNoCheckCommand();
 		
 	}
 	@Bean

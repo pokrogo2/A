@@ -98,13 +98,13 @@ public class OwnerController {
 	}
 	@GetMapping(value="ownerPwPage.do")
 	public String ownerfindPwPage() {
-		return "owner/findPw";
+		return "owner/ownerFindPw";
 	}
 	@PostMapping(value="ownerFindPw.do")
 	public String ownerfindPw(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
 		ownerFindPwCommand.execute(sqlSession, model);
-		return "owner/findPwResult";
+		return "owner/ownerFindPwResult";
 	}
 	@GetMapping(value="ownerDelete.do")
 	public String delete(HttpSession session, Model model) {

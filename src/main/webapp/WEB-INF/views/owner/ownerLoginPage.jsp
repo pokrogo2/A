@@ -10,6 +10,7 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			fn_login();
+			fn_delete();
 		});
 		function fn_login() {
 			$('#f').submit(function(event){
@@ -19,7 +20,14 @@
 					return false;
 				}
 			})
-		}		
+		}
+		function fn_delete(){
+			$('#delete_link').click(function() {
+				if(confirm('탈퇴하시겠습니까?')){
+					location.href = 'ownerDelete.do';
+				}
+			})
+		}
 	</script>
 	<style>
 		#leave_link:hover {
@@ -33,18 +41,19 @@
 	<div class="container">
 	<h1>로그인</h1>
 	
-	<c:if test="${loginUser != null and loginUser.status ==1}">
+	<c:if test="${loginOwner != null and loginOwner.status == 1}">
 		로그인 성공
-		사업자번호 : ${loginUser.ownerNo}<br>
-		이메일 : ${loginUser.ownerEmail}<br>
+		사업자번호 : ${loginOwner.ownerNo}<br>
+		이메일 : ${loginOwner.ownerEmail}<br>
 	
 		<a href="logout.do">로그아웃</a><br>
-		<a id="leave_link">회원탈퇴</a><br>
+		<a id="delete_link">회원탈퇴</a><br>
 		<a href="#">가게등록</a><br>
 	</c:if>
-	<c:if test="${loginUser.status==0 }">
-		사업자번호 : ${loginUser.ownerNo}<br>
-		이메일 : ${loginUser.ownerEmail}
+	
+	<c:if test="${loginOwner.status==0 }">
+		사업자번호 : ${loginOwner.ownerNo}<br>
+		이메일 : ${loginOwner.ownerEmail}
 		는 탈퇴된 회원입니다.
 		<br><br><br><hr>
 		<form id="f" action="ownerlogin.do" method="post">
@@ -55,10 +64,10 @@
 			<button>로그인</button>
 		</form>
 		<br>
-		<a href="ownerjoinPage.do">회원가입</a>&nbsp;&nbsp;&nbsp;
-		<a href="ownerfindPwPage.do">비밀번호 찾기</a>
+		<a href="ownerJoinPage.do">회원가입</a>&nbsp;&nbsp;&nbsp;
+		<a href="ownerPwPage.do">비밀번호 찾기</a>
 	</c:if>
-	<c:if test="${loginUser == null}">
+	<c:if test="${loginOwner == null}">
 		<form id="f" action="ownerlogin.do" method="post">
 			사업자번호<br>
 			<input type="text" name="id" id="id"><br><br>
@@ -67,7 +76,7 @@
 			<button>로그인</button>
 		</form>
 		<br>
-		<a href="ownerjoinPage.do">회원가입</a>&nbsp;&nbsp;&nbsp;
+		<a href="ownerJoinPage.do">회원가입</a>&nbsp;&nbsp;&nbsp;
 		<a href="ownerPwPage.do">비밀번호 찾기</a>
 	</c:if>
 	<a href="index.do">메인</a>

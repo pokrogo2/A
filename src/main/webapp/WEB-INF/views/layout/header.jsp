@@ -35,7 +35,7 @@
 					<a href="loginPage.do">로그인</a>
 					<span>|</span>
 					<a href="joinPage.do">회원가입</a><br><br>
-					<a href="loginPage.do">로그인</a>
+					<a href="ownerloginPage.do">로그인</a>
 					<span>|</span>
 					<a href="ownerJoinPage.do">회원가입</a>
 				</c:if>

@@ -20,6 +20,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 FROM OWNER
 		 WHERE OWNEREMAIL = #{email}
 	</select>
+	<select id="findPw" resultType="com.koreait.a.dto.OwnerDTO">
+		SELECT OWNERNO, OWNERNAME, OWNERPW
+			FROM OWNER
+		WHERE OWNEREMAIL = #{email}
+	</select>
+	<delete id="delete">
+		DELETE FROM OWNER WHERE OWNERNO=#{ownerNo}
+	</delete>
+	<select id="login" resultType="com.koreait.a.dto.OwnerDTO">
+		SELECT OWNERNO
+			 , OWNERPW
+			 , OWNERNAME
+			 , OWNERTEL
+			 , OWNEREMAIL
+			 FROM OWNER
+			WHERE OWNERNO = #{ownerNo}
+			AND OWNERPW = {ownerPw}			 
+	</select>
 	
 	
 </mapper>			

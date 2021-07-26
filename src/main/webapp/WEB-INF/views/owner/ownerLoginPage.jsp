@@ -56,6 +56,7 @@
 		</form>
 		<br>
 		<a href="ownerjoinPage.do">회원가입</a>&nbsp;&nbsp;&nbsp;
+		<a href="ownerfindPwPage.do">비밀번호 찾기</a>
 	</c:if>
 	<c:if test="${loginUser == null}">
 		<form id="f" action="ownerlogin.do" method="post">
@@ -67,6 +68,7 @@
 		</form>
 		<br>
 		<a href="ownerjoinPage.do">회원가입</a>&nbsp;&nbsp;&nbsp;
+		<a href="ownerPwPage.do">비밀번호 찾기</a>
 	</c:if>
 	<a href="index.do">메인</a>
 	</div>		

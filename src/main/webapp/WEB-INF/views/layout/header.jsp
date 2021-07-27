@@ -43,18 +43,24 @@
 		<div id="topNav">
 			<a href="index.do" class="logo"><img alt="logoA" src="resources/asset/img/logoAA.png"> </a>
 			<span class="sub_nav">
+				<!-- 로그인 되지 않았을 경우 -->
 				<c:if test="${empty loginUser}">
 					<a href="loginPage.do">로그인</a>
 					<span>|</span>
 					<a href="joinPage.do">회원가입</a>
 				</c:if>
+				<!-- 회원 로그인 시 -->
 				<c:if test="${not empty loginUser}">
                     <a href="logout.do">로그아웃</a>
                     <span>|</span>
 					<a href="memberMyPage.do">마이페이지</a>
-					<span>|</span>
 				</c:if>
+				<!-- 가게 사장님 로그인 시 -->
+				<c:if test="${not empty ownerUser}">
+					<a href="ownerLogout.do">로그아웃</a>
+                    <span>|</span>
 					<a href="storeInsertPage.do" id="store_insert_btn">가게 등록</a>
+				</c:if>
 			</span>
 		</div>
 		<div id="catgNav" class="upDownBorder">

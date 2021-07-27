@@ -80,11 +80,11 @@
 			<div class="flex">
 			<div id="left" class="left myPage_box">
 				<ul>
-					<li><a href="#">예약 현황</a></li>
-					<li><a href="#reservation_history_review">예약 내역 및 리뷰</a></li>
-					<li><a href="#review_history">내가 쓴 리뷰</a></li>
-					<li><a href="#question_history">문의 내역</a></li>
-					<li><a href="memberUpdatePage.do">개인 정보 수정</a></li>
+					<li><a href="memberMyPage.do">예약 현황</a></li>
+					<li><a href="memberMyPage.do#reservation_history_review">예약 내역 및 리뷰</a></li>
+					<li><a href="memberMyPage.do#review_history">내가 쓴 리뷰</a></li>
+					<li><a href="memberMyPage.do#question_history">문의 내역</a></li>
+					<li><a href="memberUpdatePage.do" class="tabClick">개인 정보 수정</a></li>
 				</ul>
 			</div>
 			<div class="right myPage_box" id="rigthList">

@@ -13,16 +13,21 @@ input[type="button"] {
 	padding:0 40px;
 	
 }
-input[value="목록"], input[value="수정"]:hover, input[value="삭제"]:hover {
-	background-color:#6A1310; 
-	color:white;
+input[value="수정"]:hover, input[value="삭제"]:hover {
+	background-color:#ececec; 
+	color:#222;
 }
 input[value="수정"] {margin:0 10px;}
-input[value="목록"] {margin:0 auto; display:block;}
+input[value="목록"] {
+	margin:0 auto; 
+	display:block;
+	background-color:#66140d; 
+	color:#f8eae1;
+}
 
 
 /* 공자사항의 내용 (박스:div) */
-.fboardView_box {width:100%; margin-bottom:50px;}
+.fboardView_box {width:100%; margin-bottom:80px;}
 .fboardView_box div {text-align:center;}
 
 /* 이벤트,홍보글일 때 */
@@ -32,8 +37,9 @@ input[value="목록"] {margin:0 auto; display:block;}
 	height:40px;
 	line-height:40px;
 	font-size:18px;
-	background-color:#9B1E24;
-	color:#FFFAF8;
+	font-weight:400;
+	background-color:#d3b9ac;
+	color:white;
 	border-radius:100px;
 	margin-bottom:30px;
 }
@@ -58,7 +64,7 @@ img {width:700px;}
 }
 .sub1 {margin-top:50px;}
 .sub .line {font-size:10px; padding:0 5px;}
-.sub .hit {font-size:13px; font-weight:800;}
+.sub .hit {font-size:13px; font-weight:700;}
 
 
 
@@ -83,9 +89,9 @@ input[value="작성"] {
 	margin:0;
 	float:right;
 	border:none;
-	background-color:#6A1310;
-	color:#FFFAF8;
-	height:65px;
+	background-color:#eee;
+	color:#333;
+	height:63px;
 	border-radius:0;
 }
 input[name="fReply_content"] {border:none;}
@@ -127,26 +133,5 @@ tbody input[value="삭제"] {
 
 /* 댓글의 페이징 */
 #fReply_paging {text-align:center; display:block;}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

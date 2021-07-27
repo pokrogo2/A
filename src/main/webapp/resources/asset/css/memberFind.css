@@ -34,7 +34,7 @@ input[type="button"] {padding:0;}
 	margin-right:20px;
 }
 .emailBox input[type="text"]:focus {
-	border-color:#6A1310;
+	border-color:#bf3a3e;
 }
 .emailBox input[name="email"] {margin-bottom:0;}
 .emailBox input[type="button"] {
@@ -42,8 +42,8 @@ input[type="button"] {padding:0;}
 	border-radius:100px;
 }
 .emailBox input[type="button"]:hover {
-	background-color:#6A1310; 
-	color:#FFFAF8;
+	background-color:#bf3a3e; 
+	color:#f8eae1;
 }
 
 /* 이메일 인증 span */
@@ -57,8 +57,8 @@ input[type="button"] {padding:0;}
 /* 버튼 */
 input[value="아이디 찾기"], input[value="비밀번호 찾기"] {
 	width:100%;
-	background-color:#6A1310; 
-	color:#FFFAF8;
+	background-color:#bf3a3e; 
+	color:#f8eae1;
 	height:55px;
 }
 input[value="로그인하러 가기"] {
@@ -68,5 +68,5 @@ input[value="로그인하러 가기"] {
 	color:#888;
 }
 input[value="로그인하러 가기"]:hover {
-	text-decoration:underline;
+	font-weight:400;
 }

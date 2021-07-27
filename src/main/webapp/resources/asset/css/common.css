@@ -3,6 +3,21 @@
 
 
 /*  
+		Red		: #bf3a3e
+		semiRed : #66140d
+		darkRed : #3e1211
+		
+		pointPink : #e37371
+		lightPink : #e6cfce
+		darkPink  : #bb4352
+		
+		Beige 	   : #d3b9ac
+		lightBeige : #f8eae1
+		
+		semiBrown : #d79984
+		pointRedPinkMix : #c06356
+
+
 		point-color : ( red : #9B1E24 )
 		sub-color : ( basicBrown : #E3C8C1 )
 		sub_color : (darkRed : #6A1310 )
@@ -39,18 +54,19 @@
 .flex {display:flex;}
 
 /* 네비게이션 및 마이 페이지의 메뉴 클릭 시 */
-.tabClick {color:#9B1E24; font-weight:600;}
+.tabClick {color:#bf3a3e; font-weight:600;}
 .navClick {
-	color:#9B1E24; 
+	color:#bf3a3e; 
 	font-weight:600; 
-	border-bottom:3px outset #9B1E24; 
-	border-radius:6px;
+	border-bottom:4px outset #e63035; 
+	border-radius:3px; 
+	padding-bottom:25px;
 }
 
 /* 페이징 관련 class */
 .link {color:black; cursor:pointer;}
 .disable {color:#888;}
-.now_page {color:#9B1E24; font-weight:600;}
+.now_page {color:#bf3a3e; font-weight:600;}
 .upDownBorder {border-top:1px solid lightgray; border-bottom:1px solid lightgray;}
 .grade {color:#aaa;}
 div .star {color:orange;}
@@ -86,12 +102,12 @@ header {margin:50px 0;}
 .sub_nav {text-align:right; position:absolute; right:0; top:12px;}
 .sub_nav span {margin:0 20px; font-size:13px; color:#999;}
 .sub_nav a {font-weigth:500;}
-.sub_nav a:hover {color:#9B1E24; font-weight:600; text-decoration:underline;}
-.sub_nav #store_insert_btn {border-radius:100px; background-color:#9B1E24; color:#FFFAF8; padding:4px 15px;}
+.sub_nav a:hover {color:#bf3a3e; font-weight:600; text-decoration:underline;}
+.sub_nav #store_insert_btn {border-radius:100px; background-color:#bf3a3e; color:#f8eae1; padding:4px 15px;}
 #catgNav {}
 #category {width:1000px; text-align:center;}
 #category a {display:inline-block; margin:0 45px; padding:30px 0 29px 0;}
-#category a:hover {color:#9B1E24; font-weight:600; border-bottom:3px outset #9B1E24; border-radius:6px; padding-bottom:28px; }
+#category a:hover {color:#bf3a3e; font-weight:600; border-bottom:4px outset #e63035; border-radius:3px; padding-bottom:29px; }
 #category span {padding:0 15px;}
 #sideFix {
 	position:fixed; 
@@ -111,25 +127,23 @@ header {margin:50px 0;}
 
 
 /* Footer*/
-footer {padding: 30px 20px; background-color:black; font-size:14px; margin-top:150px;}
+footer {padding: 30px 20px 15px 0; background-color:#eee; font-size:14px; margin-top:250px;}
 #mainFooter {width:1000px; margin: 0 auto;}
 footer div {margin: 20px 0;}
-footer a {color:#FFFAF8;}
+footer a {color:#3e1211;}
 footer p {color:#FBF1EF; padding-bottom:5px;}
 footer .f_span {float:right; font-weight:600;}
-footer .f_span:hover {color:#FFFAF8; cursor:pointer;}
+footer .f_span:hover {color:#3e1211; cursor:pointer;}
 footer span:nth-child(2) span {padding: 0 10px 0 13px;}
 footer p, footer span {color:#888; font-size:12px;}
 footer div:nth-child(1) {margin-bottom:40px;}
 footer div:nth-child(1) a:nth-child(1) {font-weight:700;}
 footer div:nth-child(1) a:nth-child(2) {font-weight:800;}
-footer div:nth-child(2) p:nth-child(1) {color:#FFFAF8;}
+footer div:nth-child(2) p:nth-child(1) {color:#222; font-weight:400;}
 footer div:nth-child(3) a {font-weight:600;}
 footer div:nth-child(4) span {padding: 0 5px;}
 
-footer img {
-	width:25px;
-}
+footer img {width:25px;}
 		
 /* Section 기보 작업 */
 section {margin:50px 0;}

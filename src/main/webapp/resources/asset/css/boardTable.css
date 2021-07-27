@@ -9,7 +9,7 @@ input[value="글 작성"] {
 	font-weight:400;
 }
 input[value="글 작성"]:hover {
-	background-color:#1E0408; 
+	background-color:#66140d; 
 	color:white;
 	cursor:pointer;
 }
@@ -18,7 +18,7 @@ input[value="글 작성"]:hover {
 /* 검색버튼, 조회드롭 : 한 라인에 표시 */
 .topSelect {float:left;}
 #search {
-	border: 1px solid #6a1310;
+	border: 1px solid #333;
 	border-radius:100px;
 	width:385px;
 	height:40px;
@@ -40,9 +40,10 @@ input[value="글 작성"]:hover {
 	border:none;
 	width:86px;
 	height:39px;
-	background-color:#6a1310;
+	background-color:#333;
 	margin-top:-1px;
 	color:white;
+	cursor:pointer;
 }
 
 #drop {margin-bottom:20px; float:right;}
@@ -65,15 +66,15 @@ input[value="글 작성"]:hover {
 	border-bottom:1px solid #888;
 }
 table {width:100%;}
-tr {height:50px;}
+tr {height:55px;}
 td {text-align:center;}
 /* td:nth-child(1) {} >>> 해당 칼럼마다의 너비는 따로 지정 */
 
 
 /* 게시판 칼럼명 영역 */
 thead {}
-thead tr {background-color:#6A1310;}
-thead td { font-weight: 400; color: #FFFAF8;}
+thead tr {background-color:#f5f3f2;}
+thead td { font-weight: 400; color: #333;}
 
 
 /* 게시판 리스트 영역 */
@@ -85,7 +86,7 @@ tbody tr {
 tbody a {font-weight:500;}
 tbody a:hover {
 	text-decoration:underline;
-	color:#6A1310;
+	color:#bf3a3e;
 }
 
 

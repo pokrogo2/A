@@ -13,27 +13,58 @@
 
 <script>
 	$(document).ready(function(){
+		fn_bannerLink();
 		
-	}) // 페이지 로드 이벤트 조료
+	}) // 페이지 로드 이벤트 종료
 	
-	/* function fn_bannerLink() {
+	function fn_bannerLink() {
 		$('#storeBann').click(function(){
-				
 			$.ajax({
 				url: 'storeExist.do',
 				type: 'post',
-				data: 'ownerName=${loginUser.memberName}',
+				data: 'ownerNo=${ownerUser.ownerNo}',
 				dataType: 'json',
 				success: function(resultMap) {
-					if (resultMap.result > 0) {
-						$('#storeBann').attr('href', 'viewStorePage.do');
-					} else {
-						$('#storeBann').attr('href', 'insertStorePage.do');						
-					}
+					$('#storeBann').attr('href', resultMap.view);
 				}
 			});
 		});
-	} */
+	} //
+	
+	 
+	function fn_recommandStore() {
+		$.ajax({
+			url: 'recommandStore.do',
+			type: 'get',
+			dataType: 'json',
+			success: function(resultMap) {
+
+			},
+			error: function(xhr, text, error) {
+				
+			}
+		});
+	} // 
+	
+	
+	function fn_newStore() {
+		$.ajax({
+			url: 'NewStore.do',
+			type: 'get',
+			dataType: 'json',
+			success: function(resultMap) {
+				
+			},
+			error: function(xhr, text, error) {
+				
+			}
+		});
+	} //
+	
+	
+	
+	
+	
 	
 </script>
 	
@@ -70,7 +101,8 @@
 		</div> <!-- mainSearch -->
 		
 		
-		<c:if test="${not empty loginUser}">
+		<!-- 가게관리 배너 : ownerUser확인 -->
+		<c:if test="${not empty ownerUser}">
 			<div class="storebannBox">
 				<a id="storeBann"><img alt="banner1" src="resources/asset/img/mainBanner.jpg"></a>
 			</div>
@@ -81,103 +113,116 @@
 		<div id=recommandStore>
 		
 			<h1>음식점을 추천해 드려요!</h1>
-			
 			<div id="storeBox">
-				<div class="box">
-					<div id="img" class="box_con">
-						<img alt="store1" src="resources/archive/03.jpg" />
-					</div>
-					<div id="content"  class="box_con">
-						<h3>음식점1<span>신촌지점</span></h3>
-						<h2>5/<span>1</span></h2>
-						<div class="sub_p2">
-							<p>잔여테이블</p>
-							<p>남은 인원 (Max <span>4</span>명)</p>
+				<%-- 추천 음식점 2개 (StoreDB 완료 되면 진행)
+				<c:forEach var="store" items="${recommandStore}">
+					<div class="box">
+						<div class="img box_con">
+							<a href="storeView.do?storeNo=${store.storeNo}">
+								<img alt="store1" src="resources/archive/${store.orignFilename}" />
+							</a>
 						</div>
-						<div id="grade">
-							<p class="star">★</p>
-							<p class="star">★</p>
-							<p class="star">★</p>
-							<p class="star">★</p>
-							<p class="grey">★</p>
-							<p class="grey">(평점)</p>
+						<div class="content box_con">
+							<h3>${store.storeName}<span>${store.storeAddr1}지점</span></h3>
+							<h2>${store.storeMaxTable}<span>/</span><span>${store.storeTable}</span></h2>
+							<div class="sub_p2">
+								<p>잔여테이블</p>
+								<p>남은 인원 (Max <span>${store.storeTable * 4}</span>명)</p>
+							</div>
+							<div class="score">
+								<p class="star">★</p>
+								<p class="reviewAvg">${store.reviewAvg}</p>
+								<p class="grey">(평점)</p>
+							</div>
 						</div>
-						<div id="review">
-							<c:if test="${empty reivew}">
-								<p>리뷰 내용이 없습니다</p>
-							</c:if>
-							<c:if test="${not empty reivew}">
-								<p>${reivew}</p>
-							</c:if>
-						</div>
-					</div>
-				</div> <!-- box -->
-				
-				<div class="box">
-					<div id="img" class="box_con">
-						<img alt="store1" src="resources/archive/03.jpg" />
-					</div>
-					<div id="content"  class="box_con">
-						<h3>음식점1<span>신촌지점</span></h3>
-						<h2>5/<span>1</span></h2>
-						<div class="sub_p2">
-							<p>잔여테이블</p>
-							<p>남은 인원 (Max <span>4</span>명)</p>
-						</div>
-						<div id="grade">
-							<p class="star">★</p>
-							<p class="star">★</p>
-							<p class="star">★</p>
-							<p class="star">★</p>
-							<p class="grey">★</p>
-							<p class="grey">(평점)</p>
-						</div>
-						<div id="review">
-							<c:if test="${empty reivew}">
-								<p>리뷰 내용이 없습니다</p>
-							</c:if>
-							<c:if test="${not empty reivew}">
-								<p>${reivew}</p>
-							</c:if>
-						</div>
-					</div>
-				</div> <!-- box -->
-			</div>
+					</div> <!-- box -->
+				</c:forEach> 
+				아래 내용 삭제 --%>
 			
+				<div class="box">
+					<div class="img box_con">
+						<a href="#">
+							<img alt="store1" src="resources/archive/03.jpg" />
+						</a>
+					</div>
+					<div class="content box_con">
+						<h3>음식점1<span>신촌지점</span></h3>
+						<h2>5<span>/</span><span>1</span></h2>
+						<div class="sub_p2">
+							<p>잔여테이블</p>
+							<p>남은 인원 (Max <span>4</span>명)</p>
+						</div>
+						<div class="score">
+							<p class="star">★</p>
+							<p>4.56</p>
+							<p class="grey">(평점)</p>
+						</div>
+					</div>
+				</div> <!-- box1 -->
+				<div class="box">
+					<div class="img box_con">
+						<a href="#">
+							<img alt="store1" src="resources/archive/03.jpg" />
+						</a>
+					</div>
+					<div class="content box_con">
+						<h3>음식점2<span>신촌지점</span></h3>
+						<h2>7<span>/</span><span>3</span></h2>
+						<div class="sub_p2">
+							<p>잔여테이블</p>
+							<p>남은 인원 (Max <span>12</span>명)</p>
+						</div>
+						<div class="score">
+							<p class="star">★</p>
+							<p>4.56</p>
+							<p class="grey">(평점)</p>
+						</div>
+					</div>
+				</div> <!-- box1 -->
+			</div> <!-- storeBox -->
 			<div id="return">
-				새로운 추천 보기<a href="#"><i class="fas fa-undo-alt"></i></a>
+				<a href="recommandStore.do">새로운 추천 보기<i class="fas fa-undo-alt"></i></a>
 			</div>
-			
-			
 		</div> <!-- selectChoiceStore -->
 		
 		
+		
 		<div id="insertStoreList">
-			
 			<h1>신규 등록한 음식점</h1>
-			
 			<a href="#">더보기 +</a>
 			<div id="list">
+				<%--  신규 음식점 STORE의 DB완료후 작성
+				<c:forEach var="newStore" items="${newStore}">
+					<div>
+						<a href="storeView.do?storeNo=${store.storeNo}">
+							<img alt="store1" src="resources/archive/${newStore.orignFilename}">
+						</a>
+						<h3><span class="storeCategory">${newStore.storeCategory}</span> ${newStore.storeName}</h3>
+						<p>${newStore.storeAddr1} ${newStore.storeAddr2} ${newStore.storeAddr3.subString(0, 9)}...</p>
+					</div>
+				</c:forEach>
+				아래 내용 삭제 --%>
 				<div>
 					<a href="#"><img alt="store1" src="resources/archive/03.jpg"></a>
-					<h3>음식점1</h3>
-					<p>내용 설명</p>
+					<h3><span class="storeCategory">중식</span> 음식점1 </h3>
+					<p>서울 중구 정동길 6 진섭빌딩...</p>
 				</div>
 				<div>
 					<a href="#"><img alt="store1" src="resources/archive/03.jpg"></a>
-					<h3>음식점1</h3>
-					<p>내용 설명</p>
+					<h3><span class="storeCategory">중식</span> 음식점2 </h3>
+					<p>서울 중구 정동길 6 진섭빌딩...</p>
 				</div>
 				<div>
 					<a href="#"><img alt="store1" src="resources/archive/03.jpg"></a>
-					<h3>음식점1</h3>
-					<p>내용 설명</p>
+					<h3><span class="storeCategory">중식</span> 음식점3 </h3>
+					<p>서울 중구 정동길 6 진섭빌딩...</p>
 				</div>
 				<div>
 					<a href="#"><img alt="store1" src="resources/archive/03.jpg"></a>
-					<h3>음식점1</h3>
-					<p>내용 설명</p>
+					<h3><span class="storeCategory">중식</span> 음식점4 </h3>
+					<p>서울 중구 정동길 6 진섭빌딩...</p>
 				</div>
+				
 				
 				
 			</div>

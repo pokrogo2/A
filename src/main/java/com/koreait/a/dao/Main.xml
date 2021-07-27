@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.a.dao.MainDAO">
+	
+	
+	<!-- 전체 가게 등록 갯수 -->
+	<select id="storeExist" resultType="int">
+		SELECT COUNT(STORENO)
+		  FROM STOREREG
+		 WHERE OWNERNO = #{ownerNo}
+	</select>
+	
+	<!-- 가게 정보 -->
+	<select id="mainStoreView" resultType="com.koreait.a.dto.MainStoreDTO">
+		SELECT A.RN
+			 , A.STORENO
+			 , A.STORENAME
+			 , A.STORECONTENT
+			 , A.STOREADDR1
+			 , A.ORIGINFILENAME
+			 , A.STORETABLE
+			 , A.STOREMAXTABLE
+		  FROM ( SELECT ROWNUM AS RN
+		  			  , STORENO
+			 		  , STORENAME
+					  , STORECONTENT
+			 		  , STOREADDR1
+			 		  , ORIGINFILENAME
+			 		  , STORETABLE
+			 		  , STOREMAXTABLE
+		  		   FROM STOREREG )	
+		 WHERE A.RN = #{storeNo}
+	</select>
+	
+	<!-- 리뷰평점 평균구하기 -->
+	<select id="reviewAvg" resultType="double">
+		SELECT AVG(SCORE)
+		  FROM REVIEW
+		 WHERE STORENO = #{storeNo}
+	</select>
+	
+	<!-- 가게 등록 4가지 -->
+	<select id="mainStoreNew" resultType="com.koreait.a.dto.MainStoreDTO">
+		SELECT B.BN
+			 , B.STORENO
+			 , B.STORENAME
+			 , B.STORECATEGORY
+			 , B.STOREADDR1
+			 , B.STOREADDR2
+			 , B.STOREADDR3
+			 , B.ORIGINFILENAME
+		  FROM ( SELECT ROWNUM AS RN
+					  , A.STORENO
+			 		  , A.STORENAME
+			 		  , A.STORECATEGORY
+			 	 	  , A.STOREADDR1
+					  , A.STOREADDR2
+			 		  , A.STOREADDR3
+			 		  , A.ORIGINFILENAME
+		  		   FROM ( SELECT STORENO
+						   	   , STORENAME
+							   , STORECATEGORY
+						       , STOREADDR1
+			 			  	   , STOREADDR2
+			 				   , STOREADDR3
+			 				   , ORIGINFILENAME
+		  					FROM STOREREG
+		  				   ORDER BY STORENO DESC )A )B
+		 WHERE B.BN BETWEENT #{param1} AND #{param2}
+	</select>
+	
+	
+	
+</mapper>

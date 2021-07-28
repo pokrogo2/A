@@ -22,7 +22,6 @@ public class ResViewCommand implements ReservationCommand {
 		
 		// 전달받은 데이터 옮겨주기
 		long resNo = Long.parseLong(request.getParameter("resNo"));	
-		// long storeNo = Long.parseLong(request.getParameter("storeNo"));
 		
 		ReservationDAO resDAO = sqlSession.getMapper(ReservationDAO.class);
 

@@ -85,7 +85,6 @@ public class StoreInsertCommand implements StoreCommand {
 		// DB에 데이터 저장
 		
 		StoreDAO storeDAO = sqlSession.getMapper(StoreDAO.class);
-		// storeDAO.storeInsert(storeDTO);
 		
 		// response 
 		response.setContentType("text/html; charset=utf-8"); 

@@ -24,7 +24,7 @@ public class ResInsertCommand implements ReservationCommand {
 
 		
 		StoreResDTO res = new StoreResDTO();
-		res.setStoreNo(Long.parseLong(request.getParameter("storeNo")));  // 이게 빠졌네요.
+		res.setStoreNo(Long.parseLong(request.getParameter("storeNo")));  
 		res.setResDate(request.getParameter("resDate"));
 		res.setResHours(request.getParameter("resHours"));
 		res.setResPeople(request.getParameter("resPeople"));

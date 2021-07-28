@@ -23,7 +23,7 @@ CREATE TABLE STOREREG
   	ORIGINFILENAME VARCHAR2(256),
     SAVEFILENAME VARCHAR2(40),  -- 파일명 32바이트, 확장자 8바이트
     STOREHIT NUMBER,
-    STATUS NUMBER			-- 상태 0: 정상 / 1: 삭제 
+    STATUS NUMBER			
 );
 
 -- 예약 테이블

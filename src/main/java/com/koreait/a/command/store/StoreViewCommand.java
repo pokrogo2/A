@@ -31,11 +31,7 @@ public class StoreViewCommand implements StoreCommand {
 		StoreDTO store = storeDAO.storeView(storeNo);
 		// storeDTO 전달 
 		model.addAttribute("store", store);
-				
-
-		
-		
-
+	
 		
 	}
 

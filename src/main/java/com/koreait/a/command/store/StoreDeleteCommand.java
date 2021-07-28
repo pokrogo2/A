@@ -36,6 +36,7 @@ public class StoreDeleteCommand implements StoreCommand {
 						}
 					}
 			
+			
 			/* response */
 			response.setContentType("text/html; charset=utf-8"); 
 			int count = storeDAO.storeDelete(storeNo);

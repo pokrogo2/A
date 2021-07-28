@@ -12,9 +12,10 @@ import org.springframework.ui.Model;
 import com.koreait.a.dao.StoreDAO;
 import com.koreait.a.dto.PagingDTO;
 import com.koreait.a.dto.StoreDTO;
+import com.koreait.a.dto.StoreQueryDTO;
 import com.koreait.a.utils.PagingUtils;
 
-public class StoreListCommand implements StoreCommand {
+public class SearchQueryCommand implements StoreCommand {
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model) {
@@ -25,21 +26,43 @@ public class StoreListCommand implements StoreCommand {
 		Optional<String> opt = Optional.ofNullable(request.getParameter("page"));
 		int page = Integer.parseInt(opt.orElse("1"));
 		
+		
+		String column = request.getParameter("column");
+		String query = request.getParameter("query");
+		
+		StoreQueryDTO queryDTO = new StoreQueryDTO();
+		queryDTO.setColumn(column);
+		queryDTO.setQuery(query);
+		
 		StoreDAO storeDAO = sqlSession.getMapper(StoreDAO.class);
+		int searchRecord = storeDAO.storeSearchRecord(queryDTO);
 		int totalRecord = storeDAO.storeTotalCount();
 		int recordPerPage = 5;   // 1 페이지당 5개 목록 
 		int pagePerBlock = 5;	// 1 블록당 5개 페이지   
 		
+		
 		PagingDTO pagingDTO = PagingUtils.getPage(recordPerPage, pagePerBlock, totalRecord, page);
 		
-		List<StoreDTO> list = storeDAO.storeList(pagingDTO);
-		String paging = PagingUtils.getPaging("storeList.do", page);
+		queryDTO.setBeginRecord(pagingDTO.getBeginPage());
+		queryDTO.setEndRecord(pagingDTO.getEndPage());
+
+		
+		
+		
+		
+		
+		
+		
+		List<StoreDTO> list = storeDAO.storeSearch(queryDTO);
+		
+		String paging = null;
+		
+			paging = PagingUtils.getPaging("storeSearch.do?column=" + column + "&query=" + query, page);			
+	
 		
 		model.addAttribute("list", list);
 		model.addAttribute("paging", paging);
-		model.addAttribute("totalRecord", totalRecord);
-		
-		
+
 	}
 
 }

@@ -9,7 +9,9 @@ public class StoreDTO {
 			private String storeContent;
 			private int storeTable;
 			private String storeTel;
-			private String storeAddr;
+			private String storeAddr1;
+			private String storeAddr2;
+			private String storeAddr3;
 			private String storeTime;
 			private String storeSns;
 			private String storeCategory;
@@ -17,8 +19,10 @@ public class StoreDTO {
 			private String originFilename;
 			private String saveFilename;
 			private int storeHit;
+
+
 			
-		// getter, setter
+			// getter, setter
 			public long getStoreNo() {
 				return storeNo;
 			}
@@ -49,11 +53,23 @@ public class StoreDTO {
 			public void setStoreTel(String storeTel) {
 				this.storeTel = storeTel;
 			}
-			public String getStoreAddr() {
-				return storeAddr;
+			public String getStoreAddr1() {
+				return storeAddr1;
 			}
-			public void setStoreAddr(String storeAddr) {
-				this.storeAddr = storeAddr;
+			public void setStoreAddr1(String storeAddr1) {
+				this.storeAddr1 = storeAddr1;
+			}
+			public String getStoreAddr2() {
+				return storeAddr2;
+			}
+			public void setStoreAddr2(String storeAddr2) {
+				this.storeAddr2 = storeAddr2;
+			}
+			public String getStoreAddr3() {
+				return storeAddr3;
+			}
+			public void setStoreAddr3(String storeAddr3) {
+				this.storeAddr3 = storeAddr3;
 			}
 			public String getStoreTime() {
 				return storeTime;
@@ -97,6 +113,7 @@ public class StoreDTO {
 			public void setStoreHit(int storeHit) {
 				this.storeHit = storeHit;
 			}
+			
 			
 			
 

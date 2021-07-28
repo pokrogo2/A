@@ -8,14 +8,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 가게 등록 -->
 	<insert id="storeInsert">
 		INSERT INTO STOREREG
-		VALUES (STOREREG_SEQ.NEXTVAL, #{storeName}, #{storeContent}, #{storeTable}, #{storeTel}, #{storeAddr}, 
-			    #{storeTime}, #{storeSns}, #{storeCategory}, #{storeMenu}, #{originFilename}, #{saveFilename}, 0)	
+		VALUES (STOREREG_SEQ.NEXTVAL, #{storeName}, #{storeContent}, #{storeTable}, #{storeTel}, 
+				#{storeAddr1}, #{storeAddr2}, #{storeAddr3},
+			    #{storeTime}, #{storeSns}, #{storeCategory}, #{storeMenu}, #{originFilename}, #{saveFilename}, 0, 0)	
 	</insert>
 	
-	<!-- 전체 가게 등록 갯수 -->
+	<!-- 전체 가게 등록 개수 -->
 	<select id="storeTotalCount" resultType="int">
 		SELECT COUNT(STORENO)
 		  FROM STOREREG
+		 WHERE STATUS = 0
 	</select>
 	
 	<!-- 조회수 -->
@@ -47,14 +49,74 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  FROM (SELECT ROWNUM AS RN, A.*
 		          FROM (SELECT *
 		                  FROM STOREREG
-		                 ORDER BY STORENO) A) B 
+		                 WHERE STATUS = 0
+		                 ORDER BY STORENO DESC) A) B
 		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
 	
 	</select>
+	
+	
+	<!-- 가게 목록 자동 검색 -->
+	<select id="autoComplete" resultType="com.koreait.a.dto.StoreDTO">
+		SELECT DISTINCT
+			   <if test="column == 'STORENAME'">STORENAME</if>
+		  FROM STOREREG
+		 WHERE ${column} LIKE #{query} || '%'
+	</select>
+	
+	
+	<!-- 가게 검색 결과 전체 개수 -->
+	<select id="storeSearchRecord" resultType="int">
+		SELECT COUNT(STORENO)
+		  FROM STOREREG
+		 WHERE STATUS = 0
+		   AND ${column} LIKE '%' || #{query} || '%'	  
+	</select>
+	
+	
+	<!-- 가게 검색 결과 -->
+	<select id="storeSearch" resultType="com.koreait.a.dto.StoreDTO">
+		SELECT B.*
+		  FROM (SELECT ROWNUM AS RN, A.*
+		  		  FROM (SELECT STORENO, STORENAME, STORECONTENT, STORETABLE,
+		  		  			   STORETEL, STOREADDR1, STOREADDR2, STOREADDR3, STORETIME, STORESNS,
+		  		  			   STORECATEGORY, STOREMENU, ORIGINFILENAME, SAVEFILENAME,
+		  		  			   STOREHIT
+	    		  		  FROM STOREREG
+	    		  		 WHERE STATUS = 0
+		  		  		 WHERE ${column} LIKE '%' || #{query} || '%'
+		  		  		 ORDER BY STORENO) A) B
+	</select>
+	
+	
+	<!-- 조회순, 등록순 가게 검색 -->
+	<select id="searchLineUp" resultType="com.koreait.a.dto.StoreDTO">
+		SELECT B.*
+		  FROM (SELECT ROWNUM AS RN, A.*
+		  		  FROM (SELECT STORENO, STORENAME, STORECONTENT, STORETABLE,
+		  		  			   STORETEL, STOREADDR1, STOREADDR2, STOREADDR3, STORETIME, STORESNS,
+		  		  			   STORECATEGORY, STOREMENU, ORIGINFILENAME, SAVEFILENAME,
+		  		  			   STOREHIT
+	    		  		  FROM STOREREG
+	    		  		  <if test="searchLineUp == orderByHit">
+	    		  		  	ORDER BY STOREHIT ASC 
+	    		  		  </if>
+	    		  		  <if test="searchLineUp == orderByPost">
+	    		  		  	ORDER BY STORENO DESC
+	    		  		  </if> ) A) B
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	</select>
+	
+	<!-- 조회순, 등록순 가게 검색 개수 -->
+	<select id="searchLineUpRecord" resultType="int">
+		SELECT COUNT(STORENO)
+		  FROM STOREREG
+	</select>
+	
 
-	<!-- 가게 목록 반환 -->
+	<!-- 가게 목록 내용 보기 -->
 	<select id="storeView" resultType="com.koreait.a.dto.StoreDTO">
-		SELECT STORENO, STORENAME, STORECONTENT, STORETABLE, STORETEL, STOREADDR,
+		SELECT STORENO, STORENAME, STORECONTENT, STORETABLE, STORETEL, STOREADDR1, STOREADDR2, STOREADDR3,
 		       STORETIME, STORESNS, STORECATEGORY, STOREMENU, ORIGINFILENAME, SAVEFILENAME, STOREHIT
 	      FROM STOREREG
 	     WHERE STORENO = #{storeNo}
@@ -63,7 +125,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 가게 업데이트 -->
 	<update id="storeUpdate">
 		UPDATE STOREREG
-		   SET STORENAME = #{storeName}, STORECONTENT = #{storeContent}, STORETEL = #{storeTel}, STOREADDR = #{storeAddr}, 
+		   SET STORENAME = #{storeName}, STORECONTENT = #{storeContent}, STORETABLE = #{storeTable}, STORETEL = #{storeTel}, STOREADDR1 = #{storeAddr1},
+		       STOREADDR2 = #{storeAddr2}, STOREADDR3 = #{storeAddr3},
 		       STORETIME = #{storeTime}, STORESNS = #{storeSns}, STORECATEGORY = #{storeCategory},
 		       STOREMENU = #{storeMenu}, ORIGINFILENAME = #{originFilename}, SAVEFILENAME = #{saveFilename}
 		 WHERE STORENO = #{storeNo}	
@@ -71,10 +134,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 가게 등록 삭제 -->
 	<delete id="storeDelete">
-		DELETE
-		  FROM STOREREG
+		UPDATE STOREREG
+		   SET STATUS = -1
 		 WHERE STORENO = #{storeNo}
-	
 	</delete>
 	
 	

@@ -3,11 +3,16 @@ package com.koreait.a.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.koreait.a.command.reservation.ResInsertCommand;
+import com.koreait.a.command.store.AutoSearchCommand;
+import com.koreait.a.command.store.SearchLineUpCommand;
+import com.koreait.a.command.store.SearchQueryCommand;
 import com.koreait.a.command.store.StoreDeleteCommand;
 import com.koreait.a.command.store.StoreInsertCommand;
 import com.koreait.a.command.store.StoreListCommand;
 import com.koreait.a.command.store.StoreUpdateCommand;
 import com.koreait.a.command.store.StoreViewCommand;
+
 
 @Configuration
 public class StoreConfig {
@@ -21,6 +26,23 @@ public class StoreConfig {
 	public StoreListCommand storeListCommand() {
 		return new StoreListCommand();
 	}
+	
+
+	@Bean
+	public AutoSearchCommand autoCompleteCommand() {
+		return new AutoSearchCommand();
+	}
+	
+	@Bean
+	public SearchQueryCommand searchQueryCommand() {
+		return new SearchQueryCommand();
+	}
+	
+	@Bean
+	public SearchLineUpCommand searchLineUpCommand() {
+		return new SearchLineUpCommand();
+	}
+	
 	
 	@Bean
 	public StoreViewCommand storeViewCommand() {
@@ -36,6 +58,8 @@ public class StoreConfig {
 	public StoreDeleteCommand storeDeleteCommand() {
 		return new StoreDeleteCommand();
 	}
+	
+	
 	
 
 	

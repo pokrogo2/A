@@ -14,7 +14,8 @@
 <script>
 	$(document).ready(function(){
 		fn_bannerLink();
-		
+		fn_recommandStore();
+		fn_newStore();
 	}) // 페이지 로드 이벤트 종료
 	
 	function fn_bannerLink() {
@@ -38,13 +39,41 @@
 			type: 'get',
 			dataType: 'json',
 			success: function(resultMap) {
-
+				fn_recommandStore_append(resultMap);
 			},
 			error: function(xhr, text, error) {
-				
+				alert('오류!' + error);
 			}
 		});
-	} // 
+	} // ↕ 연결
+	var recommandStore = null;
+	function fn_recommandStore_append(resultMap) {
+		$('#storeBox').empty();
+		if (resultMap.status == 200) {
+			recommandStore = resultMap.recommandStore;
+			$.each(recommandStore, function(i, store) {
+				$('<div>').addClass('box')
+				.append( $('<div>').addClass('img').addClass('box_con')
+						 .append( $('<a>').attr('href', 'storeView.do?storeNo='+store.storeNo)
+						          .append( $('<img>').attr('alt', store.storeName).attr('src', 'resources/archive/'+store.orignFilename) ))
+				.append( $('<div>').addClass('content').addClass('box_con')
+						 .html('<h3>'+store.storeName+'<span>'+store.storeAddr1+'지점</span></h3>')
+						 .html('<h2>'+store.storeMaxTable+'<span>/</span><span>'+store.storeTable+'</span></h2>')
+						 .append( $('<div>').addClass('sub_p2')
+								  .html('<p>잔여테이블</p>')
+								  .html('<p>남은 인원 (Max <span>'+(store.storeTable*4)+'</span>명)</p>') )
+						 .append( $('<div>').addClass('score')
+								  .html('<p class="star">★</p>')
+								  .html('<c:if test="${not empty store.reviewAvg}"> <p class="reviewAvg">'+store.reviewAvg+'</p> </c:if>')
+								  .html('<c:if test="${empty store.reviewAvg}"> <p class="reviewAvg">0.0</p> </c:if>')
+								  .html('<p class="grey">(평점)</p>')) ) )		        		    
+				.appendTo('#storeBox');
+			});
+		} else {
+			$('<div>').addClass('box').html('<h1 class="nothing">등록된 음식점이 없습니다.</h1>').appendTo('#storeBox');
+			$('<div>').addClass('box').html('<h1 class="nothing">등록된 음식점이 없습니다.</h1>').appendTo('#storeBox');
+		}
+	} //
 	
 	
 	function fn_newStore() {
@@ -114,7 +143,7 @@
 		
 			<h1>음식점을 추천해 드려요!</h1>
 			<div id="storeBox">
-				<%-- 추천 음식점 2개 (StoreDB 완료 되면 진행)
+				<%-- 추천 음식점 2개 (StoreDB 완료 되면 진행) --%>
 				<c:forEach var="store" items="${recommandStore}">
 					<div class="box">
 						<div class="img box_con">
@@ -131,15 +160,19 @@
 							</div>
 							<div class="score">
 								<p class="star">★</p>
-								<p class="reviewAvg">${store.reviewAvg}</p>
+								<c:if test="${not empty store.reviewAvg}">
+									<p class="reviewAvg">${store.reviewAvg}</p>
+								</c:if>
+								<c:if test="${empty store.reviewAvg}">
+									<p class="reviewAvg">0.0</p>
+								</c:if>
 								<p class="grey">(평점)</p>
 							</div>
 						</div>
 					</div> <!-- box -->
 				</c:forEach> 
-				아래 내용 삭제 --%>
 			
-				<div class="box">
+				<!-- <div class="box">
 					<div class="img box_con">
 						<a href="#">
 							<img alt="store1" src="resources/archive/03.jpg" />
@@ -158,7 +191,7 @@
 							<p class="grey">(평점)</p>
 						</div>
 					</div>
-				</div> <!-- box1 -->
+				</div> box1
 				<div class="box">
 					<div class="img box_con">
 						<a href="#">
@@ -178,7 +211,7 @@
 							<p class="grey">(평점)</p>
 						</div>
 					</div>
-				</div> <!-- box1 -->
+				</div> box1 -->
 			</div> <!-- storeBox -->
 			<div id="return">
 				<a href="recommandStore.do">새로운 추천 보기<i class="fas fa-undo-alt"></i></a>
@@ -191,7 +224,7 @@
 			<h1>신규 등록한 음식점</h1>
 			<a href="#">더보기 +</a>
 			<div id="list">
-				<%--  신규 음식점 STORE의 DB완료후 작성
+				<%--  신규 음식점 STORE의 DB완료후 작성 --%>
 				<c:forEach var="newStore" items="${newStore}">
 					<div>
 						<a href="storeView.do?storeNo=${store.storeNo}">
@@ -201,8 +234,7 @@
 						<p>${newStore.storeAddr1} ${newStore.storeAddr2} ${newStore.storeAddr3.subString(0, 9)}...</p>
 					</div>
 				</c:forEach>
-				아래 내용 삭제 --%>
-				<div>
+				<!-- <div>
 					<a href="#"><img alt="store1" src="resources/archive/03.jpg"></a>
 					<h3><span class="storeCategory">중식</span> 음식점1 </h3>
 					<p>서울 중구 정동길 6 진섭빌딩...</p>
@@ -221,7 +253,7 @@
 					<a href="#"><img alt="store1" src="resources/archive/03.jpg"></a>
 					<h3><span class="storeCategory">중식</span> 음식점4 </h3>
 					<p>서울 중구 정동길 6 진섭빌딩...</p>
-				</div>
+				</div> -->
 				
 				
 				

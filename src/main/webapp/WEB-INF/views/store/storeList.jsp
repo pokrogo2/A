@@ -14,7 +14,7 @@
 
 <script>
 
-	$(documnet).ready(function(){
+	$(document).ready(function(){
 		fn_search();
 	});
 

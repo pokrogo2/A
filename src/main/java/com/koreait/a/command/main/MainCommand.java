@@ -1,9 +1,12 @@
 package com.koreait.a.command.main;
 
+
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
+
 
 public interface MainCommand {
 

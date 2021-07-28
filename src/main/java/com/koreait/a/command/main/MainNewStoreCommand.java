@@ -1,5 +1,6 @@
 package com.koreait.a.command.main;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,22 +23,27 @@ public class MainNewStoreCommand implements MainCommand {
 		
 		// 전체 음식점 개수 (total)
 		StoreDAO storeDAO = sqlSession.getMapper(StoreDAO.class);
-		long rnBegin = storeDAO.storeTotalCount();
-		long rnEnd = rnBegin - 4;
-		rnEnd = rnEnd > 0 ? rnEnd : 1;
+		int totalStore = storeDAO.storeTotalCount();
+		long rnBegin = 1 ;
+		long rnEnd = 4;
+		rnEnd = rnEnd > totalStore ? totalStore : rnEnd;
 		
-		// 랜덤으로 뽑은 (추천음식점 2개)
+		// 가장 최근에 등록된 음식점 4개 호출
 		MainDAO mainDAO = sqlSession.getMapper(MainDAO.class);
 		List<MainStoreDTO> list = mainDAO.mainStoreNew(rnBegin, rnEnd); 
 		
-		System.out.println("storeList: " + list.toString());
+		// json 데이터로 전달
+		Map<String, Object> resultMap = new HashMap<>();
 		
+		if (list.size() > 0) {
+			resultMap.put("newStore", list);
+			resultMap.put("status", 200);
+		} else {
+			resultMap.put("newStore", null);
+			resultMap.put("status", 500);
+		}
+		return resultMap;
 		
-		// model에 삽입
-		model.addAttribute("newStore", list);
-		
-		
-		return null;
 	}
 
 }

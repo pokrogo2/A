@@ -1,8 +1,10 @@
 package com.koreait.a.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -26,6 +28,7 @@ import com.koreait.a.command.member.MemberJoinCommand;
 import com.koreait.a.command.member.MemberLoginCommand;
 import com.koreait.a.command.member.MemberLogoutCommand;
 import com.koreait.a.command.member.MemberUpdateCommand;
+import com.koreait.a.dto.MainStoreDTO;
 
 @Controller
 public class MainController {

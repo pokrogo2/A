@@ -31,8 +31,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			 		  , ORIGINFILENAME
 			 		  , STORETABLE
 			 		  , STOREMAXTABLE
-		  		   FROM STOREREG )	
+		  		   FROM STOREREG ) A
 		 WHERE A.RN = #{storeNo}
+	</select>
+	
+	<!-- 내가 작성한 리뷰 존재 여부 -->
+	<select id="reviewStoreExist" resultType="int">
+		SELECT COUNT(NO)
+		  FROM REVIEW
+		 WHERE STORENO = #{storeNo}
 	</select>
 	
 	<!-- 리뷰평점 평균구하기 -->
@@ -44,7 +51,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 가게 등록 4가지 -->
 	<select id="mainStoreNew" resultType="com.koreait.a.dto.MainStoreDTO">
-		SELECT B.BN
+		SELECT B.RN
 			 , B.STORENO
 			 , B.STORENAME
 			 , B.STORECATEGORY
@@ -69,7 +76,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			 				   , ORIGINFILENAME
 		  					FROM STOREREG
 		  				   ORDER BY STORENO DESC )A )B
-		 WHERE B.BN BETWEENT #{param1} AND #{param2}
+		 WHERE B.RN BETWEEN #{param1} AND #{param2}
 	</select>
 	
 	

@@ -94,7 +94,10 @@ input[value="작성"] {
 	height:63px;
 	border-radius:0;
 }
-input[name="fReply_content"] {border:none;}
+input[name="fReply_content"] {
+	border:none;
+	width:395px;
+}
 
 /* 댓글 리스트를 담고 있는 div */
 #fReply_table{

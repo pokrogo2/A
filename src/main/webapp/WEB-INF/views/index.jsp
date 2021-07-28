@@ -104,7 +104,7 @@
 		<!-- 가게관리 배너 : ownerUser확인 -->
 		<c:if test="${not empty ownerUser}">
 			<div class="storebannBox">
-				<a id="storeBann"><img alt="banner1" src="resources/asset/img/mainBanner.jpg"></a>
+				<a id="storeBann"><img alt="banner1" src="resources/asset/img/mainBanner1.png"></a>
 			</div>
 		</c:if>
 		

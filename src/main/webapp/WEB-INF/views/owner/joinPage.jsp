@@ -146,7 +146,7 @@
 			
 			checkboxes.forEach((checkbox) => {
 				checkbox.checked = checkAll.checked;
-			})
+			});
 		}
 		
 		// 회원가입함수
@@ -162,7 +162,7 @@
 					$('#f').attr('action', 'ownerLogin.do');
 					$('#f').submit();
 				}
-			})
+			});
 		}
 		
 	</script>

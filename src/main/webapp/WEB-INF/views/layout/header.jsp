@@ -63,7 +63,7 @@
 			
 		<div id="sideFix">
 			<div> <a href="noticePage.do">공지사항</a> </div>
-			<div> <a href="#">1:1문의</a> </div>
+			<div> <a href="qnaBoardPage.do">1:1문의</a> </div>
 			<div> <a href="#">검색</a> </div>
 		</div>
 	</header>

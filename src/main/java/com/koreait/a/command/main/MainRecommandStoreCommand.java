@@ -45,12 +45,14 @@ public class MainRecommandStoreCommand implements MainCommand {
 				}
 				storeNo = ranN;
 				MainStoreDTO mainStoreDTO = mainDAO.mainStoreView(storeNo);
+				
 				if (mainDAO.reviewStoreExist(storeNo) > 0) {
 					reviewAvg = mainDAO.reviewAvg(storeNo);
 					mainStoreDTO.setReviewAvg(reviewAvg);
+				} else {
+					mainStoreDTO.setReviewAvg(0.0);
 				}
 				list.add(mainStoreDTO);	
-				System.out.println("ranN: " + ranN);
 			}
 			
 			// view에 전달할 json 데이터 저장

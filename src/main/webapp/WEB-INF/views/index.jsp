@@ -64,8 +64,7 @@
 								  .append( $('<p>남은 인원 (Max <span>'+(store.storeTable*4)+'</span>명)</p>') ) ) 
 						 .append( $('<div>').addClass('score')
 								  .append( $('<p class="star">★</p>') )
-								  .append( $('<c:if test="${not empty store.reviewAvg}"> <p class="reviewAvg">'+store.reviewAvg+'</p> </c:if>') )
-								  .append( $('<c:if test="${empty store.reviewAvg}"> <p class="reviewAvg">0.0</p> </c:if>') )
+								  .append( $('<p class="reviewAvg">'+store.reviewAvg+'</p>') )
 								  .append( $('<p class="grey">(평점)</p>') ) ) ) 		        		    
 				.appendTo('#storeBox');
 			});

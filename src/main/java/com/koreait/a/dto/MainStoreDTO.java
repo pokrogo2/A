@@ -9,12 +9,12 @@ public class MainStoreDTO {
 	private String storeAddr1;
 	private String storeAddr2;
 	private String storeAddr3;
-	private String orignFilename;
+	private String originFilename;
 	private int storeTable;
 	private int storeMaxTable;
 	private double reviewAvg;
 	
-	//
+	
 	public long getStoreNo() {
 		return storeNo;
 	}
@@ -51,11 +51,11 @@ public class MainStoreDTO {
 	public void setStoreAddr3(String storeAddr3) {
 		this.storeAddr3 = storeAddr3;
 	}
-	public String getOrignFilename() {
-		return orignFilename;
+	public String getOriginFilename() {
+		return originFilename;
 	}
-	public void setOrignFilename(String orignFilename) {
-		this.orignFilename = orignFilename;
+	public void setOriginFilename(String originFilename) {
+		this.originFilename = originFilename;
 	}
 	public int getStoreTable() {
 		return storeTable;
@@ -75,6 +75,7 @@ public class MainStoreDTO {
 	public void setReviewAvg(double reviewAvg) {
 		this.reviewAvg = reviewAvg;
 	}
+	
 	
 	
 	

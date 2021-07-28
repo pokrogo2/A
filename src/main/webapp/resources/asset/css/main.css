@@ -54,6 +54,12 @@ input, button, select  {
 
 
 /* 3) 추천 음식점 */
+.nothing {
+	text-align:center;
+	line-height:205px;
+	font-size:20px;
+	color:#aaa;
+}
 #recommandStore {
 	position:relative;
 	margin-bottom:100px;
@@ -61,19 +67,18 @@ input, button, select  {
 #recommandStore h1 {margin-bottom:15px;}
 #recommandStore #storeBox  {display:flex; justify-content:space-between;}
 #storeBox .box {
-	width:475px;
+	width:485px;
 	height:205px;
-	/* border:1px solid gray; */
 	border-radius:45px;
 	box-shadow:3px 9px 12px #F4EDEB;
 	cursor:pointer;
 }
-#storeBox .box:nth-child(1) {margin-right:45px;}
+#storeBox .box:nth-child(1) {margin-right:30px;}
 #storeBox .box .box_con {float:left;}
 #storeBox .box .img  {
 	width:180px; 
 	height:140px;
-	margin:37px 25px 0 35px;
+	margin:37px 20px 0 35px;
 	overflow:hidden;
 }
 .img a {display:block;}
@@ -84,11 +89,11 @@ input, button, select  {
 #storeBox .box .content { margin-top:37px; }
 .content h3 {font-size:22px; font-weight:600; margin-bottom:12px;}
 .content h3 span {font-size:20px; padding-left:10px; color:#333;}
-.content h2 {position:relative; font-size:40px; display:inline; padding-right:8px;}
-.content h2 span:nth-child(1) {position:absolute; top:14px; font-size:25px; padding-left:5px; color: #aaa;}
-.content h2 span:nth-child(2) {font-size:38px; padding-left:20px; color:#bf3a3e; font-weight:500;}
+.content h2 {position:relative; font-size:25px; display:inline; padding-right:8px; color:#999;}
+.content h2 span:nth-child(1) {position:absolute; top:7px; font-size:18px; padding-left:3px; color: #aaa;}
+.content h2 span:nth-child(2) {font-size:40px; padding-left:14px; color:#bf3a3e; font-weight:600;}
 .content .sub_p2 {display:inline-block;}
-.content .sub_p2 p {font-size:15px; color:#666;}
+.content .sub_p2 p {font-size:14px; color:#666;}
 .content .sub_p2 span {color:#bf3a3e; font-weight:600;}
 .content .score  {margin-top:12px; margin-bottom:5px;} /* 음식점의 평점 */
 .content .score p {display:inline-block;}

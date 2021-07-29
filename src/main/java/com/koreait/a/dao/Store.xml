@@ -98,10 +98,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  		  			   STORECATEGORY, STOREMENU, ORIGINFILENAME, SAVEFILENAME,
 		  		  			   STOREHIT
 	    		  		  FROM STOREREG
-	    		  		  <if test="searchLineUp == orderByHit">
+	    		  		  <if test="searchOrder == orderByHit">
 	    		  		  	ORDER BY STOREHIT ASC 
 	    		  		  </if>
-	    		  		  <if test="searchLineUp == orderByPost">
+	    		  		  <if test="searchOrder == orderByPost">
 	    		  		  	ORDER BY STORENO DESC
 	    		  		  </if> ) A) B
 		 				  WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}

@@ -17,7 +17,7 @@
 	$(document).ready(function(){
 		fn_search();
 		fn_autoSearch();
-		// fn_searchOrder();
+		fn_searchOrder();
 	});
 
 	
@@ -61,24 +61,19 @@
 
 		// 조회순, 등록순 검색
 		function fn_searchOrder() {
-			$('#searchOrder').click(function(){
+			$('input:radio[name=searchOrder]').click(function(){
+				alert($(this).val());
+				/*
 				$.ajax({
 					url: 'searchOrder.do',
 					type: 'get',
 					data: 'searchOrder=' + $('input[name="searchOrder"]').val() + '&page=' + page,
 					dataType: 'text',
-					success: function(resultMap){
-						console.log(resultMap);
-						var result = JSON.parse(resultMap);
-						if (result.status == 200) {
-							$.each(result.list, function(i, store){
-								$('input[name="searchOrder"]')
-								.val(store[$('').find('option[value="' + obj.column + '"]').data('')])
-								.appendTo('');
-							});
-						}
+					success: function(){
+						location.href = 'storeList.do';
 					}
 				});
+				*/
 			});
 	}
 		
@@ -115,7 +110,7 @@
 		
 		<!-- 조회순, 등록순 검색 -->
 		<div id="searchOrder" class="searchOrder_box">
-			<input type="radio" name="searchOrder" value="조회순" id="s1"> 
+			<input type="radio" name="searchOrder" value="orderByHit" id="s1"> 
 			<label for=s1>조회순</label>
 			<input type="radio" name="searchOrder" value="등록순" id="s2"> 
 			<label for=s2>등록순</label>		

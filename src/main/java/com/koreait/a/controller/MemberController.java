@@ -3,6 +3,7 @@ package com.koreait.a.controller;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -85,8 +86,10 @@ public class MemberController {
 		return "member/joinPage";
 	}
 	@PostMapping(value="join.do")
-	public String join(HttpServletRequest request, Model model) {
+	public String join(HttpServletRequest request,HttpServletResponse response ,Model model) {
 		model.addAttribute("request",request);
+		model.addAttribute("request", request);
+		model.addAttribute("response", response);
 		memberJoinCommand.execute(sqlSession, model);
 		return "redirect:loginPage.do";
 	}
@@ -143,10 +146,12 @@ public class MemberController {
 		memberFindPwCommand.execute(sqlSession, model);
 		return "member/findPwResult";
 	}
-	@GetMapping(value="delete.do")
+	@GetMapping(value="deleteMember.do")
 	public String leave(HttpSession session,
-						Model model) {
+			HttpServletResponse response,Model model,HttpServletRequest request) {
 		model.addAttribute("session", session);
+		model.addAttribute("request", request);
+		model.addAttribute("response", response);
 		memberDeleteCommand.execute(sqlSession, model);
 		return "redirect:/";
 	}

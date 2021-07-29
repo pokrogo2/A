@@ -21,7 +21,7 @@ import org.springframework.web.multipart.MultipartRequest;
 import com.koreait.a.command.reservation.ResInsertCommand;
 import com.koreait.a.command.reservation.ResViewCommand;
 import com.koreait.a.command.store.AutoSearchCommand;
-import com.koreait.a.command.store.SearchLineUpCommand;
+import com.koreait.a.command.store.SearchOrderCommand;
 import com.koreait.a.command.store.SearchQueryCommand;
 import com.koreait.a.command.store.StoreDeleteCommand;
 import com.koreait.a.command.store.StoreInsertCommand;
@@ -45,7 +45,7 @@ public class StoreController {
 		private StoreDeleteCommand storeDeleteCommand;
 		private AutoSearchCommand autoSearchCommand;
 		private SearchQueryCommand searchQueryCommand;
-		private SearchLineUpCommand searchLineUpCommand;
+		private SearchOrderCommand searchOrderCommand;
 		
 		private ResInsertCommand resInsertCommand;
 		private ResViewCommand resViewCommand;
@@ -60,7 +60,7 @@ public class StoreController {
 				  			   StoreDeleteCommand storeDeleteCommand,
 				  			   AutoSearchCommand autoSearchCommand,
 				  			   SearchQueryCommand searchQueryCommand,
-				  			   SearchLineUpCommand searchLineUpCommand,
+				  			   SearchOrderCommand searchOrderCommand,
 				  			   ResInsertCommand resInsertCommand,
 				  			   ResViewCommand resViewCommand) {
 			super();
@@ -72,7 +72,7 @@ public class StoreController {
 			this.storeDeleteCommand = storeDeleteCommand;
 			this.autoSearchCommand = autoSearchCommand;
 			this.searchQueryCommand = searchQueryCommand;
-			this.searchLineUpCommand = searchLineUpCommand;
+			this.searchOrderCommand = searchOrderCommand;
 			this.resInsertCommand = resInsertCommand;
 			this.resViewCommand = resViewCommand;
 		}
@@ -129,14 +129,14 @@ public class StoreController {
 		}
 		
 		// 조회수, 등록순 가게 검색
-		@PostMapping(value="searchLineUp.do", produces="application/json; charset=UTF-8")
+		@PostMapping(value="searchOrder.do", produces="application/json; charset=UTF-8")
 		@ResponseBody
 		public Map<String, Object> searchLineUp(HttpServletRequest request, 
 												HttpServletResponse response,
 												Model model) {
 			model.addAttribute("request", request);
 			model.addAttribute("response", response);
-			return searchLineUpCommand.execute(sqlSession, model);
+			return searchOrderCommand.execute(sqlSession, model);
 		}
 		
 		

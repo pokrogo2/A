@@ -90,7 +90,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<!-- 조회순, 등록순 가게 검색 -->
-	<select id="searchLineUp" resultType="com.koreait.a.dto.StoreDTO">
+	<select id="searchOrder" resultType="com.koreait.a.dto.StoreDTO">
 		SELECT B.*
 		  FROM (SELECT ROWNUM AS RN, A.*
 		  		  FROM (SELECT STORENO, STORENAME, STORECONTENT, STORETABLE,
@@ -104,11 +104,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    		  		  <if test="searchLineUp == orderByPost">
 	    		  		  	ORDER BY STORENO DESC
 	    		  		  </if> ) A) B
-		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+		 				  WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
 	</select>
 	
 	<!-- 조회순, 등록순 가게 검색 개수 -->
-	<select id="searchLineUpRecord" resultType="int">
+	<select id="searchOrderRecord" resultType="int">
 		SELECT COUNT(STORENO)
 		  FROM STOREREG
 	</select>

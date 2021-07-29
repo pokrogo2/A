@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.koreait.a.command.reservation.ResInsertCommand;
 import com.koreait.a.command.store.AutoSearchCommand;
-import com.koreait.a.command.store.SearchLineUpCommand;
+import com.koreait.a.command.store.SearchOrderCommand;
 import com.koreait.a.command.store.SearchQueryCommand;
 import com.koreait.a.command.store.StoreDeleteCommand;
 import com.koreait.a.command.store.StoreInsertCommand;
@@ -39,8 +39,8 @@ public class StoreConfig {
 	}
 	
 	@Bean
-	public SearchLineUpCommand searchLineUpCommand() {
-		return new SearchLineUpCommand();
+	public SearchOrderCommand searchLineUpCommand() {
+		return new SearchOrderCommand();
 	}
 	
 	

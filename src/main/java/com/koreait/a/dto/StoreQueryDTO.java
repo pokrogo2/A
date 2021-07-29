@@ -2,13 +2,14 @@ package com.koreait.a.dto;
 
 public class StoreQueryDTO {
 
+	// field
 	private String column;
 	private String query;
-	private String searchLineUp;
+	private String searchOrder;
 	private int beginRecord;
 	private int endRecord;
 	
-	
+	// getter, setter
 	public String getColumn() {
 		return column;
 	}
@@ -21,11 +22,11 @@ public class StoreQueryDTO {
 	public void setQuery(String query) {
 		this.query = query;
 	}
-	public String getSearchLineUp() {
-		return searchLineUp;
+	public String getSearchOrder() {
+		return searchOrder;
 	}
-	public void setSearchLineUp(String searchLineUp) {
-		this.searchLineUp = searchLineUp;
+	public void setSearchOrder(String searchOrder) {
+		this.searchOrder = searchOrder;
 	}
 	public int getBeginRecord() {
 		return beginRecord;
@@ -39,6 +40,7 @@ public class StoreQueryDTO {
 	public void setEndRecord(int endRecord) {
 		this.endRecord = endRecord;
 	}
+	
 	
 	
 	

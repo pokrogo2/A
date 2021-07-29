@@ -22,7 +22,7 @@ import com.koreait.a.dto.StoreDTO;
 import com.koreait.a.dto.StoreQueryDTO;
 import com.koreait.a.utils.PagingUtils;
 
-public class SearchLineUpCommand {
+public class SearchOrderCommand {
 
 	public Map<String, Object> execute(SqlSession sqlSession, Model model) {
 			
@@ -31,13 +31,13 @@ public class SearchLineUpCommand {
 		HttpServletResponse response = (HttpServletResponse)map.get("response");
 		
 		StoreDAO storeDAO = sqlSession.getMapper(StoreDAO.class);
-		String searchLineUp = request.getParameter("searchLineUp");
+		String searchOrder = request.getParameter("searchOrder");
 		
 		Optional<String> opt = Optional.ofNullable(request.getParameter("page"));
 		int page = Integer.parseInt(opt.orElse("1"));
 			
 		StoreQueryDTO queryDTO = new StoreQueryDTO();
-		queryDTO.setSearchLineUp(searchLineUp);
+		queryDTO.setSearchOrder(searchOrder);
 		
 		int searchRecord = storeDAO.storeSearchRecord(queryDTO);
 		int totalRecord = storeDAO.storeTotalCount();

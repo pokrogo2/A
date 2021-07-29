@@ -43,6 +43,7 @@
 		
 		<h1 class="con_title">마이페이지</h1>
 		
+		
 		<div class="flex">
 			<div id="left" class="left myPage_box">
 				<a href="#" class="tabClick">예약 현황</a>

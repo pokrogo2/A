@@ -7,12 +7,13 @@ public class StoreResDTO {
 	// field 
 	private long resNo;
 	private long storeNo;
+	private long memberNo;
 	private String resDate;
 	private String resHours;
 	private String resPeople;
 	private String resNote;
 	private Date resPostdate;
-	
+
 	
 	// getter, setter
 	public long getResNo() {
@@ -26,6 +27,12 @@ public class StoreResDTO {
 	}
 	public void setStoreNo(long storeNo) {
 		this.storeNo = storeNo;
+	}
+	public long getMemberNo() {
+		return memberNo;
+	}
+	public void setMemberNo(long memberNo) {
+		this.memberNo = memberNo;
 	}
 	public String getResDate() {
 		return resDate;
@@ -57,7 +64,6 @@ public class StoreResDTO {
 	public void setResPostdate(Date resPostdate) {
 		this.resPostdate = resPostdate;
 	}
-
 	
 	
 	

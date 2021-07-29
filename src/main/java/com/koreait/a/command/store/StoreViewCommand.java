@@ -21,6 +21,7 @@ public class StoreViewCommand implements StoreCommand {
 		
 		// 전달받은 데이터 옮겨주기
 		long storeNo = Long.parseLong(request.getParameter("storeNo"));	
+
 		
 		StoreDAO storeDAO = sqlSession.getMapper(StoreDAO.class);
 		

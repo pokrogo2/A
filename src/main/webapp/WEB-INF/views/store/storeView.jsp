@@ -70,6 +70,7 @@
 						<input type="button" value="삭제하기" id="delete_btn" class="delete_btn">
 						
 						<input type="hidden" name="storeNo" value="${store.storeNo}">
+					
 						<input type="hidden" name="originFilename" value="${store.originFilename}">
 						<input type="hidden" name="saveFilename" value="${store.saveFilename}">
 					
@@ -105,6 +106,7 @@
 		
 		<div class="store_section">
 			<input type="hidden" name="storeNo" value="${store.storeNo}">
+			<input type="hidden" name="storeTable" value="${store.storeTable}">
 				
 			<div class="category_box">
 				<span class="category_icon">

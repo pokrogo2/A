@@ -14,20 +14,22 @@
 <script>
 	
 	$(document).ready(function(){
-		fn_storeInsert();
+		// fn_storeInsert();
 		fn_storeTable();
 		fn_fileAlert();
 		fn_storeCategory();
 	});
 	
-	// 가게 등록 함수
+	/* 가게 등록 함수 
 	function fn_storeInsert(){
 		$('#f').submit(function(event){
 			if ($('#store_name').val() == '' ||
 				$('#store_content').val() == '' ||
 				$('#store_table').val() == '' ||
 				$('#store_tel').val() == '' ||
-				$('#store_addr option:selected').val() == '' ||
+				$('select[name=storeAddr1]').val() == '지역' ||
+				$('select[name=storeAddr2]').val() == '구' ||
+ 				$('#store_addr').val() == '' ||
 				$('#store_time').val() == '' ||
 				$('input[name=storeCategory]').val() == '' ||
 				$('#file').val() == '' 
@@ -38,6 +40,7 @@
 			} 
 		});
 	}
+*/
 	
 	// 테이블 갯수 입력창
 	function fn_storeTable() {
@@ -121,13 +124,13 @@
 						
 						<td id="store_addr">
 							<select name="storeAddr1" id="zone">
-								<option value="">지역</option>
+								<option value="지역">지역</option>
 								<option value="서울">서울</option>
 								<option value="경기">경기</option>
 								<option value="부산">부산</option>
 							</select>
 							<select name="storeAddr2" id="local">
-								<option value="">구</option>
+								<option value="구">구</option>
 								<option value="용산">용산구</option>
 								<option value="서대문구">서대문구</option>
 								<option value="강남구">강남구</option>

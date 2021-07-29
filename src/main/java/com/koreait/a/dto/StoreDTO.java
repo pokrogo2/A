@@ -20,7 +20,6 @@ public class StoreDTO {
 			private String saveFilename;
 			private int storeHit;
 
-
 			
 			// getter, setter
 			public long getStoreNo() {

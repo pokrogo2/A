@@ -14,24 +14,33 @@
 
 	$(document).ready(function(){
 		fn_storeRes();
+	
 		fn_resHours();
 		
 	})
 	
 	function fn_storeRes() {
 		$('#f').submit(function(event){
-			if( $('#resDay option:selected').val() == '날짜') {
+			if( $('#resDate').val() == '날짜') {
 				alert('날짜를 선택해주세요.')
 				return false;
 			} else if ( $('input[name="resHours"]').val() == '') {
 				alert('시간을 선택해주세요.')
 				return false;
-			} else if ( $('#resPeople option:selected').val() == '') {
+			} else if ( $('#resPeople').val() == '명') {
 				alert('인원수를 선택해주세요.')
 				return false;
 			}
 		});
 	}	
+	
+	
+
+	/* 날짜 선택 
+	function fn_resDate_check {
+		$('option[name=resDate]').attr('checked', true);
+	} */
+	
 	
 	
 	function fn_resHours() {
@@ -52,6 +61,9 @@
 		<form id="f" method="post" action="resInsert.do">
 		
 			<input type="hidden" value="${storeDTO.storeNo}" name="storeNo" id="storeNo">
+			<input type="hidden" value="${memberDTO.memberNo}" name="memberNo" id="memberNo">
+		
+			
 			<input type="hidden" value="${resDTO.resNo}" name="resNo" id="resNo">
 		
 		<div class="storeView_box">
@@ -68,7 +80,7 @@
 			<div class="res_box">
 				<h3>날짜 선택 <span class="red_mark">▼</span></h3>
 				<select id="resDate" name="resDate">
-					<option>날짜</option>
+					<option value="날짜">날짜</option>
 					<% for(int i = 1; i < 32; i++){  %>
 					<option value="<%=i%>"><%="2021년 08월"+i+"일"%></option> 
 					<%} %>
@@ -99,7 +111,7 @@
 				</select>	
 			</div>
 		
-			<!-- 요청 사항 -->
+			<!-- 예약자 정보 -->
 			<div class="res_box">	
 				<h3>요청사항 <span class="red_mark">▼</span></h3>					
 					<div class="res_req">
@@ -108,6 +120,15 @@
 					<textarea rows="7" cols="40" id="resNote" name="resNote">
 					</textarea>			
 			</div>			
+			
+				
+			예약자 아이디 : ${loginUser.memberId}
+			예약자 번호 : ${loginUser.memberNo}
+			예약자 이름 : ${loginUser.memberName}
+			예약자 연락처 : ${loginUser.memberTel}
+			
+			
+			
 			
 			<!-- 예약 버튼 -->
 			<div class="res_btn">

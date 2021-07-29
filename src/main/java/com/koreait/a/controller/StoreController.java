@@ -28,6 +28,7 @@ import com.koreait.a.command.store.StoreInsertCommand;
 import com.koreait.a.command.store.StoreListCommand;
 import com.koreait.a.command.store.StoreUpdateCommand;
 import com.koreait.a.command.store.StoreViewCommand;
+import com.koreait.a.dto.MemberDTO;
 import com.koreait.a.dto.StoreDTO;
 import com.koreait.a.dto.StoreQueryDTO;
 
@@ -188,7 +189,8 @@ public class StoreController {
 		
 		// 가게 예약 페이지
 		@PostMapping(value="storeResPage.do")
-		public String storeRes(@ModelAttribute StoreDTO storeDTO) { 
+		public String storeRes(@ModelAttribute StoreDTO storeDTO, 
+								@ModelAttribute MemberDTO memberDTO) { 
 			return "reservation/resInsert";
 		}
 		

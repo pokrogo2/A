@@ -10,7 +10,10 @@
 
 	<div class="outer">
 			
+			
+			회원번호 : ${loginUser.memberNo}
 			<input type="hidden" name="storeNo" id="storeNo">
+			
 		<div>
 			<ul class="resView_outer">
 				<li class="resView_list">

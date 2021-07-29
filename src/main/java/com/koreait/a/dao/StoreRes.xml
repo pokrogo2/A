@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 예약 등록 -->
 	<insert id="resInsert">
 		INSERT INTO RESERVATION
-		VALUES (STORERES_SEQ.NEXTVAL, #{storeNo}, #{resDate}, #{resHours}, #{resPeople}, #{resNote}, SYSDATE)
+		VALUES (STORERES_SEQ.NEXTVAL, #{storeNo}, #{memberNo}, #{resDate}, #{resHours}, #{resPeople}, #{resNote}, SYSDATE)
 	</insert>
 	
 	<!-- 전체 예약 등록 개수 -->
@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 예약 내역 보기 --> 
 	<select id="resView" resultType="com.koreait.a.dto.StoreResDTO">
-		SELECT RESNO, STORENO, RESDATE, RESHOURS, RESPEOPLE, RESNOTE, RESPOSTDATE
+		SELECT RESNO, STORENO, MEMBERNO, RESDATE, RESHOURS, RESPEOPLE, RESNOTE, RESPOSTDATE
 		  FROM RESERVATION
 		 WHERE RESNO = #{resNo} 
 	</select>

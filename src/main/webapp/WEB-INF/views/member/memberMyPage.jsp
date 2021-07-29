@@ -50,19 +50,7 @@
 				
 				<!-- 1. 예약 현황 -->
 				<div id="reservation_status" class="">
-					<h2>예약 현황</h2>
-					<div id="status_box">
-						<div class="con">
-							<h3>1</h3>
-							<a href="#"><img alt="status_img" src="resources/archive/03.jpg"></a>
-							<div>
-								<h3>음식점1</h3>
-								<p>예약인원 <span>테이블 1개, 인원수 4명</span></p>
-								<p>예약 시간 <span>2021/07/11 오전 10시 (예약)</span></p>
-							</div>
-							<a href="#" class="cancle">예약 취소</a>
-						</div>
-					</div>
+					<%@ include file="../reservation/myReservation.jsp" %>
 				</div>
 					
 				<!-- 2. 예약 내역 및 리뷰 작성 -->

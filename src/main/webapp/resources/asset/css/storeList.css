@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 .outer {
 	margin: 0 auto;
 	padding-top: 50px;
@@ -11,7 +10,6 @@
 
 .int {
 	height: 30px;
-	
 }
 
 table {
@@ -22,23 +20,7 @@ table {
 	padding: 20px;
 }
 
-	#paging {
-				width: 30%;
-				margin: 0 auto;
-				display: flex;
-				justify-content: space-between;
-				text-align: center;
-			}
-	#paging div {
-		width: 40px;
-		height: 20px;
-	}
-	.disable {
-		color: silver;
-	}
-	.link {
-		cursor: pointer;
-	}
-	.now_page {
-		color: limegreen;
-	}
+.search_btn:hover {
+	cursor: pointer;
+	background-color: lightorange;
+}

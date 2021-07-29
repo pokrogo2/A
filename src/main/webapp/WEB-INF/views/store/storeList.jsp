@@ -6,7 +6,7 @@
 
 <!-- Header -->
 <jsp:include page="../layout/header.jsp">
-	<jsp:param value="Main" name="title"/>
+	<jsp:param value="StoreList" name="title"/>
 </jsp:include>
 
 <link rel="stylesheet" href="resources/asset/css/storeList.css">
@@ -16,52 +16,104 @@
 
 	$(document).ready(function(){
 		fn_search();
+		fn_autoSearch();
+		// fn_searchLineUp();
 	});
 
 	
 	// 가게 목록 검색
 	function fn_search(){
-		$('#search_btn').click(function(){
-			/*
-			if ($('#column').val() == '') {
-				alert('검색 카테고리를 선택하세요.');
-				$('#column').focus();
-				return false;
-			}
-			*/
-			$('#f').attr('action', 'search.do');
+		$('#search_btn').click(function(){			
+			$('#f').attr('action', 'storeSearch.do');
 			$('#f').submit();
 		});
 	}
+	
+	
+	/* 검색 결과 불러오기 */
+	function fn_autoSearch(){
+			$('#query').keyup(function(){
+				$('#autoSearch').empty();  
+				var obj = {
+					column: $('#column').val(),
+					query: $('#query').val()
+				};
+				$.ajax({
+					url: 'autoSearch.do',
+					type: 'post',
+					contentType: 'application/json',
+					data: JSON.stringify(obj),
+					dataType: 'text',
+					success: function(resultMap){
+						console.log(resultMap);
+						var result = JSON.parse(resultMap);
+						if (result.status == 200) {
+							$.each(result.list, function(i, store){
+								$('<option>')
+								.val(store[$('#column').find('option[value="' + obj.column + '"]').data('name')])
+								.appendTo('#autoSearch');
+							});
+						}
+					}
+				});
+			});
+		}
 
 	
 	
+	
+
 </script>
 
 
+<!-- body -->
 <!-- 가게 리스트 검색-->
 <div class="outer">
-	<form id="f" method="get">
-		<div class="search_box">
+	<form id="f" method="post">
+		<div id="storeSearch" class="search_box">
 			<select id="column" name="column">
 				<option value="STORENAME" data-name="storeName">상호명</option>
 			</select>	
 			
-			<!---- query 검색 or 조회순/등록순 둘 중 하나로 검색 ---->
-			<input list="auto_complete_list" type="text" name="query" id="query">
-			<datalist id="auto_complete_list">
-			</datalist>
 			
-			<select id="" name="">
-				<!-- 리뷰별: 보류 
-					<option value="review">리뷰별(평점순)</option> 
-				 -->
-				<option value="STOREHIT" data-name="storeHit">조회순</option>
-				<option value="STORENO" data-name="storeNo">등록순</option>
-			</select>	
-			<input type="button" value="검색" id="search_btn">						
+			<!-- 자동 완성 검색 -->
+			<input list="autoSearch" type="text" name="query" id="query">
+			<datalist id="autoSearch">
+			</datalist>
+			 
+			 
+			<input type="button" value="검색" id="search_btn" class="search_btn">						
+		
 		</div>
+		
+		<!-- 
+		<div id="searchLineUp" class="search_box">
+			<input type="radio" name="searchLineUp" value="조회순" id="s1"> 
+			<label for=s1>조회순</label>
+			<input type="radio" name="searchLineUp" value="등록순" id="s2"> 
+			<label for=s2>등록순</label>		
+		</div>
+		 -->
+		
+		
+		<div id="lineUp" class="search_box">	
+			<select id="searchLineUp" name="lineUp">
+				 
+				 <!--  리뷰별: 보류 
+					<option value="review">리뷰별(평점순)</option> 
+				-->
+				 
+				 <!--  
+				<option value="orderByHit">조회순</option>
+				<option value="orderByPost">등록순</option>
+				-->
+			</select>	 	
+		</div>
+	
+		
+
 	</form>
+
 	
 <!-- 가게 리스트 -->
 	<form>
@@ -69,7 +121,7 @@
 		<thead>
 			<tr>
 				<th>No.</th>
-				<!-- <th>썸네일</th> -->
+				<th>썸네일</th>
 				<th>상호명</th>	
 				
 				<!--  ** 평점: 보류   -->
@@ -81,14 +133,17 @@
 		<tbody>
 			
 			<c:if test="${empty list}">
-				<td colspan="3">등록된 가게가 없습니다.</td>
+				<td colspan="4">등록된 가게가 없습니다.</td>
 			</c:if>
 			
 			<c:if test="${not empty list}">
 				<c:forEach var="store" items="${list}">
+				<tr>
 					<td>${store.storeNo}</td>
-					<td><a href="storeView.do?storeNo=${store.storeNo}">${store.storeName}</a></td>
+					<td><a href="storeView.do?storeNo=${store.storeNo}"><img alt="${store.originFilename}" src="resources/archive/${store.saveFilename}" style="width: 200px;"></a></td>
+					<td>${store.storeName}</td>
 					<td>${store.storeHit}</td>
+				</tr>
 				</c:forEach>
 			</c:if>
 		</tbody>
@@ -96,7 +151,7 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<td colspan="3">
+				<td colspan="4">
 					${paging}
 				</td>
 			</tr>

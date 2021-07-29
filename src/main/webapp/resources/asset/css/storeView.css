@@ -15,7 +15,7 @@
 
 .store_image {
 	width: 600px;
-	padding: 80px;
+	padding: 80px 80px 40px 80px;
 	margin-bottom: 30px;
 }
 
@@ -64,6 +64,14 @@ ul > li {
 	margin-left: 60px;
 }
 
+.sns_link > a:link {
+	color: blue;
+}
+
+.sns_link > a:visited {
+	color: pink;
+}
+
 
 .btns {
 	width: 100%;
@@ -71,3 +79,46 @@ ul > li {
 	padding: 30px;
 	
 }
+
+.category_box {
+	width: 500px;
+	margin-top: 70px;
+}
+
+/* 카테고리 */
+.category_icon {
+	color: orange;
+	padding: 20px;
+}
+
+.category_box {
+	padding: 20px;
+}
+
+
+
+/* Update Page */
+.update_btn:hover {
+	cursor: pointer;
+	background-color: #F5F979;
+}
+
+.delete_btn:hover {
+	cursor: pointer;
+	background-color: #F5F3F3;
+}
+
+.storeList_btn {
+	cursor: pointer;
+	font-weight: 700;
+	color: crimson;
+}
+
+.storeRes_btn:hover {
+	cursor: pointer;
+	font-weight: 700;
+	background-color: #FBACA1;
+}
+
+
+

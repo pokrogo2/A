@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.MultipartRequest;
 
+import com.koreait.a.command.reservation.ResMyPageCommand;
 import com.koreait.a.command.review.ReviewDeleteCommand;
 import com.koreait.a.command.review.ReviewInsertCommand;
 import com.koreait.a.command.review.ReviewListCommand;
@@ -25,10 +26,12 @@ public class ReviewController {
 	private ReviewDeleteCommand reviewDeleteCommand;
 	private ReviewUpdatePageCommand reviewUpdatePageCommand;
 	private ReviewUpdateCommand reviewUpdateCommand;
+	private ResMyPageCommand resMyPageCommand;
 	@Autowired
 	public ReviewController(SqlSession sqlSession, ReviewListCommand selectReviewListCommand,
 			ReviewInsertCommand reviewInsertCommand,ReviewDeleteCommand reviewDeleteCommand,
-			ReviewUpdatePageCommand reviewUpdatePageCommand,ReviewUpdateCommand reviewUpdateCommand) {
+			ReviewUpdatePageCommand reviewUpdatePageCommand,ReviewUpdateCommand reviewUpdateCommand,
+			ResMyPageCommand resMyPageCommand) {
 		super();
 		this.sqlSession = sqlSession;
 		this.selectReviewListCommand = selectReviewListCommand;
@@ -36,6 +39,7 @@ public class ReviewController {
 		this.reviewDeleteCommand = reviewDeleteCommand;
 		this.reviewUpdatePageCommand =reviewUpdatePageCommand;
 		this.reviewUpdateCommand = reviewUpdateCommand;
+		this.resMyPageCommand = resMyPageCommand;
 	}
 	
 	
@@ -44,6 +48,7 @@ public class ReviewController {
 	public String review(HttpServletRequest request,Model model) {
 		model.addAttribute("request", request);
 		selectReviewListCommand.execute(sqlSession, model);
+		resMyPageCommand.execute(sqlSession, model);
 		return "member/memberMyPage";
 	}
 	@PostMapping(value="insertReview.do")
@@ -78,5 +83,6 @@ public class ReviewController {
 	reviewUpdateCommand.execute(sqlSession, model);
 	return "redirect:memberMyPage.do";
 }
+	
 	
 }

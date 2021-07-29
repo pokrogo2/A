@@ -1,8 +1,11 @@
 package com.koreait.a.command.store;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Map;
 import java.util.UUID;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
@@ -19,14 +22,16 @@ public class StoreInsertCommand implements StoreCommand {
 		
 		Map<String, Object> map = model.asMap();
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)map.get("multipartRequest");
-		
+		HttpServletResponse response = (HttpServletResponse)map.get("response");
 		
 		StoreDTO storeDTO = new StoreDTO();
 		storeDTO.setStoreName(multipartRequest.getParameter("storeName"));
 		storeDTO.setStoreContent(multipartRequest.getParameter("storeContent"));
 		storeDTO.setStoreTable( (Integer.parseInt(multipartRequest.getParameter("storeTable"))) );
 		storeDTO.setStoreTel(multipartRequest.getParameter("storeTel"));
-		storeDTO.setStoreAddr(multipartRequest.getParameter("storeAddr"));
+		storeDTO.setStoreAddr1(multipartRequest.getParameter("storeAddr1"));
+		storeDTO.setStoreAddr2(multipartRequest.getParameter("storeAddr2"));
+		storeDTO.setStoreAddr3(multipartRequest.getParameter("storeAddr3"));
 		storeDTO.setStoreTime(multipartRequest.getParameter("storeTime"));
 		storeDTO.setStoreSns(multipartRequest.getParameter("storeSns"));
 		storeDTO.setStoreCategory(multipartRequest.getParameter("storeCategory"));
@@ -80,7 +85,28 @@ public class StoreInsertCommand implements StoreCommand {
 		// DB에 데이터 저장
 		
 		StoreDAO storeDAO = sqlSession.getMapper(StoreDAO.class);
-		storeDAO.storeInsert(storeDTO);
+		
+		// response 
+		response.setContentType("text/html; charset=utf-8"); 
+		int count = storeDAO.storeInsert(storeDTO);
+	
+		try {
+			if (count > 0) {
+				response.getWriter().println("<script>");
+				response.getWriter().println("alert('가게 등록이 완료되었습니다.')");
+				response.getWriter().println("location.href='storeList.do'");
+				response.getWriter().println("</script>");
+			} else {
+				response.getWriter().println("<script>");
+				response.getWriter().println("alert('등록 중 오류가 발생했습니다.')");
+				response.getWriter().println("history.back()");
+				response.getWriter().println("</script>");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+			
+		
 		
 	}
 		

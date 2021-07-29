@@ -5,7 +5,7 @@
 
 <!-- Header -->
 <jsp:include page="../layout/header.jsp">
-	<jsp:param value="Main" name="title"/>
+	<jsp:param value="StoreUpdate" name="title"/>
 </jsp:include>
 
 <link rel="stylesheet" href="resources/asset/css/storeView.css">
@@ -19,42 +19,30 @@
 			fn_storeTable()
 			fn_storeList();
 			fn_storeCategory();
+			fn_storeCategory_changed()
 			fn_fileAlert();
+			fn_storeAddr();
 		});
-		
-		
-		// 가게 업데이트
+	
 		function fn_update(){
 			$('#f').submit(function(event){
 				if ($('#store_name').val() == '' ||
 					$('#store_content').val() == '' ||
 					$('#store_table').val() == '' ||
 					$('#store_tel').val() == '' ||
-					$('#store_addr').val() == '' ||
+					$('select[name=storeAddr1]').val() == '' ||
+					$('select[name=storeAddr2]').val() == '' ||
 					$('#store_time').val() == '' ||
-					$('input[name="storeCategory"]').val() == '' 
+					$('input[name=storeCategory]').val() == '' 
 					) {
-						alert('필수 정보를 입력하세요.');
-						event.preventDefault();
-						return false;
-				} else ( $('#store_name').val() == '${store.storeName}'
-					 && $('#store_content').val() == '${store.storeContent}' 
-					 && $('#store_table').val() == '${store.storeTable}' 
-					 && $('#store_tel').val() == '${store.storeTel}' 
-					 && $('#store_addr').val() == '${store.storeAddr}' 
-					 && $('#store_time').val() == '${store.storeTime}' )
-						  {
-					alert('수정할 내용이 없습니다.');
-					$('#title').focus();
+					alert('필수 정보를 입력하세요.');
 					event.preventDefault();
-					return false;				
-				}	
-				$('#f').attr('action', 'storeUpdate.do');
-				$('#f').submit();	
+					return false;
+				} 
 			});
 		}
 		
-		// && $('input[name="storeCategory"]').val() == $('#false').val() )
+		
 		
 		// 테이블 갯수 입력창
 		function fn_storeTable() {
@@ -67,10 +55,25 @@
 			});
 		}
 		
-		// 카테고리 선택 
+		
 		function fn_storeCategory() {
-			$('input:radio[name=storeCategory].attr("checked", true)');
+			$('input[value="${store.storeCategory}"]').attr('checked', true);
 		}
+		
+		function fn_storeCategory_changed() {
+			$('#store_category').on('change', function(){
+				alert( "카테고리가" + " " + $('input[name=storeCategory]:checked').val() + "(으)로 변경되었습니다." );
+			});
+			
+		}
+		
+		
+		// 주소 (2개 select)
+		function fn_storeAddr() {
+			$('option[value="${store.storeAddr1}"]').attr('checked', true);
+			$('option[value="${store.storeAddr2}"]').attr('checked', true);
+		}
+		
 		
 		
 		// 파일 업로드 제한 
@@ -93,16 +96,12 @@
 			});
 		}
 	
-		
-		
 		// 목록보기 
 		function fn_storeList(){
 			$('#storeList_btn').click(function(){
 				location.href = 'storeList.do';
 			});
 		}
-		
-	
 	
 	</script>
 
@@ -111,12 +110,7 @@
 	<div class="outer">
 		
 		<form id="f" action="storeUpdate.do" method="post" enctype="multipart/form-data">
-			<div class="store_name">
-				<input type="text" id="store_name" name="storeName" value="${store.storeName}">
-			</div>
-			<div>평점: ★★★★☆</div>
-			
-			 
+		
 				<div class="store_image">
 					<img alt="${store.originFilename}" src="resources/archive/${store.saveFilename}" style="width: 450px;">
 				</div>
@@ -130,11 +124,8 @@
 			<div class="store_rating">★평점 4/5</div>		
 			-->
 			
-				<div class="store_btns">
-					<input type="button" value="공유하기" id="share" name="share">
-					<input type="button" value="지도보기" id="map" name="map">
-					<button>예약하기</button>
-				</div>
+			<!-- 빈 공간 유지 -->
+			<div class="store_btns"></div>
 			
 			
 			<ul>
@@ -147,76 +138,23 @@
 			<div class="store_section">
 				<input type="hidden" name="storeNo" value="${store.storeNo}">
 					
+					<!-- 가게명 수정 -->
 					<ul class="storeView_outer">
 						<li class="storeView_list">
-							<div class="list_left"><h2>가게소개</h2></div>
+							<div class="list_left"><h2>가게 이름 *</h2></div>
 							<div class="list_right">
-							<span><textarea rows="7" cols="25" id="store_content" name="storeContent">${store.storeContent}</textarea></span>
-							</div>					
-						</li>		
-					</ul>
-					
-					
-					<ul class="storeView_outer">
-						<li class="storeView_list">
-							<div class="list_left"><h2>테이블 수</h2></div>
-							<div class="list_right">
-								<span><input type="text" id="store_table" name="storeTable" value="${store.storeTable}"></span>
-							</div>					
-						</li>		
-					</ul>
-					
-					<ul class="storeView_outer">
-						<li class="storeView_list">
-							<div class="list_left"><h2>가게 번호</h2></div>
-							<div class="list_right">
-							<span><input type="text" id="store_tel" name="storeTel" value="${store.storeTel}"></span>
-							</div>					
-						</li>		
-					</ul>
-					
-					<ul class="storeView_outer">
-						<li class="storeView_list">
-							<div class="list_left"><h2>가게 주소</h2></div>
-							<div class="list_right">
-							<span><input type="text" id="store_addr" name="storeAddr" value="${store.storeAddr}"></span>
-							</div>					
-						</li>		
-					</ul>
-					
-					<ul class="storeView_outer">
-						<li class="storeView_list">
-							<div class="list_left"><h2>운영 시간</h2></div>
-							<div class="list_right">
-							<span><input type="text" id="store_time" name="storeTime" value="${store.storeTime}"></span>
-							</div>					
-						</li>		
-					</ul>
-					
-					<ul class="storeView_outer">
-						<li class="storeView_list">
-							<div class="list_left"><h2>SNS</h2></div>
-							<div class="list_right">
-							<span><input type="text" id="store_sns" name="storeSns" value="${store.storeSns}"></span>
+								<span><input type="text" id="store_name" name="storeName" value="${store.storeName}"></span>
 							</div>					
 						</li>		
 					</ul>
 					
 				
+					<!-- 카테고리 수정 -->
 					<ul class="storeView_outer">
 						<li class="storeView_list">
-							<div class="list_left"><h2>메뉴소개</h2></div>
+							<div class="list_left"><h2>카테고리 *</h2></div>
 							<div class="list_right">
-							<span><textarea rows="7" cols="25" id="store_menu" name="storeMenu">${store.storeMenu}</textarea></span>
-							</div>					
-						</li>		
-					</ul>
-					
-					<ul class="storeView_outer">
-						<li class="storeView_list">
-							<div class="list_left"><h2>카테고리</h2></div>
-							<div class="list_right">
-							<span>
+							<span id="store_category">
 								<input type="radio" name="storeCategory" value="한식" id="f1"> 
 								<label for=f1>한식</label>
 								<input type="radio" name="storeCategory" value="양식" id="f2"> 
@@ -231,12 +169,94 @@
 							</div>					
 						</li>		
 					</ul>
-			
-				
+					
+					<!-- 가게 소개 수정 -->
+					<ul class="storeView_outer">
+						<li class="storeView_list">
+							<div class="list_left"><h2>가게소개 *</h2></div>
+							<div class="list_right">
+							<span><textarea rows="7" cols="25" id="store_content" name="storeContent">${store.storeContent}</textarea></span>
+							</div>					
+						</li>		
+					</ul>
+					
+					
+					<!-- 테이블수 수정 -->
+					<ul class="storeView_outer">
+						<li class="storeView_list">
+							<div class="list_left"><h2>테이블 수 *</h2></div>
+							<div class="list_right">
+								<span><input type="text" id="store_table" name="storeTable" value="${store.storeTable}"></span>
+							</div>					
+						</li>		
+					</ul>
+					
+					<!-- 가게번호 수정 -->
+					<ul class="storeView_outer">
+						<li class="storeView_list">
+							<div class="list_left"><h2>가게 번호 *</h2></div>
+							<div class="list_right">
+							<span><input type="text" id="store_tel" name="storeTel" value="${store.storeTel}"></span>
+							</div>					
+						</li>		
+					</ul>
+					
+					<!-- 가게주소 수정 -->
+					<ul class="storeView_outer">
+						<li class="storeView_list">
+							<div class="list_left"><h2>가게 주소 *</h2></div>
+							<div class="list_right">
+							<select name="storeAddr1" id="zone">
+								<option value="">지역</option>
+								<option value="서울">서울</option>
+								<option value="경기">경기</option>
+								<option value="부산">부산</option>
+							</select>
+							<select name="storeAddr2" id="local">
+								<option value="">구</option>
+								<option value="용산">용산구</option>
+								<option value="서대문구">서대문구</option>
+								<option value="강남구">강남구</option>
+							</select><br>
+							<span><input type="text" id="store_addr3" name="storeAddr3" value="${store.storeAddr3}"></span>
+							</div>					
+						</li>		
+					</ul>
+					
+					<!-- 운영시간 수정 -->
+					<ul class="storeView_outer">
+						<li class="storeView_list">
+							<div class="list_left"><h2>운영 시간 *</h2></div>
+							<div class="list_right">
+							<span><input type="text" id="store_time" name="storeTime" value="${store.storeTime}"></span>
+							</div>					
+						</li>		
+					</ul>
+					
+					<!-- SNS 수정 -->
+					<ul class="storeView_outer">
+						<li class="storeView_list">
+							<div class="list_left"><h2>SNS</h2></div>
+							<div class="list_right">
+							<span><input type="text" id="store_sns" name="storeSns" value="${store.storeSns}"></span>
+							</div>					
+						</li>		
+					</ul>
+					
+					<!-- 메뉴소개 수정 -->
+					<ul class="storeView_outer">
+						<li class="storeView_list">
+							<div class="list_left"><h2>메뉴소개</h2></div>
+							<div class="list_right">
+							<span><textarea rows="7" cols="25" id="store_menu" name="storeMenu">${store.storeMenu}</textarea></span>
+							</div>					
+						</li>		
+					</ul>
+					
 				<div class="btns">
 				<div>
-					<button id="update_btn">수정하기</button>
-					<input type="button" value="가게 목록보기" id="storeList_btn">
+					<button id="update_btn" class="update_btn">수정하기</button>
+					<input type="button" value="가게 목록보기" id="storeList_btn" class="storeList_btn">
 					
 					<input type="hidden" name="storeNo" value="${store.storeNo}">
 					<input type="hidden" name="originFilename" value="${store.originFilename}">

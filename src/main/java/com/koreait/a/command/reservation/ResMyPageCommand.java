@@ -30,6 +30,7 @@ public class ResMyPageCommand implements ReservationCommand {
 		
 		model.addAttribute("list1", list);
 		
+		
 	}
 
 }

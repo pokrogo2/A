@@ -82,6 +82,7 @@ public class StoreController {
 		}
 		
 		
+		
 		// index 페이지 
 		@GetMapping(value= {"/", "index.do"})
 		public String index() {

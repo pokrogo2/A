@@ -30,10 +30,10 @@
 					$('#store_content').val() == '' ||
 					$('#store_table').val() == '' ||
 					$('#store_tel').val() == '' ||
-					$('#store_addr option:selected').val() == '' ||
+					$('select[name=storeAddr1]').val() == '' ||
+					$('select[name=storeAddr2]').val() == '' ||
 					$('#store_time').val() == '' ||
-					$('input[name=storeCategory]').val() == '' ||
-					$('#file').val() == '' 
+					$('input[name=storeCategory]').val() == '' 
 					) {
 					alert('필수 정보를 입력하세요.');
 					event.preventDefault();

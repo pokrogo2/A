@@ -61,7 +61,7 @@
 		<form id="f" method="post" action="resInsert.do">
 		
 			<input type="hidden" value="${storeDTO.storeNo}" name="storeNo" id="storeNo">
-			<input type="hidden" value="${memberDTO.memberNo}" name="memberNo" id="memberNo">
+			<input type="hidden" value="${loginUser.memberNo}" name="memberNo" id="memberNo">
 		
 			
 			<input type="hidden" value="${resDTO.resNo}" name="resNo" id="resNo">
@@ -113,21 +113,18 @@
 		
 			<!-- 예약자 정보 -->
 			<div class="res_box">	
-				<h3>요청사항 <span class="red_mark">▼</span></h3>					
+				<h3>예약자 정보<span class="red_mark">▼</span></h3>	
+					<div class="res_info">
+						<div>예약자 : ${loginUser.memberName}</div>
+						<div>연락처: ${loginUser.memberTel}</div>
+						<div>이메일 : ${loginUser.memberEmail}</div>					
+					</div>				
 					<div class="res_req">
-						(* 요청사항이 있을시 입력해주세요.)
+						요청사항 (* 요청사항이 있을시 입력해주세요.)
 					</div>
 					<textarea rows="7" cols="40" id="resNote" name="resNote">
 					</textarea>			
 			</div>			
-			
-				
-			예약자 아이디 : ${loginUser.memberId}
-			예약자 번호 : ${loginUser.memberNo}
-			예약자 이름 : ${loginUser.memberName}
-			예약자 연락처 : ${loginUser.memberTel}
-			
-			
 			
 			
 			<!-- 예약 버튼 -->

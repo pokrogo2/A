@@ -20,6 +20,7 @@
 			fn_delete();
 			fn_storeList();
 			fn_storeRes();
+			fn_storeRes2();
 		})
 		
 		// 수정하기
@@ -46,7 +47,7 @@
 			})
 		}
 
-		// 예약하기
+		// 예약하기 (로그인했을 경우)
 		function fn_storeRes() {
 			$('#storeRes_btn').click(function() {
 				if(confirm('예약하시겠습니까?')); {
@@ -55,6 +56,15 @@
 				}
 			});
 		}
+		
+		// 로그인 안했을 경우 예약버튼 클릭 -> 로그인page로 이동 
+		function fn_storeRes2() {
+			$('#storeRes_btn2').click(function() {
+				alert('로그인 페이지로 이동합니다.');
+				location.href='loginPage.do';
+			});
+		}
+		
 		
 		
 	</script>
@@ -92,8 +102,15 @@
 			<div class="store_btns">
 		
 				<input type="button" value="가게 목록보기" id="storeList_btn" class="storeList_btn">
-				<input type="button" value="예약하기" id="storeRes_btn"  name="storeRes_btn" class="storeRes_btn">  
 				
+				<!-- 로그인 했을 경우에만 보이는 예약 활성화 버튼 -->
+				<c:if test="${not empty loginUser}">
+					<input type="button" value="예약하기" id="storeRes_btn"  name="storeRes_btn" class="storeRes_btn">  
+				</c:if>
+				
+				<c:if test="${empty loginUser}">
+					<input type="button" value="예약하기" id="storeRes_btn2" name="storeRes_btn2" class="storeRes_btn">
+				</c:if>
 			</div>
 		
 		

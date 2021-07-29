@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.MultipartRequest;
 
+import com.koreait.a.command.reservation.ResDeleteCommand;
 import com.koreait.a.command.reservation.ResInsertCommand;
 import com.koreait.a.command.reservation.ResViewCommand;
 import com.koreait.a.command.store.AutoSearchCommand;
@@ -49,6 +50,7 @@ public class StoreController {
 		
 		private ResInsertCommand resInsertCommand;
 		private ResViewCommand resViewCommand;
+		private ResDeleteCommand resDeleteCommand;
 
 		// constructor
 		@Autowired
@@ -62,7 +64,8 @@ public class StoreController {
 				  			   SearchQueryCommand searchQueryCommand,
 				  			   SearchLineUpCommand searchLineUpCommand,
 				  			   ResInsertCommand resInsertCommand,
-				  			   ResViewCommand resViewCommand) {
+				  			   ResViewCommand resViewCommand,
+				  			   ResDeleteCommand resDeleteCommand) {
 			super();
 			this.sqlSession = sqlSession;
 			this.storeInsertCommand = storeInsertCommand;
@@ -75,6 +78,7 @@ public class StoreController {
 			this.searchLineUpCommand = searchLineUpCommand;
 			this.resInsertCommand = resInsertCommand;
 			this.resViewCommand = resViewCommand;
+			this.resDeleteCommand = resDeleteCommand;
 		}
 		
 		
@@ -212,6 +216,12 @@ public class StoreController {
 			resViewCommand.execute(sqlSession, model);
 			return "reservation/resView";
 		}
-		
+		@GetMapping(value="resDelete.do")
+		public String deleteBoard(HttpServletRequest request,
+								  Model model) {
+			model.addAttribute("request", request);
+			resDeleteCommand.execute(sqlSession, model);
+			return "redirect:memberMyPage.do";
+		}
 		
 	}

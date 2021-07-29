@@ -13,14 +13,26 @@ import com.koreait.a.command.fBoard.FBoardViewCommand;
 import com.koreait.a.command.fReply.FReplyDeleteCommand;
 import com.koreait.a.command.fReply.FReplyInsertCommand;
 import com.koreait.a.command.fReply.FReplyListCommand;
+import com.koreait.a.command.main.LocalSelectCommand;
 import com.koreait.a.command.main.MainCommand;
 import com.koreait.a.command.main.MainNewStoreCommand;
 import com.koreait.a.command.main.MainRecommandStoreCommand;
 import com.koreait.a.command.main.MainStoreExistCommand;
+import com.koreait.a.command.main.ZoneSelectCommand;
 @Configuration
 public class MainConfig {
 	
 	/* Command - (Main) Bean생성  */
+	@Bean
+	public ZoneSelectCommand zoneSelectCommand() {
+		return new ZoneSelectCommand();
+	}
+	
+	@Bean
+	public LocalSelectCommand localSelectCommand() {
+		return new LocalSelectCommand();
+	}
+	
 	@Bean
 	public MainStoreExistCommand mainStoreExistCommand() {
 		return new MainStoreExistCommand();

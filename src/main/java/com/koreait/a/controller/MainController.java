@@ -1,11 +1,9 @@
 package com.koreait.a.controller;
 
-import java.util.List;
+
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,20 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.koreait.a.command.main.LocalSelectCommand;
 import com.koreait.a.command.main.MainNewStoreCommand;
 import com.koreait.a.command.main.MainRecommandStoreCommand;
 import com.koreait.a.command.main.MainStoreExistCommand;
-import com.koreait.a.command.member.EmailAuthCommand;
-import com.koreait.a.command.member.EmailCheckCommand;
-import com.koreait.a.command.member.MemberDeleteCommand;
-import com.koreait.a.command.member.MemberFindIdCommand;
-import com.koreait.a.command.member.MemberFindPwCommand;
-import com.koreait.a.command.member.MemberIdCheckCommand;
-import com.koreait.a.command.member.MemberJoinCommand;
-import com.koreait.a.command.member.MemberLoginCommand;
-import com.koreait.a.command.member.MemberLogoutCommand;
-import com.koreait.a.command.member.MemberUpdateCommand;
-import com.koreait.a.dto.MainStoreDTO;
+import com.koreait.a.command.main.ZoneSelectCommand;
 
 @Controller
 public class MainController {
@@ -36,19 +25,51 @@ public class MainController {
 	private MainStoreExistCommand mainStoreExistCommand;
 	private MainRecommandStoreCommand mainRecommandStoreCommand;
 	private MainNewStoreCommand mainNewStoreCommand;
+	private ZoneSelectCommand zoneSelectCommand;
+	private LocalSelectCommand localSelectCommand;
 
 	@Autowired
 	public MainController(SqlSession sqlSession,
 						  MainStoreExistCommand mainStoreExistCommand,
 						  MainRecommandStoreCommand mainRecommandStoreCommand,
-						  MainNewStoreCommand mainNewStoreCommand) {
+						  MainNewStoreCommand mainNewStoreCommand,
+						  ZoneSelectCommand zoneSelectCommand,
+						  LocalSelectCommand localSelectCommand) {
 		super();
 		this.sqlSession = sqlSession;
 		this.mainStoreExistCommand = mainStoreExistCommand;
 		this.mainRecommandStoreCommand = mainRecommandStoreCommand;
 		this.mainNewStoreCommand = mainNewStoreCommand;
+		this.zoneSelectCommand = zoneSelectCommand;
+		this.localSelectCommand = localSelectCommand;
 	}
 
+	
+	
+	/* 검색에 필요한 지역 정보를 불러온다 (select) */
+	@GetMapping(value="zoneSelect.do", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public Map<String, Object> zoneSelect(Model model) {
+		return zoneSelectCommand.execute(sqlSession, model);
+	}
+	
+	/* 검색에 필요한 구의 정보를 불러온다 (select) */
+	@GetMapping(value="localSelect.do", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public Map<String, Object> localSelect(HttpServletRequest request, Model model) {
+			model.addAttribute("request", request);
+			return localSelectCommand.execute(sqlSession, model);
+	}
+	
+	
+	/* 음식점 검색 : 전달하는 칼럼 (zone, local, catg, query) */
+	@GetMapping(value="searchStore.do")
+	public String searchStore(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		return "";
+	}
+	
+	
 	
 
 	/* 로그인 후 가게 관리로 넘어간다. (가게관리 배너) */

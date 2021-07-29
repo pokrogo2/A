@@ -5,6 +5,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.koreait.a.dao.MainDAO">
 	
+	<!-- 지역과 그에 해당하는 구의 리스트 -->
+	<select id="zoneSelect" resultType="com.koreait.a.dto.LocationDTO">
+		SELECT DISTINCT ZONE
+  		  FROM LOCATION
+	</select>
+	
+	<select id="localSelect" resultType="com.koreait.a.dto.LocationDTO">
+		SELECT LOCAL
+		  FROM LOCATION
+		 WHERE ZONE = #{zone}
+		 ORDER BY LOCATIONNO
+	</select>
+	
+	
+	<!-- 음식점 검색 -->
+	<select id="searchStore" resultType="com.koreait.a.dto.StoreDTO">
+		
+	</select>
+	
+	
 	
 	<!-- 전체 가게 등록 갯수 -->
 	<select id="storeExist" resultType="int">
@@ -20,17 +40,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			 , A.STORENAME
 			 , A.STORECONTENT
 			 , A.STOREADDR1
+			 , A.STOREADDR2
+			 , A.STOREADDR3
+			 , A.STORECATEGORY
+			 , A.STORETIME
 			 , A.ORIGINFILENAME
-			 , A.STORETABLE
-			 , A.STOREMAXTABLE
 		  FROM ( SELECT ROWNUM AS RN
 		  			  , STORENO
 			 		  , STORENAME
 					  , STORECONTENT
 			 		  , STOREADDR1
+			 		  , STOREADDR2
+			 		  , STOREADDR3
+			 		  , STORECATEGORY
+			 		  , STORETIME
 			 		  , ORIGINFILENAME
-			 		  , STORETABLE
-			 		  , STOREMAXTABLE
 		  		   FROM STOREREG ) A
 		 WHERE A.RN = #{storeNo}
 	</select>

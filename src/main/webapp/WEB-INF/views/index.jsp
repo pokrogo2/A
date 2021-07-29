@@ -13,6 +13,9 @@
 
 <script>
 	$(document).ready(function(){
+		fn_mainSearchSelect_zone();
+		fn_mainSearchSelect_local();
+		fn_search();
 		fn_bannerLink();
 		fn_recommandStore();
 		fn_newStore();
@@ -57,11 +60,10 @@
 						 .append( $('<a>').attr('href', 'storeView.do?storeNo='+store.storeNo)
 						          .append( $('<img>').attr('alt', store.storeName).attr('src', 'resources/archive/'+store.originFilename) ) ) )
 				.append( $('<div>').addClass('content').addClass('box_con')
-						 .append( $('<h3>'+store.storeName+'<span>'+store.storeAddr1+'지점</span></h3>') )
-						 .append( $('<h2>'+store.storeMaxTable+'<span>/</span><span>'+store.storeTable+'</span></h2>') )
-						 .append( $('<div>').addClass('sub_p2')
-								  .append( $('<p>').text('잔여테이블') )
-								  .append( $('<p>남은 인원 (Max <span>'+(store.storeTable*4)+'</span>명)</p>') ) ) 
+						 .append( $('<p class="category">'+store.storeCategory+'</p>') )
+						 .append( $('<h3>'+store.storeName+'</h3>') )
+						 .append( $('<p class="p addr">'+store.storeAddr1+' '+store.storeAddr2+' '+store.storeAddr3+'</p>') ) 
+						 .append( $('<p class="p time"><span>영업시간</span>'+store.storeTime+'</p>') )
 						 .append( $('<div>').addClass('score')
 								  .append( $('<p class="star">★</p>') )
 								  .append( $('<p class="reviewAvg">'+store.reviewAvg+'</p>') )
@@ -107,7 +109,64 @@
 	}//
 	
 	
+	// 메인 검색 바의 지역 선택 조건
+	var zoneList = null;
+	function fn_mainSearchSelect_zone() {
+		$.ajax({
+			url: 'zoneSelect.do',
+			type: 'get',
+			dataType: 'json',
+			success: function(resultMap){
+				if (resultMap.status == 200) {
+					zoneList = resultMap.zoneList;
+					$.each(zoneList, function(i, zoneList) {
+						$('<option>').attr('value', zoneList.zone).text(zoneList.zone).appendTo('#zone');
+					});
+				}
+			}, 
+			error: function(xhr, text, error){
+				alert('오류!' + error);
+			}
+		});
+	} //
+	var localList = null;
+	function fn_mainSearchSelect_local() {
+		$( 'body' ).on('click', '#zone', function(event){
+			$('#local').empty();
+			$('<option>').attr('value', '').text('= 구 =').appendTo('#local'); // <option value=""> = 구 = </option>
+			// 지역의 value가 존재할 때만 진행하겠다.
+			if ( $('#zone').val() != '' ) {
+				$.ajax({
+					url: 'localSelect.do',
+					type: 'get',
+					data: 'zone=' + $('#zone').val(),
+					dataType: 'json',
+					success: function(resultMap) {
+						if (resultMap.status == 200) {
+							localList = resultMap.localList;
+							if (localList != null && localList != '') { // 지역의 구가 존재하는 경우에만 진행하겠다.
+								$.each(localList, function(i, localList) {
+									$('<option>').attr('value', localList.local).text(localList.local).appendTo('#local');
+								});								
+							}
+						}
+					}
+				});
+			}
+		});
+	}//
+			
 	
+	// 검색 시 주의 사항
+	function fn_search() {
+		$('#f').submit(function(event) {
+			if ( $('#query').val() == '' ) {
+				alert('검색어를 입력해주세요!');
+				event.preventDefault();
+				return false;
+			}
+		});
+	} //
 	
 	
 	
@@ -117,18 +176,12 @@
 	<div class="container">
 		
 		<div id="mainSearch">
-			<form id="f" action="" method="get">
+			<form id="f" action="searchStore.do" method="get">
 				<select name="zone" id="zone">
-					<option value="">지역</option>
-					<option value="서울">서울</option>
-					<option value="경기">경기</option>
-					<option value="부산">부산</option>
+					<option value="">= 지역 =</option>
 				</select>
 				<select name="local" id="local">
-					<option value="">구</option>
-					<option value="용산">용산</option>
-					<option value="서대문구">서대문구</option>
-					<option value="강남">강남</option>
+					<option value="">= 구 =</option>
 					<!--  
 						지역 선택하면 알아서 그 지역의 구만 보여준다
 						<option value="강남">강남</option>

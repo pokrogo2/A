@@ -133,7 +133,7 @@
 	function fn_mainSearchSelect_local() {
 		$( 'body' ).on('click', '#zone', function(event){
 			$('#local').empty();
-			$('<option>').attr('value', '').text('= 구 =').appendTo('#local'); // <option value=""> = 구 = </option>
+			$('<option>').attr('value', '').text('구 선택').appendTo('#local'); // <option value=""> = 구 = </option>
 			// 지역의 value가 존재할 때만 진행하겠다.
 			if ( $('#zone').val() != '' ) {
 				$.ajax({
@@ -178,10 +178,10 @@
 		<div id="mainSearch">
 			<form id="f" action="searchStore.do" method="get">
 				<select name="zone" id="zone">
-					<option value="">= 지역 =</option>
+					<option value="">지역 선택</option>
 				</select>
 				<select name="local" id="local">
-					<option value="">= 구 =</option>
+					<option value="">구 선택</option>
 					<!--  
 						지역 선택하면 알아서 그 지역의 구만 보여준다
 						<option value="강남">강남</option>
@@ -212,7 +212,7 @@
 			<h1>음식점을 추천해 드려요!</h1>
 			<div id="storeBox"></div> <!-- 추천 음식점 2box -->
 			<div id="return">
-				<a href="index.do">새로운 추천 보기<i class="fas fa-undo-alt"></i></a>
+				<a href="recommandStore.do">새로운 추천 보기<i class="fas fa-undo-alt"></i></a>
 			</div>
 		</div> <!-- recommandStore -->
 		

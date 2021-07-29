@@ -87,7 +87,7 @@ input, button, select  {
 	height:140px; 
 }
 #storeBox .box .content { margin-top:37px; }
-.content h3 {font-size:22px; font-weight:600; margin-bottom:12px;}
+.content h3 {font-size:22px; font-weight:600; margin-bottom:10px;}
 .content span {padding-right:6px; color:#aaa; font-size:14px;}
 .content .category {
 	border-radius:100px;
@@ -100,7 +100,7 @@ input, button, select  {
 .content .p {font-size:15px;}
 .content .addr {font-weight:400; display:block; width:225px; overflow:hidden;}
 .content .time {color:#333;}
-.content .score  {margin-top:12px; margin-bottom:5px;} /* 음식점의 평점 */
+.content .score  {margin-top:10px; margin-bottom:5px;} /* 음식점의 평점 */
 .content .score p {display:inline-block; font-size:15px; padding-right:2px;}
 .content .review {width:205px; height:45px;}
 

@@ -3,14 +3,17 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="com.koreait.mygallery.dao.BoardDAO">
+<mapper namespace="com.koreait.a.dao.QnaBoardDAO">
 
 	<select id="selectQnaBoardList" resultType="com.koreait.a.dto.QnaBoardDTO">
-		SELECT B.NO, B.WRITER, B.TITLE, B.CONTENT, B.POSTDATE
-			FROM (SELECT ROWNUM AS A.NO, A.WRITER, A.TITLE, A.CONTENT, A.POSTDATE
-				FROM (SELECT NO, WRITER, TITLE, CONTENT, POSTDATE
-					FROM QNABOARD
-					ORDER BU NO DESC) A) B
+		<!-- SELECT B.RN, B.NO, B.WRITER, B.TITLE, B.CONTENT, B.POSTDATE
+		  FROM (SELECT ROWNUM AS RN, A.NO, A.WRITER, A.TITLE, A.CONTENT, A.POSTDATE
+		  		  FROM (SELECT NO, WRITER, TITLE, CONTENT, POSTDATE
+		  				  FROM QNABOARD
+		 		 		 ORDER BY NO DESC) A) B
+	 	 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord} -->
+	 	 
+	 	 SELECT * FROM QNABOARD
 	</select>
 	
 	<select id="qnaBoardTotalCount" resultType="int">

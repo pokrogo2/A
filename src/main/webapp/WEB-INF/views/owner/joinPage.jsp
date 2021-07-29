@@ -159,7 +159,7 @@
 					alert('이메일 인증 필수입니다.');
 					return false
 				} else {
-					$('#f').attr('action', 'ownerLogin.do');
+					$('#f').attr('action', 'ownerJoin.do');
 					$('#f').submit();
 				}
 			});

@@ -43,18 +43,15 @@ public class QnaBoardController {
 		this.qnaBoardDeleteCommand = qnaBoardDeleteCommand;
 		this.qnaBoardInsertCommand = qnaBoardInsertCommand;
 	}
-	
 	@GetMapping(value="qnaBoardPage.do")
-	public String qnaBoardPage() {
+	public String qnaBoardList(HttpServletRequest request,Model model) {
+		model.addAttribute("request", request);
+		selectQnaBoardListCommand.execute(sqlSession, model);
 		return "QnaBoard/QnaBoard";
 	}
 	
-	@GetMapping(value="qnaBoardList.do", produces="application/json; charset=UTF-8")
-	@ResponseBody
-	public Map<String, Object> qnaBoardList(HttpServletRequest request, Model model) {
-		model.addAttribute("request", request);
-		return selectQnaBoardListCommand.execute(sqlSession, model);
-	}
+	
+
 	
 	@GetMapping(value="qnaBoardView.do")
 	public String qnaboardView(HttpServletRequest request, HttpServletResponse response, Model model) {

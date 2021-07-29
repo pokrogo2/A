@@ -68,7 +68,7 @@
 		<a href="ownerPwPage.do">비밀번호 찾기</a>
 	</c:if>
 	<c:if test="${loginOwner == null}">
-		<form id="f" action="ownerlogin.do" method="post">
+		<form id="f" action="ownerLogin.do" method="post">
 			사업자번호<br>
 			<input type="text" name="id" id="id"><br><br>
 			비밀번호<br>

@@ -84,13 +84,13 @@ public class OwnerController {
 		return "owner/ownerLoginPage";
 	}
 	
-	@PostMapping(value="ownerlogin.do")
+	@PostMapping(value="ownerLogin.do")
 	public String login(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
 		ownerLoginCommand.execute(sqlSession, model);
 		return "redirect:ownerLoginPage.do";				
 	}
-	@GetMapping(value="ownerlogout.do")
+	@GetMapping(value="ownerLogout.do")
 	public String logout(HttpSession session, Model model) {
 		model.addAttribute("session", session);
 		ownerLogoutCommand.execute(sqlSession, model);

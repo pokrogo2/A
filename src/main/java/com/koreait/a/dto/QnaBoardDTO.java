@@ -1,12 +1,14 @@
 package com.koreait.a.dto;
 
+import java.sql.Date;
+
 public class QnaBoardDTO {
 	
 	private long no;
 	private String writer;
 	private String title;
 	private String content;
-	private String postdate;
+	private Date postdate;
 	public long getNo() {
 		return no;
 	}
@@ -31,13 +33,12 @@ public class QnaBoardDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getPostdate() {
+	public Date getPostdate() {
 		return postdate;
 	}
-	public void setPostdate(String postdate) {
+	public void setPostdate(Date postdate) {
 		this.postdate = postdate;
 	}
-	
 	
 
 }

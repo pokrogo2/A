@@ -23,7 +23,7 @@
 	}
 	function fn_delete() {
 		$('#delete_btn').click(function(){
-			if(confirm('해당 공지사항 게시판을 삭제하시겠습니까?')) {
+			if(confirm('해당 글을 삭제하시겠습니까?')) {
 				location.href='qnaBoardDelete.do?no=${qnaBoard.no}';
 			}	
 		});
@@ -40,8 +40,7 @@
 		<div class="qnaBoardView_box clear">
 			<div> <h2>Q. ${qnaBoard.title}</h2> </div>
 			<div> ${qnaBoard.content} </div>
-			<div class="sub"> ${qnaBoard.writer} <span class="line">|</span> ${qnaBoard.lastdate}</div>
-			<div class="sub"> 조회수 <span class="line">|</span> <span class="hit">${qnaBoard.hit}</span></div>
+			<div class="sub"> ${qnaBoard.writer} <span class="line">|</span> ${qnaBoard.postdate}</div>
 			<div>
 				<input type="button" value="목록" onclick="location.href='qnaBoardPage.do'">
 					<input type="button" value="수정" id="updete_btn">

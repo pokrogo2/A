@@ -2,12 +2,11 @@ package com.koreait.a.dao;
 
 import java.util.List;
 
-import com.koreait.a.dto.PagingDTO;
 import com.koreait.a.dto.QnaBoardDTO;
 
 public interface QnaBoardDAO {
 	
-	public List<QnaBoardDTO> selectQnaBoardList(PagingDTO pagingDTO);
+	public List<QnaBoardDTO> selectQnaBoardList();
 	public int qnaBoardTotalCount();
 	public QnaBoardDTO qnaBoardView(long no);
 	public int qnaBoardUpdate(QnaBoardDTO qnaBoard);

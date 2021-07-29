@@ -30,7 +30,7 @@ public class QnaBoardInsertCommand implements QnaBoardCommand {
 		
 		int result = qnsBoardDAO.qnaBoardInsert(qnaBoard);
 		
-		response.setContentType("text?html); charset=UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		try {
 			if(result > 0) {
 				response.getWriter().println("<script>");

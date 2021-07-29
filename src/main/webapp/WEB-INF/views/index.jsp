@@ -212,7 +212,7 @@
 			<h1>음식점을 추천해 드려요!</h1>
 			<div id="storeBox"></div> <!-- 추천 음식점 2box -->
 			<div id="return">
-				<a href="recommandStore.do">새로운 추천 보기<i class="fas fa-undo-alt"></i></a>
+				<a href="index.do">새로운 추천 보기<i class="fas fa-undo-alt"></i></a>
 			</div>
 		</div> <!-- recommandStore -->
 		

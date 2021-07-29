@@ -24,3 +24,7 @@ table {
 	cursor: pointer;
 	background-color: lightorange;
 }
+
+
+select {padding:0 20px;}
+button {padding:0 20px;}

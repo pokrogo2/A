@@ -50,6 +50,10 @@
 		});
 	} //
 	// 자유 게시판 출력 + 페이징 출력
+	function fn_getDate(timestamp) {
+		var date = new Date(timestamp);
+		return date;
+	}
 	var list = null;
 	function fn_fBoard_append(resultMap){
 		/* ---------------------------------------------------- */
@@ -64,7 +68,7 @@
 					.append( $('<td>').text(fBoard.writer) )
 					.append( $('<td>').html('<a href="fBoardView.do?no='+fBoard.no+'&loginUser=${loginUser.memberId}">'+fBoard.title+'</a>') )
 					.append( $('<td>').text(fBoard.hit) )
-					.append( $('<td>').text(fBoard.lastdate) )
+					.append( $('<td>').text(fn_getDate(fBoard.lastdate)) )
 					.appendTo('#fBoard_list');
 				} else if (fBoard.contentType == '이벤트') { 
 					// 가게 사장님이 등록한 게시물일 때 : 이벤트 글일 때
@@ -187,7 +191,7 @@
 	
 	// Drop으로 조회 기능 (최신 순, 조회 순, 사장님글만 보기, 사징님글 제외)
 	function fn_autoDrop() {
-		$('#dropChoice').mouseout(function(){
+		$('body').on('click', '#dropChoice', function(event){
 			$.ajax({
 				url: 'fBoardAutoDrop.do',
 				type: 'get',

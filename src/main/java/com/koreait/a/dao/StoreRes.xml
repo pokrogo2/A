@@ -33,6 +33,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 WHERE RESNO = (SELECT MAX(RESNO) FROM RESERVATION)
 	</select>
 	
+	<select id="memberMyPage" resultType="com.koreait.a.dto.StoreResDTO">
+	SELECT R.RESNO,R.RESHOURS,R.RESPEOPLE,R.RESDATE,S.STORENAME,S.SAVEFILENAME 
+		FROM RESERVATION R,STOREREG S 
+		WHERE R.STORENO=S.STORENO AND R.MEMBERNO =#{memberNo}
+
+					
+	</select>
+	<delete id="resDelete">
+		DELETE FROM RESERVATION WHERE RESNO=#{resNo} 
+	
+	</delete>
 	
 	
 	

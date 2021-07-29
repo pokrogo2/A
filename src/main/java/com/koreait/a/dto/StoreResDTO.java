@@ -13,7 +13,23 @@ public class StoreResDTO {
 	private String resPeople;
 	private String resNote;
 	private Date resPostdate;
-
+	private String saveFilename;
+	private String storeName;
+	
+	
+	
+	public String getSaveFilename() {
+		return saveFilename;
+	}
+	public void setSaveFilename(String saveFilename) {
+		this.saveFilename = saveFilename;
+	}
+	public String getStoreName() {
+		return storeName;
+	}
+	public void setStoreName(String storeName) {
+		this.storeName = storeName;
+	}
 	
 	// getter, setter
 	public long getResNo() {

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.a.dao.MainDAO">
+	
+	<!-- 지역과 그에 해당하는 구의 리스트 -->
+	<select id="zoneSelect" resultType="com.koreait.a.dto.LocationDTO">
+		SELECT DISTINCT ZONE
+  		  FROM LOCATION
+	</select>
+	
+	<select id="localSelect" resultType="com.koreait.a.dto.LocationDTO">
+		SELECT LOCAL
+		  FROM LOCATION
+		 WHERE ZONE = #{zone}
+		 ORDER BY LOCATIONNO
+	</select>
+	
+	
+	<!-- 음식점 검색결과 개수 -->
+	<select id="searchStoreTotal" resultType="int">
+		SELECT COUNT(STORENO)
+          FROM STOREREG
+         WHERE STATUS = 0
+           AND STOREADDR1 = #{zone}
+           <if test="local != ''">AND STOREADDR2 = #{local}</if>
+           <if test="catg != ''">AND STORECATEGORY = #{catg}</if>
+           <if test="query != ''">AND STORENAME = #{query}</if>
+	</select>
+	<!-- 음식점 검색 -->
+	<select id="searchStore" resultType="com.koreait.a.dto.StoreDTO">
+		SELECT B.*
+		  FROM (SELECT ROWNUM AS RN, A.*
+		          FROM (SELECT *
+		                  FROM STOREREG
+		                 WHERE STATUS = 0
+		                   AND STOREADDR1 = #{zone}
+				           <if test="local != ''">AND STOREADDR2 = #{local}</if>
+				           <if test="catg != ''">AND STORECATEGORY = #{catg}</if>
+				           <if test="query != ''">AND STORENAME LIKE '%' || #{query} || '%'</if>
+		                 ORDER BY STORENO DESC) A) B
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	</select>
+	
+	
+	
+	<!-- 로그인한 가게 사장님이 가게를 등록했는지를 확인 -->
+	<select id="storeExist" resultType="int">
+		SELECT COUNT(STORENO)
+		  FROM STOREREG
+		 WHERE OWNERNO = #{ownerNo}
+		   AND STATUS = 0
+	</select>
+	
+	<!-- 가게 정보 -->
+	<select id="mainStoreView" resultType="com.koreait.a.dto.MainStoreDTO">
+		SELECT A.RN
+			 , A.STORENO
+			 , A.STORENAME
+			 , A.STORECONTENT
+			 , A.STOREADDR1
+			 , A.STOREADDR2
+			 , A.STOREADDR3
+			 , A.STORECATEGORY
+			 , A.STORETIME
+			 , A.ORIGINFILENAME
+		  FROM ( SELECT ROWNUM AS RN
+		  			  , STORENO
+			 		  , STORENAME
+					  , STORECONTENT
+			 		  , STOREADDR1
+			 		  , STOREADDR2
+			 		  , STOREADDR3
+			 		  , STORECATEGORY
+			 		  , STORETIME
+			 		  , ORIGINFILENAME
+		  		   FROM STOREREG
+		  		  WHERE STATUS = 0 ) A
+		 WHERE A.RN = #{storeNo}
+	</select>
+	
+	<!-- 내가 작성한 리뷰 존재 여부 -->
+	<select id="reviewStoreExist" resultType="int">
+		SELECT COUNT(NO)
+		  FROM REVIEW
+		 WHERE STORENO = #{storeNo}
+	</select>
+	
+	<!-- 리뷰평점 평균구하기 -->
+	<select id="reviewAvg" resultType="double">
+		SELECT AVG(SCORE)
+		  FROM REVIEW
+		 WHERE STORENO = #{storeNo}
+	</select>
+	
+	<!-- 가게 등록 4가지 -->
+	<select id="mainStoreNew" resultType="com.koreait.a.dto.MainStoreDTO">
+		SELECT B.RN
+			 , B.STORENO
+			 , B.STORENAME
+			 , B.STORECATEGORY
+			 , B.STOREADDR1
+			 , B.STOREADDR2
+			 , B.STOREADDR3
+			 , B.ORIGINFILENAME
+		  FROM ( SELECT ROWNUM AS RN
+					  , A.STORENO
+			 		  , A.STORENAME
+			 		  , A.STORECATEGORY
+			 	 	  , A.STOREADDR1
+					  , A.STOREADDR2
+			 		  , A.STOREADDR3
+			 		  , A.ORIGINFILENAME
+		  		   FROM ( SELECT STORENO
+						   	   , STORENAME
+							   , STORECATEGORY
+						       , STOREADDR1
+			 			  	   , STOREADDR2
+			 				   , STOREADDR3
+			 				   , ORIGINFILENAME
+		  					FROM STOREREG
+		  				   WHERE STATUS = 0
+		  				   ORDER BY STORENO DESC )A )B
+		 WHERE B.RN BETWEEN #{param1} AND #{param2}
+	</select>
+	
+	
+	
+</mapper>

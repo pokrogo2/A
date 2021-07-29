@@ -13,27 +13,162 @@
 
 <script>
 	$(document).ready(function(){
-		
-	}) // 페이지 로드 이벤트 조료
+		fn_mainSearchSelect_zone();
+		fn_mainSearchSelect_local();
+		fn_search();
+		fn_bannerLink();
+		fn_recommandStore();
+		fn_newStore();
+	}) // 페이지 로드 이벤트 종료
 	
-	/* function fn_bannerLink() {
+	function fn_bannerLink() {
 		$('#storeBann').click(function(){
-				
 			$.ajax({
 				url: 'storeExist.do',
 				type: 'post',
-				data: 'ownerName=${loginUser.memberName}',
+				data: 'ownerNo=${ownerUser.ownerNo}',
 				dataType: 'json',
 				success: function(resultMap) {
-					if (resultMap.result > 0) {
-						$('#storeBann').attr('href', 'viewStorePage.do');
-					} else {
-						$('#storeBann').attr('href', 'insertStorePage.do');						
-					}
+					$('#storeBann').attr('href', resultMap.view);
 				}
 			});
 		});
-	} */
+	} //
+	
+	 
+	function fn_recommandStore() {
+		$.ajax({
+			url: 'recommandStore.do',
+			type: 'get',
+			dataType: 'json',
+			success: function(resultMap) {
+				fn_recommandStore_append(resultMap);
+			},
+			error: function(xhr, text, error) {
+				alert('오류!' + error);
+			}
+		});
+	} // ↕ 연결
+	var recommandStore = null;
+	function fn_recommandStore_append(resultMap) {
+		$('#storeBox').empty();
+		if (resultMap.status == 200) {
+			recommandStore = resultMap.recommandStore;
+			$.each(recommandStore, function(i, store) {
+				$('<div>').addClass('box')
+				.append( $('<div>').addClass('img').addClass('box_con')
+						 .append( $('<a>').attr('href', 'storeView.do?storeNo='+store.storeNo)
+						          .append( $('<img>').attr('alt', store.storeName).attr('src', 'resources/archive/'+store.originFilename) ) ) )
+				.append( $('<div>').addClass('content').addClass('box_con')
+						 .append( $('<p class="category">'+store.storeCategory+'</p>') )
+						 .append( $('<h3>'+store.storeName+'</h3>') )
+						 .append( $('<p class="p addr">'+store.storeAddr1+' '+store.storeAddr2+' '+store.storeAddr3+'</p>') ) 
+						 .append( $('<p class="p time"><span>영업시간</span>'+store.storeTime+'</p>') )
+						 .append( $('<div>').addClass('score')
+								  .append( $('<p class="star">★</p>') )
+								  .append( $('<p class="reviewAvg">'+store.reviewAvg+'</p>') )
+								  .append( $('<p class="grey">(평점)</p>') ) ) ) 		        		    
+				.appendTo('#storeBox');
+			});
+		} else if(resultMap.status == 500) {
+			$('<div>').addClass('box').html('<p class="nothing">등록된 음식점이 없습니다.</p>').appendTo('#storeBox');
+			$('<div>').addClass('box').html('<p class="nothing">등록된 음식점이 없습니다.</p>').appendTo('#storeBox');
+		}
+	} //
+	
+	
+	function fn_newStore() {
+		$.ajax({
+			url: 'NewStore.do',
+			type: 'get',
+			dataType: 'json',
+			success: function(resultMap) {
+				fn_newStore_append(resultMap);
+			},
+			error: function(xhr, text, error) {
+				
+			}
+		});
+	} // ↕ 연결
+	var newStore = null;
+	function fn_newStore_append(resultMap) {
+		$('#list').empty();
+		if (resultMap.status == 200) {
+			newStore = resultMap.newStore;
+			$.each(newStore, function(i, store) {
+				$('<div>')
+				.append( $('<a>').attr('href', 'storeView.do?storeNo='+store.storeNo)
+						 .append( $('<img>').attr('alt', store.storeName).attr('src', 'resources/archive/'+store.originFilename) ))
+				.append( $('<h3><span class="storeCategory">'+store.storeCategory+'</span>'+store.storeName+'</h3>') )
+				.append( $('<p>'+store.storeAddr1+' '+store.storeAddr2+' '+store.storeAddr3+'</p>') )
+				.appendTo('#list');
+			});
+		} else if(resultMap.status == 500) {
+			$('#insertStoreList').empty();
+		}
+	}//
+	
+	
+	// 메인 검색 바의 지역 선택 조건
+	var zoneList = null;
+	function fn_mainSearchSelect_zone() {
+		$.ajax({
+			url: 'zoneSelect.do',
+			type: 'get',
+			dataType: 'json',
+			success: function(resultMap){
+				if (resultMap.status == 200) {
+					zoneList = resultMap.zoneList;
+					$.each(zoneList, function(i, zoneList) {
+						$('<option>').attr('value', zoneList.zone).text(zoneList.zone).appendTo('#zone');
+					});
+				}
+			}, 
+			error: function(xhr, text, error){
+				alert('오류!' + error);
+			}
+		});
+	} //
+	var localList = null;
+	function fn_mainSearchSelect_local() {
+		$( 'body' ).on('click', '#zone', function(event){
+			$('#local').empty();
+			$('<option>').attr('value', '').text('구 선택').appendTo('#local'); // <option value=""> = 구 = </option>
+			// 지역의 value가 존재할 때만 진행하겠다.
+			if ( $('#zone').val() != '' ) {
+				$.ajax({
+					url: 'localSelect.do',
+					type: 'get',
+					data: 'zone=' + $('#zone').val(),
+					dataType: 'json',
+					success: function(resultMap) {
+						if (resultMap.status == 200) {
+							localList = resultMap.localList;
+							if (localList != null && localList != '') { // 지역의 구가 존재하는 경우에만 진행하겠다.
+								$.each(localList, function(i, localList) {
+									$('<option>').attr('value', localList.local).text(localList.local).appendTo('#local');
+								});								
+							}
+						}
+					}
+				});
+			}
+		});
+	}//
+			
+	
+	// 검색 시 주의 사항
+	function fn_search() {
+		$('#f').submit(function(event) {
+			if ( $('#zone').val() == '' ) {
+				alert('지역 선택은 필수입니다.');
+				event.preventDefault();
+				return false;
+			}
+		});
+	} //
+	
+	
 	
 </script>
 	
@@ -41,18 +176,12 @@
 	<div class="container">
 		
 		<div id="mainSearch">
-			<form id="f" action="" method="get">
+			<form id="f" action="searchStore.do" method="get">
 				<select name="zone" id="zone">
-					<option value="">지역</option>
-					<option value="서울">서울</option>
-					<option value="경기">경기</option>
-					<option value="부산">부산</option>
+					<option value="">지역 선택</option>
 				</select>
 				<select name="local" id="local">
-					<option value="">구</option>
-					<option value="용산">용산</option>
-					<option value="서대문구">서대문구</option>
-					<option value="강남">강남</option>
+					<option value="">구 선택</option>
 					<!--  
 						지역 선택하면 알아서 그 지역의 구만 보여준다
 						<option value="강남">강남</option>
@@ -70,124 +199,31 @@
 		</div> <!-- mainSearch -->
 		
 		
-		<c:if test="${not empty loginUser}">
+		<!-- 가게관리 배너 : ownerUser확인 -->
+		<c:if test="${not empty ownerUser}">
 			<div class="storebannBox">
-				<a id="storeBann"><img alt="banner1" src="resources/asset/img/mainBanner.jpg"></a>
+				<a id="storeBann"><img alt="banner1" src="resources/asset/img/mainBanner1.png"></a>
 			</div>
 		</c:if>
-		
 		
 		
 		<div id=recommandStore>
 		
 			<h1>음식점을 추천해 드려요!</h1>
-			
-			<div id="storeBox">
-				<div class="box">
-					<div id="img" class="box_con">
-						<img alt="store1" src="resources/archive/03.jpg" />
-					</div>
-					<div id="content"  class="box_con">
-						<h3>음식점1<span>신촌지점</span></h3>
-						<h2>5/<span>1</span></h2>
-						<div class="sub_p2">
-							<p>잔여테이블</p>
-							<p>남은 인원 (Max <span>4</span>명)</p>
-						</div>
-						<div id="grade">
-							<p class="star">★</p>
-							<p class="star">★</p>
-							<p class="star">★</p>
-							<p class="star">★</p>
-							<p class="grey">★</p>
-							<p class="grey">(평점)</p>
-						</div>
-						<div id="review">
-							<c:if test="${empty reivew}">
-								<p>리뷰 내용이 없습니다</p>
-							</c:if>
-							<c:if test="${not empty reivew}">
-								<p>${reivew}</p>
-							</c:if>
-						</div>
-					</div>
-				</div> <!-- box -->
-				
-				<div class="box">
-					<div id="img" class="box_con">
-						<img alt="store1" src="resources/archive/03.jpg" />
-					</div>
-					<div id="content"  class="box_con">
-						<h3>음식점1<span>신촌지점</span></h3>
-						<h2>5/<span>1</span></h2>
-						<div class="sub_p2">
-							<p>잔여테이블</p>
-							<p>남은 인원 (Max <span>4</span>명)</p>
-						</div>
-						<div id="grade">
-							<p class="star">★</p>
-							<p class="star">★</p>
-							<p class="star">★</p>
-							<p class="star">★</p>
-							<p class="grey">★</p>
-							<p class="grey">(평점)</p>
-						</div>
-						<div id="review">
-							<c:if test="${empty reivew}">
-								<p>리뷰 내용이 없습니다</p>
-							</c:if>
-							<c:if test="${not empty reivew}">
-								<p>${reivew}</p>
-							</c:if>
-						</div>
-					</div>
-				</div> <!-- box -->
-			</div>
-			
+			<div id="storeBox"></div> <!-- 추천 음식점 2box -->
 			<div id="return">
-				새로운 추천 보기<a href="#"><i class="fas fa-undo-alt"></i></a>
+				<a href="recommandStore.do">새로운 추천 보기<i class="fas fa-undo-alt"></i></a>
 			</div>
-			
-			
-		</div> <!-- selectChoiceStore -->
+		</div> <!-- recommandStore -->
 		
 		
 		<div id="insertStoreList">
-			
 			<h1>신규 등록한 음식점</h1>
-			
 			<a href="#">더보기 +</a>
-			<div id="list">
-				<div>
-					<a href="#"><img alt="store1" src="resources/archive/03.jpg"></a>
-					<h3>음식점1</h3>
-					<p>내용 설명</p>
-				</div>
-				<div>
-					<a href="#"><img alt="store1" src="resources/archive/03.jpg"></a>
-					<h3>음식점1</h3>
-					<p>내용 설명</p>
-				</div>
-				<div>
-					<a href="#"><img alt="store1" src="resources/archive/03.jpg"></a>
-					<h3>음식점1</h3>
-					<p>내용 설명</p>
-				</div>
-				<div>
-					<a href="#"><img alt="store1" src="resources/archive/03.jpg"></a>
-					<h3>음식점1</h3>
-					<p>내용 설명</p>
-				</div>
-				
-				
-			</div>
+			<%--  신규 음식점 STORE의 DB완료후 작성 --%>
+			<div id="list"></div>
+		</div> <!-- insertStoreList -->
 			
-		</div>
-		
-	
-	
-		
-		
 		
 	</div> <!-- container -->
 	

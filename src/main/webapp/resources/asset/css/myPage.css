@@ -22,7 +22,7 @@
 }
 
 .left a:nth-child(1) {padding-top:0;}
-.left a:hover {color:#9B1E24; font-weight:600;}
+.left a:hover {color:#bf3a3e; font-weight:600;}
 
 
 
@@ -39,16 +39,19 @@ h3 {font-size:20px;}
 	border-bottom:1px solid #ddd;
 }
 #reservation_status .con div {width:50%;}
-#reservation_status .con div span {font-weight:800;}
+#reservation_status .con div span {font-weight:400;}
 #reservation_status .con p {margin-top:20px;}
 #reservation_status .con .cancle {
 	width:125px;
-	background-color:black;
-	color:white;
+	background-color:#bf3a3e;
+	color:#f8eae1;
+	border-radius:100px;
 	text-align:center;
 	line-height:50px;
 	margin-top:104px;
 }
+
+
 
 
 /* 예약 내역 */
@@ -68,19 +71,20 @@ h3 {font-size:20px;}
 
 #reservation_history_review #reservation_history_paging {}
 
+/* 리뷰작성 */
 #reservation_history_review #insert_review {
 	padding:30px 0;
 	border-top:1px solid #ddd;
 	border-bottom:1px solid #ddd;
 }
-#insert_review #grade {margin-bottom:20px;}
+#insert_review #grade {margin:20px 0 20px 0;}
+#grade .grade_span {padding-left:5px;}
 #grade p {
 	cursor:pointer;
 	float:left; 
 	margin-right:5px; 
 	font-size:24px;
 }
-#grade span {line-height:40px;}
 #insert_review #f {position:relative;}
 #insert_review #f select {
 	width:26%; 
@@ -91,16 +95,19 @@ h3 {font-size:20px;}
 	width:71%; 
 	padding-left:10px;
 }
-#insert_review #f input[type="file"] {border:none;}
-#insert_review #f input[type="button"] {
-	cursor:pointer;
-	float:right;
-	padding:0 45px;
-	background-color:black;
-	color:white;
-	margin-right:5px;
-	height:52px;
+#insert_review #f input[type="text"]:focus,
+#insert_review #f select:focus {
+	border-color:#bf3a3e;
 }
+#insert_review #f input[type="file"] {border:none;}
+#insert_review #f button {
+	padding: 5px 95px;
+	float:right;
+	background-color:#bf3a3e; 
+	color:#f8eae1;
+	cursor:pointer;
+}
+
 
 
 /* 리뷰 내역 */
@@ -108,9 +115,11 @@ h3 {font-size:20px;}
 #review_history .review {
 	display:flex;
 	padding:20px 0;
-	border-bottom:1px solid #ddd;
+	border-top:1px solid #666;
+	border-bottom:1px solid #666;
 }
-#review_history .review > h3 {margin:0 16px;}
+#review_history h2 {margin-bottom:20px;}
+#review_history .review > h3 {margin:0 16px; margin-top:10px;}
 #review_history .review .box {margin:0;}
 
 #review_history .review #box1 {margin-right:20px;}
@@ -143,6 +152,8 @@ input[value="리뷰 수정"], input[value="리뷰 삭제"]:hover {background-col
 #review_img img {width:100px; height:100px; margin-right:10px;}
 
 
+
+
 /* 문의내역 */
 #question_history {margin-bottom:100px;}
 #question_history h2 {margin-bottom:20px;}
@@ -162,15 +173,19 @@ input[value="리뷰 수정"], input[value="리뷰 삭제"]:hover {background-col
 #question_history td:nth-child(3) {width:320px;}
 #question_history td:nth-child(4) {width:150px;}
 
-#question_history a {text-decoration:underline; color:red;}
+#question_history a {
+	text-decoration:underline; 
+	color:#bf3a3e;
+	font-weight:400;
+}
 #question_history p {
 	padding:5px;
 	border-radius:100px;
 	margin:5px 20px;
 	color:white;
 }
-#question_history .notAnswer {background-color:gray;}
-#question_history .answer {background-color:darkred;}
+#question_history .notAnswer {background-color:#bbb;}
+#question_history .answer {backgroun-color:#bf3a3e;}
 
 
 
@@ -183,37 +198,20 @@ tr {height:80px;}
 td {}
 td:nth-child(1) {width:22%; color:#888;}
 td:nth-child(2) {width:78%;}
-
-
 /* input CSS */
-#f2 input[type="text"], #f2 input[type="password"] {
+#f2 input[type="text"], 
+#f2 input[type="password"] {
 	margin-bottom:0;
 	font-weight:400;
+}
+#f2 input[type="text"]:focus, 
+#f2 input[type="password"]:focus {
+	border-color:#bf3a3e;
 }
 #f2 span {
 	font-size:14px;
 	paddig-top:5px;
 }
-/* 이메일을 담고 있는 td 태그 */
-.memberEmail {}
-.memberEmail input[type="button"] {
-	padding:0;
-	width:120px;
-	border-radius:100px; 
-}
-.memberEmail input[type="button"]:hover {
-	background-color:#6A1310; 
-	color:#FFFAF8; 
-}
-.memberEmail input[type="text"] {
-	width:74%; 
-	margin-right:20px; 
-	margin-top:15px;
-
-}
-input[name="address"] {margin-top:5px;}
-
-
 
 
 /* 수정 버튼을 감싸고 있느 td 태그 */
@@ -221,8 +219,8 @@ input[name="address"] {margin-top:5px;}
 input[value="개인정보 수정하기"] {
 	padding: 0;
 	width:200px;
-	background-color:#6A1310; 
-	color:#FFFAF8;\
+	background-color:#bf3a3e; 
+	color:#f8eae1;
 }
 
 
@@ -242,14 +240,14 @@ input[value="개인정보 수정하기"] {
 .startRadio {
   display: inline-block;
   overflow: hidden;
-  height: 40px;
+  /* height: 40px; */
 }
 .startRadio:after {
   content: "";
   display: block;
   position: relative;
   z-index: 10;
-  height: 40px;
+  height: 30px;
   background: url("data:image/png;base64,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") repeat-x 0 0;
   background-size: contain;
   pointer-events: none;
@@ -258,8 +256,8 @@ input[value="개인정보 수정하기"] {
   position: relative;
   z-index: 1;
   float: left;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
 }
 .startRadio__box input {
@@ -269,14 +267,14 @@ input[value="개인정보 수정하기"] {
   position: absolute !important;
 }
 .startRadio__box input:checked + .startRadio__img {
-  background-color: #0084ff;
+  background-color: orange;
 }
 .startRadio__img {
   display: block;
   position: absolute;
   right: 0;
   width: 500px;
-  height: 40px;
+  height: 30px;
   pointer-events: none;
 }
 

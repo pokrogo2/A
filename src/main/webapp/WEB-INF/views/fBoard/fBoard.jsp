@@ -19,6 +19,7 @@
 		fn_paging();
 		fn_search();
 		fn_autoDrop();
+		fn_searchFocus();
 	}); // 페이지 로드 이벤트 (종료)
 	
 	
@@ -206,7 +207,27 @@
 				}
 			});
 		});
-	}
+	} //
+	
+	
+	function fn_searchFocus() {
+		$('#column').click(function(){
+			$('#search').css('border-color', '#bf3a3e');
+			$('#search_btn').css('background-color', '#bf3a3e').css('color','white');
+		});
+		$('#query').focus(function(){
+			$('#search').css('border-color', '#bf3a3e');
+			$('#search_btn').css('background-color', '#bf3a3e').css('color','white');
+		});
+		$('#column').blur(function(){
+			$('#search').css('border-color', '#333');
+			$('#search_btn').css('background-color', '#333').css('color','white');
+		});
+		$('#query').blur(function(){
+			$('#search').css('border-color', '#333');
+			$('#search_btn').css('background-color', '#333').css('color','white');
+		});
+	} //
 	
 	
 	

@@ -2,15 +2,15 @@
 
 /* 목록 */
 input[value="목록"]:hover {
-	background-color:#6A1310; 
-	color:#FFFAF8;
+	background-color:#ececec; 
+	color:#222;
 }
 
 
 /* 이벤트,홍보글 radio CSS */
 .click {
-	background-color:#9B1E24;
-	color:#FFFAF8;
+	background-color:#c06356;
+	color:#f8eae1;
 }
 input[type="radio"] {  /* radio버튼 업애기 */
 	display:none;
@@ -18,7 +18,7 @@ input[type="radio"] {  /* radio버튼 업애기 */
 #radio, label {border-radius:100px;}
 #radio {
 	position:relative;
-	border:1px solid #9B1E24;
+	border:1px solid #c06356;
 }
 #radio label {
 	position:absolute;

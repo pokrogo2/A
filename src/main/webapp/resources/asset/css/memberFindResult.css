@@ -19,16 +19,16 @@ h2 {
 	display:block;
 	text-align:center;
 	width:150px;
-	border:1px solid #6A1310;
-	color:#6A1310;
+	border:1px solid #bf3a3e;
+	color:#bf3a3e;
 	border-radius:100px;
 	margin-top:20px;
 	padding:8px 0;
 	
 }
 .container a:hover {
-	background-color:#6A1310; 
-	color:#FFFAF8;
+	background-color:#bf3a3e; 
+	color:#f8eae1;
 }
 
 
@@ -50,15 +50,15 @@ h2 {
 	margin-top:50px;
 }
 input[value="로그인하러 가기"] {
-	border-color: #6A1310;
-	color:#6A1310;
+	border-color: #bf3a3e;
+	color:#bf3a3e;
 }
 input[value="비밀번호 찾기"] {
 	margin-left:20px;
 }
 .btnBox input:hover {
-	background-color:#6A1310; 
-	color:#FFFAF8;
+	background-color:#bf3a3e; 
+	color:#f8eae1;
 }
 
 

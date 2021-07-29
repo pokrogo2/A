@@ -188,6 +188,10 @@
 				<input type="button" value="수정" id="updete_btn">
 				<input type="button" value="삭제" id="delete_btn">
 			</c:if>
+			<c:if test="${ownerUser.ownerName == fBoard.writer}">
+				<input type="button" value="수정" id="updete_btn">
+				<input type="button" value="삭제" id="delete_btn">
+			</c:if>
 		</div> 
 		
 

@@ -17,7 +17,7 @@
 }
 
 #f button {margin-top:30px; margin-bottom:10px;}  /* 로그인 버튼 */
-#f input {border-color:#9B1E24;} /* 로그인에 필요한 id, pw */
+#f input {border-color:#bf3a3e;} /* 로그인에 필요한 id, pw */
 
 
 /* 로그인 버튼 하단의 a 태그를 담고 있는 div */
@@ -25,6 +25,6 @@
 	text-align:center;
 }
 .subLink a {color:#aaa;}
-.subLink a:hover {color:black; font-weight:500;}
+.subLink a:hover {color:black; font-weight:400;}
 .subLink span {padding:0 15px; font-size:13px; color:#aaa;}
 

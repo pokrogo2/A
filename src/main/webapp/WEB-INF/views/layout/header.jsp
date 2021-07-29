@@ -35,18 +35,25 @@
 					<a href="loginPage.do">로그인</a>
 					<span>|</span>
 					<a href="joinPage.do">회원가입</a><br><br>
-					<a href="ownerLoginPage.do">사장로그인</a>
-					<span>|</span>
-					<a href="ownerJoinPage.do">사장회원가입</a>
 				</c:if>
+				
 				<c:if test="${not empty loginUser}">
-                    <a href="logout.do">로그아웃</a>S
+                    <a href="logout.do">로그아웃</a>
                     <span>|</span>
 					<a href="memberMyPage.do">마이페이지</a>
 					<span>|</span>
 					<a href="insertStorePage.do" id="store_insert_btn">가게 등록</a>
 					<span>|</span>
 					<a href="viewStorePage.do" id="store_insert_btn">가게 View</a>
+				</c:if>
+				<c:if test="${empty loginOwner }">
+					<a href="ownerLoginPage.do">사장로그인</a>
+					<span>|</span>
+					<a href="ownerJoinPage.do">사장회원가입</a>
+				</c:if>
+				<c:if test="${not empty loginOwner}">
+                    <a href="ownerLogout.do">로그아웃</a>
+                    <span>|</span>
 				</c:if>
 			</span>
 		</div>

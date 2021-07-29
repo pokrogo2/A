@@ -76,7 +76,7 @@ public class OwnerController {
 	public String join(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
 		ownerJoinCommand.execute(sqlSession, model);
-		return "redirect:ownerLoginPage.do";
+		return "redirect:index.do";
 	}
 	
 	@GetMapping(value="ownerLoginPage.do")
@@ -91,7 +91,7 @@ public class OwnerController {
 		return "redirect:ownerLoginPage.do";				
 	}
 	@GetMapping(value="ownerLogout.do")
-	public String logout(HttpSession session, Model model) {
+	public String logoutOwner(HttpSession session, Model model) {
 		model.addAttribute("session", session);
 		ownerLogoutCommand.execute(sqlSession, model);
 		return "redirect:ownerLoginPage.do";

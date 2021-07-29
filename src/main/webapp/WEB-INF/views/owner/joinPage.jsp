@@ -14,7 +14,7 @@
 			fn_pwCheck();
 			fn_pwCheck2();
 			fn_verify_num();
-			fn_checkAll(checkAll);
+			//fn_checkAll(checkAll);
 			fn_join();
 		});
 		// 사업자 번호 조회
@@ -49,9 +49,9 @@
 		var noPass = false; // 사업자 번호 체크 통과여부
 		function fn_noCheck() {
 			$('#no').keyup(function() {
-				var regNO = /[(0-9)]{6}/; // 6자리의 숫자
-				if(!regNO.test($('#id').val())){
-					$('#no_result').text('사업자번호는 6자리 숫자입니다').css('coler', 'red');
+				var regNO = /^\d{6}$/; // 6자리의 숫자
+				if(!regNO.test($('#no').val())){
+					$('#no_result').text('사업자번호는 6자리 숫자입니다').css('color', 'red');
 					return false;
 				}
 				$.ajax({
@@ -61,10 +61,10 @@
 					dataType : 'json',
 					success: function(res){
 						if(res.count == 0) {
-							$('#no_result').text('없는 사업자등록번호입니다.').css('color', 'red');
+							$('#no_result').text('사용가능한 사업자 등록번호입니다.').css('color', 'blue');
 							noPass = false;
 						} else {
-							$('#no_result').text('확인된 사업자등록번호입니다.').css('coler', 'blue');
+							$('#no_result').text('이미 등록된 사업자 등록번호입니다.').css('coler', 'red');
 							noPass = true;
 						}
 					},
@@ -72,7 +72,7 @@
 						
 					}
 				})
-			})
+			});
 		}
 		
 		// 비밀번호 검증 함수
@@ -141,23 +141,23 @@
 			
 		
 		// 전체 동의 시 나머지 버튼 선택/해제
-		function checkAll(checkAll) {
+		/* function fn_checkAll(checkAll) {
 			const checkboxes = document.getElementsByName('chk');
 			
 			checkboxes.forEach((checkbox) => {
 				checkbox.checked = checkAll.checked;
 			});
-		}
+		} */
 		
 		// 회원가입함수
 		function fn_join() {
 			$('#join_btn').click(function() {
-				if( !pwPass || pwPass2 ){
+				if( !pwPass || !pwPass2 ){
 					alert('비밀번호가 일치하지 않습니다.');
 					return false;				
 				} else if(!authPass) {
 					alert('이메일 인증 필수입니다.');
-					return false
+					return false;
 				} else {
 					$('#f').attr('action', 'ownerJoin.do');
 					$('#f').submit();
@@ -183,13 +183,12 @@
 				
 				비밀번호<br>
 				<input type="password" name="pw" id="pw">
-				<span id="pw_result>"></span>
-				<br><br>
+				<span id="pw_result"></span><br><br>
 				
 				비밀번호 확인<br>
 				<input type="password" name="pw2" id="pw2">
-				<span id="pw2_result"></span>
-				<br><br>
+				<span id="pw2_result"></span><br><br>
+				
 				
 				이메일<br>
 				<input type="text" name="email" id="email">
@@ -206,7 +205,7 @@
 				<br><br>				
 					
 				사업자연락처<br>
-				<input type="text" name="phone" id="phone" value="">
+				<input type="text" name="tel" id="tel" value="">
 				<br><br>
 				
 				<table>

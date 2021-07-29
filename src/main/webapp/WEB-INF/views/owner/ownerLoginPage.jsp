@@ -41,36 +41,21 @@
 	<div class="container">
 	<h1>로그인</h1>
 	
-	<c:if test="${loginOwner != null and loginOwner.status == 1}">
+	<c:if test="${loginOwner != null }">
 		로그인 성공
 		사업자번호 : ${loginOwner.ownerNo}<br>
 		이메일 : ${loginOwner.ownerEmail}<br>
 	
-		<a href="logout.do">로그아웃</a><br>
+		<a href="ownerLogout.do">로그아웃</a><br>
 		<a id="delete_link">회원탈퇴</a><br>
 		<a href="#">가게등록</a><br>
 	</c:if>
 	
-	<c:if test="${loginOwner.status==0 }">
-		사업자번호 : ${loginOwner.ownerNo}<br>
-		이메일 : ${loginOwner.ownerEmail}
-		는 탈퇴된 회원입니다.
-		<br><br><br><hr>
-		<form id="f" action="ownerlogin.do" method="post">
-			사업자번호<br>
-			<input type="text" name="no" id="no"><br><br>
-			비밀번호<br>
-			<input type="password" name="pw" id="pw"><br><br>
-			<button>로그인</button>
-		</form>
-		<br>
-		<a href="ownerJoinPage.do">회원가입</a>&nbsp;&nbsp;&nbsp;
-		<a href="ownerPwPage.do">비밀번호 찾기</a>
-	</c:if>
+	
 	<c:if test="${loginOwner == null}">
 		<form id="f" action="ownerLogin.do" method="post">
 			사업자번호<br>
-			<input type="text" name="id" id="id"><br><br>
+			<input type="text" name="no" id="no"><br><br>
 			비밀번호<br>
 			<input type="password" name="pw" id="pw"><br><br>
 			<button>로그인</button>

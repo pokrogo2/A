@@ -14,7 +14,7 @@ public class OwnerLogoutCommand implements OwnerCommand {
 		Map<String, Object> map = model.asMap();
 		HttpSession session = (HttpSession)map.get("session");
 		
-		if(session.getAttribute("ownerUser") != null) {
+		if(session.getAttribute("loginOwner") != null) {
 			session.invalidate();
 		}
 

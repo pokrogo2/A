@@ -160,8 +160,8 @@
 	// 검색 시 주의 사항
 	function fn_search() {
 		$('#f').submit(function(event) {
-			if ( $('#query').val() == '' ) {
-				alert('검색어를 입력해주세요!');
+			if ( $('#zone').val() == '' ) {
+				alert('지역 선택은 필수입니다.');
 				event.preventDefault();
 				return false;
 			}

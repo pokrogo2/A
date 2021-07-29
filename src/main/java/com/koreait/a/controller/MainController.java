@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.koreait.a.command.main.LocalSelectCommand;
 import com.koreait.a.command.main.MainNewStoreCommand;
 import com.koreait.a.command.main.MainRecommandStoreCommand;
+import com.koreait.a.command.main.MainSearchStoreCommand;
 import com.koreait.a.command.main.MainStoreExistCommand;
 import com.koreait.a.command.main.ZoneSelectCommand;
 
@@ -27,6 +28,7 @@ public class MainController {
 	private MainNewStoreCommand mainNewStoreCommand;
 	private ZoneSelectCommand zoneSelectCommand;
 	private LocalSelectCommand localSelectCommand;
+	private MainSearchStoreCommand mainSearchStoreCommand;
 
 	@Autowired
 	public MainController(SqlSession sqlSession,
@@ -34,7 +36,8 @@ public class MainController {
 						  MainRecommandStoreCommand mainRecommandStoreCommand,
 						  MainNewStoreCommand mainNewStoreCommand,
 						  ZoneSelectCommand zoneSelectCommand,
-						  LocalSelectCommand localSelectCommand) {
+						  LocalSelectCommand localSelectCommand,
+						  MainSearchStoreCommand mainSearchStoreCommand) {
 		super();
 		this.sqlSession = sqlSession;
 		this.mainStoreExistCommand = mainStoreExistCommand;
@@ -42,6 +45,7 @@ public class MainController {
 		this.mainNewStoreCommand = mainNewStoreCommand;
 		this.zoneSelectCommand = zoneSelectCommand;
 		this.localSelectCommand = localSelectCommand;
+		this.mainSearchStoreCommand = mainSearchStoreCommand;
 	}
 
 	
@@ -66,7 +70,8 @@ public class MainController {
 	@GetMapping(value="searchStore.do")
 	public String searchStore(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
-		return "";
+		mainSearchStoreCommand.execute(sqlSession, model);
+		return "store/storeList";
 	}
 	
 	

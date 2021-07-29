@@ -4,12 +4,18 @@ import java.util.List;
 
 import com.koreait.a.dto.LocationDTO;
 import com.koreait.a.dto.MainStoreDTO;
+import com.koreait.a.dto.SearchStoreQueryDTO;
+import com.koreait.a.dto.StoreDTO;
 
 public interface MainDAO {
 
 	// 검색과 가게등록시 필요한 지역을 선택할 수 있도록 
 	public List<LocationDTO> zoneSelect();
 	public List<LocationDTO> localSelect(String zone);
+	
+	// 음식점 검색 결과 : 개수 및 리스트
+	public int searchStoreTotal(SearchStoreQueryDTO searchStoreQueryDTO);
+	public List<StoreDTO> searchStore(SearchStoreQueryDTO searchStoreQueryDTO);
 	
 	// 가게 사장님 이름으로 가게 등록이 되어있는지 여부
 	public int storeExist(long ownerNo);

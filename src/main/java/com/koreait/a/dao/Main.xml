@@ -19,18 +19,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
+	<!-- 음식점 검색결과 개수 -->
+	<select id="searchStoreTotal" resultType="int">
+		SELECT COUNT(STORENO)
+          FROM STOREREG
+         WHERE STATUS = 0
+           AND STOREADDR1 = #{zone}
+           <if test="local != ''">AND STOREADDR2 = #{local}</if>
+           <if test="catg != ''">AND STORECATEGORY = #{catg}</if>
+           <if test="query != ''">AND STORENAME = #{query}</if>
+	</select>
 	<!-- 음식점 검색 -->
 	<select id="searchStore" resultType="com.koreait.a.dto.StoreDTO">
-		
+		SELECT B.*
+		  FROM (SELECT ROWNUM AS RN, A.*
+		          FROM (SELECT *
+		                  FROM STOREREG
+		                 WHERE STATUS = 0
+		                   AND STOREADDR1 = #{zone}
+				           <if test="local != ''">AND STOREADDR2 = #{local}</if>
+				           <if test="catg != ''">AND STORECATEGORY = #{catg}</if>
+				           <if test="query != ''">AND STORENAME LIKE '%' || #{query} || '%'</if>
+		                 ORDER BY STORENO DESC) A) B
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
 	</select>
 	
 	
 	
-	<!-- 전체 가게 등록 갯수 -->
+	<!-- 로그인한 가게 사장님이 가게를 등록했는지를 확인 -->
 	<select id="storeExist" resultType="int">
 		SELECT COUNT(STORENO)
 		  FROM STOREREG
 		 WHERE OWNERNO = #{ownerNo}
+		   AND STATUS = 0
 	</select>
 	
 	<!-- 가게 정보 -->
@@ -55,7 +76,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			 		  , STORECATEGORY
 			 		  , STORETIME
 			 		  , ORIGINFILENAME
-		  		   FROM STOREREG ) A
+		  		   FROM STOREREG
+		  		  WHERE STATUS = 0 ) A
 		 WHERE A.RN = #{storeNo}
 	</select>
 	
@@ -99,6 +121,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			 				   , STOREADDR3
 			 				   , ORIGINFILENAME
 		  					FROM STOREREG
+		  				   WHERE STATUS = 0
 		  				   ORDER BY STORENO DESC )A )B
 		 WHERE B.RN BETWEEN #{param1} AND #{param2}
 	</select>

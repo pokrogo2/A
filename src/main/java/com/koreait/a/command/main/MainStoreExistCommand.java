@@ -10,9 +10,9 @@ import org.springframework.ui.Model;
 
 import com.koreait.a.dao.MainDAO;
 
-public class MainStoreExistCommand {
+public class MainStoreExistCommand implements MainCommand {
 
-	
+	@Override
 	public Map<String, Object> execute(SqlSession sqlSession, Model model) {
 		
 		Map<String, Object> map = model.asMap();

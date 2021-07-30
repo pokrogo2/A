@@ -108,7 +108,7 @@ public class MemberController {
 						Model model) {
 		model.addAttribute("request", request);
 		memberLoginCommand.execute(sqlSession, model);
-		return "redirect:loginPage.do";
+		return "redirect:index.do";
 	}
 	@GetMapping(value="logout.do")
 	public String logout(HttpSession session,

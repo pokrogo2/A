@@ -34,7 +34,7 @@ public class ReviewInsertCommand implements ReviewCommand {
 		review.setScore(score);
 		review.setContent(content);
 		review.setStoreNo(storeNo);
-		
+		System.out.println(storeNo);
 		
 		
 		List<MultipartFile> files = multipartRequest.getFiles("reviewimg");

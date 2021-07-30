@@ -92,7 +92,6 @@
 	
 		<h1 class="con_title">로그인</h1>
 		
-		
 		<form id="f" method="post">
 		
 			<input type="radio" name="tap" value="lginUser" id="lginUser" checked>
@@ -116,7 +115,6 @@
 			</div>
 			
 			<div id="owner" class="none">
-				<!-- <form id="f" action="ownerLogin.do" method="post"> -->
 				사업자번호<br>
 				<input type="text" name="no" id="no">
 				비밀번호<br>

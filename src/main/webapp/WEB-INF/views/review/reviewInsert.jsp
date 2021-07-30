@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,9 +80,11 @@
 			<!-- 내가 간 가게의 이름+가게번호가 전달 -->
 			<select name="review_store">
 				<option value="">== 예약한 음식점 ==</option>
-				<option value="1">목란</option>
-				<option value="이삭토스트">이삭토스트</option>
-				<option value="홍콩반점">홍콩반점</option>
+				<c:if test="${not empty list1}">
+					<c:forEach var="list1" items="${list1}">
+				<option value="${list1.storeNo}">${list1.storeName } test ${list1.storeNo}</option>
+				</c:forEach>
+				</c:if>
 			</select>
 			<input type="text" name="content" id="review" placeholder="리뷰를 작성하세요">
 			<input type="file" name="reviewimg" multiple>

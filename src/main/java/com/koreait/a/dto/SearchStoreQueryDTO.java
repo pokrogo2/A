@@ -12,6 +12,8 @@ public class SearchStoreQueryDTO {
 	private String local;
 	private String catg;
 	private String query;
+	
+	
 	public int getBeginRecord() {
 		return beginRecord;
 	}

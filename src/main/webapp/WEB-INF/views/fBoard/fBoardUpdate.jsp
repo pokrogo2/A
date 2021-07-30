@@ -99,7 +99,7 @@
 					<input type="hidden" name="filename0" value="${fBoard.filename1}">
 					
 					<!-- 홍보글,이벤트 일때만 보이는 tap(radio) -->
-					<c:if test="${not empty ownerUser}">
+					<c:if test="${not empty loginOwner}">
 						<div id="radio" class="ownerChoiceRadio">
 							<input type="radio" name="contentType" value="홍보글" id="promotion">
 							<label for="promotion">홍보글</label>

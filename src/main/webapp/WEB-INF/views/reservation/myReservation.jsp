@@ -33,6 +33,7 @@
 					</div>
 						</c:forEach>
 						</c:if>
+						
 			<c:if test="${empty list1}"> 
 				<h3>현재 예약이 없습니다.</h3>
 			</c:if>

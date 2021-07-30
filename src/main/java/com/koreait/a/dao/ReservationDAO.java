@@ -23,7 +23,7 @@ public interface ReservationDAO {
 	
 	//myPage조회
 	public List<StoreResDTO> memberMyPage(Long memberNo);
-	//삭제
 	
+	//삭제
 	public int resDelete(Long resNo);
 }

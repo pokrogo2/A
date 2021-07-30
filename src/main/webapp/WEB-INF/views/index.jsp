@@ -26,7 +26,7 @@
 			$.ajax({
 				url: 'storeExist.do',
 				type: 'post',
-				data: 'ownerNo=${ownerUser.ownerNo}',
+				data: 'ownerNo=${loginOwner.ownerNo}',
 				dataType: 'json',
 				success: function(resultMap) {
 					$('#storeBann').attr('href', resultMap.view);
@@ -200,7 +200,7 @@
 		
 		
 		<!-- 가게관리 배너 : ownerUser확인 -->
-		<c:if test="${not empty ownerUser}">
+		<c:if test="${not empty loginOwner}">
 			<div class="storebannBox">
 				<a id="storeBann"><img alt="banner1" src="resources/asset/img/mainBanner1.png"></a>
 			</div>

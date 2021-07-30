@@ -31,13 +31,6 @@
 
 
 
-
-
-
-
-
-
-
 /* 회원가입의 form */
 #f {
 	width:450px;
@@ -87,22 +80,22 @@ label {
 
 /* 사장님 회원가입의 table영역 */
 #ownerTable {}
-/* 1) 카테고리 분류 */
-#ownerTable tr:nth-child(1) {}
-#ownerTable tr:nth-child(1) td {color:#333; font-weight:500; font-size:14px;}
-/* 2) 카테고리 선택_radio */
-#ownerTable tr:nth-child(2) {height:50px;}
-#ownerTable tr:nth-child(2) td {width:18%;}
-#ownerTable tr:nth-child(2) label {color:#333;}
-/* 3, 4, 5) 이용약관_textarea _전체동의 */
-#ownerTable tr:nth-child(3) {height:355px;}
+/* 1) 이용약관 보기 */
+#ownerTable tr:nth-child(1) td {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    padding-bottom:10px;
+}
+/* 2, 3, 4) 이용약관_textarea _전체동의 */
+#ownerTable tr:nth-child(2) td {padding-bottom:25px;}
+#ownerTable tr:nth-child(2) label,
 #ownerTable tr:nth-child(3) label,
-#ownerTable tr:nth-child(4) label,
-#ownerTable tr:nth-child(5) label {color:#666;}
-#ownerTable tr:nth-child(5)  {height:35px;}
-/* 6) 버튼 */
-#ownerTable tr:nth-child(6)  {}
-#ownerTable tr:nth-child(6) input[value="뒤로가기"]  {
+#ownerTable tr:nth-child(4) label {color:#666;}
+#ownerTable tr:nth-child(4)  {height:35px;}
+/* 5) 버튼 */
+#ownerTable tr:nth-child(5)  {}
+#ownerTable tr:nth-child(5) input[value="뒤로가기"]  {
 	display:flex;
 	margin-right:0;
 }

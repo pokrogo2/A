@@ -144,22 +144,22 @@
 			
 				<h1 class="con_title">회원가입</h1>
 			
-				아이디<br>
+				* 아이디<br>
 				<input type="text" name="id" id="id">
 				<span id="id_result"></span>
 				
-				비밀번호<br>
+				* 비밀번호<br>
 				<input type="password" name="pw" id="pw">
 				<span id="pw_result"></span>
 				
-				비밀번호 확인<br>
+				* 비밀번호 확인<br>
 				<input type="password" name="pw2" id="pw2">
 				<span id="pw2_result"></span>
 				
 				이름<br>
 				<input type="text" name="name" id="name">
 				
-				이메일<br>
+				* 이메일<br>
 				<input type="text" name="email" id="email">
 				<input type="button" value="인증번호받기" id="verify_num_btn">
 				<input type="text" name="user_key" id="user_key">

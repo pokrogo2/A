@@ -66,7 +66,7 @@
 					$('<tr>')
 					.append( $('<td>').text(fBoard.rn) )
 					.append( $('<td>').text(fBoard.writer) )
-					.append( $('<td>').html('<a href="fBoardView.do?no='+fBoard.no+'&loginUser=${loginUser.memberId&loginOwer=${loginOwner.ownerNo}}">'+fBoard.title+'</a>') )
+					.append( $('<td>').html('<a href="fBoardView.do?no='+fBoard.no+'&loginUser=${loginUser.memberId}">'+fBoard.title+'</a>') )
 					.append( $('<td>').text(fBoard.hit) )
 					.append( $('<td>').text(fn_getDate(fBoard.lastdate)) )
 					.appendTo('#fBoard_list');
@@ -75,7 +75,7 @@
 					$('<tr>')
 					.append( $('<td>').text(fBoard.rn) )
 					.append( $('<td>').html('<span class="type event">'+fBoard.contentType+'</span>') )							
-					.append( $('<td>').html('<a href="fBoardView.do?no='+fBoard.no+'&loginUser=${loginUser.memberId}&loginOwer=${loginOwner.ownerNo}">'+fBoard.title+'</a>') )
+					.append( $('<td>').html('<a href="fBoardView.do?no='+fBoard.no+'&loginUser=${loginOnwer.ownerNo}">'+fBoard.title+'</a>') )
 					.append( $('<td>').text(fBoard.hit) )
 					.append( $('<td>').text(fBoard.lastdate) )
 					.appendTo('#fBoard_list');
@@ -84,7 +84,7 @@
 					$('<tr>')
 					.append( $('<td>').text(fBoard.rn) )
 					.append( $('<td>').html('<span class="type promotion">'+fBoard.contentType+'</span>') )							
-					.append( $('<td>').html('<a href="fBoardView.do?no='+fBoard.no+'&loginUser=${loginUser.memberId&loginOwer=${loginOwner.ownerNo}}">'+fBoard.title+'</a>') )
+					.append( $('<td>').html('<a href="fBoardView.do?no='+fBoard.no+'&loginUser=${loginOnwer.ownerNo}">'+fBoard.title+'</a>') )
 					.append( $('<td>').text(fBoard.hit) )
 					.append( $('<td>').text(fBoard.lastdate) )
 					.appendTo('#fBoard_list');
@@ -242,7 +242,7 @@
 		
 		<h1 class="con_title">자유게시판</h1>
 		
-		<c:if test="${not empty loginUser || not emypty loginOwner}">
+		<c:if test="${not empty loginUser || not empty loginOwner}">
 			<input type="button" value="글 작성" onclick="location.href='fBoardInsertPage.do'" >		
 		</c:if>
 

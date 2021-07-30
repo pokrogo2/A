@@ -93,12 +93,14 @@
 		<h1 class="con_title">로그인</h1>
 		
 		<form id="f" method="post">
-		
-			<input type="radio" name="tap" value="lginUser" id="lginUser" checked>
-			<label for="lginUser" id="tap1" class="tap_click">회원</label>
-			<input type="radio" name="tap" value="lginOwner" id="lginOwner">
-			<label for="lginOwner" id="tap2">사장님</label>
-		
+			
+			<div id="loginTap">
+				<input type="radio" name="tap" value="loginUser" id="loginUser" checked>
+				<label for="loginUser" id="tap1" class="tap_click">회원</label>
+				<input type="radio" name="tap" value="loginOwner" id="loginOwner">
+				<label for="loginOwner" id="tap2">사장님</label>
+			</div>
+			
 			<div id="user">
 				아이디<br>
 				<input type="text" name="id" id="id" placeholder="ID">
@@ -106,7 +108,7 @@
 				<input type="password" name="pw" id="pw" placeholder="PassWord">
 				<button>로그인</button>
 				<div class="subLink">
-					<a href="joinPage.do">회원가입</a>
+					<a href="userJoinPage.do">회원가입</a>
 					<span>|</span>
 					<a href="findIdPage.do">아이디찾기</a>
 					<span>|</span>
@@ -116,9 +118,9 @@
 			
 			<div id="owner" class="none">
 				사업자번호<br>
-				<input type="text" name="no" id="no">
+				<input type="text" name="no" id="no" placeholder="OwnerNo">
 				비밀번호<br>
-				<input type="password" name="pw" id="pw">
+				<input type="password" name="pw" id="pw" placeholder="PassWord">
 				<button>로그인</button>
 				<div class="subLink">
 					<a href="ownerJoinPage.do">회원가입</a>

@@ -16,10 +16,30 @@
 	color:#aaa;
 }
 
-#f button {margin-top:30px; margin-bottom:10px;}  /* 로그인 버튼 */
+#f button {margin-top:35px; margin-bottom:10px;}  /* 로그인 버튼 */
 #f input {border-color:#bf3a3e;} /* 로그인에 필요한 id, pw */
+#f input[type="radio"] {display:none;}
 
 
+/* 로그인 탭 : radio */
+.tap_click {
+	background-color:#bf3a3e;
+	color:#f8eae1;
+}
+#loginTap {
+	width:100%;
+	border-bottom:4px solid #bf3a3e;
+	margin-top:35px;
+	margin-bottom:65px;
+}
+#loginTap label {
+	display:inline-block;
+	width:223px;
+	height:55px;
+	line-height:55px;
+	text-align:center;
+	font-size:18px;
+}
 /* 로그인 버튼 하단의 a 태그를 담고 있는 div */
 .subLink { 
 	text-align:center;

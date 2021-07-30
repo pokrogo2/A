@@ -103,7 +103,6 @@
 				<form id="f2" method="post">
 					<table>
 						<tbody>
-					
 							<tr>
 								<td>아이디</td>
 								<td><input type="text" name="id" id="id" value="${loginUser.memberId}" readonly></td>

@@ -121,6 +121,9 @@
 				} else if ( !authPass ) {
 					alert('이메일 인증을 받아야 합니다.');
 					return false;
+				} else if($('#chk').is(':checked')==false){
+		               alert('정보수집에 동의하셔야합니다.');
+		               return false;
 				} else {
 					$('#f').attr('action', 'join.do');
 					$('#f').submit();

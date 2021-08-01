@@ -9,6 +9,7 @@ import com.koreait.a.command.store.SearchLineUpCommand;
 import com.koreait.a.command.store.SearchQueryCommand;
 import com.koreait.a.command.store.StoreDeleteCommand;
 import com.koreait.a.command.store.StoreInsertCommand;
+import com.koreait.a.command.store.StoreListAllCommand;
 import com.koreait.a.command.store.StoreListCommand;
 import com.koreait.a.command.store.StoreUpdateCommand;
 import com.koreait.a.command.store.StoreViewCommand;
@@ -59,7 +60,10 @@ public class StoreConfig {
 		return new StoreDeleteCommand();
 	}
 	
-	
+	@Bean
+	public StoreListAllCommand storeListAllCommand() {
+		return new StoreListAllCommand();
+	}
 	
 	
 

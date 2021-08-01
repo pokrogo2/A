@@ -23,9 +23,20 @@ public interface StoreDAO {
 	// 가게 목록 전체 개수
 	public int storeTotalCount();
 	
-	// 가게 등록
-	public int storeInsert(StoreDTO storeDTO);
 	
+	
+	// 카테고리 가게 목록
+	public List<StoreDTO> storeCateTotalCount(StoreQueryDTO queryDTO);
+	
+	// 카테고리 가게 목록 전체 개수
+	public int storeCateTotalCount(String storyCategory);
+	
+	
+	
+	// 가게 등록
+	
+	public int storeInsert(StoreDTO storeDTO);
+	 
 	// 가게 내용 보기
 	public StoreDTO storeView(long storeNo);
 	

@@ -219,7 +219,7 @@
 		
 		<div id="insertStoreList">
 			<h1>신규 등록한 음식점</h1>
-			<a href="#">더보기 +</a>
+			<a href="storeAllList.do?storeCategory=All">더보기 +</a>
 			<%--  신규 음식점 STORE 리스트 --%>
 			<div id="list"></div>
 		</div> <!-- insertStoreList -->

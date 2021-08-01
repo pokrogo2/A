@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<% request.setCharacterEncoding("UTF-8"); %>
 
 <!-- Header -->
 <jsp:include page="../layout/header.jsp">
@@ -17,6 +16,7 @@
 	$(document).ready(function(){
 		fn_search();
 		fn_autoSearch();
+		fn_storeNav();
 		// fn_searchLineUp();
 	});
 
@@ -60,6 +60,16 @@
 		}
 
 	
+		// 네비게이션 클릭 시, 해당 메뉴 체크
+	function fn_storeNav() {
+		<% 
+			request.setCharacterEncoding("UTF-8");
+			String storeCategory = request.getParameter("storeCategory");
+			String findA = "#" + storeCategory;
+		%>
+		var nav = '<%= findA %>';
+		$(nav).addClass('navClick');
+	}
 	
 	
 

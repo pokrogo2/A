@@ -26,6 +26,7 @@ import com.koreait.a.command.store.SearchLineUpCommand;
 import com.koreait.a.command.store.SearchQueryCommand;
 import com.koreait.a.command.store.StoreDeleteCommand;
 import com.koreait.a.command.store.StoreInsertCommand;
+import com.koreait.a.command.store.StoreListAllCommand;
 import com.koreait.a.command.store.StoreListCommand;
 import com.koreait.a.command.store.StoreUpdateCommand;
 import com.koreait.a.command.store.StoreViewCommand;
@@ -51,6 +52,8 @@ public class StoreController {
 		private ResInsertCommand resInsertCommand;
 		private ResViewCommand resViewCommand;
 		private ResDeleteCommand resDeleteCommand;
+		
+		private StoreListAllCommand storeListAllCommand;
 
 		// constructor
 		@Autowired
@@ -65,7 +68,8 @@ public class StoreController {
 				  			   SearchLineUpCommand searchLineUpCommand,
 				  			   ResInsertCommand resInsertCommand,
 				  			   ResViewCommand resViewCommand,
-				  			   ResDeleteCommand resDeleteCommand) {
+				  			   ResDeleteCommand resDeleteCommand,
+				  			   StoreListAllCommand storeListAllCommand) {
 			super();
 			this.sqlSession = sqlSession;
 			this.storeInsertCommand = storeInsertCommand;
@@ -79,6 +83,7 @@ public class StoreController {
 			this.resInsertCommand = resInsertCommand;
 			this.resViewCommand = resViewCommand;
 			this.resDeleteCommand = resDeleteCommand;
+			this.storeListAllCommand = storeListAllCommand;
 		}
 		
 		
@@ -113,7 +118,13 @@ public class StoreController {
 			storeListCommand.execute(sqlSession, model);
 			return "store/storeList";
 		} 
-		
+		// 가게 전체 리스트 
+		@GetMapping(value="storeAllList.do")
+		public String storeAllList(HttpServletRequest request, Model model) {
+			model.addAttribute("request", request);
+			storeListAllCommand.execute(sqlSession, model);
+			return "store/storeList";
+		} 
 		
 		
 		// 가게 검색

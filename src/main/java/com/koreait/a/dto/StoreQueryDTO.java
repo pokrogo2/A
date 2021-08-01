@@ -5,6 +5,7 @@ public class StoreQueryDTO {
 	private String column;
 	private String query;
 	private String searchLineUp;
+	private String storeCategory;
 	private int beginRecord;
 	private int endRecord;
 	
@@ -38,6 +39,12 @@ public class StoreQueryDTO {
 	}
 	public void setEndRecord(int endRecord) {
 		this.endRecord = endRecord;
+	}
+	public String getStoreCategory() {
+		return storeCategory;
+	}
+	public void setStoreCategory(String storeCategory) {
+		this.storeCategory = storeCategory;
 	}
 	
 	

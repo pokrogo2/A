@@ -41,12 +41,9 @@ public interface StoreDAO {
 	// 가게 검색2
 	public List<StoreDTO> autoComplete(StoreQueryDTO queryDTO);
 	
-	
-	// 조회순, 등록순 가게 검색
-	public List<StoreDTO> searchLineUp(StoreQueryDTO queryDTO);
-	public int searchLineUpRecord(StoreQueryDTO queryDTO);
+	// 조회순, 등록순 검색
+	public List<StoreDTO> searchOrder(StoreQueryDTO queryDTO);
 
-	
 	
 	
 }

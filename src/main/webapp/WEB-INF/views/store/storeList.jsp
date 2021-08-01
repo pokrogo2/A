@@ -17,7 +17,7 @@
 	$(document).ready(function(){
 		fn_search();
 		fn_autoSearch();
-		// fn_searchLineUp();
+		fn_searchOrder();
 	});
 
 	
@@ -29,6 +29,14 @@
 		});
 	}
 	
+	
+	// 조회순, 등록순 검색 
+	function fn_searchOrder() {
+		$('input:radio[name=searchOrder]').on('change', function(){	
+			$('#f2').attr('action', 'searchOrder.do');
+			$('#f2').submit();
+		});
+	}
 	
 	/* 검색 결과 불러오기 */
 	function fn_autoSearch(){
@@ -60,8 +68,6 @@
 		}
 
 	
-	
-	
 
 </script>
 
@@ -79,41 +85,23 @@
 			<!-- 자동 완성 검색 -->
 			<input list="autoSearch" type="text" name="query" id="query">
 			<datalist id="autoSearch">
-			</datalist>
-			 
+			</datalist>			 
 			 
 			<input type="button" value="검색" id="search_btn" class="search_btn">						
 		
 		</div>
 		
-		<!-- 
-		<div id="searchLineUp" class="search_box">
-			<input type="radio" name="searchLineUp" value="조회순" id="s1"> 
-			<label for=s1>조회순</label>
-			<input type="radio" name="searchLineUp" value="등록순" id="s2"> 
-			<label for=s2>등록순</label>		
-		</div>
-		 -->
-		
-		
-		<div id="lineUp" class="search_box">	
-			<select id="searchLineUp" name="lineUp">
-				 
-				 <!--  리뷰별: 보류 
-					<option value="review">리뷰별(평점순)</option> 
-				-->
-				 
-				 <!--  
-				<option value="orderByHit">조회순</option>
-				<option value="orderByPost">등록순</option>
-				-->
-			</select>	 	
-		</div>
-	
-		
-
 	</form>
-
+	
+	<form id="f2" method="post">
+		<!-- 조회순, 등록순 검색 -->
+			<div id="searchOrder" class="searchOrder_box">
+				<input type="radio" name="searchOrder" value="storeHit" id="s1"> 
+				<label for=s1>조회순</label>
+				<input type="radio" name="searchOrder" value="storeNo" id="s2"> 
+				<label for=s2>등록순</label>		
+			</div>
+	</form>
 	
 <!-- 가게 리스트 -->
 	<form>
@@ -123,10 +111,6 @@
 				<th>No.</th>
 				<th>썸네일</th>
 				<th>상호명</th>	
-				
-				<!--  ** 평점: 보류   -->
-				<!--  <th>평점</th> -->
-				
 				<th>조회수</th>
 			</tr>	
 		</thead>

@@ -56,13 +56,13 @@
 					<a href="memberMyPage.do">마이페이지</a>
 				</c:if>
 				<!-- 가게 사장님 로그인 시 -->
-				<c:if test="${not empty ownerUser}">
+				<c:if test="${not empty loginOwner}">
 					<a href="ownerLogout.do">로그아웃</a>
                     <span>|</span>
 					<a href="storeInsertPage.do" id="store_insert_btn">가게 등록</a>
 				</c:if>
 				<br><br>
-				<c:if test="${empty loginOwner }">
+				<c:if test="${empty loginOwner}">
 					<a href="ownerLoginPage.do">사장로그인</a>
 					<span>|</span>
 					<a href="ownerJoinPage.do">사장회원가입</a>
@@ -86,7 +86,7 @@
 			
 		<div id="sideFix">
 			<div> <a href="noticePage.do"> <i class="fas fa-exclamation"></i> </a></div>
-			<div> <a href="#"> <i class="far fa-comments"></i> </a> </div>
+			<div> <a href="qnaBoardPage.do"> <i class="far fa-comments"></i> </a> </div>
 			<div> <a href="index.do"> <i class="fas fa-search"></i> </a> </div>
 		</div>
 	</header>

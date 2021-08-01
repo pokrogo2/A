@@ -209,28 +209,7 @@
 				<br><br>
 				
 				<table>
-					<tbody>				
-						<tr>
-							<td>카테고리 분류</td>
-							<td>
-								<input type="radio" name="category" id="korea" checked/>한식
-							</td>
-							<td>
-								<input type="radio" name="category" id="west"/>양식
-							</td>
-							<td>
-								<input type="radio" name="category" id="japan"/>일식
-							</td>
-							<td>
-								<input type="radio" name="category" id="china"/>중식
-							</td>
-							<td>
-								<input type="radio" name="category" id="archol"/>술집
-							</td>
-							<td>
-								<input type="radio" name="category" id="cafe"/>카페
-							</td>
-						</tr>					
+					<tbody>						
 						<tr>						
 							<td>
 								<input type="checkbox" name="chk" value="chk1">이용약관1 동의

@@ -82,7 +82,7 @@
 				<select id="resDate" name="resDate">
 					<option value="날짜">날짜</option>
 					<% for(int i = 1; i < 32; i++){  %>
-					<option value="<%=i%>"><%="2021년 08월"+i+"일"%></option> 
+					<option value="<%=i%>"><%="2021년 8월"+i+"일"%></option> 
 					<%} %>
 				</select>
 			</div>

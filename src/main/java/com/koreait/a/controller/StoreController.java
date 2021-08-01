@@ -1,13 +1,10 @@
 package com.koreait.a.controller;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -75,10 +72,10 @@ public class StoreController {
 			this.storeDeleteCommand = storeDeleteCommand;
 			this.autoSearchCommand = autoSearchCommand;
 			this.searchQueryCommand = searchQueryCommand;
-			this.searchOrderCommand = searchOrderCommand;
 			this.resInsertCommand = resInsertCommand;
 			this.resViewCommand = resViewCommand;
 			this.resDeleteCommand = resDeleteCommand;
+			this.searchOrderCommand = searchOrderCommand;
 		}
 		
 		
@@ -133,18 +130,13 @@ public class StoreController {
 			return "store/storeList";
 		}
 		
-		// 조회수, 등록순 가게 검색
-		@PostMapping(value="searchOrder.do", produces="application/json; charset=UTF-8")
-		@ResponseBody
-		public Map<String, Object> searchLineUp(HttpServletRequest request, 
-												HttpServletResponse response,
-												Model model) {
+		// 조회순, 등록순 검색
+		@PostMapping(value = "searchOrder.do")
+		public String searchOrder(HttpServletRequest request, Model model) {
 			model.addAttribute("request", request);
-			model.addAttribute("response", response);
-			return searchOrderCommand.execute(sqlSession, model);
+			searchOrderCommand.execute(sqlSession, model);
+			return "store/storeList";
 		}
-		
-		
 		
 		
 		// 가게 view 

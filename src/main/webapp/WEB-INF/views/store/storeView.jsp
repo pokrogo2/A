@@ -75,11 +75,14 @@
 		<form id="f" method="post" enctype="multipart/form-data">
 			<div class="btns">
 				<div>
-				
-						<input type="button" value="수정하기" id="update_btn" class="update_btn">
-						<input type="button" value="삭제하기" id="delete_btn" class="delete_btn">
+						<c:if test="${loginOwner.ownerNo == store.ownerNo}">
+							<input type="button" value="수정하기" id="update_btn" class="update_btn">
+							<input type="button" value="삭제하기" id="delete_btn" class="delete_btn">
+						</c:if>
 						
 						<input type="hidden" name="storeNo" value="${store.storeNo}">
+					
+						
 					
 						<input type="hidden" name="originFilename" value="${store.originFilename}">
 						<input type="hidden" name="saveFilename" value="${store.saveFilename}">
@@ -92,35 +95,37 @@
 		<div class="store_name">${store.storeName}</div>
 		<div>평점: ★★★★☆</div>
 		
-		 
 			<div class="store_image">
 				<img alt="${store.originFilename}" src="resources/archive/${store.saveFilename}" style="width: 450px;">
 			</div>
 			
-		
-		
 			<div class="store_btns">
 		
 				<input type="button" value="가게 목록보기" id="storeList_btn" class="storeList_btn">
 				
-				<!-- 로그인 했을 경우에만 보이는 예약 활성화 버튼 -->
-				<c:if test="${not empty loginUser}">
-					<input type="button" value="예약하기" id="storeRes_btn"  name="storeRes_btn" class="storeRes_btn">  
-				</c:if>
 				
-				<c:if test="${empty loginUser}">
+		<!-- 로그인User에 따라서 예약버튼 활성화가 달라짐 -->
+			<c:choose>
+				<c:when test="${not empty loginUser.memberNo}">
+					<input type="button" value="예약하기" id="storeRes_btn"  name="storeRes_btn" class="storeRes_btn">  
+				</c:when>
+				<c:when test="${empty loginUser && empty loginOwner}">
 					<input type="button" value="예약하기" id="storeRes_btn2" name="storeRes_btn2" class="storeRes_btn">
-				</c:if>
-			</div>
-		
-		
+				</c:when>
+				<c:otherwise>
+					<span></span>
+				</c:otherwise>							
+			</c:choose>		
+		</div>
+	
+	
 		<ul>
 			<li><a href="#">홈</a></li>
 			<li><a href="#">메뉴</a></li>
 			<li><a href="#">리뷰</a></li>
 			<li><a href="#">사진</a></li>
 		</ul>
-		
+	
 		<div class="store_section">
 			<input type="hidden" name="storeNo" value="${store.storeNo}">
 			<input type="hidden" name="storeTable" value="${store.storeTable}">
@@ -134,6 +139,11 @@
 				</span>
 					
 			</div>
+			
+		<!-- 사장님 본인이 등록한 게시글만 수정/삭제 가능-->
+			<c:if test="${loginOwner.ownerNo == store.ownerNo}">
+				<input type="text" value="${loginOwner.ownerNo}" name="ownerNo" id="ownerNo">		
+			</c:if>
 			
 				<ul class="storeView_outer">
 					<li class="storeView_list">

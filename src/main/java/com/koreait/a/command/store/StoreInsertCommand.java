@@ -36,6 +36,7 @@ public class StoreInsertCommand implements StoreCommand {
 		storeDTO.setStoreSns(multipartRequest.getParameter("storeSns"));
 		storeDTO.setStoreCategory(multipartRequest.getParameter("storeCategory"));
 		storeDTO.setStoreMenu(multipartRequest.getParameter("storeMenu"));
+		storeDTO.setOwnerNo(Long.parseLong(multipartRequest.getParameter("ownerNo")));
 	
 		
 		MultipartFile file = multipartRequest.getFile("file");

@@ -39,7 +39,7 @@ public class StoreConfig {
 	}
 	
 	@Bean
-	public SearchOrderCommand searchLineUpCommand() {
+	public SearchOrderCommand searchOrderCommand() {
 		return new SearchOrderCommand();
 	}
 	

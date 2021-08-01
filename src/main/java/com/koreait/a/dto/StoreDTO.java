@@ -19,6 +19,7 @@ public class StoreDTO {
 			private String originFilename;
 			private String saveFilename;
 			private int storeHit;
+			private long ownerNo;
 
 			
 			// getter, setter
@@ -112,10 +113,13 @@ public class StoreDTO {
 			public void setStoreHit(int storeHit) {
 				this.storeHit = storeHit;
 			}
-			
-			
-			
+			public long getOwnerNo() {
+				return ownerNo;
+			}
+			public void setOwnerNo(long ownerNo) {
+				this.ownerNo = ownerNo;
+			}
 
-
+	
 			
 	}

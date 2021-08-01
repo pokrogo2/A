@@ -95,13 +95,13 @@
 			
 			<table>
 				<tbody>
-					<!--
+					
 						<tr>
 							<td>사업주명</td>
-							<td><input type="text" value="${owner.name}" id="owener_name" name="owener_name" class="int" readonly><br></td>
+							<td><input type="text" value="${loginOwner.ownerName}" id="ownerName" name="ownerName" class="int" readonly><br></td>
+							<td><input type="hidden" value="${loginOwner.ownerNo}" id="ownerNo" name="ownerNo" class="int"><br></td>
 						<tr>
-					-->
-					 
+					
 					
 					<tr>
 						<td>상호명 *</td>

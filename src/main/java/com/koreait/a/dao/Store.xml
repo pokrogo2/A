@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO STOREREG
 		VALUES (STOREREG_SEQ.NEXTVAL, #{storeName}, #{storeContent}, #{storeTable}, #{storeTel}, 
 				#{storeAddr1}, #{storeAddr2}, #{storeAddr3},
-			    #{storeTime}, #{storeSns}, #{storeCategory}, #{storeMenu}, #{originFilename}, #{saveFilename}, 0, 0)	
+			    #{storeTime}, #{storeSns}, #{storeCategory}, #{storeMenu}, #{originFilename}, #{saveFilename}, 0, 0, #{ownerNo})	
 	</insert>
 	
 	<!-- 전체 가게 등록 개수 -->
@@ -50,7 +50,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		          FROM (SELECT *
 		                  FROM STOREREG
 		                 WHERE STATUS = 0
-		                 ORDER BY STORENO DESC) A) B
+		                 ORDER BY STORENO DESC
+		                 ) A) B
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	
+	</select>
+	
+	<!-- 조회순, 등록순 검색 -->
+	<select id="searchOrder" resultType="com.koreait.a.dto.StoreDTO">
+		SELECT B.*
+		  FROM (SELECT ROWNUM AS RN, A.*
+		          FROM (SELECT *
+		                  FROM STOREREG
+		                 WHERE STATUS = 0	    
+		                 <if test="searchOrder == storeHit">
+	    		  		  	ORDER BY STOREHIT DESC 
+	    		  		 </if>
+	    		  		 <if test="searchOrder == storeNo">
+	    		  		  	ORDER BY STORENO ASC
+	    		  		 </if> 
+	    		  		 ) A) B
 		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
 	
 	</select>
@@ -81,43 +100,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  		  FROM (SELECT STORENO, STORENAME, STORECONTENT, STORETABLE,
 		  		  			   STORETEL, STOREADDR1, STOREADDR2, STOREADDR3, STORETIME, STORESNS,
 		  		  			   STORECATEGORY, STOREMENU, ORIGINFILENAME, SAVEFILENAME,
-		  		  			   STOREHIT
+		  		  			   STOREHIT,OWNERNO
 	    		  		  FROM STOREREG
 	    		  		 WHERE STATUS = 0
 		  		  		   AND ${column} LIKE '%' || #{query} || '%'
-		  		  		 ORDER BY STORENO) A) B
+		  		  		 ORDER BY STORENO
+		  		  		 ) A) B
 	</select>
 	
-	
-	<!-- 조회순, 등록순 가게 검색 -->
-	<select id="searchOrder" resultType="com.koreait.a.dto.StoreDTO">
-		SELECT B.*
-		  FROM (SELECT ROWNUM AS RN, A.*
-		  		  FROM (SELECT STORENO, STORENAME, STORECONTENT, STORETABLE,
-		  		  			   STORETEL, STOREADDR1, STOREADDR2, STOREADDR3, STORETIME, STORESNS,
-		  		  			   STORECATEGORY, STOREMENU, ORIGINFILENAME, SAVEFILENAME,
-		  		  			   STOREHIT
-	    		  		  FROM STOREREG
-	    		  		  <if test="searchOrder == orderByHit">
-	    		  		  	ORDER BY STOREHIT ASC 
-	    		  		  </if>
-	    		  		  <if test="searchOrder == orderByPost">
-	    		  		  	ORDER BY STORENO DESC
-	    		  		  </if> ) A) B
-		 				  WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
-	</select>
-	
-	<!-- 조회순, 등록순 가게 검색 개수 -->
-	<select id="searchOrderRecord" resultType="int">
-		SELECT COUNT(STORENO)
-		  FROM STOREREG
-	</select>
-	
-
 	<!-- 가게 목록 내용 보기 -->
 	<select id="storeView" resultType="com.koreait.a.dto.StoreDTO">
 		SELECT STORENO, STORENAME, STORECONTENT, STORETABLE, STORETEL, STOREADDR1, STOREADDR2, STOREADDR3,
-		       STORETIME, STORESNS, STORECATEGORY, STOREMENU, ORIGINFILENAME, SAVEFILENAME, STOREHIT
+		       STORETIME, STORESNS, STORECATEGORY, STOREMENU, ORIGINFILENAME, SAVEFILENAME, STOREHIT, OWNERNO
 	      FROM STOREREG
 	     WHERE STORENO = #{storeNo}
 	</select>

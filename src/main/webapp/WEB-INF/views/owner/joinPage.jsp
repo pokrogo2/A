@@ -14,7 +14,7 @@
 			fn_pwCheck();
 			fn_pwCheck2();
 			fn_verify_num();
-			//fn_checkAll(checkAll);
+			// fn_checkAll(checkAll);
 			fn_join();
 		});
 		// 사업자 번호 조회

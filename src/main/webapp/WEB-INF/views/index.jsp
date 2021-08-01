@@ -26,7 +26,7 @@
 			$.ajax({
 				url: 'storeExist.do',
 				type: 'post',
-				data: 'ownerNo=${ownerUser.ownerNo}',
+				data: 'ownerNo=${loginOwner.ownerNo}',
 				dataType: 'json',
 				success: function(resultMap) {
 					$('#storeBann').attr('href', resultMap.view);
@@ -200,7 +200,7 @@
 		
 		
 		<!-- 가게관리 배너 : ownerUser확인 -->
-		<c:if test="${not empty ownerUser}">
+		<c:if test="${not empty loginOwner}">
 			<div class="storebannBox">
 				<a id="storeBann"><img alt="banner1" src="resources/asset/img/mainBanner1.png"></a>
 			</div>
@@ -212,7 +212,7 @@
 			<h1>음식점을 추천해 드려요!</h1>
 			<div id="storeBox"></div> <!-- 추천 음식점 2box -->
 			<div id="return">
-				<a href="index.do">새로운 추천 보기<i class="fas fa-undo-alt"></i></a>
+				<a href="index.do#mainSearch">새로운 추천 보기<i class="fas fa-undo-alt"></i></a>
 			</div>
 		</div> <!-- recommandStore -->
 		
@@ -220,7 +220,7 @@
 		<div id="insertStoreList">
 			<h1>신규 등록한 음식점</h1>
 			<a href="#">더보기 +</a>
-			<%--  신규 음식점 STORE의 DB완료후 작성 --%>
+			<%--  신규 음식점 STORE 리스트 --%>
 			<div id="list"></div>
 		</div> <!-- insertStoreList -->
 			

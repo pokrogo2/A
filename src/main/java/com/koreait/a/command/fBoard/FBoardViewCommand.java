@@ -30,7 +30,9 @@ public class FBoardViewCommand implements FBoardCommand {
 		if(fBoard.getWriter() != loginUser) {
 			int count = fBoardDAO.fBoardHitUp(no);
 			fBoard.setHit(fBoard.getHit() + 1);
-		}
+		} 
+		
+		
 		
 		response.setContentType("html/text; charset=UTF-8"); 
 		try {

@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
            AND STOREADDR1 = #{zone}
            <if test="local != ''">AND STOREADDR2 = #{local}</if>
            <if test="catg != ''">AND STORECATEGORY = #{catg}</if>
-           <if test="query != ''">AND STORENAME = #{query}</if>
+           <if test="query != ''">AND STORENAME LIKE '%' || #{query} || '%'</if>
 	</select>
 	<!-- 음식점 검색 -->
 	<select id="searchStore" resultType="com.koreait.a.dto.StoreDTO">

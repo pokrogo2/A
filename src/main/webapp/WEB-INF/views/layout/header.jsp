@@ -61,6 +61,7 @@
                     <span>|</span>
 					<a href="storeInsertPage.do" id="store_insert_btn">가게 등록</a>
 				</c:if>
+
 				<br><br>
 				<c:if test="${empty loginOwner}">
 					<a href="ownerLoginPage.do">사장로그인</a>
@@ -71,6 +72,7 @@
                     <a href="ownerLogout.do">로그아웃</a>
                     <span>|</span>
 				</c:if>
+
 			</span>
 		</div>
 		<div id="catgNav" class="upDownBorder">

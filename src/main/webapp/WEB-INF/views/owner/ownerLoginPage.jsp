@@ -19,12 +19,22 @@
 					event.preventDefault();
 					return false;
 				}
+				if ($('#id').val() == '' || $('#pw').val() == '') {
+					alert('아이디와 비밀번호는 필수입니다.');
+					event.preventDefault();
+					return false;
+				}
 			})
 		}
 		function fn_delete(){
 			$('#delete_link').click(function() {
 				if(confirm('탈퇴하시겠습니까?')){
 					location.href = 'ownerDelete.do';
+				}
+			})
+			$('#leave_link').click(function(){
+				if (confirm('탈퇴할까요?')){
+					location.href = 'deleteMember.do';
 				}
 			})
 		}

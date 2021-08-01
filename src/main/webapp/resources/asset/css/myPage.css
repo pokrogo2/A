@@ -9,6 +9,7 @@
 
 .myPage_box {margin-top:50px;}
 
+/* 좌측의 메뉴 */
 .left {
 	width:20%; 
 	margin-right:50px;
@@ -20,19 +21,25 @@
 	border-bottom:1px solid #ddd;
 	display:block;
 }
-
 .left a:nth-child(1) {padding-top:0;}
 .left a:hover {color:#bf3a3e; font-weight:600;}
 
-
-
+/* 우측의 내용 Box */
 .right {width:75%;}
-h2 {font-size:25px;}
+h2 {font-size:25px; font-weight:500;}
 h3 {font-size:20px;}
+
+.noList {font-size:18px;}
+
 /* 예약 현황 */
-#reservation_status {margin-bottom:100px;}
-#reservation_status a {margin:0;}
-#reservation_status img {width:150px; height:150px;}
+#reservation_status {margin-top:15px;}
+#reservation_status h4 {
+	border-bottom:1px solid #ddd;
+	padding: 20px 0;
+}
+#reservation_status a {margin:0;} 
+#reservation_status #resImg {width:150px; height:150px; overflow:hidden;} 
+#reservation_status img {height:150px;}
 #reservation_status .con {
 	display:flex; 
 	padding:20px 0;
@@ -52,30 +59,11 @@ h3 {font-size:20px;}
 }
 
 
-
-
-/* 예약 내역 */
-#reservation_history_review {margin-bottom:100px;}
-
-#reservation_history_review #history_list {
-	display:flex;
-}
-#history_list .con {
-	margin:0 50px 20px 0;
-	padding:20px 0;
-}
-#history_list .con:nth-child(3) {margin-right:0;}
-#history_list img {width:215px; height:215px;}
-#history_list h3 {padding:5px 0;}
-#history_list p {}
-
-#reservation_history_review #reservation_history_paging {}
-
 /* 리뷰작성 */
-#reservation_history_review #insert_review {
+#insert_review {
 	padding:30px 0;
-	border-top:1px solid #ddd;
 	border-bottom:1px solid #ddd;
+	margin-bottom:100px;
 }
 #insert_review #grade {margin:20px 0 20px 0;}
 #grade .grade_span {padding-left:5px;}
@@ -101,7 +89,7 @@ h3 {font-size:20px;}
 }
 #insert_review #f input[type="file"] {border:none;}
 #insert_review #f button {
-	padding: 5px 95px;
+	padding: 5px 120px;
 	float:right;
 	background-color:#bf3a3e; 
 	color:#f8eae1;
@@ -119,27 +107,48 @@ h3 {font-size:20px;}
 	border-bottom:1px solid #666;
 }
 #review_history h2 {margin-bottom:20px;}
-#review_history .review > h3 {margin:0 16px; margin-top:10px;}
+#review_history .review > h3 {margin:0 16px;}
 #review_history .review .box {margin:0;}
 
-#review_history .review #box1 {margin-right:20px;}
-#review_history .review #box1 h3 {padding-bottom:10px;}
-#review_history .review #box1 span {color:#333; padding-left:5px; font-size:18px; font-weight:500;}
-#review_history .review #box1 img {width:180px; height:180px;}
+#review_history .review .box1 {margin-right:20px;}
+#review_history .review .box1 h3 {
+	position:absolute;
+	width:100%;
+	padding-bottom:10px;
+	font-weight:400;
+}
+#review_history .review .box1 span {
+	color:#bf3a3e; 
+	padding-right:5px; 
+	font-size:18px; 
+	font-weight:600;
+}
+#review_history .review .box1 a {
+	display:inline-block; 
+	width:180px; 
+	height:180px; 
+	overflow:hidden;
+	margin-top: 40px;
+}
+#review_history .review .box1 img {height:180px;}
 
-#review_history .review #box2 {
+#review_history .review .box2 {
 	width:48%;
 	margin-right:20px;
 	margin-top:30px;
 }
 
-#review_history .review #box3 {padding-top:100px;}
-#review_history .review #box3 input {
+#review_history .review .box3 {padding-top:100px;}
+#review_history .review .box3 input {
 	cursor:pointer;
 	padding:0 20px; 
 	margin-top:10px; 
 }
-input[value="리뷰 수정"], input[value="리뷰 삭제"]:hover {background-color:black; color:white;}
+input[value="리뷰 수정"], 
+input[value="리뷰 삭제"]:hover {
+	background-color:#bf3a3e; 
+	color:#f8eae1;
+}
 
 #review_grade {margin-bottom:8px;}
 #review_grade p {
@@ -148,8 +157,16 @@ input[value="리뷰 수정"], input[value="리뷰 삭제"]:hover {background-col
 	font-size:20px;
 }
 #review_grade span {line-height:30px;}
-#review_text {height:50px;}
-#review_img img {width:100px; height:100px; margin-right:10px;}
+#review_text {
+	display:block;
+	widht:360px;
+	height:150px;
+}
+#review_img img {
+	width:100px; 
+	height:100px; 
+	margin-right:10px;
+}
 
 
 
@@ -174,9 +191,10 @@ input[value="리뷰 수정"], input[value="리뷰 삭제"]:hover {background-col
 #question_history td:nth-child(4) {width:150px;}
 
 #question_history a {
-	text-decoration:underline; 
-	color:#bf3a3e;
 	font-weight:400;
+}
+#question_history a:hover {
+	color:#bf3a3e;
 }
 #question_history p {
 	padding:5px;
@@ -195,6 +213,7 @@ input[value="리뷰 수정"], input[value="리뷰 삭제"]:hover {background-col
 #f2 {}
 table {width:100%; margin-left:20px;}
 tr {height:80px;}
+tr:nth-child(10) {height:50px;}
 td {}
 td:nth-child(1) {width:22%; color:#888;}
 td:nth-child(2) {width:78%;}
@@ -212,9 +231,21 @@ td:nth-child(2) {width:78%;}
 	font-size:14px;
 	paddig-top:5px;
 }
+#leave_link {
+	padding: 9px 30px;
+	border-radius:100px;
+	border: 1px solid #bf3a3e;
+	color:#bf3a3e;
+	cursor:pointer;
+}
+#leave_link:hover {
+	border:none;
+	background-color:#3e1211; 
+	color:#f8eae1;
+}
 
 
-/* 수정 버튼을 감싸고 있느 td 태그 */
+/* 수정 버튼을 감싸고 있는 td 태그 */
 .bottomBtn {text-align:right;} 
 input[value="개인정보 수정하기"] {
 	padding: 0;

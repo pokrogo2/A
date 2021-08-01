@@ -170,72 +170,74 @@
 <body>
 	<jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 	
+	<link rel="stylesheet" href="resources/asset/css/writeForm.css">
+	<link rel="stylesheet" href="resources/asset/css/joinPage.css">
+	
 	<section>
 		<div class="container">
 			<form id="f" method="post">
-				<h2>사장님 회원가입</h2>
+			
+				<h1 class="con_title">사장님 회원가입</h1>
 				
-				사업자번호<br>
+				* 사업자번호<br>
 				<input type="text" name="no" id="no">
 				<!--<input type="button" value="조회하기" id="no_btn">  조회하기 버튼-->
 				<span id="no_result"></span>
-				<br><br>
 				
-				비밀번호<br>
+				* 비밀번호<br>
 				<input type="password" name="pw" id="pw">
-				<span id="pw_result"></span><br><br>
+				<span id="pw_result"></span>
 				
-				비밀번호 확인<br>
+				* 비밀번호 확인<br>
 				<input type="password" name="pw2" id="pw2">
-				<span id="pw2_result"></span><br><br>
+				<span id="pw2_result"></span>
 				
 				
-				이메일<br>
+				* 이메일<br>
 				<input type="text" name="email" id="email">
 				<input type="button" value="인증번호받기" id="verify_num_btn">
-				<br><br>
-					
-				인증번호확인<br>
 				<input type="text" name="user_key" id="user_key">
 				<input type="button" value="인증하기" id="verify_btn">
-				<br><br>
 					
 				사업자명<br>
-				<input type="text" name="name" id="name" value="">
-				<br><br>				
+				<input type="text" name="name" id="name" value="">				
 					
 				사업자연락처<br>
 				<input type="text" name="tel" id="tel" value="">
-				<br><br>
-				
+
 				<table>
 					<tbody>						
+
+				<table id="ownerTable">
+					<tbody>				
+						<tr>
+							<td>이용약관 보기</td>
+						</tr>					
+
 						<tr>						
 							<td>
-								<input type="checkbox" name="chk" value="chk1">이용약관1 동의
+								<textarea readonly>이용약관1</textarea>
+								<input type="checkbox" name="chk" value="chk1" id="chk1">
+								<label for="chk1">이용약관1 동의</label>
 							</td>
-							<textarea>
-							이용약관1				
-							</textarea>
 						</tr>
 						<tr>						
 							<td>
-								<input type="checkbox" name="chk" value="chk2">이용약관2 동의
+								<textarea readonly>이용약관2</textarea>
+								<input type="checkbox" name="chk" value="chk2" id="chk2">
+								<label for="chk2">이용약관2 동의</label>
 							</td>
-							<textarea>
-							이용약관2				
-							</textarea>
 						</tr>
 						<tr>
 							<td>
-								<input type="checkbox" name="chk" value="checkAll" onclick="checkAll(this)">전체 동의 <!--클릭 시 이용약관 1,2 모두 체크-->
+							 	<!--클릭 시 이용약관 1,2 모두 체크-->
+								<input type="checkbox" name="chk" id="chk3" value="checkAll" onclick="checkAll(this)">
+								<label for="chk3">전체 동의</label>
 							</td>
 						</tr>
 						<tr>
-							<td colspan="2">
+							<td>
 								<input type="button" value="뒤로가기" onclick="history.back()"/>
-							</td>
-							<td colspan="2">
 								<input type="button" value="가입하기" id="join_btn"/>
 							</td>
 						</tr>

@@ -23,8 +23,6 @@
 		$('a').click(function(){
 			$('#left').find( $('a') ).removeClass('tabClick');
 			$(this).addClass('tabClick');
-			$('#rigthList').removeClass('none');
-			$('#rigthMember').addClass('none');
 		});
 	} // 
 	
@@ -39,8 +37,7 @@
 		
 		<div class="flex">
 			<div id="left" class="left myPage_box">
-				<a href="#" class="tabClick">예약 현황</a>
-				<a href="#reservation_history_review">예약 내역 및 리뷰</a>
+				<a href="#" class="tabClick">예약 현황 및 리뷰</a>
 				<a href="#review_history">내가 쓴 리뷰</a>
 				<a href="#question_history">문의 내역</a>
 				<a href="memberUpdatePage.do">개인 정보 수정</a>
@@ -53,31 +50,8 @@
 				<div id="reservation_status" class="">
 					<%@ include file="../reservation/myReservation.jsp" %>
 				</div>
-					
-				<!-- 2. 예약 내역 및 리뷰 작성 -->
-				<div id="reservation_history_review" class="">
-					<h2>예약 내역</h2>
-					<div id="history_list">
-						<div class="con">
-							<a href="#"><img alt="store1" src="resources/archive/03.jpg"></a>
-							<h3>음식점1</h3>
-							<p>내용 설명</p>
-						</div>
-						<div class="con">
-							<a href="#"><img alt="store1" src="resources/archive/03.jpg"></a>
-							<h3>음식점1</h3>
-							<p>내용 설명</p>
-						</div>
-						<div class="con">
-							<a href="#"><img alt="store1" src="resources/archive/03.jpg"></a>
-							<h3>음식점1</h3>
-							<p>내용 설명</p>
-						</div>
-					</div>
-					<div id="reservation_history_paging"></div>
-					<!--  리뷰 작성란 -->
-					<%@ include file="../review/reviewInsert.jsp" %>
-				</div>
+				<!--  2. 리뷰 작성란 -->
+				<%@ include file="../review/reviewInsert.jsp" %>
 				
 				<!-- 3. 작성한 리뷰 리스트 -->
 				<div id="review_history" class="">

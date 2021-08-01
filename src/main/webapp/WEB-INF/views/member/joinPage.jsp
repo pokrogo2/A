@@ -121,6 +121,9 @@
 				} else if ( !authPass ) {
 					alert('이메일 인증을 받아야 합니다.');
 					return false;
+				} else if($('#chk').is(':checked')==false){
+		               alert('정보수집에 동의하셔야합니다.');
+		               return false;
 				} else {
 					$('#f').attr('action', 'join.do');
 					$('#f').submit();
@@ -144,22 +147,22 @@
 			
 				<h1 class="con_title">회원가입</h1>
 			
-				아이디<br>
+				* 아이디<br>
 				<input type="text" name="id" id="id">
 				<span id="id_result"></span>
 				
-				비밀번호<br>
+				* 비밀번호<br>
 				<input type="password" name="pw" id="pw">
 				<span id="pw_result"></span>
 				
-				비밀번호 확인<br>
+				* 비밀번호 확인<br>
 				<input type="password" name="pw2" id="pw2">
 				<span id="pw2_result"></span>
 				
 				이름<br>
 				<input type="text" name="name" id="name">
 				
-				이메일<br>
+				* 이메일<br>
 				<input type="text" name="email" id="email">
 				<input type="button" value="인증번호받기" id="verify_num_btn">
 				<input type="text" name="user_key" id="user_key">
@@ -175,7 +178,7 @@
 					<tbody>
 						<tr>
 							<td>
-								<textarea>
+								<textarea readonly>
 										가. 수집하는 개인정보의 항목첫째, 회사는 회원가 입, 원활한 고객상담, 각종 서비스의 제공을 위해 최초 회원가입 당시 아래와 같은 최소한의 개인정보를 필수항목으로 수집하고 있습니다.
 										회원가입
 										- 이름, 생년월일, 성별, 아이디, 비밀번호, 별명, 연락처(메일주소, 휴대폰 번호 중 선택), 가입인증정보

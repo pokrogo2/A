@@ -16,6 +16,7 @@
 			fn_pwCheck0();
 			fn_pwCheck();
 			fn_pwCheck2();
+			fn_leave();
 		});
 		function fn_update() {
 			$('#memberUpdate_btn').click(function(){
@@ -70,6 +71,16 @@
 				}
 			});
 		}
+		
+		// 회원 탈퇴
+		function fn_leave(){
+			$('#leave_link').click(function(){
+				if (confirm('탈퇴할까요?')){
+					location.href = 'deleteMember.do';
+				}
+			})
+		}
+		
 		</script>
 <link rel="stylesheet" href="resources/asset/css/writeForm.css">
 <link rel="stylesheet" href="resources/asset/css/myPage.css">
@@ -92,7 +103,6 @@
 				<form id="f2" method="post">
 					<table>
 						<tbody>
-					
 							<tr>
 								<td>아이디</td>
 								<td><input type="text" name="id" id="id" value="${loginUser.memberId}" readonly></td>
@@ -139,6 +149,9 @@
 							</tr>
 							<tr>
 								<td colspan="2" class="bottomBtn"><input type="button" value="개인정보 수정하기" id="memberUpdate_btn"></td>
+							</tr>
+							<tr>
+								<td colspan="2" class="bottomBtn"><a id="leave_link">회원탈퇴</a></td>
 							</tr>
 							
 						</tbody>

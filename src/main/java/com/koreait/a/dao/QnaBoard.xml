@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.a.dao.QnaBoardDAO">
+
+	<select id="selectQnaBoardList" resultType="com.koreait.a.dto.QnaBoardDTO">
+		<!-- SELECT B.RN, B.NO, B.WRITER, B.TITLE, B.CONTENT, B.POSTDATE
+		  FROM (SELECT ROWNUM AS RN, A.NO, A.WRITER, A.TITLE, A.CONTENT, A.POSTDATE
+		  		  FROM (SELECT NO, WRITER, TITLE, CONTENT, POSTDATE
+		  				  FROM QNABOARD
+		 		 		 ORDER BY NO DESC) A) B
+	 	 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord} -->
+	 	 
+	 	 SELECT * FROM QNABOARD
+	</select>
+	
+	<select id="qnaBoardTotalCount" resultType="int">
+		SELECT COUNT(*)
+		FROM QNABOARD
+	</select>
+	
+	<select id="qnaBoardView" resultType="com.koreait.a.dto.QnaBoardDTO">
+		SELECT NO, WRITER, TITLE, CONTENT, POSTDATE
+		FROM QNABOARD
+		WHERE NO = #{no}
+	</select>
+	
+	<update id="qnaBoardUpdate">
+		UPDATE QNABOARD
+		SET TITLE = #{title}, CONTENT = #{content}
+		WHERE NO = #{no}
+	</update>
+
+	<insert id="qnaBoardInsert" parameterType="com.koreait.a.dto.QnaBoardDTO">
+		INSERT INTO QNABOARD
+		VALUES (QNABOARD_SEQ.NEXTVAL, #{writer}, #{title}, #{content}, SYSDATE)
+	</insert>
+	
+	<delete id="qnaBoardDelete">
+		DELETE
+		FROM QNABOARD
+		WHERE NO = #{no}
+	</delete>
+	
+	
+
+</mapper>

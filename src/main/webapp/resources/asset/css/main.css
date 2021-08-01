@@ -34,6 +34,7 @@ input, button, select  {
 #mainSearch #f select:nth-child(3) {width:155px;}
 /* input: 검색어 입력 */
 #mainSearch #f input {width:330px; border:none;}
+#mainSearch #f input[type="text"] {font-weight:400;}
 /* button: 검색버튼 */
 #mainSearch #f button {width:60px;}
 #mainSearch #f button i {
@@ -65,7 +66,10 @@ input, button, select  {
 	margin-bottom:100px;
 }
 #recommandStore h1 {margin-bottom:15px;}
-#recommandStore #storeBox  {display:flex; justify-content:space-between;}
+#recommandStore #storeBox  {
+	display:flex; 
+	justify-content:space-between;
+}
 #storeBox .box {
 	width:485px;
 	height:205px;

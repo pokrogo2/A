@@ -80,9 +80,15 @@ public class MemberController {
 		return memberIdCheckCommand.execute(sqlSession, model);
 	}
 
-
+	// 회원과 사장님 회원가입으로 가기 위한 join,jsp
 	@GetMapping(value="joinPage.do")
 	public String join() {
+		return "member/navJoin";
+	}
+	
+	// 회원 회원가입 페이지 
+	@GetMapping(value="userJoinPage.do")
+	public String userJoinPage() {
 		return "member/joinPage";
 	}
 	@PostMapping(value="join.do")
@@ -108,7 +114,7 @@ public class MemberController {
 						Model model) {
 		model.addAttribute("request", request);
 		memberLoginCommand.execute(sqlSession, model);
-		return "redirect:loginPage.do";
+		return "redirect:index.do";
 	}
 	@GetMapping(value="logout.do")
 	public String logout(HttpSession session,

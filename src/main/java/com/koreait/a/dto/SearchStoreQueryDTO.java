@@ -1,8 +1,5 @@
 package com.koreait.a.dto;
 
-import lombok.Data;
-
-
 public class SearchStoreQueryDTO {
 
 	// field
@@ -12,6 +9,8 @@ public class SearchStoreQueryDTO {
 	private String local;
 	private String catg;
 	private String query;
+	
+	
 	public int getBeginRecord() {
 		return beginRecord;
 	}
@@ -48,6 +47,7 @@ public class SearchStoreQueryDTO {
 	public void setQuery(String query) {
 		this.query = query;
 	}
+	
 	
 	
 	

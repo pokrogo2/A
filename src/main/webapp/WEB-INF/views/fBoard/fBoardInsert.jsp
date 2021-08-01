@@ -86,7 +86,7 @@
 				<div class="clear con">
 					
 					<!-- 사장님에게만 보이는 버튼 (무조건 눌려있어야 한다.) -->
-					<c:if test="${not empty ownerUser}">
+					<c:if test="${not empty loginOwner}">
 						<div id="radio" class="ownerChoiceRadio">
 							<input type="radio" name="contentType" value="홍보글" id="promotion">
 							<label for="promotion">홍보글</label>
@@ -100,8 +100,8 @@
 					<c:if test="${not empty loginUser}">
 						<input type="text" name="writer" id="writer" value="${loginUser.memberId}">
 					</c:if>
-					<c:if test="${not empty ownerUser}">
-						<input type="text" name="writer" id="writer" value="${ownerUser.ownerNo}">
+					<c:if test="${not empty loginOwner}">
+						<input type="text" name="writer" id="writer" value="${loginOwner.ownerNo}">
 					</c:if>
 					<label for="title">제목</label> <br>
 					<input type="text" name="title" id="title" placeholder="제목">

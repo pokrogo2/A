@@ -3,7 +3,6 @@ package com.koreait.a.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.koreait.a.command.reservation.ResInsertCommand;
 import com.koreait.a.command.store.AutoSearchCommand;
 import com.koreait.a.command.store.SearchOrderCommand;
 import com.koreait.a.command.store.SearchQueryCommand;

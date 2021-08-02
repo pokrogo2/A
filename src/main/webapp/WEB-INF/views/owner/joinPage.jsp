@@ -14,7 +14,7 @@
 			fn_pwCheck();
 			fn_pwCheck2();
 			fn_verify_num();
-			//fn_checkAll(checkAll);
+			// fn_checkAll(checkAll);
 			fn_join();
 		});
 		// 사업자 번호 조회
@@ -204,12 +204,16 @@
 					
 				사업자연락처<br>
 				<input type="text" name="tel" id="tel" value="">
-				
+
+				<table>
+					<tbody>						
+
 				<table id="ownerTable">
 					<tbody>				
 						<tr>
 							<td>이용약관 보기</td>
 						</tr>					
+
 						<tr>						
 							<td>
 								<textarea readonly>이용약관1</textarea>

@@ -216,8 +216,8 @@
 							<label for=f3>일식</label>
 							<input type="radio" name="storeCategory" value="중식" id="f4"> 
 							<label for=f4>중식</label>
-							<input type="radio" name="storeCategory" value="술집" id="f5"> 
-							<label for=f5>술집</label>
+							<input type="radio" name="storeCategory" value="술" id="f5"> 
+							<label for=f5>술(+19)</label>
 						</td>
 					</tr>
 										

@@ -64,4 +64,4 @@ input[type="radio"] {
 
 
 select {padding:0 20px;}
-button {padding:0 20px;}
+input[value="검색"] {padding:0px 35px;}

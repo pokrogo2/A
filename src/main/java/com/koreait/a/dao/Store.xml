@@ -79,27 +79,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    		  		  	ORDER BY STOREHIT DESC 
 	    		  		 ) A) B
 		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
-	</select>
 	
-	
-	
-	<!-- 선택 카테고리 가게 등록 개수 -->
-	<select id="storeCateTotalCount" resultType="int">
-		SELECT COUNT(STORENO)
-		  FROM STOREREG
-		 WHERE STATUS = 0
-		   AND STORECATEGRY = #{storyCategory}
-	</select>
-	<!-- 선택 가게 목록 -->
-	<select id="storeCateList" resultType="com.koreait.a.dto.StoreDTO">
-		SELECT B.*
-		  FROM (SELECT ROWNUM AS RN, A.*
-		          FROM (SELECT *
-		                  FROM STOREREG
-		                 WHERE STATUS = 0
-		                   AND STORECATEGORY = #{storyCategory}
-		                 ORDER BY STORENO DESC) A) B
-		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
 	</select>
 	
 	

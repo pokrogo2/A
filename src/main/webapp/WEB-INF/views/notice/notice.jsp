@@ -18,6 +18,19 @@
 		
 	}); // 페이지 로드 이벤트 (종료)
 	
+	
+	// (JSON으로 받은 날짜 형식 0000-00-00 형식으로 바꾸기)
+	function fn_getDate(timestamp) {
+		var d = new Date(timestamp),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+	    if (month.length < 2) month = '0' + month;
+	    if (day.length < 2) day = '0' + day;
+	
+	    return [year, month, day].join('-');
+	} //////////////////////////////////////////
+	
 	var page = 1;
 	function fn_noticeList() {
 		
@@ -45,7 +58,7 @@
 				$('<tr>')
 				.append( $('<td>').text(notice.rn) )
 				.append( $('<td>').html('<a href="noticeView.do?no='+notice.no+'&loginUser=${loginUser.memberId}">'+notice.title+'</a>') )
-				.append( $('<td>').text(notice.lastdate) )
+				.append( $('<td>').text(fn_getDate(notice.lastdate)) )
 				.appendTo('#notice_list');
 			});
 		} else {

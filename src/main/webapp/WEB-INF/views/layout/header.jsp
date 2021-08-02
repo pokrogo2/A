@@ -65,7 +65,7 @@
 		</div>
 		<div id="catgNav" class="upDownBorder">
 			<div id="category" class="clear">
-				<a href="storeAllList.do?storeCategory=All" data-category="All">All</a>
+				<a href="storeAllList.do?storeCategory=All" id="All">All</a>
 				<!-- 링크 작업 시, ?category=${ctg} 넣어서 해당 카테고리 리스트만 만들 예정 -->
 				<c:forEach var="ctg" items="${category}">
 					<a href="storeList.do?storeCategory=${ctg}" id="${ctg}">${ctg}</a>

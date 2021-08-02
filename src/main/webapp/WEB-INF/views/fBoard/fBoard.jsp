@@ -26,6 +26,19 @@
 	
 	/* 함수 */
 	
+	// (JSON으로 받은 날짜 형식 0000-00-00 형식으로 바꾸기)
+	function fn_getDate(timestamp) {
+		var d = new Date(timestamp),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+	    if (month.length < 2) month = '0' + month;
+	    if (day.length < 2) day = '0' + day;
+	
+	    return [year, month, day].join('-');
+	} //////////////////////////////////////////
+	
+	
 	// 자유게시판 체크 확인 (red)
 	function fn_fBoardNav() {
 		$('#fBoardNav').addClass('navClick');
@@ -50,10 +63,6 @@
 		});
 	} //
 	// 자유 게시판 출력 + 페이징 출력
-	function fn_getDate(timestamp) {
-		var date = new Date(timestamp);
-		return date;
-	}
 	var list = null;
 	function fn_fBoard_append(resultMap){
 		/* ---------------------------------------------------- */
@@ -77,7 +86,7 @@
 					.append( $('<td>').html('<span class="type event">'+fBoard.contentType+'</span>') )							
 					.append( $('<td>').html('<a href="fBoardView.do?no='+fBoard.no+'&loginUser=${loginOnwer.ownerNo}">'+fBoard.title+'</a>') )
 					.append( $('<td>').text(fBoard.hit) )
-					.append( $('<td>').text(fBoard.lastdate) )
+					.append( $('<td>').text(fn_getDate(fBoard.lastdate)) )
 					.appendTo('#fBoard_list');
 				} else { 
 					// 가게 사장님이 등록한 게시물일 때 : 홍보글 일 때
@@ -86,7 +95,7 @@
 					.append( $('<td>').html('<span class="type promotion">'+fBoard.contentType+'</span>') )							
 					.append( $('<td>').html('<a href="fBoardView.do?no='+fBoard.no+'&loginUser=${loginOnwer.ownerNo}">'+fBoard.title+'</a>') )
 					.append( $('<td>').text(fBoard.hit) )
-					.append( $('<td>').text(fBoard.lastdate) )
+					.append( $('<td>').text(fn_getDate(fBoard.lastdate)) )
 					.appendTo('#fBoard_list');
 				}
 			}); 

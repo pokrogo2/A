@@ -8,7 +8,7 @@
 	<jsp:param value="StoreUpdate" name="title"/>
 </jsp:include>
 
-<link rel="stylesheet" href="resources/asset/css/storeView.css">
+<link rel="stylesheet" href="resources/asset/css/storeUpdate.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	
 	
@@ -22,6 +22,8 @@
 			fn_storeCategory_changed()
 			fn_fileAlert();
 			fn_storeAddr();
+			fn_mainSearchSelect_zone();
+			fn_mainSearchSelect_local();
 		});
 	
 		function fn_update(){
@@ -102,6 +104,55 @@
 				location.href = 'storeList.do';
 			});
 		}
+		
+		
+		// 메인 검색 바의 지역 선택 조건
+		var zoneList = null;
+		function fn_mainSearchSelect_zone() {
+			$.ajax({
+				url: 'zoneSelect.do',
+				type: 'get',
+				dataType: 'json',
+				success: function(resultMap){
+					if (resultMap.status == 200) {
+						zoneList = resultMap.zoneList;
+						$.each(zoneList, function(i, zoneList) {
+							$('<option>').attr('value', zoneList.zone).text(zoneList.zone).appendTo('#zone');
+						});
+					}
+				}, 
+				error: function(xhr, text, error){
+					alert('오류!' + error);
+				}
+			});
+		} //
+		var localList = null;
+		function fn_mainSearchSelect_local() {
+			$( 'body' ).on('click', '#zone', function(event){
+				$('#local').empty();
+				$('<option>').attr('value', '').text('구 선택').appendTo('#local'); // <option value=""> = 구 = </option>
+				// 지역의 value가 존재할 때만 진행하겠다.
+				if ( $('#zone').val() != '' ) {
+					$.ajax({
+						url: 'localSelect.do',
+						type: 'get',
+						data: 'zone=' + $('#zone').val(),
+						dataType: 'json',
+						success: function(resultMap) {
+							if (resultMap.status == 200) {
+								localList = resultMap.localList;
+								if (localList != null && localList != '') { // 지역의 구가 존재하는 경우에만 진행하겠다.
+									$.each(localList, function(i, localList) {
+										$('<option>').attr('value', localList.local).text(localList.local).appendTo('#local');
+									});								
+								}
+							}
+						}
+					});
+				}
+			});
+		}//
+		
 	
 	</script>
 
@@ -128,15 +179,10 @@
 			<div class="store_btns"></div>
 			
 			
-			<ul>
-				<li><a href="#">홈</a></li>
-				<li><a href="#">메뉴</a></li>
-				<li><a href="#">리뷰</a></li>
-				<li><a href="#">사진</a></li>
-			</ul>
-			
 			<div class="store_section">
 				<input type="hidden" name="storeNo" value="${store.storeNo}">
+					
+					<p>*는 필수사항입니다.</p>
 					
 					<!-- 가게명 수정 -->
 					<ul class="storeView_outer">
@@ -163,8 +209,8 @@
 								<label for=f3>일식</label>
 								<input type="radio" name="storeCategory" value="중식" id="f4"> 
 								<label for=f4>중식</label>
-								<input type="radio" name="storeCategory" value="술" id="f5"> 
-								<label for=f5>술(+19)</label>
+								<input type="radio" name="storeCategory" value="술집" id="f5"> 
+								<label for=f5>술집</label>
 							</span>
 							</div>					
 						</li>		
@@ -207,16 +253,10 @@
 							<div class="list_left"><h2>가게 주소 *</h2></div>
 							<div class="list_right">
 							<select name="storeAddr1" id="zone">
-								<option value="">지역</option>
-								<option value="서울">서울</option>
-								<option value="경기">경기</option>
-								<option value="부산">부산</option>
+								<option value="">지역 선택</option>							
 							</select>
 							<select name="storeAddr2" id="local">
-								<option value="">구</option>
-								<option value="용산">용산구</option>
-								<option value="서대문구">서대문구</option>
-								<option value="강남구">강남구</option>
+								<option value="">구 선택</option>
 							</select><br>
 							<span><input type="text" id="store_addr3" name="storeAddr3" value="${store.storeAddr3}"></span>
 							</div>					
@@ -248,7 +288,7 @@
 						<li class="storeView_list">
 							<div class="list_left"><h2>메뉴소개</h2></div>
 							<div class="list_right">
-							<span><textarea rows="7" cols="25" id="store_menu" name="storeMenu">${store.storeMenu}</textarea></span>
+							<span><textarea rows="15" cols="25" id="store_menu" name="storeMenu">${store.storeMenu}</textarea></span>
 							</div>					
 						</li>		
 					</ul>

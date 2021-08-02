@@ -30,9 +30,9 @@
 	}
 	
 	
-	// 조회순, 등록순 검색 
+	// 조회순 검색 
 	function fn_searchOrder() {
-		$('input:radio[name=searchOrder]').on('change', function(){	
+		$('input:radio[name=searchOrder]').click(function(){	
 			$('#f2').attr('action', 'searchOrder.do');
 			$('#f2').submit();
 		});
@@ -73,75 +73,75 @@
 
 
 <!-- body -->
-<!-- 가게 리스트 검색-->
-<div class="outer">
-	<form id="f" method="post">
-		<div id="storeSearch" class="search_box">
-			<select id="column" name="column">
-				<option value="STORENAME" data-name="storeName">상호명</option>
-			</select>	
+	<!-- 가게 리스트 검색-->
+	<div class="outer">
+		<div class="search_boxes">
+		<form id="f">
+			<span id="storeSearch" class="search_box">
+				<select id="column" name="column">
+					<option value="STORENAME" data-name="storeName">상호명</option>
+				</select>	
+				
+				<input type="hidden" value="${store.storeCategory}" name="storeCategory" id="storeCategory">
+				
+				<!-- 자동 완성 검색 -->
+				<input list="autoSearch" type="text" name="query" id="query">
+				<datalist id="autoSearch">
+				</datalist>			 
+				 
+				<input type="button" value="검색" id="search_btn" class="search_btn">						
 			
+			</span>
 			
-			<!-- 자동 완성 검색 -->
-			<input list="autoSearch" type="text" name="query" id="query">
-			<datalist id="autoSearch">
-			</datalist>			 
-			 
-			<input type="button" value="검색" id="search_btn" class="search_btn">						
+		</form>
 		
+		<form id="f2">
+				<span id="searchOrder" class="searchOrder_box">
+					<input type="radio" name="searchOrder" value="storeHit" id="s1"> 
+					<label for=s1 class="hit_text">▼전체 가게목록[조회순]</label>	
+				</span>
+		</form>
 		</div>
-		
-	</form>
 	
-	<form id="f2" method="post">
-		<!-- 조회순, 등록순 검색 -->
-			<div id="searchOrder" class="searchOrder_box">
-				<input type="radio" name="searchOrder" value="storeHit" id="s1"> 
-				<label for=s1>조회순</label>
-				<input type="radio" name="searchOrder" value="storeNo" id="s2"> 
-				<label for=s2>등록순</label>		
-			</div>
-	</form>
-	
-<!-- 가게 리스트 -->
+	<!-- 가게 리스트 -->
 	<form>
-	<table border="1">
-		<thead>
-			<tr>
-				<th>No.</th>
-				<th>썸네일</th>
-				<th>상호명</th>	
-				<th>조회수</th>
-			</tr>	
-		</thead>
-		<tbody>
-			
-			<c:if test="${empty list}">
-				<td colspan="4">등록된 가게가 없습니다.</td>
-			</c:if>
-			
-			<c:if test="${not empty list}">
-				<c:forEach var="store" items="${list}">
+		<table border="1">
+			<thead>
 				<tr>
-					<td>${store.storeNo}</td>
-					<td><a href="storeView.do?storeNo=${store.storeNo}"><img alt="${store.originFilename}" src="resources/archive/${store.saveFilename}" style="width: 200px;"></a></td>
-					<td>${store.storeName}</td>
-					<td>${store.storeHit}</td>
+					<th>No.</th>
+					<th>Thumbnail</th>
+					<th>Restaurant Name</th>	
+					<th>Hit</th>
+				</tr>	
+			</thead>
+			<tbody>
+				
+				<c:if test="${empty list}">
+					<td colspan="4">등록된 가게가 없습니다.</td>
+				</c:if>
+				
+				<c:if test="${not empty list}">
+					<c:forEach var="store" items="${list}">
+					<tr>
+						<td>${store.storeNo}</td>
+						<td><a href="storeView.do?storeNo=${store.storeNo}"><img alt="${store.originFilename}" src="resources/archive/${store.saveFilename}" style="width: 300px;"></a></td>
+						<td>${store.storeName}</td>
+						<td>${store.storeHit}</td>
+					</tr>
+					</c:forEach>
+				</c:if>
+			</tbody>
+				
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="4">
+						${paging}
+					</td>
 				</tr>
-				</c:forEach>
-			</c:if>
-		</tbody>
-			
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="4">
-					${paging}
-				</td>
-			</tr>
-		</tfoot>	
-	
-	</table>	
+			</tfoot>	
+		
+		</table>	
 
 	</form>
 </div>

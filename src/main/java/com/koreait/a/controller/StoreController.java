@@ -24,6 +24,7 @@ import com.koreait.a.command.store.SearchQueryCommand;
 import com.koreait.a.command.store.StoreDeleteCommand;
 import com.koreait.a.command.store.StoreInsertCommand;
 import com.koreait.a.command.store.StoreListCommand;
+import com.koreait.a.command.store.StoreListCommand2;
 import com.koreait.a.command.store.StoreUpdateCommand;
 import com.koreait.a.command.store.StoreViewCommand;
 import com.koreait.a.dto.MemberDTO;
@@ -44,6 +45,7 @@ public class StoreController {
 		private AutoSearchCommand autoSearchCommand;
 		private SearchQueryCommand searchQueryCommand;
 		private SearchOrderCommand searchOrderCommand;
+		private StoreListCommand2 storeListCommand2;
 		
 		private ResInsertCommand resInsertCommand;
 		private ResViewCommand resViewCommand;
@@ -62,7 +64,8 @@ public class StoreController {
 				  			   SearchOrderCommand searchOrderCommand,
 				  			   ResInsertCommand resInsertCommand,
 				  			   ResViewCommand resViewCommand,
-				  			   ResDeleteCommand resDeleteCommand) {
+				  			   ResDeleteCommand resDeleteCommand,
+				  			   StoreListCommand2 storeListCommand2) {
 			super();
 			this.sqlSession = sqlSession;
 			this.storeInsertCommand = storeInsertCommand;
@@ -76,6 +79,7 @@ public class StoreController {
 			this.resViewCommand = resViewCommand;
 			this.resDeleteCommand = resDeleteCommand;
 			this.searchOrderCommand = searchOrderCommand;
+			this.storeListCommand2 = storeListCommand2;
 		}
 		
 		
@@ -111,11 +115,18 @@ public class StoreController {
 			return "store/storeList";
 		} 
 		
+		@GetMapping(value="storeList2.do")
+		public String storeList2(HttpServletRequest request, Model model) {
+			model.addAttribute("request", request);
+			storeListCommand2.execute(sqlSession, model);
+			return "store/storeList";
+		}
+		
 		
 		
 		// 가게 검색
 		
-		@PostMapping(value = "autoSearch.do")
+		@GetMapping(value = "autoSearch.do")
 		@ResponseBody
 		public void autoComplete(@RequestBody StoreQueryDTO queryDTO, HttpServletResponse response, Model model) {
 			model.addAttribute("queryDTO", queryDTO);
@@ -123,7 +134,7 @@ public class StoreController {
 			autoSearchCommand.execute(sqlSession, model);
 		}
 
-		@PostMapping(value = "storeSearch.do")
+		@GetMapping(value = "storeSearch.do")
 		public String search(HttpServletRequest request, Model model) {
 			model.addAttribute("request", request);
 			searchQueryCommand.execute(sqlSession, model);
@@ -131,7 +142,7 @@ public class StoreController {
 		}
 		
 		// 조회순, 등록순 검색
-		@PostMapping(value = "searchOrder.do")
+		@GetMapping(value = "searchOrder.do")
 		public String searchOrder(HttpServletRequest request, Model model) {
 			model.addAttribute("request", request);
 			searchOrderCommand.execute(sqlSession, model);

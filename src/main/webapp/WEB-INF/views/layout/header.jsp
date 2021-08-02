@@ -11,7 +11,7 @@
 		request.setCharacterEncoding("UTF-8");
 		Optional<String> opt = Optional.ofNullable(request.getParameter("JSP_title"));
 		String JSP_title = opt.orElse("환영합니다");
-		String[] category = {"한식", "양식", "일식", "중식", "술집(19+)"} ;
+		String[] category = {"한식", "양식", "일식", "중식", "술집"} ;
 		pageContext.setAttribute("JSP_title", JSP_title);
 		request.setAttribute("category", category);
 	%>
@@ -67,7 +67,7 @@
 			<div id="category" class="clear">
 				<!-- 링크 작업 시, ?category=${ctg} 넣어서 해당 카테고리 리스트만 만들 예정 -->
 				<c:forEach var="ctg" items="${category}">
-					<a href="storeList.do">${ctg}</a>
+					<a href="storeList.do?storeCategory=${ctg}">${ctg}</a>
 				</c:forEach>
 				<span>|</span>
 				<a href="fBoardPage.do" id="fBoardNav">자유게시판</a>

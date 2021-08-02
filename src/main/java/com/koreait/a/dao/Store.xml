@@ -20,29 +20,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 WHERE STATUS = 0
 	</select>
 	
+	
+	<!-- 카테고리별 개수 -->
+	<select id="storeCateTotalCount" resultType="int">
+		SELECT COUNT(STORENO)
+		  FROM STOREREG
+		 WHERE STATUS = 0
+		   AND STORECATEGORY = #{storeCategory}
+	</select>
+	
+	
 	<!-- 조회수 -->
 	<update id="storeHit">
 		UPDATE STOREREG
 		   SET STOREHIT = storeHit + 1
 		 WHERE STORENO = #{storeNo}
 	</update>
-	
-	
-	
-	<!--  
-	<select id="storeList" resultType="com.koreait.a.dto.StoreDTO">
-		SELECT B.RN, B.STORENO, B.STORENAME, B.STORECONTENT, B.STORETABLE, B.STORETEL, B.STOREADDR,
-		       B.STORETIME, B.STORESNS, B.STORECATEGORY, B.STOREMENU, B.ORIGINFILENAME, B.SAVEFILENAME, B.STOREHIT
-		  FROM (SELECT ROWNUM AS RN, A.STORENO, A.STORENAME, A.STORECONTENT, A.STORETABLE, A.STORETEL, A.STOREADDR,
-		               A.STORETIME, A.STORESNS, A.STORECATEGORY, A.STOREMENU, A.ORIGINFILENAME, A.SAVEFILENAME, A.STOREHIT
-		  		  FROM (SELECT STORENO, STORENAME, STORECONTENT, STORETABLE, STORETEL, STOREADDR,
-		  		  	           STORETIME, STORESNS, STORECATEGORY, STOREMENU, ORIGINFILENAME, SAVEFILENAME, STOREHIT
-		  		  		  FROM STOREREG
-		  		  		 ORDER BY STORENO DESC) A) B
-		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
-	</select>
-	-->
-	
+
+
+
 	<!-- 가게 목록 -->
 	<select id="storeList" resultType="com.koreait.a.dto.StoreDTO">
 		SELECT B.*
@@ -53,8 +49,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		                 ORDER BY STORENO DESC
 		                 ) A) B
 		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
-	
 	</select>
+	
+	
+	<!-- 선택한 카테고리 목록 -->
+	<select id="storeCateList" resultType="com.koreait.a.dto.StoreDTO">
+		SELECT B.*
+		  FROM (SELECT ROWNUM AS RN, A.*
+		          FROM (SELECT *
+		                  FROM STOREREG
+		                 WHERE STATUS = 0
+		                   AND STORECATEGORY = #{storeCategory}
+		                 ORDER BY STORENO DESC
+		                 ) A) B
+		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
+	</select>
+	
+	
+	
+	
 	
 	<!-- 조회순, 등록순 검색 -->
 	<select id="searchOrder" resultType="com.koreait.a.dto.StoreDTO">
@@ -62,13 +75,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  FROM (SELECT ROWNUM AS RN, A.*
 		          FROM (SELECT *
 		                  FROM STOREREG
-		                 WHERE STATUS = 0	    
-		                 <if test="searchOrder == storeHit">
+		                 WHERE STATUS = 0    
 	    		  		  	ORDER BY STOREHIT DESC 
-	    		  		 </if>
-	    		  		 <if test="searchOrder == storeNo">
-	    		  		  	ORDER BY STORENO ASC
-	    		  		 </if> 
 	    		  		 ) A) B
 		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
 	
@@ -89,7 +97,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT COUNT(STORENO)
 		  FROM STOREREG
 		 WHERE STATUS = 0
-		   AND ${column} LIKE '%' || #{query} || '%'	  
+		   AND ${column} LIKE '%' || #{query} || '%'	
 	</select>
 	
 	

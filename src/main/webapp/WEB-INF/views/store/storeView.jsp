@@ -18,7 +18,6 @@
 		$(document).ready(function(){
 			fn_update();
 			fn_delete();
-			fn_storeList();
 			fn_storeRes();
 			fn_storeRes2();
 		})
@@ -40,12 +39,6 @@
 			});
 		}
 		
-		// 목록보기 
-		function fn_storeList(){
-			$('#storeList_btn').click(function(){
-				location.href = 'storeList.do';
-			})
-		}
 
 		// 예약하기 (로그인했을 경우)
 		function fn_storeRes() {
@@ -93,38 +86,35 @@
 		
 	
 		<div class="store_name">${store.storeName}</div>
-		<div>평점: ★★★★☆</div>
+		
+		<div>평점: <span class="grade_color">★★★★★</span></div>
 		
 			<div class="store_image">
 				<img alt="${store.originFilename}" src="resources/archive/${store.saveFilename}" style="width: 450px;">
 			</div>
 			
 			<div class="store_btns">
+			
 		
-				<input type="button" value="가게 목록보기" id="storeList_btn" class="storeList_btn">
+				<input type="button" value="가게 목록보기" id="storeList_btn" class="storeList_btn" onclick="history.back()"></li>
 				
 				
 		<!-- 로그인User에 따라서 예약버튼 활성화가 달라짐 -->
-			<c:choose>
-				<c:when test="${not empty loginUser.memberNo}">
-					<input type="button" value="예약하기" id="storeRes_btn"  name="storeRes_btn" class="storeRes_btn">  
-				</c:when>
-				<c:when test="${empty loginUser && empty loginOwner}">
-					<input type="button" value="예약하기" id="storeRes_btn2" name="storeRes_btn2" class="storeRes_btn">
-				</c:when>
-				<c:otherwise>
-					<span></span>
-				</c:otherwise>							
-			</c:choose>		
+				
+				<c:choose>
+					<c:when test="${not empty loginUser.memberNo}">
+						<input type="button" value="예약하기" id="storeRes_btn"  name="storeRes_btn" class="storeRes_btn">  
+					</c:when>
+					<c:when test="${empty loginUser && empty loginOwner}">
+						<input type="button" value="예약하기" id="storeRes_btn2" name="storeRes_btn2" class="storeRes_btn">
+					</c:when>
+					<c:otherwise>
+						<span></span>
+					</c:otherwise>							
+				</c:choose>		
+				
 		</div>
 	
-	
-		<ul>
-			<li><a href="#">홈</a></li>
-			<li><a href="#">메뉴</a></li>
-			<li><a href="#">리뷰</a></li>
-			<li><a href="#">사진</a></li>
-		</ul>
 	
 		<div class="store_section">
 			<input type="hidden" name="storeNo" value="${store.storeNo}">
@@ -142,7 +132,7 @@
 			
 		<!-- 사장님 본인이 등록한 게시글만 수정/삭제 가능-->
 			<c:if test="${loginOwner.ownerNo == store.ownerNo}">
-				<input type="text" value="${loginOwner.ownerNo}" name="ownerNo" id="ownerNo">		
+				<input type="hidden" value="${loginOwner.ownerNo}" name="ownerNo" id="ownerNo">		
 			</c:if>
 			
 				<ul class="storeView_outer">

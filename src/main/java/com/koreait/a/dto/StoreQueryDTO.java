@@ -8,6 +8,7 @@ public class StoreQueryDTO {
 	private String searchOrder;
 	private int beginRecord;
 	private int endRecord;
+	private String storeCategory;
 	
 	// getter, setter
 	public String getColumn() {
@@ -39,6 +40,12 @@ public class StoreQueryDTO {
 	}
 	public void setEndRecord(int endRecord) {
 		this.endRecord = endRecord;
+	}
+	public String getStoreCategory() {
+		return storeCategory;
+	}
+	public void setStoreCategory(String storeCategory) {
+		this.storeCategory = storeCategory;
 	}
 	
 	

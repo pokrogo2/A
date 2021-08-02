@@ -27,24 +27,19 @@ public class SearchOrderCommand implements StoreCommand {
 		int page = Integer.parseInt(opt.orElse("1"));
 		
 		StoreDAO storeDAO = sqlSession.getMapper(StoreDAO.class);
-		
-		String searchOrder = request.getParameter("searchOrder");
-		
 		int totalRecord = storeDAO.storeTotalCount();
 		int recordPerPage = 5;   // 1 페이지당 5개 목록 
 		int pagePerBlock = 5;	// 1 블록당 5개 페이지   
 		
 		PagingDTO pagingDTO = PagingUtils.getPage(recordPerPage, pagePerBlock, totalRecord, page);
-
-		StoreQueryDTO queryDTO = new StoreQueryDTO();
-		queryDTO.setSearchOrder(searchOrder);
 		
-		List<StoreDTO> list = storeDAO.searchOrder(queryDTO);
+		List<StoreDTO> list = storeDAO.searchOrder(pagingDTO);
 		String paging = PagingUtils.getPaging("searchOrder.do", page);
 		
 		model.addAttribute("list", list);
 		model.addAttribute("paging", paging);
 		model.addAttribute("totalRecord", totalRecord);
+		
 		
 		
 		

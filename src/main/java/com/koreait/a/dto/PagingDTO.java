@@ -15,6 +15,7 @@ public class PagingDTO {
 	private int beginPage;
 	private int endPage;
 	private String loginId;
+	private String storeCategory;
 	
 	
 	
@@ -81,6 +82,12 @@ public class PagingDTO {
 	}
 	public void setEndPage(int endPage) {
 		this.endPage = endPage;
+	}
+	public String getStoreCategory() {
+		return storeCategory;
+	}
+	public void setStoreCategory(String storeCategory) {
+		this.storeCategory = storeCategory;
 	}
 	
 	

@@ -45,7 +45,7 @@ public class StoreDeleteCommand implements StoreCommand {
 				if (count > 0) {
 					response.getWriter().println("<script>");
 					response.getWriter().println("alert('가게 등록을 삭제했습니다.')");
-					response.getWriter().println("location.href='storeList.do'");
+					response.getWriter().println("location.href='storeList2.do'");
 					response.getWriter().println("</script>");
 				} else {
 					response.getWriter().println("<script>");

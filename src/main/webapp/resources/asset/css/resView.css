@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+.outer {	
+	margin: 0 auto;
+	width: 700px;
+	text-align: center;
+}
+
+ul {
+	list-style: none;
+}
+
+.resView_list {
+	width: 80%;
+	text-align: center;
+	display: flex;
+    flex-direction: row;  
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid gray;
+}
+
+.list_left {
+	text-align: left;
+}
+
+.list_left > h3 {
+	font-weight: 500;
+	color: #E3326A;
+}
+
+.list_right {
+	margin-left: 60px;
+	text-align: right;
+	padding: 20px;
+}
+
+.resView_outer {
+	margin: 80px 80px;	
+}
+
+

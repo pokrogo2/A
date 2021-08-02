@@ -1,8 +1,5 @@
 package com.koreait.a.dto;
 
-import lombok.Data;
-
-
 public class SearchStoreQueryDTO {
 
 	// field
@@ -50,6 +47,7 @@ public class SearchStoreQueryDTO {
 	public void setQuery(String query) {
 		this.query = query;
 	}
+	
 	
 	
 	

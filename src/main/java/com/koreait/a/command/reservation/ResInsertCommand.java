@@ -22,6 +22,7 @@ public class ResInsertCommand implements ReservationCommand {
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		HttpServletResponse response = (HttpServletResponse)map.get("response");
 
+		long memberNo = Long.parseLong(request.getParameter("memberNo"));
 		
 		StoreResDTO res = new StoreResDTO();
 		res.setStoreNo(Long.parseLong(request.getParameter("storeNo")));
@@ -37,14 +38,15 @@ public class ResInsertCommand implements ReservationCommand {
 		response.setContentType("text/html; charset=utf-8"); 
 		
 		int count = resDAO.resInsert(res);
-		long resNo = 0;
-
+		// long resNo = 0;
+		
+		
 		try {
 		if (count > 0) {  
-			resNo = resDAO.findResNoRecentlyInserted();
+			// resNo = resDAO.findResNoRecentlyInserted();
 			response.getWriter().println("<script>");
-			response.getWriter().println("alert('예약이 완료되었습니다.')");
-			response.getWriter().println("location.href = 'resView.do?resNo=" + resNo +"'");
+			response.getWriter().println("alert('예약이 완료되었습니다.마이페이지로 이동합니다.')");
+			response.getWriter().println("location.href = 'memberMyPage.do?memberNo=" + memberNo +"'");
 			response.getWriter().println("</script>");
 		} else {
 			response.getWriter().println("<script>");

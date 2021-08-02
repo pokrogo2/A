@@ -20,7 +20,8 @@ public class StoreViewCommand implements StoreCommand {
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		
 		// 전달받은 데이터 옮겨주기
-		long storeNo = Long.parseLong(request.getParameter("storeNo"));	
+		long storeNo = Long.parseLong(request.getParameter("storeNo"));
+
 
 		
 		StoreDAO storeDAO = sqlSession.getMapper(StoreDAO.class);

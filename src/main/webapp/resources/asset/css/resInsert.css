@@ -76,9 +76,21 @@ label:checked {
 	border: none;
 }
 
-.storView_btn:hover {
+.storeView_btn:hover {
 	cursor: pointer;
 	font-weight: 700;
 }
 
+.res_btn {
+	width: 100px;
+	height: 40px;
+	background-color: lightpink;
+	border: none;
+	border-radius: 5px;
+	font-weight: 500;
+}
+
+.res_btn:hover {
+	cursor: pointer;
+}
 

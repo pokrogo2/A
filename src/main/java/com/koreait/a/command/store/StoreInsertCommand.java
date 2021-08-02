@@ -36,6 +36,7 @@ public class StoreInsertCommand implements StoreCommand {
 		storeDTO.setStoreSns(multipartRequest.getParameter("storeSns"));
 		storeDTO.setStoreCategory(multipartRequest.getParameter("storeCategory"));
 		storeDTO.setStoreMenu(multipartRequest.getParameter("storeMenu"));
+		storeDTO.setOwnerNo(Long.parseLong(multipartRequest.getParameter("ownerNo")));
 	
 		
 		MultipartFile file = multipartRequest.getFile("file");
@@ -94,7 +95,7 @@ public class StoreInsertCommand implements StoreCommand {
 			if (count > 0) {
 				response.getWriter().println("<script>");
 				response.getWriter().println("alert('가게 등록이 완료되었습니다.')");
-				response.getWriter().println("location.href='storeList.do'");
+				response.getWriter().println("location.href='storeList2.do'");
 				response.getWriter().println("</script>");
 			} else {
 				response.getWriter().println("<script>");

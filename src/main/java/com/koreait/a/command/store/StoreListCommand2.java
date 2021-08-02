@@ -12,13 +12,15 @@ import org.springframework.ui.Model;
 import com.koreait.a.dao.StoreDAO;
 import com.koreait.a.dto.PagingDTO;
 import com.koreait.a.dto.StoreDTO;
+import com.koreait.a.dto.StoreQueryDTO;
 import com.koreait.a.utils.PagingUtils;
 
-public class StoreListAllCommand implements StoreCommand {
+public class StoreListCommand2 implements StoreCommand {
 
 	@Override
 	public void execute(SqlSession sqlSession, Model model) {
 		
+
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		
@@ -33,7 +35,7 @@ public class StoreListAllCommand implements StoreCommand {
 		PagingDTO pagingDTO = PagingUtils.getPage(recordPerPage, pagePerBlock, totalRecord, page);
 		
 		List<StoreDTO> list = storeDAO.storeList(pagingDTO);
-		String paging = PagingUtils.getPaging("storeList.do", page);
+		String paging = PagingUtils.getPaging("storeList2.do", page);
 		
 		model.addAttribute("list", list);
 		model.addAttribute("paging", paging);

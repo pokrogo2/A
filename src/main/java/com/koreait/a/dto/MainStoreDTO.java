@@ -1,7 +1,5 @@
 package com.koreait.a.dto;
 
-import lombok.Data;
-
 public class MainStoreDTO {
 
 	// field
@@ -14,6 +12,8 @@ public class MainStoreDTO {
 	private String storeTime;
 	private String originFilename;
 	private double reviewAvg;
+	
+	
 	public long getStoreNo() {
 		return storeNo;
 	}

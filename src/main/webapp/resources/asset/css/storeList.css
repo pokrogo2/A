@@ -3,7 +3,7 @@
 .outer {
 	margin: 0 auto;
 	padding-top: 50px;
-	width: 700px;
+	width: 900px;
 	text-align: center;
 }
 
@@ -13,16 +13,53 @@
 }
 
 table {
-	width: 700px;
+	width: 900px;
 	height: 500px;	
-	margin: 30px 20px 30px 0;
+	margin: 100px 20px 30px 0;
 	text-algin: center;
 	padding: 20px;
+	border-color: gray;
 }
 
 .search_btn:hover {
 	cursor: pointer;
 	background-color: lightorange;
+}
+
+.search_boxes {
+	margin: 30px;
+	display: flex;
+	flex-direction: row;  
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.search_box {
+	width: 400px;
+}
+
+.searchOrder_box {
+	width: 300px;
+}
+
+th {
+	background-color: #FCDCE4;
+	font-weight: 500;
+}
+
+
+.hit_text {
+	color: crimson;
+	font-weight: 500;
+}
+
+.hit_text:hover {
+	cursor: pointer;
+}
+
+/*라디오 버튼 삭제*/
+input[type="radio"] {
+	display: none;
 }
 
 

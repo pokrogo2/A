@@ -14,7 +14,7 @@
 <script>
 	
 	$(document).ready(function(){
-		// fn_storeInsert();
+		fn_storeInsert();
 		fn_storeTable();
 		fn_fileAlert();
 		fn_storeCategory();
@@ -22,16 +22,16 @@
 		fn_mainSearchSelect_local();
 	});
 	
-	/* 가게 등록 함수 
+	/* 가게 등록 함수 */
 	function fn_storeInsert(){
 		$('#f').submit(function(event){
 			if ($('#store_name').val() == '' ||
 				$('#store_content').val() == '' ||
 				$('#store_table').val() == '' ||
 				$('#store_tel').val() == '' ||
-				$('select[name=storeAddr1]').val() == '지역' ||
-				$('select[name=storeAddr2]').val() == '구' ||
- 				$('#store_addr').val() == '' ||
+				$('select[name=storeAddr1]').val() == '' ||
+				$('select[name=storeAddr2]').val() == '' ||
+				$('input[name=storeAddr3]').val() == '' ||
 				$('#store_time').val() == '' ||
 				$('input[name=storeCategory]').val() == '' ||
 				$('#file').val() == '' 
@@ -42,7 +42,7 @@
 			} 
 		});
 	}
-*/
+
 	
 	// 테이블 갯수 입력창
 	function fn_storeTable() {
@@ -83,6 +83,57 @@
 			}
 		});
 	}
+
+	
+	// 메인 검색 바의 지역 선택 조건
+	var zoneList = null;
+	function fn_mainSearchSelect_zone() {
+		$.ajax({
+			url: 'zoneSelect.do',
+			type: 'get',
+			dataType: 'json',
+			success: function(resultMap){
+				if (resultMap.status == 200) {
+					zoneList = resultMap.zoneList;
+					$.each(zoneList, function(i, zoneList) {
+						$('<option>').attr('value', zoneList.zone).text(zoneList.zone).appendTo('#zone');
+					});
+				}
+			}, 
+			error: function(xhr, text, error){
+				alert('오류!' + error);
+			}
+		});
+	} //
+	var localList = null;
+	function fn_mainSearchSelect_local() {
+		$( 'body' ).on('click', '#zone', function(event){
+			$('#local').empty();
+			$('<option>').attr('value', '').text('구 선택').appendTo('#local'); // <option value=""> = 구 = </option>
+			// 지역의 value가 존재할 때만 진행하겠다.
+			if ( $('#zone').val() != '' ) {
+				$.ajax({
+					url: 'localSelect.do',
+					type: 'get',
+					data: 'zone=' + $('#zone').val(),
+					dataType: 'json',
+					success: function(resultMap) {
+						if (resultMap.status == 200) {
+							localList = resultMap.localList;
+							if (localList != null && localList != '') { // 지역의 구가 존재하는 경우에만 진행하겠다.
+								$.each(localList, function(i, localList) {
+									$('<option>').attr('value', localList.local).text(localList.local).appendTo('#local');
+								});								
+							}
+						}
+					}
+				});
+			}
+		});
+	}//
+	
+	
+	
 	
 	// 메인 검색 바의 지역 선택 조건
 	var zoneList = null;
@@ -144,59 +195,63 @@
 			
 			<table>
 				<tbody>
-					<!--
+					
 						<tr>
-							<td>사업주명</td>
-							<td><input type="text" value="${owner.name}" id="owener_name" name="owener_name" class="int" readonly><br></td>
+							<th>사업주명</th>
+							<td><input type="text" value="${loginOwner.ownerName}" id="ownerName" name="ownerName" class="int" readonly><br></td>
+							<td><input type="hidden" value="${loginOwner.ownerNo}" id="ownerNo" name="ownerNo" class="int"><br></td>
 						<tr>
-					-->
-					 
+					
 					
 					<tr>
-						<td>상호명 *</td>
+						<th>상호명 *</th>
 						<td><input type="text" id="store_name" name="storeName" class="int"><br></td>
 					<tr>
-						<td>가게 소개 *</td>
+						<th>가게 소개 *</th>
 						<td><textarea rows="7" cols="25" id="store_content" name="storeContent"></textarea><br></td>
 					</tr>
 					<tr>
-						<td>테이블 수 *</td>
+						<th>테이블 수 *</th>
 						<td><input type="text" id="store_table" name="storeTable" class="int"><br></td>
 					</tr>			
 					<tr>
-						<td>가게 번호 *</td>
+						<th>가게 번호 *</th>
 						<td><input type="text" id="store_tel" name="storeTel" class="int"><br></td>
 					</tr>
 					
 					<tr>
-						<td>가게 주소 *</td>
+						<th>가게 주소 *</th>
 						
 						<td id="store_addr">
 							<select name="storeAddr1" id="zone">
 								<option value="">지역 선택</option>
 							</select>
+
 							<select name="storeAddr2" id="local">
 								<option value="">구 선택</option>
+								<!--  <option value="용산">용산구</option>
+								<option value="서대문구">서대문구</option>
+								<option value="강남구">강남구</option>-->
 							</select><br>
-							</td>
-							<tr>
-							<td>
-								<input type="text" placeholder="상세주소" id="store_addr" name="storeAddr3">
-							 </td>
+							<input type="text" placeholder="상세주소" id="store_addr" name="storeAddr3">
+						</td>
+					<tr>							
+						
+						 
 					</tr>
 					<tr>
-						<td>운영 시간 *</td>
+						<th>운영 시간 *</th>
 						<td><input type="text" id="store_time" name="storeTime" class="int"><br></td>
 					</tr>
 					
 					
 					<tr>
-						<td>SNS</td>
+						<th>SNS</th>
 						<td><input type="text" id="store_sns" name="storeSns" class="int"><br></td>
 					</tr>
 								
 					<tr>
-						<td>카테고리 분류 *</td>
+						<th>카테고리 분류 *</th>
 						<td id="store_category" colspan="2">
 							<input type="radio" name="storeCategory" value="한식" id="f1"> 
 							<label for=f1>한식</label>
@@ -212,7 +267,7 @@
 					</tr>
 										
 					<tr>
-						<td>메뉴 등록</td>
+						<th>메뉴 등록</th>
 						<td>
 							<textarea rows="7" cols="25" id="store_menu" name="storeMenu"></textarea>
 							<!-- <input type="text" id="menu_price" name="storeMenu" class="menu_int" placeholder="가격(,로 입력)">  -->
@@ -220,7 +275,7 @@
 					</tr>
 										 
 					<tr>
-						<td>가게 대표이미지 *</td>
+						<th>가게 대표이미지 *</th>
 						<td>
 							<input type="file" id="file" name="file"><br>
 						</td>

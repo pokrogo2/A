@@ -16,8 +16,9 @@
 	$(document).ready(function(){
 		fn_search();
 		fn_autoSearch();
-		fn_storeNav();
 		// fn_searchLineUp();
+		fn_searchOrder();
+		fn_storeNav();
 	});
 
 	
@@ -29,6 +30,14 @@
 		});
 	}
 	
+	
+	// 조회순 검색 
+	function fn_searchOrder() {
+		$('input:radio[name=searchOrder]').click(function(){	
+			$('#f2').attr('action', 'searchOrder.do');
+			$('#f2').submit();
+		});
+	}
 	
 	/* 검색 결과 불러오기 */
 	function fn_autoSearch(){
@@ -59,7 +68,7 @@
 			});
 		}
 
-	
+
 		// 네비게이션 클릭 시, 해당 메뉴 체크
 	function fn_storeNav() {
 		<% 
@@ -71,103 +80,80 @@
 		$(nav).addClass('navClick');
 	}
 	
-	
 
 </script>
 
 
 <!-- body -->
-<!-- 가게 리스트 검색-->
-<div class="outer">
-	<form id="f" method="post">
-		<div id="storeSearch" class="search_box">
-			<select id="column" name="column">
-				<option value="STORENAME" data-name="storeName">상호명</option>
-			</select>	
-			
-			
-			<!-- 자동 완성 검색 -->
-			<input list="autoSearch" type="text" name="query" id="query">
-			<datalist id="autoSearch">
-			</datalist>
-			 
-			 
-			<input type="button" value="검색" id="search_btn" class="search_btn">						
-		
-		</div>
-		
-		<!-- 
-		<div id="searchLineUp" class="search_box">
-			<input type="radio" name="searchLineUp" value="조회순" id="s1"> 
-			<label for=s1>조회순</label>
-			<input type="radio" name="searchLineUp" value="등록순" id="s2"> 
-			<label for=s2>등록순</label>		
-		</div>
-		 -->
-		
-		
-		<div id="lineUp" class="search_box">	
-			<select id="searchLineUp" name="lineUp">
+	<!-- 가게 리스트 검색-->
+	<div class="outer">
+		<div class="search_boxes">
+		<form id="f">
+			<span id="storeSearch" class="search_box">
+				<select id="column" name="column">
+					<option value="STORENAME" data-name="storeName">상호명</option>
+				</select>	
+				
+				<input type="hidden" value="${store.storeCategory}" name="storeCategory" id="storeCategory">
+				
+				<!-- 자동 완성 검색 -->
+				<input list="autoSearch" type="text" name="query" id="query">
+				<datalist id="autoSearch">
+				</datalist>			 
 				 
-				 <!--  리뷰별: 보류 
-					<option value="review">리뷰별(평점순)</option> 
-				-->
-				 
-				 <!--  
-				<option value="orderByHit">조회순</option>
-				<option value="orderByPost">등록순</option>
-				-->
-			</select>	 	
+				<input type="button" value="검색" id="search_btn" class="search_btn">						
+			
+			</span>
+			
+		</form>
+		
+		<form id="f2">
+				<span id="searchOrder" class="searchOrder_box">
+					<input type="radio" name="searchOrder" value="storeHit" id="s1"> 
+					<label for=s1 class="hit_text">▼전체 가게목록[조회순]</label>	
+				</span>
+		</form>
 		</div>
 	
-		
-
-	</form>
-
-	
-<!-- 가게 리스트 -->
+	<!-- 가게 리스트 -->
 	<form>
-	<table border="1">
-		<thead>
-			<tr>
-				<th>No.</th>
-				<th>썸네일</th>
-				<th>상호명</th>	
-				
-				<!--  ** 평점: 보류   -->
-				<!--  <th>평점</th> -->
-				
-				<th>조회수</th>
-			</tr>	
-		</thead>
-		<tbody>
-			
-			<c:if test="${empty list}">
-				<td colspan="4">등록된 가게가 없습니다.</td>
-			</c:if>
-			
-			<c:if test="${not empty list}">
-				<c:forEach var="store" items="${list}">
+		<table border="1">
+			<thead>
 				<tr>
-					<td>${store.storeNo}</td>
-					<td><a href="storeView.do?storeNo=${store.storeNo}"><img alt="${store.originFilename}" src="resources/archive/${store.saveFilename}" style="width: 200px;"></a></td>
-					<td>${store.storeName}</td>
-					<td>${store.storeHit}</td>
+					<th>No.</th>
+					<th>Thumbnail</th>
+					<th>Restaurant Name</th>	
+					<th>Hit</th>
+				</tr>	
+			</thead>
+			<tbody>
+				
+				<c:if test="${empty list}">
+					<td colspan="4">등록된 가게가 없습니다.</td>
+				</c:if>
+				
+				<c:if test="${not empty list}">
+					<c:forEach var="store" items="${list}">
+					<tr>
+						<td>${store.storeNo}</td>
+						<td><a href="storeView.do?storeNo=${store.storeNo}"><img alt="${store.originFilename}" src="resources/archive/${store.saveFilename}" style="width: 300px;"></a></td>
+						<td>${store.storeName}</td>
+						<td>${store.storeHit}</td>
+					</tr>
+					</c:forEach>
+				</c:if>
+			</tbody>
+				
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="4">
+						${paging}
+					</td>
 				</tr>
-				</c:forEach>
-			</c:if>
-		</tbody>
-			
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="4">
-					${paging}
-				</td>
-			</tr>
-		</tfoot>	
-	
-	</table>	
+			</tfoot>	
+		
+		</table>	
 
 	</form>
 </div>

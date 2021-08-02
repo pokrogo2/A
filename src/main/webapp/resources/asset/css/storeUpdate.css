@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+@charset "UTF-8";
+
 .outer {
 	margin: 0 auto;
 	width: 700px;
@@ -44,7 +46,7 @@
 }
 
 .storeView_outer {
-	margin: 80px 80px;
+	margin: 80px 120px;
 	
 }
 .storeView_list {
@@ -58,17 +60,18 @@
 }
 
 .list_left {
-	text-align: left;
+	margin-right: 30px;
+	height: 50px;
+	line-height: 50px;
 }
 
 .list_left > h2 {
 	font-weight: 500;
-	color: #E3326A;
+	color: #F39940;
 }
 
 .list_right {
 	margin-left: 60px;
-	text-align: right;
 }
 
 .sns_link > a:link {
@@ -93,19 +96,16 @@
 }
 
 /* 카테고리 */
-.category_icon > i {
-	color: #FA9D2E;
+.category_box > .category_icon {
+	color: red;
 	padding: 20px;
 }
 
 .category_box {
 	padding: 20px;
-	font-weight: 500;
 }
 
 
-
-/* Update Page */
 .update_btn:hover {
 	cursor: pointer;
 	background-color: #F5F979;

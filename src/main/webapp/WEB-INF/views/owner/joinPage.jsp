@@ -14,7 +14,7 @@
 			fn_pwCheck();
 			fn_pwCheck2();
 			fn_verify_num();
-			// fn_checkAll(checkAll);
+			cAll();
 			fn_join();
 		});
 		// 사업자 번호 조회
@@ -141,13 +141,13 @@
 			
 		
 		// 전체 동의 시 나머지 버튼 선택/해제
-		/* function fn_checkAll(checkAll) {
-			const checkboxes = document.getElementsByName('chk');
-			
-			checkboxes.forEach((checkbox) => {
-				checkbox.checked = checkAll.checked;
-			});
-		} */
+		function cAll() {
+            if ($("#checkAll").is(':checked')) {
+                $("input[type=checkbox]").prop("checked", true);
+            } else {
+                $("input[type=checkbox]").prop("checked", false);
+            }
+        }
 		
 		// 회원가입함수
 		function fn_join() {
@@ -217,21 +217,21 @@
 						<tr>						
 							<td>
 								<textarea readonly>이용약관1</textarea>
-								<input type="checkbox" name="chk" value="chk1" id="chk1">
+								<input type="checkbox" name="chk1" value="chk" id="chk">
 								<label for="chk1">이용약관1 동의</label>
 							</td>
 						</tr>
 						<tr>						
 							<td>
 								<textarea readonly>이용약관2</textarea>
-								<input type="checkbox" name="chk" value="chk2" id="chk2">
+								<input type="checkbox" name="chk2" value="chk" id="chk">
 								<label for="chk2">이용약관2 동의</label>
 							</td>
 						</tr>
 						<tr>
 							<td>
 							 	<!--클릭 시 이용약관 1,2 모두 체크-->
-								<input type="checkbox" name="chk" id="chk3" value="checkAll" onclick="checkAll(this)">
+								<input type="checkbox" name="chk3" id="checkAll" value="checkAll" onclick="cAll();">
 								<label for="chk3">전체 동의</label>
 							</td>
 						</tr>

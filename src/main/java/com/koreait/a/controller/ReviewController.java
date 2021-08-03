@@ -1,6 +1,7 @@
 package com.koreait.a.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,11 +63,12 @@ public class ReviewController {
 	
 	
 	@GetMapping(value="deleteReview.do")
-	public String deleteBoard(HttpServletRequest request,
+	public void deleteBoard(HttpServletRequest request,HttpServletResponse response,
 							  Model model) {
 		model.addAttribute("request", request);
+		model.addAttribute("response", response);
 		reviewDeleteCommand.execute(sqlSession, model);
-		return "redirect:memberMyPage.do";
+		//return "redirect:memberMyPage.do";
 	}
 	@GetMapping(value="updateReviewPage.do")
 	public String updateBoardPage(HttpServletRequest request,

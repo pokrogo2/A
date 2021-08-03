@@ -25,6 +25,20 @@
 	
 	
 	/* 함수 */
+	
+	
+	// (JSON으로 받은 날짜 형식 0000-00-00 형식으로 바꾸기)
+	function fn_getDate(timestamp) {
+		var d = new Date(timestamp),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+	    if (month.length < 2) month = '0' + month;
+	    if (day.length < 2) day = '0' + day;
+	
+	    return [year, month, day].join('-');
+	} //////////////////////////////////////////
+	
 	// 자유게시판 체크 확인 (red)
 	function fn_fBoardNav() {
 		$('#fBoardNav').addClass('navClick');
@@ -65,7 +79,7 @@
 				$('<tr>')
 				.append( $('<td>').text(fReply.rn) )
 				.append( $('<td>').text(fReply.writer) )
-				.append( $('<td>').html(fReply.content + '<span>' + fReply.postdate + '</span>') )
+				.append( $('<td>').html(fReply.content + '<span>' + fn_getDate(fReply.postdate) + '</span>') )
 				.append( $('<td>').html('<input type="button" value="삭제" id="deleteReply_btn">') )
 				.append( $('<input type="hidden" name="fno" id="fno">').val(fReply.fno) )
 				.append( $('<input type="hidden" name="writer" id="writer">').val(fReply.writer) )

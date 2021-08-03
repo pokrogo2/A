@@ -26,6 +26,7 @@ public class MemberDeleteCommand implements MemberCommand {
 		System.out.println(no);
 		MemberDAO memberDAO = sqlSession.getMapper(MemberDAO.class);
 		response.setContentType("text/html; charset=UTF-8");
+		memberDAO.deleteChild(no);
 		int count = memberDAO.delete(no);
 		try {
 		if (count != 0) {

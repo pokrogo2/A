@@ -92,12 +92,12 @@ public class MemberController {
 		return "member/joinPage";
 	}
 	@PostMapping(value="join.do")
-	public String join(HttpServletRequest request,HttpServletResponse response ,Model model) {
+	public void join(HttpServletRequest request,HttpServletResponse response ,Model model) {
 		model.addAttribute("request",request);
 		model.addAttribute("request", request);
 		model.addAttribute("response", response);
 		memberJoinCommand.execute(sqlSession, model);
-		return "redirect:loginPage.do";
+		//return "redirect:loginPage.do";
 	}
 	
 	@GetMapping(value="verifyNum.do",
@@ -153,20 +153,21 @@ public class MemberController {
 		return "member/findPwResult";
 	}
 	@GetMapping(value="deleteMember.do")
-	public String leave(HttpSession session,
+	public void leave(HttpSession session,
 			HttpServletResponse response,Model model,HttpServletRequest request) {
 		model.addAttribute("session", session);
 		model.addAttribute("request", request);
 		model.addAttribute("response", response);
 		memberDeleteCommand.execute(sqlSession, model);
-		return "redirect:/";
+		//return "redirect:/";
 	}
 	@PostMapping(value="updateMember.do")
-	public String updateMember(HttpServletRequest request, 
+	public void updateMember(HttpServletRequest request, HttpServletResponse response,
 			 Model model) {
 		model.addAttribute("request", request);
+		model.addAttribute("response", response);
 		memberUpdateCommand.execute(sqlSession, model);
-		return "member/memberMyPage";
+		//return "member/memberMyPage";
 	}
 	
 }

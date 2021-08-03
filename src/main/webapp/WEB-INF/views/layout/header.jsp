@@ -44,7 +44,7 @@
 			<a href="index.do" class="logo"><img alt="logoA" src="resources/asset/img/logoAA.png"> </a>
 			<span class="sub_nav">
 				<!-- 로그인 되지 않았을 경우 -->
-				<c:if test="${empty loginUser}">
+				<c:if test="${empty loginUser && empty loginOwner}">
 					<a href="loginPage.do">로그인</a>
 					<span>|</span>
 					<a href="joinPage.do">회원가입</a>
@@ -63,6 +63,7 @@
 				</c:if>
 			</span>
 		</div>
+		
 		<div id="catgNav" class="upDownBorder">
 			<div id="category" class="clear">
 				<a href="storeList2.do?storeCategory=All" id="All">All</a>

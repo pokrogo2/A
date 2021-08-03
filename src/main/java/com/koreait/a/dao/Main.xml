@@ -54,6 +54,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		   AND STATUS = 0
 	</select>
 	
+	<!-- 로그인한 가게 사장님이 등록한 가게 번호 -->
+	<select id="storeExistStoreNo" resultType="com.koreait.a.dto.MainStoreDTO">
+		SELECT STORENO
+		  FROM STOREREG
+		 WHERE OWNERNO = #{ownerNo}
+		   AND STATUS = 0
+	</select>
+	
 	<!-- 가게 정보 -->
 	<select id="mainStoreView" resultType="com.koreait.a.dto.MainStoreDTO">
 		SELECT A.RN

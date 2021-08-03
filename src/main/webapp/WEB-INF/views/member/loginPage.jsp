@@ -44,16 +44,16 @@
 						alert('아이디와 비밀번호는 필수입니다.');
 						event.preventDefault();
 						return false;
-					}
-				} else if($('input:radio[name="tap"]:checked').val() == $('#lginOwner').val()) {
-					if ($('#no').val() == '' || $('#pw').val() == '') {
+					} 
+				} else if($('input:radio[name="tap"]:checked').val() == $('#loginOwner').val()) {
+					if ($('#no').val() == '' || $('#ownerPw').val() == '') {
 						alert('사업자번호와 비밀번호는 필수입니다.');
 						event.preventDefault();
 						return false;
-					}
+					} 
 				}
 				
-				// form의 action 추가
+				 // form의 action 추가
 				if ($('#id').val() != '') {
 					$('#f').attr('action', 'login.do');
 				}
@@ -120,7 +120,7 @@
 				사업자번호<br>
 				<input type="text" name="no" id="no" placeholder="OwnerNo">
 				비밀번호<br>
-				<input type="password" name="pw" id="pw" placeholder="PassWord">
+				<input type="password" name="ownerPw" id="ownerPw" placeholder="PassWord">
 				<button>로그인</button>
 				<div class="subLink">
 					<a href="ownerJoinPage.do">회원가입</a>

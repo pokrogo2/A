@@ -22,7 +22,7 @@
 	}) // 페이지 로드 이벤트 종료
 	
 	function fn_bannerLink() {
-		$('#storeBann').click(function(){
+		$('#storeBann').mouseover(function(){
 			$.ajax({
 				url: 'storeExist.do',
 				type: 'post',
@@ -32,7 +32,7 @@
 					$('#storeBann').attr('href', resultMap.view);
 				}
 			});
-		});
+		}); 
 	} //
 	
 	 

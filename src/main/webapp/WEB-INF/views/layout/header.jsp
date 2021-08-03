@@ -78,7 +78,7 @@
 			
 		<div id="sideFix">
 			<div> <a href="noticePage.do"> <i class="fas fa-exclamation"></i> </a></div>
-			<div> <a href="#"> <i class="far fa-comments"></i> </a> </div>
+			<div> <a href="qnaBoardPage.do"> <i class="far fa-comments"></i> </a> </div>
 			<div> <a href="index.do"> <i class="fas fa-search"></i> </a> </div>
 		</div>
 	</header>

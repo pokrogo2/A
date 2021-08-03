@@ -94,7 +94,7 @@ public class OwnerController {
 	public String logoutOwner(HttpSession session, Model model) {
 		model.addAttribute("session", session);
 		ownerLogoutCommand.execute(sqlSession, model);
-		return "redirect:ownerLoginPage.do";
+		return "redirect:index.do";
 	}
 	@GetMapping(value="ownerPwPage.do")
 	public String ownerfindPwPage() {

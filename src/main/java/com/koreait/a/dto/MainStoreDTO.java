@@ -10,7 +10,7 @@ public class MainStoreDTO {
 	private String storeAddr2;
 	private String storeAddr3;
 	private String storeTime;
-	private String originFilename;
+	private String saveFilename;
 	private double reviewAvg;
 	
 	
@@ -56,11 +56,11 @@ public class MainStoreDTO {
 	public void setStoreTime(String storeTime) {
 		this.storeTime = storeTime;
 	}
-	public String getOriginFilename() {
-		return originFilename;
+	public String getSaveFilename() {
+		return saveFilename;
 	}
-	public void setOriginFilename(String originFilename) {
-		this.originFilename = originFilename;
+	public void setSaveFilename(String saveFilename) {
+		this.saveFilename = saveFilename;
 	}
 	public double getReviewAvg() {
 		return reviewAvg;

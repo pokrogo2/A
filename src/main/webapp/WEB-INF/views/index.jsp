@@ -58,7 +58,7 @@
 				$('<div>').addClass('box')
 				.append( $('<div>').addClass('img').addClass('box_con')
 						 .append( $('<a>').attr('href', 'storeView.do?storeNo='+store.storeNo)
-						          .append( $('<img>').attr('alt', store.storeName).attr('src', 'resources/archive/'+store.originFilename) ) ) )
+						          .append( $('<img>').attr('alt', store.storeName).attr('src', 'resources/archive/'+store.saveFilename) ) ) )
 				.append( $('<div>').addClass('content').addClass('box_con')
 						 .append( $('<p class="category">'+store.storeCategory+'</p>') )
 						 .append( $('<h3>'+store.storeName+'</h3>') )
@@ -98,7 +98,7 @@
 			$.each(newStore, function(i, store) {
 				$('<div>')
 				.append( $('<a>').attr('href', 'storeView.do?storeNo='+store.storeNo)
-						 .append( $('<img>').attr('alt', store.storeName).attr('src', 'resources/archive/'+store.originFilename) ))
+						 .append( $('<img>').attr('alt', store.storeName).attr('src', 'resources/archive/'+store.saveFilename) ))
 				.append( $('<h3><span class="storeCategory">'+store.storeCategory+'</span>'+store.storeName+'</h3>') )
 				.append( $('<p>'+store.storeAddr1+' '+store.storeAddr2+' '+store.storeAddr3+'</p>') )
 				.appendTo('#list');
@@ -212,7 +212,7 @@
 			<h1>음식점을 추천해 드려요!</h1>
 			<div id="storeBox"></div> <!-- 추천 음식점 2box -->
 			<div id="return">
-				<a href="index.do#mainSearch">새로운 추천 보기<i class="fas fa-undo-alt"></i></a>
+				<a href="index.do">새로운 추천 보기<i class="fas fa-undo-alt"></i></a>
 			</div>
 		</div> <!-- recommandStore -->
 		

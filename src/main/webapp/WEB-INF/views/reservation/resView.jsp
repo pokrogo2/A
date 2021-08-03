@@ -12,7 +12,7 @@
 	<div class="outer">
 	
 			<input type="hidden" name="storeNo" id="storeNo">
-			<input type="text" value="${loginUser.memberNo}" name="memberNo" id="memberNo">
+			<input type="hidden" value="${loginUser.memberNo}" name="memberNo" id="memberNo">
 			
 		<div>
 			<ul class="resView_outer">

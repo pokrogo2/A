@@ -19,7 +19,7 @@ public class OwnerLoginCommand implements OwnerCommand {
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		
 		Long no = Long.parseLong(request.getParameter("no"));
-		String pw = request.getParameter("pw");
+		String pw = request.getParameter("ownerPw");
 		
 		OwnerDTO owner = new OwnerDTO();
 		owner.setOwnerNo(no);

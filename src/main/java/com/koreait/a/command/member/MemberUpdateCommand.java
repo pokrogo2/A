@@ -1,8 +1,10 @@
 package com.koreait.a.command.member;
 
+import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
@@ -18,6 +20,7 @@ public class MemberUpdateCommand implements MemberCommand {
 		// TODO Auto-generated method stub
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		HttpServletResponse response = (HttpServletResponse)map.get("response");
 		
 		long no = Long.parseLong(request.getParameter("no"));
 		String pw = request.getParameter("pw");
@@ -34,8 +37,22 @@ public class MemberUpdateCommand implements MemberCommand {
 		member.setMemberAge(age);
 		
 		MemberDAO memberDAO = sqlSession.getMapper(MemberDAO.class);
-		memberDAO.updateMember(member);
-		
+		int result = memberDAO.updateMember(member);
+		response.setContentType("text/html; charset=UTF-8");
+		try {
+			if (result > 0) {
+				response.getWriter().println("<script>");
+				response.getWriter().println("alert('수정성공')");
+				response.getWriter().println("location.href='memberUpdatePage.do'");
+				response.getWriter().println("</script>");
+			} else {
+				response.getWriter().println("<script>");
+				response.getWriter().println("alert('수정실패')");
+				response.getWriter().println("history.back()");
+				response.getWriter().println("</script>");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
-
 }

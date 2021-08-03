@@ -94,7 +94,7 @@ header {margin:50px 0;}
 .sub_nav {text-align:right; position:absolute; right:0; top:12px;}
 .sub_nav span {margin:0 20px; font-size:13px; color:#999;}
 .sub_nav a {font-weigth:500;}
-.sub_nav a:hover {color:#bf3a3e; font-weight:600; text-decoration:underline;}
+.sub_nav a:hover {color:#bf3a3e; font-weight:500;}
 .sub_nav #store_insert_btn {border-radius:100px; background-color:#bf3a3e; color:#f8eae1; padding:4px 15px;}
 #catgNav {}
 #category {width:1000px; text-align:center;}

@@ -69,7 +69,7 @@
 					</c:forEach>
 					</c:if>
 					<c:if test="${empty list}">
-					 <tr>list가없습니다.</tr>
+					 <tr><td colspan="4">list가없습니다.</td></tr>
 					</c:if>
 					
 				

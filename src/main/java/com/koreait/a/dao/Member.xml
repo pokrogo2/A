@@ -43,6 +43,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  FROM MEMBER
 		 WHERE MEMBEREMAIL = #{email}
 	</select>
+	<delete id="deleteChild">
+			DELETE FROM RESERVATION WHERE MEMBERNO=#{memberNo}
+	</delete>
 	<delete id="delete">
 	
 		DELETE FROM MEMBER WHERE MEMBERNO=#{memberNo}

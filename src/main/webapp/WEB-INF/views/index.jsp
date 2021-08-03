@@ -22,7 +22,7 @@
 	}) // 페이지 로드 이벤트 종료
 	
 	function fn_bannerLink() {
-		$('#storeBann').click(function(){
+		$('#storeBann').mouseover(function(){
 			$.ajax({
 				url: 'storeExist.do',
 				type: 'post',
@@ -32,7 +32,7 @@
 					$('#storeBann').attr('href', resultMap.view);
 				}
 			});
-		});
+		}); 
 	} //
 	
 	 
@@ -219,7 +219,7 @@
 		
 		<div id="insertStoreList">
 			<h1>신규 등록한 음식점</h1>
-			<a href="#">더보기 +</a>
+			<a href="storeList2.do?storeCategory=All">더보기 +</a>
 			<%--  신규 음식점 STORE 리스트 --%>
 			<div id="list"></div>
 		</div> <!-- insertStoreList -->

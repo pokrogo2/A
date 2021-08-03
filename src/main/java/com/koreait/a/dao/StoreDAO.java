@@ -5,8 +5,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.koreait.a.dto.FBoardDTO;
-import com.koreait.a.dto.FBoardQueryDTO;
 import com.koreait.a.dto.PagingDTO;
 import com.koreait.a.dto.StoreDTO;
 import com.koreait.a.dto.StoreQueryDTO;

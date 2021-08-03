@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 import com.koreait.a.dao.MainDAO;
+import com.koreait.a.dto.MainStoreDTO;
 
 public class MainStoreExistCommand implements MainCommand {
 
@@ -27,9 +28,10 @@ public class MainStoreExistCommand implements MainCommand {
 		resultMap.put("result", result);
 		
 		if (result > 0) {
-			resultMap.put("view", "");
+			MainStoreDTO storeDTO = mainDAO.storeExistStoreNo(ownerNo);
+			resultMap.put("view", "storeView.do?storeNo="+storeDTO.getStoreNo());
 		} else {
-			resultMap.put("view", "insertStorePage.do");
+			resultMap.put("view", "storeInsertPage.do");
 		}
 			
 		return resultMap;

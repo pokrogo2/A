@@ -135,6 +135,53 @@
 	
 	
 	
+	// 메인 검색 바의 지역 선택 조건
+	var zoneList = null;
+	function fn_mainSearchSelect_zone() {
+		$.ajax({
+			url: 'zoneSelect.do',
+			type: 'get',
+			dataType: 'json',
+			success: function(resultMap){
+				if (resultMap.status == 200) {
+					zoneList = resultMap.zoneList;
+					$.each(zoneList, function(i, zoneList) {
+						$('<option>').attr('value', zoneList.zone).text(zoneList.zone).appendTo('#zone');
+					});
+				}
+			}, 
+			error: function(xhr, text, error){
+				alert('오류!' + error);
+			}
+		});
+	} //
+	var localList = null;
+	function fn_mainSearchSelect_local() {
+		$( 'body' ).on('click', '#zone', function(event){
+			$('#local').empty();
+			$('<option>').attr('value', '').text('구 선택').appendTo('#local'); // <option value=""> = 구 = </option>
+			// 지역의 value가 존재할 때만 진행하겠다.
+			if ( $('#zone').val() != '' ) {
+				$.ajax({
+					url: 'localSelect.do',
+					type: 'get',
+					data: 'zone=' + $('#zone').val(),
+					dataType: 'json',
+					success: function(resultMap) {
+						if (resultMap.status == 200) {
+							localList = resultMap.localList;
+							if (localList != null && localList != '') { // 지역의 구가 존재하는 경우에만 진행하겠다.
+								$.each(localList, function(i, localList) {
+									$('<option>').attr('value', localList.local).text(localList.local).appendTo('#local');
+								});								
+							}
+						}
+					}
+				});
+			}
+		});
+	}//
+	
 </script>
 
 
@@ -178,10 +225,8 @@
 						<td id="store_addr">
 							<select name="storeAddr1" id="zone">
 								<option value="">지역 선택</option>
-								<!--  <option value="서울">서울</option>
-								<option value="경기">경기</option>
-								<option value="부산">부산</option> -->
 							</select>
+
 							<select name="storeAddr2" id="local">
 								<option value="">구 선택</option>
 								<!--  <option value="용산">용산구</option>

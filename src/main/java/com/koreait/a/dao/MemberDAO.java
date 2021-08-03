@@ -10,6 +10,7 @@ public interface MemberDAO {
 	public int emailCheck(String email);
 	public MemberDTO findId(String email);
 	public MemberDTO findPw(String email);
+	public int deleteChild(long no);
 	public int delete(long no);
 	public int updateMember(MemberDTO member);
 	

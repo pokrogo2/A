@@ -81,7 +81,7 @@
 				<option value="">== 예약한 음식점 ==</option>
 				<c:if test="${not empty list1}">
 					<c:forEach var="list1" items="${list1}">
-				<option value="${list1.storeNo}">${list1.storeName } test ${list1.storeNo}</option>
+				<option value="${list1.storeNo}">${list1.storeName } </option>
 				</c:forEach>
 				</c:if>
 			</select>

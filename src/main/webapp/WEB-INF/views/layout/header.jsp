@@ -44,7 +44,7 @@
 			<a href="index.do" class="logo"><img alt="logoA" src="resources/asset/img/logoAA.png"> </a>
 			<span class="sub_nav">
 				<!-- 로그인 되지 않았을 경우 -->
-				<c:if test="${empty loginUser}">
+				<c:if test="${empty loginUser && empty loginOwner}">
 					<a href="loginPage.do">로그인</a>
 					<span>|</span>
 					<a href="joinPage.do">회원가입</a>
@@ -63,11 +63,13 @@
 				</c:if>
 			</span>
 		</div>
+		
 		<div id="catgNav" class="upDownBorder">
 			<div id="category" class="clear">
+				<a href="storeList2.do?storeCategory=All" id="All">All</a>
 				<!-- 링크 작업 시, ?category=${ctg} 넣어서 해당 카테고리 리스트만 만들 예정 -->
 				<c:forEach var="ctg" items="${category}">
-					<a href="storeList.do?storeCategory=${ctg}">${ctg}</a>
+					<a href="storeList.do?storeCategory=${ctg}" id="${ctg}">${ctg}</a>
 				</c:forEach>
 				<span>|</span>
 				<a href="fBoardPage.do" id="fBoardNav">자유게시판</a>
@@ -76,7 +78,7 @@
 			
 		<div id="sideFix">
 			<div> <a href="noticePage.do"> <i class="fas fa-exclamation"></i> </a></div>
-			<div> <a href="#"> <i class="far fa-comments"></i> </a> </div>
+			<div> <a href="qnaBoardPage.do"> <i class="far fa-comments"></i> </a> </div>
 			<div> <a href="index.do"> <i class="fas fa-search"></i> </a> </div>
 		</div>
 	</header>

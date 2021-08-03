@@ -203,9 +203,7 @@
 						</div>					
 					</li>		
 				</ul>
-				
-				
-	
+
 			</div>
 		</form>
 	</div>

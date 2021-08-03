@@ -22,10 +22,12 @@
 							 <a href="resView.do?resNo=${res.resNo}" id="resImg"><img alt="status_img" src="resources/archive/${res.saveFilename }"></a>
 							 <div>
 								<h3>${res.storeName}</h3>
-								<p>예약인원 <span>테이블 1개, 인원수 ${res.resPeople }명</span></p>
-								<p>예약 시간 <span>${res.resDate }일 / ${res.resHours}시</span></p>
+
+								<p>예약인원 <span>테이블 1개, 인원수 ${res.resPeople}</span></p>
+
+								<p>예약 시간 <span>${res.resDate}일 / ${res.resHours}시</span></p>
 							</div>
-							<a href="resDelete.do?resNo=${res.resNo }" class="cancle">예약 취소</a>
+							<a href="resDelete.do?resNo=${res.resNo}" class="cancle">예약 취소</a>
 						</div>
 					</div>
 			</c:forEach>

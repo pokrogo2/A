@@ -58,7 +58,6 @@
 			},
 			error:function(xhr, text, error){
 				alert('실패!' + error);
-				console.log(page);
 			}
 		});
 	} //

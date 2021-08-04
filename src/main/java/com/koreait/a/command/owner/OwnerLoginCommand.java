@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
+import com.koreait.a.dao.MainDAO;
 import com.koreait.a.dao.OwnerDAO;
 import com.koreait.a.dto.OwnerDTO;
 import com.koreait.a.utils.SecurityUtils;
@@ -28,9 +29,15 @@ public class OwnerLoginCommand implements OwnerCommand {
 		OwnerDAO ownerDAO = sqlSession.getMapper(OwnerDAO.class);
 		OwnerDTO loginOwner = ownerDAO.login(owner);
 		
+		MainDAO mainDAO = sqlSession.getMapper(MainDAO.class);
+		int storeExist = mainDAO.storeExist(no);
+		
 		if (loginOwner != null) {
 
 			request.getSession().setAttribute("loginOwner", loginOwner);
+			if (storeExist > 0) {
+				request.getSession().setAttribute("storeExist", true);
+			}
 		}
 		
 	}

@@ -170,11 +170,7 @@
 					<input type="file" id="file" name="newFile">
 					기존에 ${store.originFilename} 파일이 첨부되어있습니다.<br><br>		
 				</div>
-			
-			<!-- 
-			<div class="store_rating">★평점 4/5</div>		
-			-->
-			
+		
 			<!-- 빈 공간 유지 -->
 			<div class="store_btns"></div>
 			

@@ -74,20 +74,15 @@
 						</c:if>
 						
 						<input type="hidden" name="storeNo" value="${store.storeNo}">
-					
-						
-					
+				
 						<input type="hidden" name="originFilename" value="${store.originFilename}">
 						<input type="hidden" name="saveFilename" value="${store.saveFilename}">
 					
 				</div>
 			</div>
-		
-		
 	
 		<div class="store_name">${store.storeName}</div>
 		
-		<div>평점: <span class="grade_color">★★★★★</span></div>
 		
 			<div class="store_image">
 				<img alt="${store.originFilename}" src="resources/archive/${store.saveFilename}" style="width: 450px;">

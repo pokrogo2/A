@@ -35,7 +35,7 @@ public class QnaBoardInsertCommand implements QnaBoardCommand {
 			if(result > 0) {
 				response.getWriter().println("<script>");
 				response.getWriter().println("alert('새 게시글을 작성했습니다.')");
-				response.getWriter().println("location.href='qnaBoardPage.do");
+				response.getWriter().println("location.href='qnaBoardPage.do'");
 				response.getWriter().println("</script>");
 			} else {
 				response.getWriter().println("<script>");

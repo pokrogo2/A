@@ -27,7 +27,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
            AND STOREADDR1 = #{zone}
            <if test="local != ''">AND STOREADDR2 = #{local}</if>
            <if test="catg != ''">AND STORECATEGORY = #{catg}</if>
-           <if test="query != ''">AND STORENAME LIKE '%' || #{query} || '%'</if>
+           <if test="query != ''">
+	           AND STORENAME LIKE '%' || #{query} || '%' 
+	           OR STOREMENU LIKE '%' || #{query} || '%' 
+           </if>
 	</select>
 	<!-- 음식점 검색 -->
 	<select id="searchStore" resultType="com.koreait.a.dto.StoreDTO">
@@ -39,7 +42,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		                   AND STOREADDR1 = #{zone}
 				           <if test="local != ''">AND STOREADDR2 = #{local}</if>
 				           <if test="catg != ''">AND STORECATEGORY = #{catg}</if>
-				           <if test="query != ''">AND STORENAME LIKE '%' || #{query} || '%'</if>
+				           <if test="query != ''">
+					           AND STOREMENU LIKE '%' || #{query} || '%' 
+					           OR STORENAME LIKE '%' || #{query} || '%' 
+				           </if>
 		                 ORDER BY STORENO DESC) A) B
 		 WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord}
 	</select>
@@ -73,7 +79,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			 , A.STOREADDR3
 			 , A.STORECATEGORY
 			 , A.STORETIME
-			 , A.ORIGINFILENAME
+			 , A.SAVEFILENAME
 		  FROM ( SELECT ROWNUM AS RN
 		  			  , STORENO
 			 		  , STORENAME
@@ -83,7 +89,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			 		  , STOREADDR3
 			 		  , STORECATEGORY
 			 		  , STORETIME
-			 		  , ORIGINFILENAME
+			 		  , SAVEFILENAME
 		  		   FROM STOREREG
 		  		  WHERE STATUS = 0 ) A
 		 WHERE A.RN = #{storeNo}
@@ -112,7 +118,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			 , B.STOREADDR1
 			 , B.STOREADDR2
 			 , B.STOREADDR3
-			 , B.ORIGINFILENAME
+			 , B.SAVEFILENAME
 		  FROM ( SELECT ROWNUM AS RN
 					  , A.STORENO
 			 		  , A.STORENAME
@@ -120,14 +126,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			 	 	  , A.STOREADDR1
 					  , A.STOREADDR2
 			 		  , A.STOREADDR3
-			 		  , A.ORIGINFILENAME
+			 		  , A.SAVEFILENAME
 		  		   FROM ( SELECT STORENO
 						   	   , STORENAME
 							   , STORECATEGORY
 						       , STOREADDR1
 			 			  	   , STOREADDR2
 			 				   , STOREADDR3
-			 				   , ORIGINFILENAME
+			 				   , SAVEFILENAME
 		  					FROM STOREREG
 		  				   WHERE STATUS = 0
 		  				   ORDER BY STORENO DESC )A )B

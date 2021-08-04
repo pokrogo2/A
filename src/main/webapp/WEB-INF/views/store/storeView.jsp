@@ -83,7 +83,7 @@
 	
 		<div class="store_name">${store.storeName}</div>
 		
-		
+
 			<div class="store_image">
 				<img alt="${store.originFilename}" src="resources/archive/${store.saveFilename}" style="width: 450px;">
 			</div>

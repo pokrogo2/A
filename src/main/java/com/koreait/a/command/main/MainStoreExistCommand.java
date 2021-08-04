@@ -30,6 +30,7 @@ public class MainStoreExistCommand implements MainCommand {
 		if (result > 0) {
 			MainStoreDTO storeDTO = mainDAO.storeExistStoreNo(ownerNo);
 			resultMap.put("view", "storeView.do?storeNo="+storeDTO.getStoreNo());
+			resultMap.put("result", 200);
 		} else {
 			resultMap.put("view", "storeInsertPage.do");
 		}

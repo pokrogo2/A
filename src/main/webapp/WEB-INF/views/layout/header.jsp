@@ -58,8 +58,10 @@
 				<!-- 가게 사장님 로그인 시 -->
 				<c:if test="${not empty loginOwner}">
 					<a href="ownerLogout.do">로그아웃</a>
-                    <span>|</span>
-					<a href="storeInsertPage.do" id="store_insert_btn">가게 등록</a>
+					<c:if test="${empty storeExist}">
+	                    <span>|</span>
+						<a href="storeInsertPage.do" id="store_insert_btn">가게 등록</a>
+					</c:if>
 				</c:if>
 			</span>
 		</div>

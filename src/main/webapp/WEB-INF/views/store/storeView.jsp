@@ -91,7 +91,7 @@
 			<div class="store_btns">
 			
 		
-				<input type="button" value="가게 목록보기" id="storeList_btn" class="storeList_btn" onclick="history.back()"></li>
+				<input type="button" value="가게 목록보기" id="storeList_btn" class="storeList_btn" onclick="history.back()">
 				
 				
 		<!-- 로그인User에 따라서 예약버튼 활성화가 달라짐 -->

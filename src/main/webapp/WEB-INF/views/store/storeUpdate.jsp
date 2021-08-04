@@ -101,7 +101,7 @@
 		// 목록보기 
 		function fn_storeList(){
 			$('#storeList_btn').click(function(){
-				location.href = 'storeList.do';
+				location.href = 'storeList2.do';
 			});
 		}
 		
